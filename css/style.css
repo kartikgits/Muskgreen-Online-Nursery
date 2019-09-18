@@ -1,3 +1,45 @@
-p.timerDemo {
-    color: #00A86B;
+/*Top NavBar items*/
+span.topNavItem {
+    font-size: 1.5rem;
+    margin: auto;
+    padding: inherit;
+    text-align: center;
+    position: static;
+}
+
+
+/*Search Bar*/
+.input-group.md-form.form-sm.form-2 input {
+    border: 1px solid #bdbdbd;
+    border-top-left-radius: 0.25rem;
+    border-bottom-left-radius: 0.25rem;
+}
+
+
+/*Mobile Styling*/
+
+@media (max-width: 991.98px) {
+    
+/*    Navbar styling    */
+    .navbar-collapse {
+        position: absolute;
+        top: 54px;
+        right: 100%;
+        padding-left: 15px;
+        padding-right: 15px;
+        padding-bottom: 15px;
+        width: 100%;
+        transition: all 0.3s ease;
+        display: block;
+    }
+    .navbar-collapse.collapsing {
+        height: auto !important;
+        margin-right: 50%;
+        transition: all 0.3s ease;
+        display: block;
+    }
+    .navbar-collapse.show {
+        right: 0;
+    }
+    
 }
