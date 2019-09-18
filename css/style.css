@@ -23,14 +23,14 @@ span.topNavItem {
 /*    Navbar styling    */
     .navbar-collapse {
         position: absolute;
-        top: 54px;
+        top: 1px;
         right: 100%;
         padding-left: 15px;
         padding-right: 15px;
         padding-bottom: 15px;
         width: 100%;
         transition: all 0.3s ease;
-        display: block;
+        display: inline;
     }
     .navbar-collapse.collapsing {
         height: auto !important;
@@ -40,6 +40,10 @@ span.topNavItem {
     }
     .navbar-collapse.show {
         right: 0;
+    }
+    
+    nav div.mobileStyleSearchBox {
+        margin-top: 3%;
     }
     
 }
