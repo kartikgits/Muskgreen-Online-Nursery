@@ -1,4 +1,10 @@
-/*Top NavBar items*/
+/*Top NavBar*/
+nav {
+    background-color: #ffffff;
+}
+nav.topBar {
+    border-bottom: 2px solid #E0E0E0;
+}
 span.topNavItem {
     font-size: 1.5rem;
     margin: auto;
@@ -7,12 +13,34 @@ span.topNavItem {
     position: static;
 }
 
-
 /*Search Bar*/
 .input-group.md-form.form-sm.form-2 input {
     border: 1px solid #bdbdbd;
     border-top-left-radius: 0.25rem;
     border-bottom-left-radius: 0.25rem;
+}
+
+/*Bottom Navigation Bar*/
+nav.lowerNavBar {
+    padding: 0;
+    -webkit-box-shadow: 0px 0px 4px 0.1px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 4px 0.1px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 4px 0.1px rgba(0,0,0,0.75);
+}
+
+.navigationBar ul {
+    margin: auto;
+}
+
+.nav-link {
+    color: #28634f;
+    font-weight: 600;
+}
+
+nav div.navigationBar ul li a:hover {
+    transition: background-color, color 0.6s ease;
+    background-color: #509534;
+    color: #fff;
 }
 
 
@@ -31,6 +59,7 @@ span.topNavItem {
         width: 100%;
         transition: all 0.3s ease;
         display: inline;
+        background-color: #ffffff;
     }
     .navbar-collapse.collapsing {
         height: auto !important;
@@ -44,6 +73,7 @@ span.topNavItem {
     
     nav div.mobileStyleSearchBox {
         margin-top: 3%;
+        margin-bottom: 1%;
     }
     
 }
