@@ -7,6 +7,25 @@ div.mainBodyContainer {
 }
 
 
+/*MultiItemBar Contents*/
+div.multiItemBarTitle {
+    background-color: #fff;
+    margin: inherit;
+    margin-bottom: 0;
+}
+
+div.multiItemBarTitle .mTitle {
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+div.multiItemBarBody {
+    background-color: #fff;
+    margin: inherit;
+    margin-top: 0;
+    padding-bottom: 1%;
+}
+
 
 div.gallery {
   border: 1px solid #ccc;
