@@ -50,7 +50,7 @@ nav div.navigationBar ul li a:hover {
 /*    Navbar styling    */
     .navbar-collapse {
         position: absolute;
-        top: 1px;
+        top: 0px;
         right: 100%;
         padding-left: 15px;
         padding-right: 15px;
@@ -59,6 +59,7 @@ nav div.navigationBar ul li a:hover {
         transition: all 0.3s ease;
         display: inline;
         background-color: #ffffff;
+        z-index: 999;
     }
     .navbar-collapse.collapsing {
         height: auto !important;
