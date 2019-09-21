@@ -26,27 +26,22 @@ div.multiItemBarBody {
     padding-bottom: 1%;
 }
 
-
-div.gallery {
-  border: 1px solid #ccc;
-}
-
-div.gallery:hover {
+.multiItemBarBody div.gallery:hover {
   border: 1px solid #777;
 }
 
-div.gallery img {
+.responsive div.gallery img {
   width: 100%;
   height: auto;
 }
 
-div.desc {
+.responsive div.desc {
   padding: 15px;
   text-align: center;
 }
 
 .responsive {
-  padding: 0 6px;
+  padding: 0 8px;
   float: left;
   width: 12.49999%;
 }
@@ -75,4 +70,60 @@ div.desc {
   content: "";
   display: table;
   clear: both;
+}
+
+
+/*Featured Products*/
+div.featuredProductsTitle {
+    background-color: #fff;
+    margin: inherit;
+    margin-bottom: 0;
+}
+
+div.featuredProductsTitle .mTitle {
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+div.featuredProductsBody {
+    background-color: #fff;
+    margin: inherit;
+    margin-top: 0;
+    padding-bottom: 1%;
+}
+
+.responsive2 div.gallery img {
+  width: 100%;
+  height: auto;
+}
+
+.responsive2 div.desc {
+  padding: 15px;
+  text-align: center;
+}
+
+.responsive2 {
+  padding: 0 25px;
+  float: left;
+  width: 25%;
+}
+
+@media only screen and (max-width: 768.9px) {
+  .responsive2 {
+    width: 49.99999%;
+    margin: 6px 0;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .responsive2 {
+    width: 49.99999%;
+    margin: 6px 0;
+  }
+}
+
+@media only screen and (max-width: 300px) {
+  .responsive2 {
+    width: 100%;
+  }
 }
