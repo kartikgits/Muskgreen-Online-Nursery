@@ -108,6 +108,62 @@ div.featuredProductsBody {
   width: 25%;
 }
 
+/*Each Featured Product*/
+.productContainer {
+  position: relative;
+  width: 100%;
+  max-width: 300px;
+  border: 0.3px solid green;
+}
+
+.productContainer .image {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: blur(1);
+  -webkit-filter: blur(1); /* Webkit Nightlies & Chrome Canary */
+  -webkit-transition: all .5s ease-in-out;
+}
+
+.productContainer .productBuyCart {
+  position: absolute; 
+  bottom: 0; 
+  background: rgb(0, 0, 0);
+  background: rgb(0, 150, 0);
+  color: #f1f1f1; 
+  width: 100%;
+  transition: .5s ease;
+  opacity:0;
+  color: white;
+  font-size: 20px;
+  padding: 20px;
+  text-align: center;
+  object-fit: cover;
+}
+
+.productContainer .productPriceDisc {
+	font-size: 1.20rem;
+    font-weight: 400;
+    padding: 20px;
+    transition: .5s ease;
+    text-align: center;
+}
+
+.productContainer:hover .productBuyCart {
+  opacity: 1;
+}
+
+.productContainer:hover .image {
+    filter: none;
+    -webkit-filter: blur(0);
+    -webkit-transform: scale(1.01);
+}
+
+.productContainer:hover .productPriceDisc {
+	opacity: 0;
+}
+
+
 @media only screen and (max-width: 768.9px) {
   .responsive2 {
     width: 49.99999%;
