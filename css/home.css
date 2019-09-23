@@ -73,6 +73,55 @@ div.multiItemBarBody {
 }
 
 
+/*MuskGreen Delivery, Service*/
+
+div.muskGreenServiceBody {
+    background-color: #fff;
+    margin: inherit;
+    margin-top: 0;
+    padding-bottom: 1%;
+    padding-top: 1%;
+    margin: auto;
+}
+
+.responsiveS {
+  padding: 1% 4%;
+  float: left;
+  width: 33.333333%;
+    text-align: center;
+}
+
+/*Each MuskGreen Status*/
+.serviceContainer {
+  position: relative;
+  width: 100%;
+  max-width: 300px;
+    display: inline-block;
+    text-align: center;
+}
+
+.serviceContainer .image {
+  display: inline-block;
+  width: 36%;
+  height: auto;
+    border-radius: 50%;
+    opacity: 0.5;
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+}
+
+.serviceContainer:hover .image {
+    background-color: #509534 !important;
+    opacity: 1;
+}
+
+@media only screen and (max-width: 374.9999px) {
+  .responsiveS {
+    width: 100%;
+  }
+}
+
+
 /*Featured Products*/
 div.featuredProductsTitle {
     background-color: #fff;
