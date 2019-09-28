@@ -25,11 +25,11 @@
       
       
 <!--      Top Brand Bar with Search, Login & Signup and Cart (Includes NavBar button in mobile view)-->
-        <nav class="navbar navbar-expand-lg navbar-light topBar">
+        <nav class="navbar navbar-expand-lg sticky-top navbar-light topBar">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand py-0" href="#">
 <!--                <img src="extras/musklogo.png" width="30" height="30" class="d-inline-block align-top" alt="">-->
                 
                 <img src="extras/musklogo256.png" width="100%" class="d-inline-block align-top" alt="MuskGreen">
@@ -41,7 +41,7 @@
             <span class="fa fa-shopping-cart nav-item d-lg-none" title="Cart" aria-hidden="true">[0]</span>
             
             <!--Search Box-->
-            <div class="input-group md-form form-sm form-2 pl-0 mobileStyleSearchBox">
+            <div class="input-group md-form form-sm form-2 pl-0 mobileStyleSearchBox py-0">
               <input class="form-control my-0 py-1 amber-border" type="text" placeholder="Search" aria-label="Search">
               <div class="input-group-append">
                 <div class="input-group-append">
@@ -53,12 +53,12 @@
             </div>
             
             <!--Login/Signup-->
-            <span class="fa fa-user nav-item topNavItem d-none d-lg-block" title="Login Or Signup" aria-hidden="true"> Login/Signup</span>
+            <span class="fa fa-user nav-item topNavItem d-none d-lg-block py-0" title="Login Or Signup" aria-hidden="true"> Login/Signup</span>
             
             <!--Account (Personal)-->
             
             
-            <span class="fa fa-shopping-cart nav-item topNavItem d-none d-lg-block" title="Cart" aria-hidden="true"> [0]</span>
+            <span class="fa fa-shopping-cart nav-item topNavItem d-none d-lg-block py-0" title="Cart" aria-hidden="true"> [0]</span>
         </nav>
       
       
@@ -168,7 +168,7 @@
                     <a target="_blank" href="#">
                       <img src="extras/siteData/catagoryIcons/icon1.png" alt="Cinque Terre" width="600" height="400">
                     </a>
-                    <div class="desc">Type of Plant</div>
+                    <div class="desc">Roses</div>
                   </div>
                 </div>
 
@@ -177,7 +177,7 @@
                     <a target="_blank" href="#">
                       <img src="extras/siteData/catagoryIcons/icon2.png" alt="Forest" width="600" height="400">
                     </a>
-                    <div class="desc">Type of Plant</div>
+                    <div class="desc">All time Oxygen</div>
                   </div>
                 </div>
 
@@ -186,7 +186,7 @@
                     <a target="_blank" href="img_lights.jpg">
                       <img src="extras/siteData/catagoryIcons/icon3.png" alt="Northern Lights" width="600" height="400">
                     </a>
-                    <div class="desc">Type of Plant</div>
+                    <div class="desc">Indoor Plants</div>
                   </div>
                 </div>
 
@@ -195,7 +195,7 @@
                     <a target="_blank" href="img_mountains.jpg">
                       <img src="extras/siteData/catagoryIcons/icon4.png" alt="Mountains" width="600" height="400">
                     </a>
-                    <div class="desc">Type of Plant</div>
+                    <div class="desc">Air Purifiers</div>
                   </div>
                 </div>
 
@@ -204,7 +204,7 @@
                     <a target="_blank" href="img_5terre.jpg">
                       <img src="extras/siteData/catagoryIcons/icon5.png" alt="Cinque Terre" width="600" height="400">
                     </a>
-                    <div class="desc">Type of Plant</div>
+                    <div class="desc">Vines</div>
                   </div>
                 </div>
 
@@ -213,7 +213,7 @@
                     <a target="_blank" href="img_forest.jpg">
                       <img src="extras/siteData/catagoryIcons/icon6.png" alt="Forest" width="600" height="400">
                     </a>
-                    <div class="desc">Type of Plant</div>
+                    <div class="desc">Fruit Plants</div>
                   </div>
                 </div>
 
@@ -222,7 +222,7 @@
                     <a target="_blank" href="img_lights.jpg">
                       <img src="extras/siteData/catagoryIcons/icon7.png" alt="Northern Lights" width="600" height="400">
                     </a>
-                    <div class="desc">Type of Plant</div>
+                    <div class="desc">Succelents</div>
                   </div>
                 </div>
 
@@ -231,7 +231,7 @@
                     <a target="_blank" href="img_mountains.jpg">
                       <img src="extras/siteData/catagoryIcons/icon8.png" alt="Mountains" width="600" height="400">
                     </a>
-                    <div class="desc">Type of Plant</div>
+                    <div class="desc">GudLuck Plants</div>
                   </div>
                 </div>
 
@@ -279,32 +279,41 @@
                 <div class="responsive2">
                     <div class="productContainer">
                       <img src="extras/siteData/productImages/image1full.png" alt="Avatar" class="image">
-                      <div class="productPriceDisc">$120</div>
+                      <div class="productPriceDisc">&#8377;120</div>
                       <div class="productBuyCart"> 
-                          <a href="#"><i class="fa fa-heart" aria-hidden="true"></i></a>
-                          <a href="#"><i class="fa fa-cart-plus" aria-hidden="true"></i></a>
+                          <a href="#"><i class="fa fa-heart" aria-hidden="true" title="Add to Wishlist"></i></a>
+                          <a href="#"><i class="fa fa-cart-plus" aria-hidden="true" title="Add to Cart"></i></a>
                       </div>
                     </div>
                 </div>
                 <div class="responsive2">
                     <div class="productContainer">
                       <img src="extras/siteData/productImages/image2full.png" alt="Avatar" class="image">
-                      <div class="productPriceDisc">$120</div>
-                      <div class="productBuyCart">My Name is John</div>
+                      <div class="productPriceDisc">&#8377;120</div>
+                      <div class="productBuyCart"> 
+                          <a href="#"><i class="fa fa-heart" aria-hidden="true" title="Add to Wishlist"></i></a>
+                          <a href="#"><i class="fa fa-cart-plus" aria-hidden="true" title="Add to Cart"></i></a>
+                      </div>
                     </div>
                 </div>
                 <div class="responsive2">
                     <div class="productContainer">
                       <img src="extras/siteData/productImages/image3full.png" alt="Avatar" class="image">
-                      <div class="productPriceDisc">$120</div>
-                      <div class="productBuyCart">My Name is John</div>
+                      <div class="productPriceDisc">&#8377;120</div>
+                      <div class="productBuyCart"> 
+                          <a href="#"><i class="fa fa-heart" aria-hidden="true" title="Add to Wishlist"></i></a>
+                          <a href="#"><i class="fa fa-cart-plus" aria-hidden="true" title="Add to Cart"></i></a>
+                      </div>
                     </div>
                 </div>
                 <div class="responsive2">
                     <div class="productContainer">
                       <img src="extras/siteData/productImages/image4full.png" alt="Avatar" class="image">
-                      <div class="productPriceDisc">$120</div>
-                      <div class="productBuyCart">My Name is John</div>
+                      <div class="productPriceDisc">&#8377;120</div>
+                      <div class="productBuyCart"> 
+                          <a href="#"><i class="fa fa-heart" aria-hidden="true" title="Add to Wishlist"></i></a>
+                          <a href="#"><i class="fa fa-cart-plus" aria-hidden="true" title="Add to Cart"></i></a>
+                      </div>
                     </div>
                 </div>
         </div>
@@ -313,29 +322,41 @@
                 <div class="responsive2">
                     <div class="productContainer">
                       <img src="extras/siteData/productImages/image5full.png" alt="Avatar" class="image">
-                      <div class="productPriceDisc">$120</div>
-                      <div class="productBuyCart">My Name is John</div>
+                      <div class="productPriceDisc">&#8377;120</div>
+                      <div class="productBuyCart"> 
+                          <a href="#"><i class="fa fa-heart" aria-hidden="true" title="Add to Wishlist"></i></a>
+                          <a href="#"><i class="fa fa-cart-plus" aria-hidden="true" title="Add to Cart"></i></a>
+                      </div>
                     </div>
                 </div>
                 <div class="responsive2">
                     <div class="productContainer">
                       <img src="extras/siteData/productImages/image6full.png" alt="Avatar" class="image">
-                      <div class="productPriceDisc">$120</div>
-                      <div class="productBuyCart">My Name is John</div>
+                      <div class="productPriceDisc">&#8377;120</div>
+                      <div class="productBuyCart"> 
+                          <a href="#"><i class="fa fa-heart" aria-hidden="true" title="Add to Wishlist"></i></a>
+                          <a href="#"><i class="fa fa-cart-plus" aria-hidden="true" title="Add to Cart"></i></a>
+                      </div>
                     </div>
                 </div>
                 <div class="responsive2">
                     <div class="productContainer">
                       <img src="extras/siteData/productImages/image7full.png" alt="Avatar" class="image">
-                      <div class="productPriceDisc">$120</div>
-                      <div class="productBuyCart">My Name is John</div>
+                      <div class="productPriceDisc">&#8377;120</div>
+                      <div class="productBuyCart"> 
+                          <a href="#"><i class="fa fa-heart" aria-hidden="true" title="Add to Wishlist"></i></a>
+                          <a href="#"><i class="fa fa-cart-plus" aria-hidden="true" title="Add to Cart"></i></a>
+                      </div>
                     </div>
                 </div>
                 <div class="responsive2">
                     <div class="productContainer">
                       <img src="extras/siteData/productImages/image8full.png" alt="Avatar" class="image">
-                      <div class="productPriceDisc">$120</div>
-                      <div class="productBuyCart">My Name is John</div>
+                      <div class="productPriceDisc">&#8377;120</div>
+                      <div class="productBuyCart"> 
+                          <a href="#"><i class="fa fa-heart" aria-hidden="true" title="Add to Wishlist"></i></a>
+                          <a href="#"><i class="fa fa-cart-plus" aria-hidden="true" title="Add to Cart"></i></a>
+                      </div>
                     </div>
                 </div>
         </div>
@@ -404,10 +425,10 @@
         <p class="text-center">Copyright @2019 | Made with love and care by <a href="#">MuskGreen</a></p>
 
         <ul class="social_footer_ul">
-        <li><a href="http://webenlance.com"><i class="fa fa-facebook-f"></i></a></li>
-        <li><a href="http://webenlance.com"><i class="fa fa-twitter"></i></a></li>
-        <li><a href="http://webenlance.com"><i class="fa fa-linkedin"></i></a></li>
-        <li><a href="http://webenlance.com"><i class="fa fa-instagram"></i></a></li>
+        <li><a href="#"><i class="fa fa-facebook-f"></i></a></li>
+        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+        <li><a href="#"><i class="fa fa-instagram"></i></a></li>
         </ul>
         <!--social_footer_ul ends here-->
         </div>

@@ -172,6 +172,10 @@ div.featuredProductsBody {
   -webkit-transition: all .5s ease-in-out;
 }
 
+.productContainer .productPriceDisc {
+    color: #509534;
+}
+
 .productContainer .productBuyCart {
   position: absolute; 
   bottom: 0; 
@@ -179,20 +183,27 @@ div.featuredProductsBody {
   background: rgb(0, 150, 0, 0.6); /*Change color here*/
   color: #f1f1f1; 
   width: 100%;
-  transition: .5s ease;
+  transition: .3s ease;
   opacity:0;
   color: white;
   font-size: 1.2rem;
-  padding: 7.1%;
+  padding: 3.6%;
   text-align: center;
   object-fit: cover;
+}
+
+.productContainer .productBuyCart > a {
+    color: inherit;
+    font-size: 1.5rem;
+    padding-left: 14%;
+    padding-right: 14%;
 }
 
 .productContainer .productPriceDisc {
 	font-size: 1.20rem;
     font-weight: 400;
     padding: 5.5%;
-    transition: .5s ease;
+    transition: .3s ease;
     text-align: center;
 }
 
@@ -207,7 +218,7 @@ div.featuredProductsBody {
 }
 
 .productContainer:hover .productPriceDisc {
-	opacity: 0;
+	opacity: 0.2;
 }
 
 

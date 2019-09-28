@@ -12,15 +12,23 @@ nav {
     background-color: #ffffff;
 }
 nav.topBar {
-    
+    padding-top: 0;
+    padding-bottom: 0;
+    transition:500ms ease;
+    -webkit-box-shadow: 0px 3px 8px -3px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 3px 8px -3px rgba(0,0,0,0.75);
+    box-shadow: 0px 3px 8px -3px rgba(0,0,0,0.75);
+}
+
+nav.topBar.scrolled {
+    background-color: aqua;
 }
 span.topNavItem {
     text-align: center;
     font-size: 1.25rem;
     margin: auto;
     padding: inherit;
-    padding-bottom: 0;
-    margin-bottom: 1.26%;
+    
 }
 
 /*Search Bar*/
@@ -32,6 +40,7 @@ span.topNavItem {
 
 /*Bottom Navigation Bar*/
 nav.lowerNavBar {
+    z-index: 800;
     padding: 0;
     -webkit-box-shadow: 0px 4px 4px -4px rgba(0,0,0,0.75);
     -moz-box-shadow: 0px 4px 4px -4px rgba(0,0,0,0.75);
