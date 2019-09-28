@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="css/style.css" >
     <link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <title>Welcome to MuskGreen - India's Latest Digital Nursery</title>
   </head>
@@ -31,13 +32,13 @@
             <a class="navbar-brand" href="#">
 <!--                <img src="extras/musklogo.png" width="30" height="30" class="d-inline-block align-top" alt="">-->
                 
-                <img src="extras/musklogo.png" width="100%" class="d-inline-block align-top" alt="MuskGreen">
+                <img src="extras/musklogo256.png" width="100%" class="d-inline-block align-top" alt="MuskGreen">
             </a>
             <!--Login/Signup-->
-            <span class="oi oi-person nav-item d-lg-none" title="account" aria-hidden="true"></span>
+            <span class="fa fa-user nav-item d-lg-none" title="account" aria-hidden="true"></span>
             
             <!--Cart-->
-            <span class="oi oi-cart nav-item d-lg-none" title="Cart" aria-hidden="true"></span>
+            <span class="fa fa-shopping-cart nav-item d-lg-none" title="Cart" aria-hidden="true">[0]</span>
             
             <!--Search Box-->
             <div class="input-group md-form form-sm form-2 pl-0 mobileStyleSearchBox">
@@ -45,19 +46,19 @@
               <div class="input-group-append">
                 <div class="input-group-append">
                   <button class="btn btn-secondary" type="button">
-                    <i class="fa fa-search"></i>
+                    <i class="fa fa-search" aria-hidden="true"></i>
                   </button>
                 </div>
               </div>
             </div>
             
             <!--Login/Signup-->
-            <span class="oi nav-item topNavItem d-none d-lg-block" title="loginOrSignup" aria-hidden="true">Login/Signup</span>
+            <span class="fa fa-user nav-item topNavItem d-none d-lg-block" title="Login Or Signup" aria-hidden="true"> Login/Signup</span>
             
             <!--Account (Personal)-->
             
             
-            <span class="oi oi-cart nav-item topNavItem d-none d-lg-block" title="cart" aria-hidden="true">Cart</span>
+            <span class="fa fa-shopping-cart nav-item topNavItem d-none d-lg-block" title="Cart" aria-hidden="true"> [0]</span>
         </nav>
       
       
@@ -72,7 +73,7 @@
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   Plants
                 </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <div class="dropdown-menu dropdownMenu" aria-labelledby="navbarDropdown">
                   <a class="dropdown-item" href="#">Action</a>
                   <a class="dropdown-item" href="#">Another action</a>
                   <div class="dropdown-divider"></div>
@@ -84,7 +85,7 @@
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   Flowers
                 </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <div class="dropdown-menu dropdownMenu" aria-labelledby="navbarDropdown">
                   <a class="dropdown-item" href="#">Action</a>
                   <a class="dropdown-item" href="#">Another action</a>
                   <div class="dropdown-divider"></div>
@@ -96,7 +97,7 @@
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       Pots
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <div class="dropdown-menu dropdownMenu" aria-labelledby="navbarDropdown">
                       <a class="dropdown-item" href="#">Action</a>
                       <a class="dropdown-item" href="#">Another action</a>
                       <div class="dropdown-divider"></div>
@@ -108,7 +109,7 @@
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       Fertilizers
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <div class="dropdown-menu dropdownMenu" aria-labelledby="navbarDropdown">
                       <a class="dropdown-item" href="#">Action</a>
                       <a class="dropdown-item" href="#">Another action</a>
                       <div class="dropdown-divider"></div>
@@ -135,10 +136,10 @@
                   <img class="d-block w-100" src="extras/carousel1.png" alt="First slide">
                 </div>
                 <div class="carousel-item">
-                  <img class="d-block w-100" src="extras/carousel1.png" alt="Second slide">
+                  <img class="d-block w-100" src="extras/carousel2.png" alt="Second slide">
                 </div>
                 <div class="carousel-item">
-                  <img class="d-block w-100" src="extras/carousel1.png" alt="Third slide">
+                  <img class="d-block w-100" src="extras/carousel3.png" alt="Third slide">
                 </div>
               </div>
               <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -156,7 +157,7 @@
     <!--  Multi Item Bar  -->
     <div class="container-fluid mainBodyContainer">
         <div class="row multiItemBarTitle">
-            <div class="col text-center">
+            <div class="col">
             <div class="mTitle">Best of Us</div>
             </div>
         </div>
@@ -279,7 +280,10 @@
                     <div class="productContainer">
                       <img src="extras/siteData/productImages/image1full.png" alt="Avatar" class="image">
                       <div class="productPriceDisc">$120</div>
-                      <div class="productBuyCart">My Name is John</div>
+                      <div class="productBuyCart"> 
+                          <a href="#"><i class="fa fa-heart" aria-hidden="true"></i></a>
+                          <a href="#"><i class="fa fa-cart-plus" aria-hidden="true"></i></a>
+                      </div>
                     </div>
                 </div>
                 <div class="responsive2">
@@ -348,7 +352,7 @@
         <h5 class="headin5_amrc col_white_amrc pt2">Find us</h5>
         <!--headin5_amrc-->
         <p class="mb10"> MuskGreen  is a startup nestled in the Himalayan foothill city - Dehradun. We provide a platform to deliver our customers the large variety of plants and the best of organic products.</p>
-        <p><i class="fa fa-location-arrow"></i> 34, Kunj Vihar, Dehradun, Uttarakhand </p>
+        <p><i class="fa fa-location-arrow"></i> 34, Kunj Vihar, Dehradun, Uttarakhand - 248001 </p>
 <!--        <p><i class="fa fa-phone"></i>  +91-9999878398  </p>-->
         <p><i class="fa fa fa-envelope"></i> info@muskgreen.live  </p>
 
@@ -400,10 +404,10 @@
         <p class="text-center">Copyright @2019 | Made with love and care by <a href="#">MuskGreen</a></p>
 
         <ul class="social_footer_ul">
-        <li><a href="http://webenlance.com"><i class="fab fa-facebook-f"></i></a></li>
-        <li><a href="http://webenlance.com"><i class="fab fa-twitter"></i></a></li>
-        <li><a href="http://webenlance.com"><i class="fab fa-linkedin"></i></a></li>
-        <li><a href="http://webenlance.com"><i class="fab fa-instagram"></i></a></li>
+        <li><a href="http://webenlance.com"><i class="fa fa-facebook-f"></i></a></li>
+        <li><a href="http://webenlance.com"><i class="fa fa-twitter"></i></a></li>
+        <li><a href="http://webenlance.com"><i class="fa fa-linkedin"></i></a></li>
+        <li><a href="http://webenlance.com"><i class="fa fa-instagram"></i></a></li>
         </ul>
         <!--social_footer_ul ends here-->
         </div>

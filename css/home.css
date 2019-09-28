@@ -26,8 +26,14 @@ div.multiItemBarBody {
     padding-bottom: 1%;
 }
 
+.multiItemBarBody div.gallery {
+    transition: 0.3s ease;
+}
+
 .multiItemBarBody div.gallery:hover {
-  border: 1px solid #777;
+    -webkit-box-shadow: 0px 0px 3px 0px rgba(80,149,52,1);
+    -moz-box-shadow: 0px 0px 3px 0px rgba(80,149,52,1);
+    box-shadow: 0px 0px 3px 0px rgba(80,149,52,1);
 }
 
 .responsive div.gallery img {
@@ -149,10 +155,12 @@ div.featuredProductsBody {
 
 /*Each Featured Product*/
 .productContainer {
-  position: relative;
-  width: 100%;
-  max-width: 300px;
-  border: 0.3px solid green;
+    position: relative;
+    width: 100%;
+    max-width: 300px;
+    -webkit-box-shadow: 0px 0px 3px 0px rgba(80,149,52,1);
+    -moz-box-shadow: 0px 0px 3px 0px rgba(80,149,52,1);
+    box-shadow: 0px 0px 3px 0px rgba(80,149,52,1);
 }
 
 .productContainer .image {

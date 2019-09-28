@@ -1,16 +1,26 @@
+* {
+    font-family: arial !important;
+}
+
+.fa { 
+    font-family: 'FontAwesome' !important; 
+}
+
+
 /*Top NavBar*/
 nav {
     background-color: #ffffff;
 }
 nav.topBar {
-    border-bottom: 2px solid #E0E0E0;
+    
 }
 span.topNavItem {
-    font-size: 1.5rem;
+    text-align: center;
+    font-size: 1.25rem;
     margin: auto;
     padding: inherit;
-    text-align: center;
-    position: static;
+    padding-bottom: 0;
+    margin-bottom: 1.26%;
 }
 
 /*Search Bar*/
@@ -23,9 +33,10 @@ span.topNavItem {
 /*Bottom Navigation Bar*/
 nav.lowerNavBar {
     padding: 0;
-    -webkit-box-shadow: 0px 0px 4px 0.1px rgba(0,0,0,0.75);
-    -moz-box-shadow: 0px 0px 4px 0.1px rgba(0,0,0,0.75);
-    box-shadow: 0px 0px 4px 0.1px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 0px 4px 4px -4px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 4px 4px -4px rgba(0,0,0,0.75);
+    box-shadow: 0px 4px 4px -4px rgba(0,0,0,0.75);
+    background-color: #068B59;
 }
 
 .navigationBar ul {
@@ -33,14 +44,22 @@ nav.lowerNavBar {
 }
 
 .nav-link {
-    color: #28634f;
+    color: #FFF;
     font-weight: 600;
 }
 
 nav div.navigationBar ul li a:hover {
     transition: background-color, color 0.6s ease;
-    background-color: #509534;
-    color: #fff;
+    background-color: #068B59;
+    color: #FFF;
+}
+
+nav div.navigationBar ul li .dropdownMenu > a{
+    color: #068B59;
+}
+
+nav div.navigationBar ul li .dropdownMenu > a:hover{
+    color: #FFF;
 }
 
 /*Mobile Styling*/
