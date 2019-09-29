@@ -8,11 +8,6 @@ div.mainBodyContainer {
 
 
 /*MultiItemBar Contents*/
-
-div.multiItemSmall {
-    display: none;
-}
-
 div.multiItemBarTitle {
     background-color: #fff;
     margin: inherit;
@@ -32,28 +27,61 @@ div.multiItemBarBody {
     padding-bottom: 1%;
 }
 
-div.multiItemBarBody .col-md{
-    text-align: center;
-}
-
-.multiItemBarBody div.col {
+.multiItemBarBody div.gallery {
     transition: 0.3s ease;
 }
 
-.multiItemBarBody div.col:hover {
+.multiItemBarBody div.gallery:hover {
     -webkit-box-shadow: 0px 0px 3px 0px rgba(80,149,52,1);
     -moz-box-shadow: 0px 0px 3px 0px rgba(80,149,52,1);
     box-shadow: 0px 0px 3px 0px rgba(80,149,52,1);
 }
 
-@media only screen and (min-width: 768px) {
-    div.multiItemLarge {
-        display: none;
-    }
+.responsive div.gallery img {
+  width: 100%;
+  height: auto;
+}
+
+.responsive div.desc {
+    padding: 2%;
+    text-align: center;
+    font-size: 0.95rem;
+}
+
+.responsive {
+  padding: 0 8px;
+  float: left;
+  width: 12.49999%;
+}
+
+@media only screen and (max-width: 1023.99px) {
+  .responsive {
+    width: 24.99999%;
+    margin: 6px 0;
+  }
     
-    div.multiItemSmall {
-        display: block;
+    .responsive div.desc {
+        font-size: 0.8rem;
     }
+}
+
+@media only screen and (max-width: 500px) {
+  .responsive {
+    width: 49.99999%;
+    margin: 6px 0;
+  }
+}
+
+@media only screen and (max-width: 300px) {
+  .responsive {
+    width: 100%;
+  }
+}
+
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
 }
 
 
