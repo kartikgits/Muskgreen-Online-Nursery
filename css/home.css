@@ -8,15 +8,21 @@ div.mainBodyContainer {
 
 
 /*MultiItemBar Contents*/
+
+div.multiItemSmall {
+    display: none;
+}
+
 div.multiItemBarTitle {
     background-color: #fff;
     margin: inherit;
-    margin-bottom: 0;
 }
 
 div.multiItemBarTitle .mTitle {
-    font-size: 1.25rem;
-    font-weight: 600;
+    font-size: 1.5rem;
+    padding: 0.6%;
+    text-align: left;
+    border-bottom: 1px solid #EEEEEE;
 }
 
 div.multiItemBarBody {
@@ -26,56 +32,28 @@ div.multiItemBarBody {
     padding-bottom: 1%;
 }
 
-.multiItemBarBody div.gallery {
+div.multiItemBarBody .col-md{
+    text-align: center;
+}
+
+.multiItemBarBody div.col {
     transition: 0.3s ease;
 }
 
-.multiItemBarBody div.gallery:hover {
+.multiItemBarBody div.col:hover {
     -webkit-box-shadow: 0px 0px 3px 0px rgba(80,149,52,1);
     -moz-box-shadow: 0px 0px 3px 0px rgba(80,149,52,1);
     box-shadow: 0px 0px 3px 0px rgba(80,149,52,1);
 }
 
-.responsive div.gallery img {
-  width: 100%;
-  height: auto;
-}
-
-.responsive div.desc {
-  padding: 15px;
-  text-align: center;
-}
-
-.responsive {
-  padding: 0 8px;
-  float: left;
-  width: 12.49999%;
-}
-
-@media only screen and (max-width: 1023.99px) {
-  .responsive {
-    width: 24.99999%;
-    margin: 6px 0;
-  }
-}
-
-@media only screen and (max-width: 500px) {
-  .responsive {
-    width: 49.99999%;
-    margin: 6px 0;
-  }
-}
-
-@media only screen and (max-width: 300px) {
-  .responsive {
-    width: 100%;
-  }
-}
-
-.clearfix:after {
-  content: "";
-  display: table;
-  clear: both;
+@media only screen and (min-width: 768px) {
+    div.multiItemLarge {
+        display: none;
+    }
+    
+    div.multiItemSmall {
+        display: block;
+    }
 }
 
 
@@ -132,12 +110,13 @@ div.muskGreenServiceBody {
 div.featuredProductsTitle {
     background-color: #fff;
     margin: inherit;
-    margin-bottom: 0;
 }
 
 div.featuredProductsTitle .mTitle {
-    font-size: 1.25rem;
-    font-weight: 600;
+    font-size: 1.5rem;
+    padding: 0.6%;
+    text-align: left;
+    border-bottom: 1px solid #EEEEEE;
 }
 
 div.featuredProductsBody {
@@ -158,67 +137,54 @@ div.featuredProductsBody {
     position: relative;
     width: 100%;
     max-width: 300px;
-    -webkit-box-shadow: 0px 0px 3px 0px rgba(80,149,52,1);
-    -moz-box-shadow: 0px 0px 3px 0px rgba(80,149,52,1);
-    box-shadow: 0px 0px 3px 0px rgba(80,149,52,1);
 }
 
 .productContainer .image {
   display: block;
   width: 100%;
   height: auto;
-  filter: blur(1);
-  -webkit-filter: blur(1); /* Webkit Nightlies & Chrome Canary */
-  -webkit-transition: all .5s ease-in-out;
+    border-radius: 10px;
+  -webkit-box-shadow: 5px 5px 10px -6px rgba(0,0,0,0.75);
+    -moz-box-shadow: 5px 5px 10px -6px rgba(0,0,0,0.75);
+    box-shadow: 5px 5px 10px -6px rgba(0,0,0,0.75);
 }
 
 .productContainer .productPriceDisc {
-    color: #509534;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    font-size: 1.25rem !important;
+    line-height: 1.5rem;
+    text-align: left;
 }
 
-.productContainer .productBuyCart {
-  position: absolute; 
-  bottom: 0; 
-  background: rgb(0, 0, 0);
-  background: rgb(0, 150, 0, 0.6); /*Change color here*/
-  color: #f1f1f1; 
-  width: 100%;
-  transition: .3s ease;
-  opacity:0;
-  color: white;
-  font-size: 1.2rem;
-  padding: 3.6%;
-  text-align: center;
-  object-fit: cover;
+.productContainer .productPriceDisc span.originalPrice {
+    font-size: 0.8rem;
 }
 
-.productContainer .productBuyCart > a {
-    color: inherit;
-    font-size: 1.5rem;
-    padding-left: 14%;
-    padding-right: 14%;
+.productContainer .productPriceDisc span.originalPrice strike {
+    color: #656565;
 }
 
-.productContainer .productPriceDisc {
-	font-size: 1.20rem;
-    font-weight: 400;
-    padding: 5.5%;
-    transition: .3s ease;
+.productContainer .productPriceDisc span.discountPrice {
+    color: #3CB371;
+    font-size: 1.15rem;
+}
+
+.productContainer .productPriceDisc button {
+    border: none;
+    outline: 0;
+    padding: 2%;
+    color: white;
+    background-color: #FF9F00;
     text-align: center;
+    cursor: pointer;
+    width: 45%;
+    font-size: 0.8rem;
+    transition: 0.3s ease;
 }
 
-.productContainer:hover .productBuyCart {
-  opacity: 1;
-}
-
-.productContainer:hover .image {
-    filter: none;
-    -webkit-filter: blur(0);
-    -webkit-transform: scale(1.01);
-}
-
-.productContainer:hover .productPriceDisc {
-	opacity: 0.2;
+.productContainer .productPriceDisc button:hover {
+  opacity: 0.8;
 }
 
 
