@@ -127,6 +127,18 @@ div.muskGreenServiceBody {
     opacity: 1;
 }
 
+.serviceContainer .serviceTitle {
+    color: #515151;
+    font-size: 0.9rem;
+    font-weight: 650;
+}
+
+.serviceContainer .serviceDesc {
+    color: #9f9f9f;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
 @media only screen and (max-width: 374.9999px) {
   .responsiveS {
     width: 100%;

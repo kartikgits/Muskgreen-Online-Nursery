@@ -20,9 +20,6 @@ nav.topBar {
     padding-top: 0;
     padding-bottom: 0;
     transition:500ms ease;
-    -webkit-box-shadow: 0px 3px 8px -3px rgba(0,0,0,0.75);
-    -moz-box-shadow: 0px 3px 8px -3px rgba(0,0,0,0.75);
-    box-shadow: 0px 3px 8px -3px rgba(0,0,0,0.75);
     text-align: center;
 }
 
@@ -33,7 +30,7 @@ nav.topBar span.topNavItem {
 
 span.topNavItem {
     text-align: center;
-    font-size: 1.25rem;
+    font-size: 1.09rem;
     margin: auto;
     padding: inherit;
 }
@@ -54,7 +51,10 @@ span.topNavItem {
 
 /*On Scroll*/
 .topBar.scrolled{
-  background: #068B59;
+    background: #068B59;
+    -webkit-box-shadow: 0px 3px 8px -3px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 3px 8px -3px rgba(0,0,0,0.75);
+    box-shadow: 0px 3px 8px -3px rgba(0,0,0,0.75);
 }
 
 .topBar.scrolled span.topNavItem,
