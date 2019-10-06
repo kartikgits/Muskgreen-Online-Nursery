@@ -97,12 +97,11 @@ nav div.navigationBar ul li .dropdownMenu > a:hover{
 
 /*Mobile Styling*/
 
-@media (max-width: 991.98px) {
+@media (max-width: 767.9999px) {
     
 /*    Navbar styling    */
     .navbar-collapse {
         position: absolute;
-        top: 0px;
         right: 100%;
         padding-left: 15px;
         padding-right: 15px;
@@ -111,21 +110,51 @@ nav div.navigationBar ul li .dropdownMenu > a:hover{
         transition: all 0.3s ease;
         display: inline;
         background-color: #ffffff;
-        z-index: 999;
     }
+    
     .navbar-collapse.collapsing {
         height: auto !important;
         margin-right: 50%;
         transition: all 0.3s ease;
         display: block;
     }
+    
     .navbar-collapse.show {
         right: 0;
+    }
+    
+    .navbar {
+        padding: 2%;
+    }
+    
+    nav button.navbar-toggler {
+        padding: 0;
+        font-size: 0.8599rem;
     }
     
     nav div.mobileStyleSearchBox {
         margin-top: 3%;
         margin-bottom: 1%;
+    }
+    
+    nav .navbrand {
+        padding-left: 0;
+        margin-left: 0;
+    }
+    
+    nav .navbrand .img {
+        margin: 0;
+    }
+    
+    .navbar-brand {
+        margin-right: 0;
+        text-align: left;
+        padding: 0;
+    }
+    
+    nav .nav-item {
+        margin: 0;
+        padding: 3%;
     }
     
 }
