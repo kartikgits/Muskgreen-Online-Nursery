@@ -6,6 +6,12 @@ div.mainBodyContainer {
     margin-top: 1%;
 }
 
+@media only screen and (max-width: 767.99px) {
+    div.topContainer {
+        margin-top: 5.49rem;
+    }
+}
+
 
 /*MultiItemBar Contents*/
 div.multiItemBarTitle {

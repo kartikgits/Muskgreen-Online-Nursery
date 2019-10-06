@@ -1,5 +1,6 @@
 //for toggling color of topBar
-$(window).scroll(function(){
+if(screen.width > 767.9){
+    $(window).scroll(function(){
 	       $('.topBar').toggleClass('scrolled', $(this).scrollTop() > 50);
             
             //changing logo
@@ -9,4 +10,5 @@ $(window).scroll(function(){
             if ($(this).scrollTop() < 50) { 
                 $('.navbar .navbar-brand img').attr('src','extras/musklogo224.png');
             }
-});
+    });
+}
