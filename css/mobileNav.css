@@ -8,7 +8,7 @@
 
 .fa { 
     font-family: 'FontAwesome' !important;
-    text-decoration: none;
+    color: #fff;
 }
 
 
@@ -201,9 +201,6 @@
 ================================================== */
 
 @media (max-width: 767px) { 
-	h1{
-		font-size: 38px;
-	}
 	.nav-item:after{
 		display: none;
 	}
@@ -246,4 +243,22 @@
 		margin-top: 10px !important;
 		margin-bottom: 20px !important;
 	}
+}
+
+
+/*Mobile Search Bar*/
+/*Search Bar*/
+.input-group.md-form.form-sm.form-2 {
+    margin-bottom: 1%;
+}
+
+.input-group.md-form.form-sm.form-2 input {
+    border: 1px solid #bdbdbd;
+    border-top-left-radius: 0.25rem;
+    border-bottom-left-radius: 0.25rem;
+}
+
+/*Mobile nav icons*/
+.mobileNavItem {
+    color: #4d4d4d !important;
 }
