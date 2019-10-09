@@ -5,8 +5,17 @@
 		$sql="SELECT * FROM productseller natural join product natural join proundercat WHERE isAvailable != 'N'";
 
 		if(isset($_POST['category'])){
-			$category = implode(",",  $_POST['category']);
-			$sql .=" AND category IN ('".$category."')";
+			// $category = implode(",",  $_POST['category']);
+			// $sql .=" AND category IN ('".$category."')";
+			$sql .=" AND category IN ('".$_POST['category'][0]."')";
+
+			$i=1;
+			while($i<sizeof($_POST['category'])){
+				$sql .= ' AND proid in (select distinct proid from proundercat where category="'.$_POST['category'][$i].'")';
+				$i=$i+1;
+			}
+		} else {
+			$sql="SELECT * FROM productseller natural join product WHERE isAvailable != 'N'";
 		}
 
 		$result = $conn->query($sql);
