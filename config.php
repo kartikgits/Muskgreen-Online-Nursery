@@ -1,5 +1,5 @@
 <?php
-	$conn = new mysqli("localhost","root","","musktest");
+	$conn = new mysqli("localhost","root","","muskdb");
 	if($conn->connect_error) {
 		die("Connection Failed!".$conn->connect_error);
 	}

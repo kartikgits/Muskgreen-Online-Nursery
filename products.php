@@ -208,7 +208,7 @@
             </div>
         </div>
 
-
+<!-- Main Content starts -->
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-3">
@@ -218,14 +218,14 @@
 			<h6 class="text-info">Select Category</h6>
 			<ul class="list-group">
 				<?php
-					$sql="SELECT DISTINCT pcategory FROM products ORDER BY pcategory";
+					$sql="SELECT category FROM categorydesc ORDER BY category";
 					$result=$conn->query($sql);
 					while ($row=$result->fetch_assoc()) {
 				?>
 				<li class="list-group-item">
 					<div class="form-check">
 						<label class="form-check-label">
-							<input type="checkbox" class="form-check-input product_check" value="<?= $row['pcategory']; ?>" id="pcategory"><?= $row['pcategory']; ?>
+							<input type="checkbox" class="form-check-input product_check" value="<?= $row['category']; ?>" id="pcategory"><?= $row['category']; ?>
 						</label>
 					</div>
 				</li>
@@ -252,18 +252,18 @@
 
 	        <div class="row featuredProductsBody" id="result">
 				<?php
-					$sql="SELECT * FROM products";
+					$sql="SELECT * FROM product NATURAL JOIN productseller";
 					$result=$conn->query($sql);
 					while ($row=$result->fetch_assoc()) {
 				?>
 				<div class="responsive2">
                     <div class="productContainer">
-                      <img src="<?= $row['pimage']; ?>" alt="Avatar" class="image">
+                      <img src="<?= $row['proimgurl']; ?>" alt="Avatar" class="image">
                       <div class="productPriceDisc">
-                          <?= $row['pname']; ?>
+                          <?= $row['proname']; ?>
                           <p>
-                              <span class="originalPrice" title="Original Price"><strike>&#8377;<?= number_format($row['pprice']); ?></strike></span>
-                              <span class="discountPrice" title="Discounted Price">&#8377;<?= number_format($row['pprice']); ?></span>
+                              <span class="originalPrice" title="Original Price"><strike>&#8377;<?= number_format($row['sp']); ?></strike></span>
+                              <span class="discountPrice" title="Discounted Price">&#8377;<?= number_format($row['sp']) - ((number_format($row['discount'])/100) * number_format($row['cp'])); ?></span>
                           </p>
                             <p><button><a href="#"><i class="fa fa-cart-plus" aria-hidden="true"></i></a> Add to Cart</button></p>
                         </div>
