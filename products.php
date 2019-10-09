@@ -239,7 +239,9 @@
 	            <div class="col text-center">
 	            <div class="mTitle" id="textChange">All Products</div>
 	            </div>
-	            <div class="text-center" id="loader" style="display: none;">
+	        </div>
+
+	        <div class="text-center" id="loader" style="">
 					<span class="spinner-grow text-muted"></span>
 					<span class="spinner-grow text-primary"></span>
 					<span class="spinner-grow text-success"></span>
@@ -247,8 +249,7 @@
 					<span class="spinner-grow text-success"></span>
 					<span class="spinner-grow text-primary"></span>
 					<span class="spinner-grow text-muted"></span>
-				</div>
-	        </div>
+			</div>
 
 	        <div class="row featuredProductsBody" id="result">
 				<?php
