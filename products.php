@@ -225,7 +225,7 @@
 				<li class="list-group-item">
 					<div class="form-check">
 						<label class="form-check-label">
-							<input type="checkbox" class="form-check-input product_check" value="<?= $row['category']; ?>" id="pcategory"><?= $row['category']; ?>
+							<input type="checkbox" class="form-check-input product_check" value="<?= $row['category']; ?>" id="category"><?= $row['category']; ?>
 						</label>
 					</div>
 				</li>
@@ -262,8 +262,8 @@
                       <div class="productPriceDisc">
                           <?= $row['proname']; ?>
                           <p>
-                              <span class="originalPrice" title="Original Price"><strike>&#8377;<?= number_format($row['sp']); ?></strike></span>
-                              <span class="discountPrice" title="Discounted Price">&#8377;<?= number_format($row['sp']) - ((number_format($row['discount'])/100) * number_format($row['cp'])); ?></span>
+                              <span class="originalPrice" title="Original Price"><strike>&#8377;<?= floatval($row['sp']); ?></strike></span>
+                              <span class="discountPrice" title="Discounted Price">&#8377;<?= floatval($row['sp']) - ((floatval($row['discount'])/100) * floatval($row['cp'])); ?></span>
                           </p>
                             <p><button><a href="#"><i class="fa fa-cart-plus" aria-hidden="true"></i></a> Add to Cart</button></p>
                         </div>
@@ -361,12 +361,12 @@
 				$("#loader").show();
 
 				var action = 'data';
-				var pcategory = get_filter_text('pcategory');
+				var category = get_filter_text('category');
 
 				$.ajax({
 					url:'action.php',
 					method: 'POST',
-					data:{action:action, pcategory:pcategory},
+					data:{action:action, category:category},
 					success:function(response){
 						$("#result").html(response);
 						$("#loader").hide();
