@@ -1,5 +1,9 @@
 <?php
-	require 'config.php';
+    require 'config.php';
+
+    if (!isset($_GET['proid'])) {
+        header("Location: https://muskgreen.live");
+    }
 ?>
 
 <!DOCTYPE html>
@@ -209,71 +213,63 @@
         </div>
 
 <!-- Main Content starts -->
-<main class="container">
 
-      <!-- Left Column / Headphones Image -->
-      <div class="left-column">
-        <img data-image="black" src="images/black.png" alt="">
-        <img data-image="blue" src="images/blue.png" alt="">
-        <img data-image="red" class="active" src="images/red.png" alt="">
-      </div>
+<?php
+    if (isset($_GET['proid'])) {
+        $sql = "select * from product p natural join productseller where p.proid='".$_GET['proid']."'";
+        $catsql = "select category from proundercat where proid='".$_GET['proid']."'";
+
+        $result = $conn->query($sql);
+        $catresult = $conn->query($catsql);
+
+        if($result->num_rows > 0){
+            while ($row=$result->fetch_assoc()) {
+                ?>
+                <main class="container">
+                      <!-- Left Column / Product Image -->
+                      <div class="row">
+                          <div class="left-column col-md-6">
+                            <img data-image="black" src="" alt="">
+                            <img data-image="blue" src="" alt="">
+                            <img data-image="red" class="active" src="<?=$row['proimgurl']?>" alt="">
+                          </div>
 
 
-      <!-- Right Column -->
-      <div class="right-column">
+                          <!-- Right Column -->
+                          <div class="right-column col-md-6">
 
-        <!-- Product Description -->
-        <div class="product-description">
-          <span>Headphones</span>
-          <h1>Beats EP</h1>
-          <p>The preferred choice of a vast range of acclaimed DJs. Punchy, bass-focused sound and high isolation. Sturdy headband and on-ear cushions suitable for live performance</p>
-        </div>
+                            <!-- Product Description -->
+                            <div class="product-description">
+                              <span>
+                                  <?php 
+                                    if($catresult->num_rows > 0){
+                                        while($catrow=$catresult->fetch_assoc()){
+                                            echo $catrow['category'];
+                                            echo ", ";
+                                        }
+                                    }
+                                  ?>
+                              </span>
+                              <h1><?=$row['proname']?></h1>
+                              <p>The preferred choice of a vast range of acclaimed DJs. Punchy, bass-focused sound and high isolation. Sturdy headband and on-ear cushions suitable for live performance</p>
+                            </div>
 
-        <!-- Product Configuration -->
-        <div class="product-configuration">
-
-          <!-- Product Color -->
-          <div class="product-color">
-            <span>Color</span>
-
-            <div class="color-choose">
-              <div>
-                <input data-image="red" type="radio" id="red" name="color" value="red" checked>
-                <label for="red"><span></span></label>
-              </div>
-              <div>
-                <input data-image="blue" type="radio" id="blue" name="color" value="blue">
-                <label for="blue"><span></span></label>
-              </div>
-              <div>
-                <input data-image="black" type="radio" id="black" name="color" value="black">
-                <label for="black"><span></span></label>
-              </div>
-            </div>
-
-          </div>
-
-          <!-- Cable Configuration -->
-          <div class="cable-config">
-            <span>Cable configuration</span>
-
-            <div class="cable-choose">
-              <button>Straight</button>
-              <button>Coiled</button>
-              <button>Long-coiled</button>
-            </div>
-
-            <a href="#">How to configurate your headphones</a>
-          </div>
-        </div>
-
-        <!-- Product Pricing -->
-        <div class="product-price">
-          <span>148$</span>
-          <a href="#" class="cart-btn">Add to cart</a>
-        </div>
-      </div>
-</main>
+                            <!-- Product Pricing -->
+                            <div class="product-price">
+                                <?php 
+                                    $muskPrice = floatval($row['sp']) - ((floatval($row['discount'])/100) * floatval($row['cp']));
+                                ?>
+                              <span class="originalPrice" label="Original Price">&#8377;<?=$row['sp']?></span><span class="discountPrice" label="MuskGreen Price">&#8377;<?=$muskPrice?></span>
+                              <a href="#" class="cart-btn">Add to cart</a>
+                            </div>
+                          </div>
+                        </div>
+                </main>
+                <?php
+            }
+        }
+    }
+?>
 
 
 <!--Footer-->

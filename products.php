@@ -259,7 +259,7 @@
 				?>
 				<div class="responsive2">
                     <div class="productContainer">
-                      <img src="<?= $row['proimgurl']; ?>" alt="Avatar" class="image">
+                      <a href="http://localhost:8080/muskGreen/productDetail.php?proid=<?=$row['proid']?>" target="_blank"><img src="<?= $row['proimgurl']; ?>" class="image"></a>
                       <div class="productPriceDisc">
                           <?= $row['proname']; ?>
                           <p>
