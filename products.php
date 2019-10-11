@@ -208,6 +208,9 @@
         </div>
 
 <!-- Main Content starts -->
+<?php 
+	if(!isset($_POST['product'])){
+?>
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-3">
@@ -274,8 +277,85 @@
     	</div>
 	</div>
 </div>
+<?php 
+	}
+?>
+
+<?php 
+	if(isset($_POST['product'])){
+?>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-3">
+			<!-- Filter -->
+			<h5>Filter Product</h5>
+			<hr>
+			<h6 class="text-info">Select Category</h6>
+			<ul class="list-group">
+				<?php
+					$sql="SELECT category FROM categorydesc ORDER BY category";
+					$result=$conn->query($sql);
+					while ($row=$result->fetch_assoc()) {
+				?>
+				<li class="list-group-item">
+					<div class="form-check">
+						<label class="form-check-label">
+							<input type="checkbox" class="form-check-input product_check" value="<?= $row['category']; ?>" id="category"><?= $row['category']; ?>
+						</label>
+					</div>
+				</li>
+				<?php } ?>
+			</ul>
+		</div>
 
 
+		<div class="col-md-9 mainBodyContainer">
+	        <div class="row featuredProductsTitle">
+	            <div class="col text-center">
+	            <div class="mTitle" id="textChange">All Products</div>
+	            </div>
+	        </div>
+
+	        <div class="text-center" id="loader" style="">
+					<span class="spinner-grow text-muted"></span>
+					<span class="spinner-grow text-primary"></span>
+					<span class="spinner-grow text-success"></span>
+					<span class="spinner-grow text-info"></span>
+					<span class="spinner-grow text-success"></span>
+					<span class="spinner-grow text-primary"></span>
+					<span class="spinner-grow text-muted"></span>
+			</div>
+
+	        <div class="row featuredProductsBody" id="result">
+				<?php
+					if(isset($_GET['search'])){
+						$safeProduct = preg_replace('/[^\w]/','',$_POST['product']); 
+						if(strlen($safeProduct)){
+							$sql="SELECT * FROM product NATURAL JOIN productseller where proname like '%".$safeProduct."%'";
+							$result=$conn->query($sql);
+							while ($row=$result->fetch_assoc()) {
+				?>
+				<div class="responsive2">
+                    <div class="productContainer">
+                      <a href="http://localhost:8080/muskGreen/productDetail.php?proid=<?=$row['proid']?>" target="_blank"><img src="<?= $row['proimgurl']; ?>" class="image"></a>
+                      <div class="productPriceDisc">
+                          <?= $row['proname']; ?>
+                          <p>
+                              <span class="originalPrice" title="Original Price"><strike>&#8377;<?= floatval($row['sp']); ?></strike></span>
+                              <span class="discountPrice" title="Discounted Price">&#8377;<?= floatval($row['sp']) - ((floatval($row['discount'])/100) * floatval($row['cp'])); ?></span>
+                          </p>
+                            <p><button><a href="#"><i class="fa fa-cart-plus" aria-hidden="true"></i></a> Add to Cart</button></p>
+                        </div>
+                    </div>
+                </div>
+			<?php }}} ?>
+			</div>
+    	</div>
+	</div>
+</div>
+<?php
+	}
+?>
 
 <!--Footer-->
     <footer class="footer">

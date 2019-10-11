@@ -36,23 +36,16 @@
             </a>
             
             <!--Search Box-->
-            <form autocomplete="off" class="input-group md-form form-sm form-2 pl-0 topNavItem" action="">
-              <input class="autocomplete form-control my-0 py-1 amber-border" id="myInput" type="text" name="myCountry" placeholder="Search" aria-label="Search">
-              <div class="input-group-append">
+            <form autocomplete="off" class="input-group md-form form-sm form-2 pl-0 topNavItem" action="products.php?search" method="post">
+              <input class="autocomplete form-control my-0 py-1 amber-border" id="myInput" type="text" name="product" placeholder="Search" aria-label="Search">
+              <div class="input-group-append" type="submit">
                 <div class="input-group-append">
-                  <button class="btn btn-secondary" type="button">
+                  <button class="btn btn-secondary" type="submit">
                     <i class="fa fa-search" aria-hidden="true"></i>
                   </button>
                 </div>
               </div>
             </form>
-
-                <!-- <form autocomplete="off" action="/action_page.php">
-				  <div class="autocomplete" class="form-control">
-				    <input id="myInput" type="text" name="myCountry" placeholder="Country">
-				  </div>
-				  <input type="submit">
-				</form> -->
             
             <!--Login/Signup-->
             <span class="fa fa-user nav-item topNavItem py-0" title="Login Or Signup" aria-hidden="true"> <span><br/>Login/Signup</span></span>
