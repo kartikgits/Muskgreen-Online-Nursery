@@ -18,11 +18,12 @@
     <link rel="stylesheet" href="bootstrap4/css/bootstrap.min.css" >
 
     <!-- Our CSS -->
-    <link rel="stylesheet" href="css/style.css" media="(min-width: 767.99px)">
-    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css" media="(min-width: 767.99px)">
+    <link rel="stylesheet" type="text/css" href="css/mobileNav.css" media="(max-width: 767.99px)">
+    <link rel="stylesheet" type="text/css" href="css/liveSearchStyle.css">
+    <link rel="stylesheet" type="text/css" href="css/footer.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/mobileNav.css" media="(max-width: 767.99px)">
-    <link rel="stylesheet" href="css/productDetailsStyle.css">
+    <link rel="stylesheet" type="text/css" href="css/productDetailsStyle.css">
 
     <!-- jQuery library -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -51,16 +52,16 @@
             </a>
             
             <!--Search Box-->
-                <div class="input-group md-form form-sm form-2 pl-0 mobileStyleSearchBox topNavItem">
-                  <input class="form-control my-0 py-1 amber-border" type="text" placeholder="Search" aria-label="Search">
-                  <div class="input-group-append">
-                    <div class="input-group-append">
-                      <button class="btn btn-secondary" type="button">
-                        <i class="fa fa-search" aria-hidden="true"></i>
-                      </button>
-                    </div>
-                  </div>
+            <form autocomplete="off" class="input-group md-form form-sm form-2 pl-0 topNavItem" action="">
+              <input class="autocomplete form-control my-0 py-1 amber-border" id="myInput" type="text" name="myCountry" placeholder="Search" aria-label="Search">
+              <div class="input-group-append">
+                <div class="input-group-append">
+                  <button class="btn btn-secondary" type="button">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                  </button>
                 </div>
+              </div>
+            </form>
             
             <!--Login/Signup-->
             <span class="fa fa-user nav-item topNavItem py-0" title="Login Or Signup" aria-hidden="true"> <span><br/>Login/Signup</span></span>
@@ -195,16 +196,16 @@
                             </div>
                             
                             <!--Search Box (Mobile)-->
-                                <div class="input-group md-form form-sm form-2 pl-0 d-md-none">
-                                  <input class="form-control my-0 py-1 amber-border" type="text" placeholder="Search" aria-label="Search">
-                                  <div class="input-group-append">
-                                    <div class="input-group-append">
-                                      <button class="btn btn-secondary" type="button">
-                                        <i class="fa fa-search" aria-hidden="true"></i>
-                                      </button>
-                                    </div>
-                                  </div>
+                            <form autocomplete="off" class="input-group md-form form-sm form-2 pl-0 d-md-none" action="">
+                              <input class="autocomplete form-control my-0 py-1 amber-border" id="myInput2" type="text" name="myCountry" placeholder="Search" aria-label="Search">
+                              <div class="input-group-append">
+                                <div class="input-group-append">
+                                  <button class="btn btn-secondary" type="button">
+                                    <i class="fa fa-search" aria-hidden="true"></i>
+                                  </button>
                                 </div>
+                              </div>
+                            </form>
 
                         </nav>
                     </div>
@@ -350,6 +351,7 @@
     <script type="text/javascript" src="bootstrap4/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/styler.js"></script>
     <script type="text/javascript" src="js/productDetails.js" charset="utf-8"></script>
+    <script type="text/javascript" src="js/liveSearch.js"></script>
 
 	<script type="text/javascript">
 		$(document).ready(function(){
