@@ -209,7 +209,7 @@
 
 <!-- Main Content starts -->
 <?php 
-	if(!isset($_POST['product'])){
+	if(!isset($_GET['product'])){
 ?>
 <div class="container-fluid">
 	<div class="row">
@@ -282,7 +282,7 @@
 ?>
 
 <?php 
-	if(isset($_POST['product'])){
+	if(isset($_GET['product'])){
 ?>
 <div class="container-fluid">
 	<div class="row">
@@ -293,9 +293,11 @@
 			<h6 class="text-info">Select Category</h6>
 			<ul class="list-group">
 				<?php
-					$sql="SELECT category FROM categorydesc ORDER BY category";
-					$result=$conn->query($sql);
-					while ($row=$result->fetch_assoc()) {
+					$safeProduct = preg_replace('/[^\w ]/','',$_GET['product']); 
+					if(strlen($safeProduct)){
+						$sql="SELECT DISTINCT category FROM proundercat NATURAL JOIN product WHERE proname LIKE '%".$safeProduct."%' ORDER BY category";
+						$result=$conn->query($sql);
+						while ($row=$result->fetch_assoc()) {
 				?>
 				<li class="list-group-item">
 					<div class="form-check">
@@ -304,7 +306,7 @@
 						</label>
 					</div>
 				</li>
-				<?php } ?>
+				<?php }} ?>
 			</ul>
 		</div>
 
@@ -328,12 +330,11 @@
 
 	        <div class="row featuredProductsBody" id="result">
 				<?php
-					if(isset($_GET['search'])){
-						$safeProduct = preg_replace('/[^\w]/','',$_POST['product']); 
-						if(strlen($safeProduct)){
-							$sql="SELECT * FROM product NATURAL JOIN productseller where proname like '%".$safeProduct."%'";
-							$result=$conn->query($sql);
-							while ($row=$result->fetch_assoc()) {
+					$safeProduct = preg_replace('/[^\w ]/','',$_GET['product']); 
+					if(strlen($safeProduct)){
+						$sql="SELECT * FROM product NATURAL JOIN productseller where proname like '%".$safeProduct."%'";
+						$result=$conn->query($sql);
+						while ($row=$result->fetch_assoc()) {
 				?>
 				<div class="responsive2">
                     <div class="productContainer">
@@ -348,7 +349,7 @@
                         </div>
                     </div>
                 </div>
-			<?php }}} ?>
+			<?php }} ?>
 			</div>
     	</div>
 	</div>
