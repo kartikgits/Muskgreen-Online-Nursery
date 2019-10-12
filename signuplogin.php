@@ -40,9 +40,11 @@
     <script src="https://cdn.firebase.com/libs/firebaseui/4.2.0/firebaseui.js"></script>
     <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/4.2.0/firebaseui.css" />
 
-    <script type="text/javascript">  
+    <script type="text/javascript">
+    var urlQuery = window.location.search;
+    urlQuery = urlQuery.replace("?", '');
     var uiConfig = {  
-       signInSuccessUrl: 'loggedIn.html',  
+       signInSuccessUrl: 'signedIn.php?'+urlQuery,  
        signInOptions: [
       {
         provider: firebase.auth.PhoneAuthProvider.PROVIDER_ID,
