@@ -18,6 +18,13 @@
 			$sql="SELECT * FROM productseller natural join product WHERE isAvailable != 'N'";
 		}
 
+		if (isset($_POST['getResult'])) {
+			$safeProduct = preg_replace('/[^\w ]/','',$_POST['getResult']);
+			if(strlen($safeProduct) > 0){
+				$sql .= " AND proname LIKE '%".$safeProduct."%'";
+			}
+		}
+
 		$result = $conn->query($sql);
 		$output = '';
 

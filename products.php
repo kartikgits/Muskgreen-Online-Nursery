@@ -294,7 +294,7 @@
 			<ul class="list-group">
 				<?php
 					$safeProduct = preg_replace('/[^\w ]/','',$_GET['product']); 
-					if(strlen($safeProduct)){
+					if(strlen($safeProduct) > 0){
 						$sql="SELECT DISTINCT category FROM proundercat NATURAL JOIN product WHERE proname LIKE '%".$safeProduct."%' ORDER BY category";
 						$result=$conn->query($sql);
 						while ($row=$result->fetch_assoc()) {
@@ -314,7 +314,7 @@
 		<div class="col-md-9 mainBodyContainer">
 	        <div class="row featuredProductsTitle">
 	            <div class="col text-center">
-	            <div class="mTitle" id="textChange">All Products</div>
+	            <div class="mTitle" id="textChange">Search Results for <?=$_GET['product']?></div>
 	            </div>
 	        </div>
 
@@ -439,6 +439,11 @@
     <script type="text/javascript" src="js/liveSearch.js"></script>
 
 	<script type="text/javascript">
+
+		function getQueryStringValue (key) {
+			return decodeURIComponent(window.location.search.replace(new RegExp("^(?:.*[&\\?]" + encodeURIComponent(key).replace(/[\.\+\*]/g, "\\$&") + "(?:\\=([^&]*))?)?.*$", "i"), "$1"));  
+		}
+
 		$(document).ready(function(){
 
 			$(".product_check").click(function(){
@@ -450,7 +455,7 @@
 				$.ajax({
 					url:'action.php',
 					method: 'POST',
-					data:{action:action, category:category},
+					data:{action:action, category:category, getResult:getQueryStringValue("product")},
 					success:function(response){
 						$("#result").html(response);
 						$("#loader").hide();
