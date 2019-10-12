@@ -23,12 +23,13 @@ nav.topBar {
     text-align: center;
 }
 
-nav.topBar span.topNavItem {
+nav.topBar .topNavItem {
+	text-decoration: none;
     color: #4d4d4d;
     transition:500ms ease;
 }
 
-span.topNavItem {
+.topNavItem {
     text-align: center;
     font-size: 0.9rem;
     margin: auto;

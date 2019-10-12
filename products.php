@@ -58,12 +58,10 @@
             </form>
             
             <!--Login/Signup-->
-            <span class="fa fa-user nav-item topNavItem py-0" title="Login Or Signup" aria-hidden="true"> <span><br/>Login/Signup</span></span>
+            <a class="topNavItem nav-item py-0" href="#"><span class="fa fa-user topNavItem" title="Login Or Signup" aria-hidden="true"> <span><br/>Login/Signup</span></span></a>
             
             <!--Account (Personal)-->
-            
-            
-            <span class="fa fa-shopping-cart nav-item topNavItem py-0" title="Cart" aria-hidden="true"> <span><br/>Cart[0]</span></span>
+            <a class="topNavItem nav-item py-0" href="#"><span class="fa fa-shopping-cart topNavItem" title="Cart" aria-hidden="true"> <span><br/>Cart[0]</span></span></a>
         </nav>
 
 
