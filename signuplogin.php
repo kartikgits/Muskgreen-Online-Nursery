@@ -69,6 +69,7 @@
       body {
         margin: 0;
         padding: 0;
+        background: linear-gradient(90deg, #0700b8 0%, #00ff88 100%);
       }
 
       .background {
@@ -93,16 +94,11 @@
   <body>
     <!-- The surrounding HTML is left untouched by FirebaseUI.
          Your app may use that space for branding, controls and other customizations.-->
-    <div style="display: inline;" class="container align-middle text-center">
-      <div class="card">
-        <div class="card-body">
-          <h3 class="card-title">
-            MuskGreen.live
-            <small class="text-muted">Login or SignUp</small>
-          </h3>
-          <div id="firebaseui-auth-container"></div>
-        </div>
-      </div>
+    <div style="display: inline; color: #fff;" class="container align-middle text-center">
+      <h3>
+        MuskGreen.live <small style="color: #fff !important;" class="text-muted">Login or SignUp</small>
+      </h3>
+      <div id="firebaseui-auth-container"></div>
     </div>
     <canvas class="background"></canvas>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/particlesjs/2.2.3/particles.min.js"></script>
@@ -119,7 +115,7 @@
         true
         ,
           color:
-        "#28634f"
+        "#ffffff"
         ,
           
         // options for breakpoints
