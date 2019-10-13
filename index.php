@@ -1,3 +1,6 @@
+<?php
+	session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -45,10 +48,19 @@
               </div>
             </form>
             
-            <!--Login/Signup-->
+            <!--Login/Signup or Account-->
+            <?php
+            	if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']===TRUE) {
+            ?>
+            <a class="topNavItem nav-item py-0" href="#"><span class="fa fa-user topNavItem" title="User Account" aria-hidden="true"> <span><br/>Account</span></span></a>
+            <?php
+            	} else {
+            ?>
             <a class="topNavItem nav-item py-0" href="#" onclick="signupLogin()"><span class="fa fa-user topNavItem" title="Login Or Signup" aria-hidden="true"> <span><br/>Login/Signup</span></span></a>
-            
-            <!--Account (Personal)-->
+            <?php
+            	}
+            ?>
+            <!-- Cart -->
             <a class="topNavItem nav-item py-0" href="#"><span class="fa fa-shopping-cart topNavItem" title="Cart" aria-hidden="true"> <span><br/>Cart[0]</span></span></a>
 
         </nav>
@@ -99,16 +111,14 @@
                     </div>
               </li>
                 
-                <li class="nav-item dropdown">
-                    <a class="nav-link" href="#" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                      Fertilizers
-                    </a>
+              <li class="nav-item dropdown">
+              	<a class="nav-link" href="#" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">Fertilizers
+              	</a>
               </li>
                 
-                <li class="nav-item dropdown">
-                    <a class="nav-link" href="#" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                      Soils
-                    </a>
+              <li class="nav-item dropdown">
+				<a class="nav-link" href="#" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">Soils
+                </a>
               </li>
             </ul>
           </div>
