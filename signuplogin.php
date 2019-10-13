@@ -50,8 +50,8 @@
         provider: firebase.auth.PhoneAuthProvider.PROVIDER_ID,
         recaptchaParameters: {
           type: 'image', // 'audio'
-          size: 'normal', // 'invisible' or 'compact'
-          badge: 'bottomleft' //' bottomright' or 'inline' applies to invisible.
+          size: 'invisible', // 'invisible' or 'compact'
+          badge: 'inline' //' bottomright' or 'inline' applies to invisible.
         },
         defaultCountry: 'IN'
       }

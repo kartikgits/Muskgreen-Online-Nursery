@@ -12,7 +12,3 @@ function popitup(url,windowName) {
 	}
 	return false;
 }
-
-function refreshCurrentWindow(){
-	var currentUrl = window.location.href;
-}
