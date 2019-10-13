@@ -12,3 +12,26 @@ function popitup(url,windowName) {
 	}
 	return false;
 }
+
+
+//For profile page
+function disablePersonal(){
+	document.getElementById("first_name").disabled = true;
+	document.getElementById("last_name").disabled = true;
+	document.getElementById("email").disabled = true;
+	document.getElementById("email_verify").disabled = true;
+}
+
+function editPersonal() {
+	if (document.getElementById("first_name").disabled === true) {
+		document.getElementById("first_name").disabled = false;
+		document.getElementById("last_name").disabled = false;
+		document.getElementById("email").disabled = false;
+		document.getElementById("email_verify").disabled = false;
+	}	else {
+		document.getElementById("first_name").disabled = true;
+		document.getElementById("last_name").disabled = true;
+		document.getElementById("email").disabled = true;
+		document.getElementById("email_verify").disabled = true;
+	}
+}
