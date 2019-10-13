@@ -135,7 +135,17 @@
                             <a class="navbar-brand" href="https://themeforest.net/user/ig_design/portfolio" target="_blank"><img src="extras/musklogo112.png" alt=""></a>
                             
                             <!-- account -->
-                            <span class="fa fa-user py-0 mobileNavItem" title="Login Or Signup" aria-hidden="true"></span>
+                            <?php
+            					if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']===TRUE) {
+            				?>
+                            <a class="mobileNavItem py-0" href="#"><span class="fa fa-user mobileNavItem" type="" title="User Account" aria-hidden="true"></span></a>
+                            <?php
+                        		}else{
+                            ?>
+                            <a class="mobileNavItem py-0" href="#" onclick="signupLogin()"><span class="fa fa-user mobileNavItem" type="" title="Login or SignUp" aria-hidden="true"></span></a>
+                            <?php
+                        		}
+                            ?>
             
                             <!-- cart -->
                             <span class="fa fa-shopping-cart py-0 mobileNavItem" title="Cart" aria-hidden="true"><span> [0]</span></span>
@@ -587,7 +597,6 @@
     
     <script type="text/javascript" src="bootstrap4/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/styler.js"></script>
-    <script type="text/javascript" src="js/home.js"></script>
     <script type="text/javascript" src="js/liveSearch.js"></script>
     <script type="text/javascript" src="js/buttonActions.js"></script>
 

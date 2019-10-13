@@ -46,8 +46,6 @@
             <span class="navbar-toggler-icon"></span>
             </button>
             <a class="navbar-brand py-0 topNavItem" href="#">
-<!--                <img src="extras/musklogo.png" width="30" height="30" class="d-inline-block align-top" alt="">-->
-                
                 <img src="extras/musklogo224.png" width="100%" class="d-inline-block align-top" alt="MuskGreen">
             </a>
             
@@ -63,14 +61,24 @@
               </div>
             </form>
             
-            <!--Login/Signup-->
-            <a class="topNavItem nav-item py-0" href="#"><span class="fa fa-user topNavItem" title="Login Or Signup" aria-hidden="true"> <span><br/>Login/Signup</span></span></a>
-            
-            <!--Account (Personal)-->
+            <!--Login/Signup or Account-->
+            <?php
+                if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']===TRUE) {
+            ?>
+            <a class="topNavItem nav-item py-0" href="#"><span class="fa fa-user topNavItem" title="User Account" aria-hidden="true"> <span><br/>Account</span></span></a>
+            <?php
+                } else {
+            ?>
+            <a class="topNavItem nav-item py-0" href="#" onclick="signupLogin()"><span class="fa fa-user topNavItem" title="Login Or Signup" aria-hidden="true"> <span><br/>Login/Signup</span></span></a>
+            <?php
+                }
+            ?>
+            <!-- Cart -->
             <a class="topNavItem nav-item py-0" href="#"><span class="fa fa-shopping-cart topNavItem" title="Cart" aria-hidden="true"> <span><br/>Cart[0]</span></span></a>
+
         </nav>
-
-
+      
+      
 <!--   Navigation Bar   -->
       <nav class="navbar navbar-expand-md lowerNavBar d-none d-md-flex">
 <!--          <a class="navbar-brand" href="#">Navbar</a>-->
@@ -116,24 +124,21 @@
                     </div>
               </li>
                 
-                <li class="nav-item dropdown">
-                    <a class="nav-link" href="#" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                      Fertilizers
-                    </a>
+              <li class="nav-item dropdown">
+                <a class="nav-link" href="#" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">Fertilizers
+                </a>
               </li>
                 
-                <li class="nav-item dropdown">
-                    <a class="nav-link" href="#" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                      Soils
-                    </a>
+              <li class="nav-item dropdown">
+                <a class="nav-link" href="#" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">Soils
+                </a>
               </li>
             </ul>
           </div>
       </nav>
-
-
-
- <!--Mobile Navigation Bar-->
+      
+      
+      <!--Mobile Navigation Bar-->
       <div class="mobileBar navigation-wrap bg-light start-header start-style d-md-none">
             <div class="container">
                 <div class="row">
@@ -143,7 +148,17 @@
                             <a class="navbar-brand" href="https://themeforest.net/user/ig_design/portfolio" target="_blank"><img src="extras/musklogo112.png" alt=""></a>
                             
                             <!-- account -->
-                            <span class="fa fa-user py-0 mobileNavItem" title="Login Or Signup" aria-hidden="true"></span>
+                            <?php
+                                if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']===TRUE) {
+                            ?>
+                            <a class="mobileNavItem py-0" href="#"><span class="fa fa-user mobileNavItem" type="" title="User Account" aria-hidden="true"></span></a>
+                            <?php
+                                }else{
+                            ?>
+                            <a class="mobileNavItem py-0" href="#" onclick="signupLogin()"><span class="fa fa-user mobileNavItem" type="" title="Login or SignUp" aria-hidden="true"></span></a>
+                            <?php
+                                }
+                            ?>
             
                             <!-- cart -->
                             <span class="fa fa-shopping-cart py-0 mobileNavItem" title="Cart" aria-hidden="true"><span> [0]</span></span>
@@ -270,6 +285,10 @@
     }
 ?>
 
+<?php 
+    $conn->close();
+?>
+
 
 <!--Footer-->
     <footer class="footer">
@@ -348,6 +367,7 @@
     
     <script type="text/javascript" src="bootstrap4/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/styler.js"></script>
+    <script type="text/javascript" src="js/buttonActions.js"></script>
     <script type="text/javascript" src="js/productDetails.js" charset="utf-8"></script>
     <script type="text/javascript" src="js/liveSearch.js"></script>
 

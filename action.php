@@ -51,4 +51,5 @@
 		}
 		echo $output;
 	}
+	$conn->close();
 ?>
