@@ -77,7 +77,7 @@ nav.lowerNavBar {
     margin: auto;
 }
 
-.nav-link {
+.navbar .nav-link {
     color: #FFF;
     font-weight: 600;
 }
