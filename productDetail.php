@@ -1,5 +1,6 @@
 <?php
     require 'config.php';
+    session_start();
 
     if (!isset($_GET['proid'])) {
         header("Location: https://muskgreen.live");
