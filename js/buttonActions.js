@@ -66,17 +66,37 @@ function validateAddressForm(){
     }
 }
 
+function editAddress(addressName, locality, landmark, area, city, state, pincode, phone){
+	$("#newAddressForm").toggle(250);
+	document.getElementById("addressAddOrEdit").value = "false";
+	document.getElementById("address_name").value = addressName;
+	document.getElementById("address_contact").value = phone;
+	document.getElementById("address_locality").value = locality;
+	document.getElementById("address_area").value = area;
+	document.getElementById("address_landmark").value = landmark;
+	document.getElementById("address_city").value = city;
+	document.getElementById("address_pincode").value = pincode;
+	document.getElementById("address_state").value = state;
+}
+
 $(document).ready(function(){
 	disablePersonal();
 	$("#newAddressForm").hide();
 	$("#newAddressFormButton").click(function(){
 		$("#newAddressForm").toggle(250);
+		document.getElementById("addressAddOrEdit").value = "true";
+		document.getElementById("address_name").value = "";
+		document.getElementById("address_contact").value = "";
+		document.getElementById("address_locality").value = "";
+		document.getElementById("address_area").value = "";
+		document.getElementById("address_landmark").value = "";
+		document.getElementById("address_pincode").value = "";
 	});
 
 	$("#personalForm").submit(function(){
 		if (validatePersonalForm()) {
 			$.post("formsProcess.php", $("#personalForm").serialize(), function(data) {
-				alert(data);
+				//alert(data);
 		    });
 		}
 	});

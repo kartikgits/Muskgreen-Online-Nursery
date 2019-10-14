@@ -308,7 +308,7 @@
                        <div class="card-deck">
                           <div class="card" style="min-width: 10rem;">
                             <div class="card-body">
-                              <h5 class="card-title"><?=$row['addressName']?> <small class="text-center"><a href="#" onclick="editAddress('<?=$row['addressName']?>')">Edit</a> <a href="#" onclick="deleteAddress('<?=$row['addressName']?>')">Delete</a></small></h5>
+                              <h5 class="card-title"><?=$row['addressName']?> <small class="text-center"><a href="#" onclick="editAddress('<?=$row['addressName']?>', '<?=$row['locality']?>', '<?php if(is_null($row['landmark'])){echo "";}else {echo $row['landmark'];}?>','<?=$row['area']?>', '<?=$row['city']?>', '<?=$row['state']?>', '<?=$row['pincode']?>', '<?=$row['phone']?>')">Edit</a> <a href="#" onclick="deleteAddress('<?=$row['addressName']?>')">Delete</a></small></h5>
                               <p class="card-text"><small class="text-muted">
                                 <?=$row['locality']?>,
                                 <?php
@@ -337,7 +337,7 @@
                        ?>
                           <br/>
                           <form class="form muskForm" action="" method="post" id="newAddressForm" >
-                            <input type="hidden" name="newAddressForm" value="true"/>
+                            <input type="hidden" name="newAddressForm" id="addressAddOrEdit" value="true"/>
                               <div class="form-group">
                                   <div class="col-xs-6">
                                       <label for="address_name"><h4>Address Name</h4></label><span class="inputRequired"></span>
