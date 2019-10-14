@@ -21,7 +21,7 @@
     <title>Welcome to MuskGreen - India's Latest Digital Nursery and Organic Products store</title>
   </head>
 
-  <body onload="disablePersonal()">
+  <body>
       
       
 <!--      Top Brand Bar with Search, Login & Signup and Cart (Includes NavBar button in mobile view)-->
@@ -228,13 +228,15 @@
                     <div class="panel-body">+919999999999</div>
                   </div>
                   
-                <div class="card leftCard">
-                  <ul class="nav nav-tabs card-body" role="tablist">
-                    <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#account"><i class="fa fa-user fa-1x"></i>Account</a></li>
-                    <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#orders"><i class="fa fa-shopping-bag fa-1x"></i>Orders</a></li>
-                    <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#wishlist"><i class="fa fa-heartbeat fa-1x"></i>Wishlist</a></li>
-                    <li class="nav-item"><a class="nav-link" href="signOut.php"><i class="fa fa-sign-out fa-1x"></i>Logout</a></li>
-                  </ul>
+                <div class="card text-center leftCard">
+                    <div class="card-header">
+                      <ul class="nav nav-tabs card-header-tabs" role="tablist">
+                        <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#account"><i class="fa fa-user fa-1x"></i>Account</a></li>
+                        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#orders"><i class="fa fa-shopping-bag fa-1x"></i>Orders</a></li>
+                        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#wishlist"><i class="fa fa-heartbeat fa-1x"></i>Wishlist</a></li>
+                        <li class="nav-item"><a class="nav-link" href="signOut.php"><i class="fa fa-sign-out fa-1x"></i>Logout</a></li>
+                      </ul>
+                    </div>
                 </div>
                   
                 </div><!--/col-3-->
@@ -289,10 +291,19 @@
                       
                      </div><!--/tab-pane-->
                      <div role="tabpanel" class="tab-pane fade" id="addresses">
+                     <hr>
+                       <h5 class="">Saved Addresses: </h5>
+                       <div class="card-deck">
+                          <div class="card" style="min-width: 10rem;">
+                            <div class="card-body">
+                              <h5 class="card-title">Address Name <small class="text-center"><a href="#" onclick="editAddress('addressName')">Edit</a> <a href="#" onclick="deleteAddress('addressName')">Delete</a></small></h5>
+                              <p class="card-text">Name</p>
+                              <p class="card-text"><small class="text-muted">Locality, Near Landmark, Area, City, State - Pincode</small></p>
+                              <p class="card-text"><small class="text-muted">Address Contact: 9990000000</small></p>
+                            </div>
+                          </div>
+                        </div>
                        
-                       <h2></h2>
-                       
-                       <hr>
                           <div id="userAddress"></div>
                           <button class="btn btn-sm" title="Click To Add New Address" id="newAddressFormButton"><i class="fa fa-map-marker"></i> Add Address</button>
                           <br/>

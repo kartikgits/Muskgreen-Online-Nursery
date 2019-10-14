@@ -43,6 +43,8 @@ function editPersonal() {
 }
 
 $(document).ready(function(){
+	disablePersonal();
+	$("#newAddressForm").hide();
 	$("#newAddressFormButton").click(function(){
 		$("#newAddressForm").toggle(250);
 	});
