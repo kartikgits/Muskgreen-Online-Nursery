@@ -20,6 +20,8 @@ function disablePersonal(){
 	document.getElementById("last_name").disabled = true;
 	document.getElementById("email").disabled = true;
 	document.getElementById("email_verify").disabled = true;
+	document.getElementById("submitPersonal").disabled = true;
+	document.getElementById("resetPersonal").disabled = true;
 }
 
 function editPersonal() {
@@ -28,10 +30,20 @@ function editPersonal() {
 		document.getElementById("last_name").disabled = false;
 		document.getElementById("email").disabled = false;
 		document.getElementById("email_verify").disabled = false;
+		document.getElementById("submitPersonal").disabled = false;
+		document.getElementById("resetPersonal").disabled = false;
 	}	else {
 		document.getElementById("first_name").disabled = true;
 		document.getElementById("last_name").disabled = true;
 		document.getElementById("email").disabled = true;
 		document.getElementById("email_verify").disabled = true;
+		document.getElementById("submitPersonal").disabled = true;
+		document.getElementById("resetPersonal").disabled = true;
 	}
 }
+
+$(document).ready(function(){
+	$("#newAddressFormButton").click(function(){
+		$("#newAddressForm").toggle(250);
+	});
+});

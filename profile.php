@@ -233,6 +233,7 @@
                     <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#account"><i class="fa fa-user fa-1x"></i>Account</a></li>
                     <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#orders"><i class="fa fa-shopping-bag fa-1x"></i>Orders</a></li>
                     <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#wishlist"><i class="fa fa-heartbeat fa-1x"></i>Wishlist</a></li>
+                    <li class="nav-item"><a class="nav-link" href="signOut.php"><i class="fa fa-sign-out fa-1x"></i>Logout</a></li>
                   </ul>
                 </div>
                   
@@ -242,8 +243,7 @@
                 <div role="tabpanel" class="tab-pane in active" id="account">
                     <ul class="nav nav-tabs" role="tablist">
                         <li class="nav-item active"><a class="nav-link active" data-toggle="tab" href="#personal">Personal</a></li>
-                        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#messages">Addresses</a></li>
-                        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#settings">Phone/Email</a></li>
+                        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#addresses">Addresses</a></li>
                     </ul>
 
 
@@ -251,7 +251,7 @@
                     <div role="tabpanel" class="tab-pane in active" id="personal">
                         <hr>
                         <button class="btn btn-sm" onclick="editPersonal()" title="Enable/Disable Personal Information Form"><i class="fa fa-pencil"></i> Edit</button>
-                          <form class="form" action="##" method="post" id="personalForm">
+                          <form class="form muskForm" action="##" method="post" id="personalForm">
                               <div class="form-group">
                                   <div class="col-xs-6">
                                       <label for="first_name"><h4>First Name</h4></label><span class="inputRequired"></span>
@@ -279,8 +279,8 @@
                               <div class="form-group">
                                    <div class="col-xs-12">
                                         <br>
-                                        <button class="btn btn-lg btn-success" type="submit"><i class="fa fa-check-circle-o"></i> Save</button>
-                                        <button class="btn btn-lg btn-secondary" type="reset"><i class="fa fa-repeat"></i> Reset</button>
+                                        <button class="btn btn-lg btn-success" type="submit" id="submitPersonal"><i class="fa fa-check-circle-o"></i> Save</button>
+                                        <button class="btn btn-lg btn-secondary" type="reset" id="resetPersonal"><i class="fa fa-repeat"></i> Reset</button>
                                     </div>
                               </div>
                         </form>
@@ -288,67 +288,61 @@
                       <hr>
                       
                      </div><!--/tab-pane-->
-                     <div role="tabpanel" class="tab-pane fade" id="messages">
+                     <div role="tabpanel" class="tab-pane fade" id="addresses">
                        
                        <h2></h2>
                        
                        <hr>
-                          <form class="form" action="##" method="post" id="addressForm">
+                          <div id="userAddress"></div>
+                          <button class="btn btn-sm" title="Click To Add New Address" id="newAddressFormButton"><i class="fa fa-map-marker"></i> Add Address</button>
+                          <br/>
+                          <form class="form muskForm" action="##" method="post" id="newAddressForm">
                               <div class="form-group">
-                                  
                                   <div class="col-xs-6">
-                                      <label for="first_name"><h4>First name</h4></label>
-                                      <input type="text" class="form-control" name="first_name" id="first_name" placeholder="first name" title="enter your first name if any.">
+                                      <label for="address_name"><h4>Address Name</h4></label><span class="inputRequired"></span>
+                                      <input type="text" class="form-control" name="address_name" id="address_name" placeholder="Eg. Home, Office etc." title="Please Enter A Unique Address Name" required>
                                   </div>
                               </div>
                               <div class="form-group">
-                                  
                                   <div class="col-xs-6">
-                                    <label for="last_name"><h4>Last name</h4></label>
-                                      <input type="text" class="form-control" name="last_name" id="last_name" placeholder="last name" title="enter your last name if any.">
-                                  </div>
-                              </div>
-                  
-                              <div class="form-group">
-                                  
-                                  <div class="col-xs-6">
-                                      <label for="phone"><h4>Phone</h4></label>
-                                      <input type="text" class="form-control" name="phone" id="phone" placeholder="enter phone" title="enter your phone number if any.">
-                                  </div>
-                              </div>
-                  
-                              <div class="form-group">
-                                  <div class="col-xs-6">
-                                     <label for="mobile"><h4>Mobile</h4></label>
-                                      <input type="text" class="form-control" name="mobile" id="mobile" placeholder="enter mobile number" title="enter your mobile number if any.">
+                                      <label for="address_contact"><h4>Contact Number</h4></label>
+                                      <input type="text" class="form-control" name="address_contact" id="address_contact" placeholder="Enter Address Phone/Mobile Number" title="Enter Contact (Leave Blank To Use Your Number)">
                                   </div>
                               </div>
                               <div class="form-group">
-                                  
                                   <div class="col-xs-6">
-                                      <label for="email"><h4>Email</h4></label>
-                                      <input type="email" class="form-control" name="email" id="email" placeholder="you@email.com" title="enter your email.">
+                                      <label for="address_locality"><h4>Locality</h4></label><span class="inputRequired"></span>
+                                      <input type="text" class="form-control" name="address_locality" id="address_locality" placeholder="Eg. Colony/Village name" title="Please Enter Your Locality" required>
                                   </div>
                               </div>
                               <div class="form-group">
-                                  
                                   <div class="col-xs-6">
-                                      <label for="email"><h4>Location</h4></label>
-                                      <input type="email" class="form-control" id="location" placeholder="somewhere" title="enter a location">
+                                      <label for="address_area"><h4>Area</h4></label><span class="inputRequired"></span>
+                                      <input type="text" class="form-control" name="address_area" id="address_area" placeholder="Eg. Street name" title="Please Enter Your Area" required>
                                   </div>
                               </div>
                               <div class="form-group">
-                                  
                                   <div class="col-xs-6">
-                                      <label for="password"><h4>Password</h4></label>
-                                      <input type="password" class="form-control" name="password" id="password" placeholder="password" title="enter your password.">
+                                      <label for="address_landmark"><h4>Landmark</h4></label>
+                                      <input type="text" class="form-control" name="address_landmark" id="address_landmark" placeholder="Eg. Famous Monument/School/Park name etc." title="Please Enter Any Nearby Landmark">
                                   </div>
                               </div>
                               <div class="form-group">
-                                  
                                   <div class="col-xs-6">
-                                    <label for="password2"><h4>Verify</h4></label>
-                                      <input type="password" class="form-control" name="password2" id="password2" placeholder="password2" title="enter your password2.">
+                                      <label for="address_city"><h4>City</h4></label><span class="inputRequired"></span>
+                                      <input type="text" class="form-control" name="address_city" id="address_city" placeholder="Dehradun" title="Please Enter Your City Name" disabled>
+                                  </div>
+                              </div>
+                              <div class="form-group">
+                                  <div class="col-xs-6">
+                                      <label for="address_pincode"><h4>PinCode</h4></label><span class="inputRequired"></span>
+                                      <input type="text" class="form-control" name="address_pincode" id="address_pincode" placeholder="PinCode/ZipCode Number" title="Please Enter Your PinCode Number" required>
+                                  </div>
+                              </div>
+                              <div class="form-group">
+                                  <div class="col-xs-6">
+                                      <label for="address_state"><h4>State</h4></label><span class="inputRequired"></span>
+                                      <input type="text" class="form-control" name="address_state" id="address_state" placeholder="Uttarakhand" title="Please Enter Your State Name" disabled>
                                   </div>
                               </div>
                               <div class="form-group">
@@ -361,79 +355,8 @@
                         </form>
                        
                      </div><!--/tab-pane-->
-                     <div role="tabpanel" class="tab-pane fade" id="settings">
-                            
-                        
-                          <hr>
-                          <form class="form" action="##" method="post" id="registrationForm">
-                              <div class="form-group">
-                                  
-                                  <div class="col-xs-6">
-                                      <label for="first_name"><h4>First name</h4></label>
-                                      <input type="text" class="form-control" name="first_name" id="first_name" placeholder="first name" title="enter your first name if any.">
-                                  </div>
-                              </div>
-                              <div class="form-group">
-                                  
-                                  <div class="col-xs-6">
-                                    <label for="last_name"><h4>Last name</h4></label>
-                                      <input type="text" class="form-control" name="last_name" id="last_name" placeholder="last name" title="enter your last name if any.">
-                                  </div>
-                              </div>
-                  
-                              <div class="form-group">
-                                  
-                                  <div class="col-xs-6">
-                                      <label for="phone"><h4>Phone</h4></label>
-                                      <input type="text" class="form-control" name="phone" id="phone" placeholder="enter phone" title="enter your phone number if any.">
-                                  </div>
-                              </div>
-                  
-                              <div class="form-group">
-                                  <div class="col-xs-6">
-                                     <label for="mobile"><h4>Mobile</h4></label>
-                                      <input type="text" class="form-control" name="mobile" id="mobile" placeholder="enter mobile number" title="enter your mobile number if any.">
-                                  </div>
-                              </div>
-                              <div class="form-group">
-                                  
-                                  <div class="col-xs-6">
-                                      <label for="email"><h4>Email</h4></label>
-                                      <input type="email" class="form-control" name="email" id="email" placeholder="you@email.com" title="enter your email.">
-                                  </div>
-                              </div>
-                              <div class="form-group">
-                                  
-                                  <div class="col-xs-6">
-                                      <label for="email"><h4>Location</h4></label>
-                                      <input type="email" class="form-control" id="location" placeholder="somewhere" title="enter a location">
-                                  </div>
-                              </div>
-                              <div class="form-group">
-                                  
-                                  <div class="col-xs-6">
-                                      <label for="password"><h4>Password</h4></label>
-                                      <input type="password" class="form-control" name="password" id="password" placeholder="password" title="enter your password.">
-                                  </div>
-                              </div>
-                              <div class="form-group">
-                                  
-                                  <div class="col-xs-6">
-                                    <label for="password2"><h4>Verify</h4></label>
-                                      <input type="password" class="form-control" name="password2" id="password2" placeholder="password2" title="enter your password2.">
-                                  </div>
-                              </div>
-                              <div class="form-group">
-                                   <div class="col-xs-12">
-                                        <br>
-                                        <button class="btn btn-lg btn-success pull-right" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Save</button>
-                                        <!--<button class="btn btn-lg" type="reset"><i class="glyphicon glyphicon-repeat"></i> Reset</button>-->
-                                    </div>
-                              </div>
-                        </form>
-                      </div>
                        
-                      </div><!--/tab-pane-->
+                    </div><!--/tab-pane-->
                   </div><!--/tab-content-->
 
 
@@ -523,7 +446,7 @@
       
     <!-- JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     
     <script type="text/javascript" src="bootstrap4/js/bootstrap.min.js"></script>

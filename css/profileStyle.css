@@ -1,3 +1,5 @@
 div.leftCard .fa { color: #4d4d4d; }
 
+form.muskForm input { background-color: #fff; }
+
 .inputRequired:after { content:' *'; color: #e32;}
