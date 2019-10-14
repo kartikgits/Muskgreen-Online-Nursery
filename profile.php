@@ -1,12 +1,12 @@
 <?php
     require 'config.php';
     session_start();
-    // if (!isset($_SESSION['isLoggedIn']) && !$_SESSION['isLoggedIn']===TRUE) {
-    //     header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
-    //     header("Cache-Control: no-cache");
-    //     header("Pragma: no-cache");
-    //     header('Location: index.php');
-    // }
+    if (!isset($_SESSION['isLoggedIn']) && !$_SESSION['isLoggedIn']===TRUE) {
+        header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
+        header("Cache-Control: no-cache");
+        header("Pragma: no-cache");
+        header('Location: index.php');
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -234,8 +234,8 @@
 
                        
                   <div class="panel panel-default">
-                    <div class="panel-heading">User Name</div>
-                    <div class="panel-body">+919999999999</div>
+                    <div class="panel-heading"><?=$_SESSION['userFName']?> <?=$_SESSION['userLName']?></div>
+                    <div class="panel-body"><?=$_SESSION['userPrimeNumber']?></div>
                   </div>
                   
                 <div class="card text-center leftCard">
@@ -263,7 +263,8 @@
                     <div role="tabpanel" class="tab-pane in active" id="personal">
                         <hr>
                         <button class="btn btn-sm" onclick="editPersonal()" title="Enable/Disable Personal Information Form"><i class="fa fa-pencil"></i> Edit</button>
-                          <form class="form muskForm" action="##" method="post" id="personalForm">
+                          <form class="form muskForm" action="" method="post" id="personalForm">
+                              <input type="hidden" name="personalForm" value="true"/>
                               <div class="form-group">
                                   <div class="col-xs-6">
                                       <label for="first_name"><h4>First Name</h4></label><span class="inputRequired"></span>
@@ -283,15 +284,9 @@
                                   </div>
                               </div>
                               <div class="form-group">
-                                  <div class="col-xs-6">
-                                    <label for="email_verify"><h4>Email Again</h4></label><span class="inputRequired"></span>
-                                      <input type="password" class="form-control" name="email_verify" id="email_verify" placeholder="Verify Email" title="Enter Above Email Again" required>
-                                  </div>
-                              </div>
-                              <div class="form-group">
                                    <div class="col-xs-12">
                                         <br>
-                                        <button class="btn btn-lg btn-success" type="button" id="submitPersonal"><i class="fa fa-check-circle-o"></i> Save</button>
+                                        <button class="btn btn-lg btn-success" type="submit" id="submitPersonal"><i class="fa fa-check-circle-o"></i> Save</button>
                                         <button class="btn btn-lg btn-secondary" type="reset" id="resetPersonal"><i class="fa fa-repeat"></i> Reset</button>
                                     </div>
                               </div>
@@ -336,10 +331,12 @@
                             if ($addressFlag===0) {
                                 echo "You do not have any saved addresses. Please add an Address.";
                             }
+                            if ($addressFlag < 5) {
+                                echo "<button class=\"btn btn-sm\" title=\"Click To Add New Address\" id=\"newAddressFormButton\"><i class=\"fa fa-map-marker\"></i> Add Address</button>";
+                            }
                        ?>
-                          <button class="btn btn-sm" title="Click To Add New Address" id="newAddressFormButton"><i class="fa fa-map-marker"></i> Add Address</button>
                           <br/>
-                          <form class="form muskForm" action="##" method="post" id="newAddressForm" >
+                          <form class="form muskForm" action="" method="post" id="newAddressForm" >
                             <input type="hidden" name="newAddressForm" value="true"/>
                               <div class="form-group">
                                   <div class="col-xs-6">
@@ -392,7 +389,7 @@
                               <div class="form-group">
                                    <div class="col-xs-12">
                                         <br>
-                                        <button class="btn btn-lg btn-success" type="button" id="submitNewAddress"><i class="fa fa-check-circle-o"></i> Save</button>
+                                        <button class="btn btn-lg btn-success" type="submit" id="submitNewAddress"><i class="fa fa-check-circle-o"></i> Save</button>
                                         <button class="btn btn-lg btn-secondary" type="reset" id="resetNewAddress"><i class="fa fa-repeat"></i> Reset</button>
                                     </div>
                               </div>
