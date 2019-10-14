@@ -49,3 +49,10 @@ $(document).ready(function(){
 		$("#newAddressForm").toggle(250);
 	});
 });
+
+$("#submitNewAddress").click(function(){
+	//send async request here
+	$.post("formsProcess.php", $("#newAddressForm").serialize(), function(data) {
+        // alert(data);
+    });
+});

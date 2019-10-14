@@ -1,3 +1,13 @@
+<?php
+    require 'config.php';
+    session_start();
+    // if (!isset($_SESSION['isLoggedIn']) && !$_SESSION['isLoggedIn']===TRUE) {
+    //     header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
+    //     header("Cache-Control: no-cache");
+    //     header("Pragma: no-cache");
+    //     header('Location: index.php');
+    // }
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -257,19 +267,19 @@
                               <div class="form-group">
                                   <div class="col-xs-6">
                                       <label for="first_name"><h4>First Name</h4></label><span class="inputRequired"></span>
-                                      <input type="text" class="form-control" name="first_name" id="first_name" placeholder="first name" title="Please Enter Your First Name" required>
+                                      <input type="text" class="form-control" name="first_name" id="first_name" placeholder="first name" value="<?=$_SESSION['userFName']?>" title="Please Enter Your First Name" required>
                                   </div>
                               </div>
                               <div class="form-group">
                                   <div class="col-xs-6">
                                     <label for="last_name"><h4>Last Lame</h4></label>
-                                      <input type="text" class="form-control" name="last_name" id="last_name" placeholder="last name" title="Enter Your Last Name (If Any)">
+                                      <input type="text" class="form-control" name="last_name" id="last_name" placeholder="last name" value="<?=$_SESSION['userLName']?>" title="Enter Your Last Name (If Any)">
                                   </div>
                               </div>
                               <div class="form-group">
                                   <div class="col-xs-6">
                                       <label for="email"><h4>Email</h4></label><span class="inputRequired"></span>
-                                      <input type="email" class="form-control" name="email" id="email" placeholder="you@email.com" title="Please Enter Your Email" required>
+                                      <input type="email" class="form-control" name="email" id="email" placeholder="you@email.com" value="<?=$_SESSION['userEmail']?>" title="Please Enter Your Email" required>
                                   </div>
                               </div>
                               <div class="form-group">
@@ -281,7 +291,7 @@
                               <div class="form-group">
                                    <div class="col-xs-12">
                                         <br>
-                                        <button class="btn btn-lg btn-success" type="submit" id="submitPersonal"><i class="fa fa-check-circle-o"></i> Save</button>
+                                        <button class="btn btn-lg btn-success" type="button" id="submitPersonal"><i class="fa fa-check-circle-o"></i> Save</button>
                                         <button class="btn btn-lg btn-secondary" type="reset" id="resetPersonal"><i class="fa fa-repeat"></i> Reset</button>
                                     </div>
                               </div>
@@ -293,21 +303,44 @@
                      <div role="tabpanel" class="tab-pane fade" id="addresses">
                      <hr>
                        <h5 class="">Saved Addresses: </h5>
+                       <?php
+                            $sql="SELECT * FROM user NATURAL JOIN useraddress where user.uid = '".$_SESSION['userId']."'";
+                            $result=$conn->query($sql);
+                            $addressFlag = 0;
+                            while ($row=$result->fetch_assoc()) {
+                                $addressFlag = $addressFlag + 1;
+                        ?>
                        <div class="card-deck">
                           <div class="card" style="min-width: 10rem;">
                             <div class="card-body">
-                              <h5 class="card-title">Address Name <small class="text-center"><a href="#" onclick="editAddress('addressName')">Edit</a> <a href="#" onclick="deleteAddress('addressName')">Delete</a></small></h5>
-                              <p class="card-text">Name</p>
-                              <p class="card-text"><small class="text-muted">Locality, Near Landmark, Area, City, State - Pincode</small></p>
-                              <p class="card-text"><small class="text-muted">Address Contact: 9990000000</small></p>
+                              <h5 class="card-title"><?=$row['addressName']?> <small class="text-center"><a href="#" onclick="editAddress('<?=$row['addressName']?>')">Edit</a> <a href="#" onclick="deleteAddress('<?=$row['addressName']?>')">Delete</a></small></h5>
+                              <p class="card-text"><small class="text-muted">
+                                <?=$row['locality']?>,
+                                <?php
+                                    if(is_null($row['landmark'])){
+                                        echo " ";
+                                    } else {
+                                        echo " Near ".$row['landmark'].",";
+                                    }
+                                ?>
+                                <?=$row['area']?>, 
+                                <?=$row['city']?>, 
+                                <?=$row['state']?> - <?=$row['pincode']?>
+                                </small></p>
+                              <p class="card-text"><small class="text-muted"><?=$row['phone']?></small></p>
                             </div>
                           </div>
                         </div>
-                       
-                          <div id="userAddress"></div>
+                       <?php 
+                            }
+                            if ($addressFlag===0) {
+                                echo "You do not have any saved addresses. Please add an Address.";
+                            }
+                       ?>
                           <button class="btn btn-sm" title="Click To Add New Address" id="newAddressFormButton"><i class="fa fa-map-marker"></i> Add Address</button>
                           <br/>
-                          <form class="form muskForm" action="##" method="post" id="newAddressForm">
+                          <form class="form muskForm" action="##" method="post" id="newAddressForm" >
+                            <input type="hidden" name="newAddressForm" value="true"/>
                               <div class="form-group">
                                   <div class="col-xs-6">
                                       <label for="address_name"><h4>Address Name</h4></label><span class="inputRequired"></span>
@@ -359,8 +392,8 @@
                               <div class="form-group">
                                    <div class="col-xs-12">
                                         <br>
-                                        <button class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Save</button>
-                                        <button class="btn btn-lg" type="reset"><i class="glyphicon glyphicon-repeat"></i> Reset</button>
+                                        <button class="btn btn-lg btn-success" type="button" id="submitNewAddress"><i class="fa fa-check-circle-o"></i> Save</button>
+                                        <button class="btn btn-lg btn-secondary" type="reset" id="resetNewAddress"><i class="fa fa-repeat"></i> Reset</button>
                                     </div>
                               </div>
                         </form>
