@@ -27,6 +27,37 @@
 			} else {
 			}
 		}
+		else if (isset($_POST['editAddressForm']) && $_POST['editAddressForm']=="true") {
+			$safeAddressName = preg_replace('/[^\w ]/','',$_POST['edit_address_name']);
+			if (isset($_POST['edit_address_contact']) && $_POST['edit_address_contact']!="") {
+				$safeContact = preg_replace('/[^\w]/','',$_POST['edit_address_contact']);
+			}else{
+				$safeContact = $_SESSION['userPrimeNumber'];
+			}
+			$safeLocality = preg_replace('/[^\w, ]/','',$_POST['edit_address_locality']);
+			$safeArea = preg_replace('/[^\w, ]/','',$_POST['edit_address_area']);
+			if (isset($_POST['edit_address_landmark']) && $_POST['edit_address_landmark']!="") {
+				$safeLandmark = preg_replace('/[^\w, ]/','',$_POST['edit_address_landmark']);
+			}
+			$safePincode = preg_replace('/[^\w]/','',$_POST['edit_address_pincode']);
+
+			if (isset($_POST['edit_address_landmark']) && $_POST['edit_address_landmark']!="") {
+				$updateAddressQuery = "update useraddress set locality='".$safeLocality."', pincode='".$safePincode."', area='".$safeArea."', landmark='".$safeLandmark."', phone='".$safeContact."' where uid='".$_SESSION['userId']."' and addressName='".$safeAddressName."'";
+			}else{
+				$updateAddressQuery = "update useraddress set locality='".$safeLocality."', pincode='".$safePincode."', area='".$safeArea."', phone='".$safeContact."' where uid='".$_SESSION['userId']."' and addressName='".$safeAddressName."'";
+			}
+
+			if ($conn->query($updateAddressQuery) === TRUE) {
+			} else {
+			}
+		}
+		else if (isset($_POST['delete_address']) && $_POST['delete_address']=="true") {
+			$safeAddressName = preg_replace('/[^\w ]/','',$_POST['address_name']);
+			$deleteAddressQuery = "delete from useraddress where uid='".$_SESSION['userId']."' and addressName='".$safeAddressName."'";
+			if ($conn->query($deleteAddressQuery) === TRUE) {
+			} else {
+			}
+		}
 		else if (isset($_POST['personalForm']) && $_POST['personalForm']=="true") {
 			$safeFName = preg_replace('/[^\w ]/','',$_POST['first_name']);
 			if (isset($_POST['last_name']) && $_POST['last_name']!="") {

@@ -305,10 +305,10 @@
                             while ($row=$result->fetch_assoc()) {
                                 $addressFlag = $addressFlag + 1;
                         ?>
-                       <div class="card-deck">
+                       <div class="card-deck" id="toEditAddress">
                           <div class="card" style="min-width: 10rem;">
                             <div class="card-body">
-                              <h5 class="card-title"><?=$row['addressName']?> <small class="text-center"><a href="#" onclick="editAddress('<?=$row['addressName']?>', '<?=$row['locality']?>', '<?php if(is_null($row['landmark'])){echo "";}else {echo $row['landmark'];}?>','<?=$row['area']?>', '<?=$row['city']?>', '<?=$row['state']?>', '<?=$row['pincode']?>', '<?=$row['phone']?>')">Edit</a> <a href="#" onclick="deleteAddress('<?=$row['addressName']?>')">Delete</a></small></h5>
+                              <h5 class="card-title"><?=$row['addressName']?> <small class="text-center"><a href="#" onclick="editAddress('<?=$row['addressName']?>', '<?=$row['locality']?>', '<?php if(is_null($row['landmark'])){echo "";}else {echo $row['landmark'];}?>','<?=$row['area']?>', '<?=$row['city']?>', '<?=$row['state']?>', '<?=$row['pincode']?>', '<?=$row['phone']?>')" data-toggle="modal" data-target="#editAddressModal">Edit</a> <a href="#" onclick="deleteAddress('<?=$row['addressName']?>')" data-toggle="modal" data-target="#deleteAddressModal">Delete</a></small></h5>
                               <p class="card-text"><small class="text-muted">
                                 <?=$row['locality']?>,
                                 <?php
@@ -337,7 +337,7 @@
                        ?>
                           <br/>
                           <form class="form muskForm" action="" method="post" id="newAddressForm" >
-                            <input type="hidden" name="newAddressForm" id="addressAddOrEdit" value="true"/>
+                            <input type="hidden" name="newAddressForm" value="true"/>
                               <div class="form-group">
                                   <div class="col-xs-6">
                                       <label for="address_name"><h4>Address Name</h4></label><span class="inputRequired"></span>
@@ -412,6 +412,52 @@
 
                 </div><!--/col-9-->
             </div><!--/row-->
+
+
+            <!-- The EditAddress Modal -->
+              <div class="modal fade" id="editAddressModal">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                  
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                      <h4 class="modal-title">Edit Address</h4>
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    
+                    <!-- Modal body -->
+                    <div class="modal-body" id="editAddressBox">
+                    </div>
+                    
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+                    
+                  </div>
+                </div>
+              </div>
+
+              <!-- The DeleteAddress Modal -->
+                <div class="modal fade" id="deleteAddressModal" tabindex="-1" role="dialog" aria-labelledby="deleteAddressTitle" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="deleteAddressTitle">Delete Address</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body" id="deleteAddressModalBody">
+                        Are you sure that you want delete this address?
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">No</button>
+                        <button type="button" class="btn btn-danger" id="deleteAddressConfirm">Delete</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
 
         <!--Footer-->
     <footer class="footer">
