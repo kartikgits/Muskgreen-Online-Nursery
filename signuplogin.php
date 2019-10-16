@@ -71,6 +71,7 @@
       body {
         margin: 0;
         padding: 0;
+		background: -webkit-linear-gradient(90deg, #0700b8 0%, #00ff88 100%);
         background: linear-gradient(90deg, #0700b8 0%, #00ff88 100%);
       }
 
