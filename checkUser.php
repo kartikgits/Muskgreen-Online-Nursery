@@ -23,6 +23,11 @@
 		$_SESSION['userLName']=$row['lname'];
 		$_SESSION['userPrimeNumber']=$row['primenumber'];
 		$_SESSION['userEmail']=$row['email'];
+
+		$getUserCart="select count(proid) from usercart where uid='".$safeUserId."'";
+		$result=$conn->query($getUserCart);
+		$row=$result->fetch_assoc();
+		$_SESSION['cartCount']=$row['count(proid)'];
 	}
 	$conn->close();
 ?>

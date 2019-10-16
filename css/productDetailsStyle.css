@@ -182,17 +182,13 @@
 }
 
 .cart-btn {
-  display: inline-block;
-  background-color: #7DC855;
-  border-radius: 6px;
   font-size: 16px;
   color: #FFFFFF;
-  text-decoration: none;
   padding: 12px 30px;
   transition: all .5s;
 }
 .cart-btn:hover {
-  background-color: #64af3d;
+  color: #FFFFFF;
 }
 
 /* Responsive */

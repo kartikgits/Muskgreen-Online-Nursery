@@ -402,7 +402,38 @@
 
 
                   <div role="tabpanel" class="tab-pane fade" id="orders">
-                    Orders
+                    <div class="panel panel-default panel-order">
+                      <div class="panel-heading">
+                          <strong>My Orders</strong>
+                      </div>
+                      <?php
+                            $sql="SELECT * FROM user NATURAL JOIN useraddress where user.uid = '".$_SESSION['userId']."'";
+                            $result=$conn->query($sql);
+                            while ($row=$result->fetch_assoc()) {
+                        ?>
+                        <div class="panel-body">
+                            <div class="row">
+                              <div class="col-md-2"><img src="https://bootdey.com/img/Content/user_3.jpg" class="media-object img-thumbnail"></div>
+                              <div class="col-md-10">
+                                <div class="row">
+                                  <div class="col-md-12">
+                                    <div class="pull-right"><label class="label label-danger">rejected</label> </div>
+                                    <span><strong>Order name</strong></span> <span class="label label-info">group name</span><br>
+                                    Quantity : 2, cost: $323.13 <br>
+                                  </div>
+                                  <div class="col-md-12">
+                                    order made on: 05/31/2014
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                        <?php
+                            }
+                        ?>
+                        </div>
+                    <div class="panel-footer">Put here some note for example: bootdey si a gallery of free bootstrap snippets</div>
+                    </div>
                   </div><!--/tab-content-->
 
                   <div role="tabpanel" class="tab-pane fade" id="wishlist">

@@ -79,6 +79,23 @@
 				//invalid email format
 			}
 		}
+
+		//ProductDetail page
+		else if(isset($_POST['add_to_cart']) && $_POST['add_to_cart']=="true"){
+			$safeProductId = preg_replace('/[^\w]/','',$_POST['product_id']);
+			$addToCartQuery = "insert into usercart (proid, uid) values ('".$safeProductId."', '".$_SESSION['userId']."')";
+			if ($conn->query($addToCartQuery) === TRUE) {
+			} else {
+			}
+		}
+
+		else if(isset($_POST['delete_from_cart']) && $_POST['delete_from_cart']=="true"){
+			$safeProductId = preg_replace('/[^\w]/','',$_POST['product_id']);
+			$deleteFromCartQuery = "delete from usercart where uid = '".$_SESSION['userId']."' and proid = '".$safeProductId."'";
+			if ($conn->query($deleteFromCartQuery) === TRUE) {
+			} else {
+			}
+		}
 	}
 	$conn->close();
 ?>

@@ -67,15 +67,17 @@
                 if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']===TRUE) {
             ?>
             <a class="topNavItem nav-item py-0" href="#"><span class="fa fa-user topNavItem" title="User Account" aria-hidden="true"> <span><br/>Account</span></span></a>
+            <!-- Cart -->
+            <a class="topNavItem nav-item py-0" href="#"><span class="fa fa-shopping-cart topNavItem" title="Cart" aria-hidden="true"> <span><br/>Cart[<span id="cartCountUserDesktop"><?=$_SESSION['cartCount']?></span>]</span></span></a>
             <?php
                 } else {
             ?>
             <a class="topNavItem nav-item py-0" href="#" onclick="signupLogin()"><span class="fa fa-user topNavItem" title="Login Or Signup" aria-hidden="true"> <span><br/>Login/Signup</span></span></a>
+            <!-- Cart -->
+            <a class="topNavItem nav-item py-0" href="#"><span class="fa fa-shopping-cart topNavItem" title="Cart" aria-hidden="true"> <span><br/>Cart[<span id="cartCountDesktop">0</span>]</span></span></a>
             <?php
                 }
             ?>
-            <!-- Cart -->
-            <a class="topNavItem nav-item py-0" href="#"><span class="fa fa-shopping-cart topNavItem" title="Cart" aria-hidden="true"> <span><br/>Cart[0]</span></span></a>
 
         </nav>
       
@@ -153,16 +155,17 @@
                                 if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']===TRUE) {
                             ?>
                             <a class="mobileNavItem py-0" href="#"><span class="fa fa-user mobileNavItem" type="" title="User Account" aria-hidden="true"></span></a>
+                            <!-- cart -->
+                            <span class="fa fa-shopping-cart py-0 mobileNavItem" title="Cart" aria-hidden="true"><span> [<span id="cartCountUserMobile">0</span>]</span></span>
                             <?php
                                 }else{
                             ?>
                             <a class="mobileNavItem py-0" href="#" onclick="signupLogin()"><span class="fa fa-user mobileNavItem" type="" title="Login or SignUp" aria-hidden="true"></span></a>
+                            <!-- cart -->
+                            <span class="fa fa-shopping-cart py-0 mobileNavItem" title="Cart" aria-hidden="true"><span> [0]</span></span>
                             <?php
                                 }
                             ?>
-            
-                            <!-- cart -->
-                            <span class="fa fa-shopping-cart py-0 mobileNavItem" title="Cart" aria-hidden="true"><span> [0]</span></span>
 
 
                             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -275,7 +278,7 @@
                                     $muskPrice = floatval($row['sp']) - ((floatval($row['discount'])/100) * floatval($row['cp']));
                                 ?>
                               <span class="originalPrice" label="Original Price">&#8377;<?=$row['sp']?></span><span class="discountPrice" label="MuskGreen Price">&#8377;<?=$muskPrice?></span>
-                              <a href="#" class="cart-btn">Add to cart</a>
+                              <button type="button" class="btn btn-warning cart-btn" onclick="addToCart('<?=$row['proid']?>')" id="addToCartButton"><i class="fa fa-cart-plus" aria-hidden="true"></i> Add To Cart</button>
                             </div>
                           </div>
                         </div>
@@ -371,38 +374,6 @@
     <script type="text/javascript" src="js/buttonActions.js"></script>
     <script type="text/javascript" src="js/productDetails.js" charset="utf-8"></script>
     <script type="text/javascript" src="js/liveSearch.js"></script>
-
-	<script type="text/javascript">
-		$(document).ready(function(){
-
-			$(".product_check").click(function(){
-				$("#loader").show();
-
-				var action = 'data';
-				var category = get_filter_text('category');
-
-				$.ajax({
-					url:'action.php',
-					method: 'POST',
-					data:{action:action, category:category},
-					success:function(response){
-						$("#result").html(response);
-						$("#loader").hide();
-						$("#textChange").text("Filtered Products");
-					}
-				});
-			});
-
-			function get_filter_text(text_id){
-				var filterData = [];
-				$('#'+text_id+':checked').each(function(){
-					filterData.push($(this).val());
-				});
-				return filterData;
-			}
-
-		});
-	</script>
 
 </body>
 </html>

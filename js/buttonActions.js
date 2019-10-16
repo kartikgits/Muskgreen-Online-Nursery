@@ -14,6 +14,56 @@ function popitup(url,windowName) {
 }
 
 
+//For ProductDetail page
+$(document).ready(function(){
+	$(".product_check").click(function(){
+		$("#loader").show();
+
+		var action = 'data';
+		var category = get_filter_text('category');
+
+		$.ajax({
+			url:'action.php',
+			method: 'POST',
+			data:{action:action, category:category},
+			success:function(response){
+				$("#result").html(response);
+				$("#loader").hide();
+				$("#textChange").text("Filtered Products");
+			}
+		});
+	});
+
+	function get_filter_text(text_id){
+		var filterData = [];
+		$('#'+text_id+':checked').each(function(){
+			filterData.push($(this).val());
+		});
+		return filterData;
+	}
+});
+
+function updateUserCart() {
+	$.post( "updateSession.php", { update_cart: "true" }, function(result){
+		$("#cartCountUserDesktop").html(result);
+		$("#cartCountUserMobile").html(" "+result);
+	});
+}
+
+function addToCart(productId){
+	var cartButton = document.getElementById("addToCartButton");
+	if (cartButton.innerHTML=="<i class=\"fa fa-cart-plus\" aria-hidden=\"true\"></i> Add To Cart"){
+		$.post( "formsProcess.php", { add_to_cart: "true", product_id: productId } );
+		cartButton.innerHTML="<i class=\"fa fa-cart-plus\" aria-hidden=\"true\"></i> Added to Cart";
+	} else {
+		$.post( "formsProcess.php", { delete_from_cart: "true", product_id: productId } );
+		cartButton.innerHTML="<i class=\"fa fa-cart-plus\" aria-hidden=\"true\"></i> Add To Cart";
+	}
+	updateUserCart();
+}
+
+
+
 //For profile page
 function disablePersonal(){
 	document.getElementById("first_name").disabled = true;
