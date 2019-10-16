@@ -96,6 +96,17 @@
 			} else {
 			}
 		}
+
+		//Cart page
+		else if (isset($_POST['get_cart_subtotal']) && $_POST['get_cart_subtotal']=="true") {
+			$getCartSubtotalQuery ="select distinct(proid),(sp-((discount/100)*cp)) as unitprice, (sp-((discount/100)*cp))*quantity as subprice from productseller natural join usercart where proid in  (select proid from usercart where uid='".$_SESSION['userId']."')";
+			$result=$conn->query($getCartSubtotalQuery);
+			$subTotal=0;
+			while ($row=$result->fetch_assoc()) {
+				$subTotal = $subTotal + $row['subprice'];
+			}
+			echo $subTotal;
+		}
 	}
 	$conn->close();
 ?>

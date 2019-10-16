@@ -264,19 +264,56 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <?php
+                        if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']===TRUE) {
+                            $sql="SELECT * FROM usercart NATURAL JOIN product NATURAL JOIN productseller WHERE uid = '".$_SESSION['userId']."'";
+                            $result=$conn->query($sql);
+                            $itemsCount=0;
+                            while ($row=$result->fetch_assoc()) {
+                                $itemsCount=$itemsCount+1;
+                                $muskPrice = floatval($row['sp']) - ((floatval($row['discount'])/100) * floatval($row['cp']));
+                    ?>
                     <tr>
                       <th scope="row" class="border-0">
                         <div class="p-2">
-                          <img src="https://res.cloudinary.com/mhmd/image/upload/v1556670479/product-1_zrifhn.jpg" alt="" width="70" class="img-fluid rounded shadow-sm">
+                          <img src="<?=$row['proimgurl']?>" alt="" width="70" class="img-fluid rounded shadow-sm"><br/>
                           <div class="ml-3 d-inline-block align-middle">
-                            <h5 class="mb-0"> <a href="#" class="text-dark d-inline-block align-middle">Timex Unisex Originals</a></h5><span class="text-muted font-weight-normal font-italic d-block">Category: Watches</span>
+                            <h5 class="mb-0"> <a href="#" class="text-dark d-inline-block align-middle"><?=$row['proname']?></a></h5><!-- <span class="text-muted font-weight-normal font-italic d-block">category</span> -->
                           </div>
                         </div>
                       </th>
-                      <td class="border-0 align-middle"><strong>$79.00</strong></td>
-                      <td class="border-0 align-middle"><strong>3</strong></td>
+                      <td class="border-0 align-middle"><strong>&#8377;<?=$muskPrice?></strong></td>
+                      <td class="border-0 align-middle">
+                        <strong>
+                        <form>
+                            <select class="form-control" id="quantitySelect">
+                              <option>1</option>
+                              <option>2</option>
+                              <option>3</option>
+                              <option>4</option>
+                              <option>5</option>
+                              <option>6</option>
+                              <option>7</option>
+                              <option>8</option>
+                              <option>9</option>
+                              <option>10</option>
+                            </select>
+                        </form>
+                        </strong>
+                        </td>
                       <td class="border-0 align-middle"><a href="#" class="text-dark"><i class="fa fa-trash" style="color: #4d4d4d;"></i></a></td>
-                    </tr>  
+                    </tr>
+                    <?php
+                            }
+                            if ($itemsCount === 0) {
+                                echo "
+                                <div class=\"d-flex justify-content-center\">
+                                    <i class=\"fa fa-leaf fa-2x\" aria-hidden=\"true\" style=\"color: #4d4d4d;\"></i><br/>
+                                    <h5>Oops.. Nothing Green Here</h5>
+                                </div>";
+                            }
+                        }
+                    ?> 
                 </tbody>
            </table>
           <!-- End -->
@@ -301,8 +338,8 @@
           <div class="p-4">
             <p class="font-italic mb-4">Shipping and additional costs are calculated based on values you have entered.</p>
             <ul class="list-unstyled mb-4">
-              <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Order Subtotal </strong><strong>$390.00</strong></li>
-              <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Shipping and handling</strong><strong>$10.00</strong></li>
+              <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Order Subtotal </strong><strong><span id="cartSubtotal"></span></strong></li>
+              <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Shipping and handling</strong><strong><span id="cartDeliveryCharges"></span></strong></li>
               <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Tax</strong><strong>$0.00</strong></li>
               <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Total</strong>
                 <h5 class="font-weight-bold">$400.00</h5>
