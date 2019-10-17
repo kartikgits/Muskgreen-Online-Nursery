@@ -266,7 +266,7 @@
                 <tbody>
                     <?php
                         if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']===TRUE) {
-                            $sql="SELECT * FROM usercart NATURAL JOIN product NATURAL JOIN productseller WHERE uid = '".$_SESSION['userId']."'";
+                            $sql="SELECT * FROM usercart NATURAL JOIN product NATURAL JOIN productseller WHERE uid = '".$_SESSION['userId']."' ORDER BY proname";
                             $result=$conn->query($sql);
                             $itemsCount=0;
                             while ($row=$result->fetch_assoc()) {
@@ -285,18 +285,17 @@
                       <td class="border-0 align-middle"><strong>&#8377;<?=$muskPrice?></strong></td>
                       <td class="border-0 align-middle">
                         <strong>
-                        <form>
-                            <select class="form-control" id="quantitySelect">
-                              <option>1</option>
-                              <option>2</option>
-                              <option>3</option>
-                              <option>4</option>
-                              <option>5</option>
-                              <option>6</option>
-                              <option>7</option>
-                              <option>8</option>
-                              <option>9</option>
-                              <option>10</option>
+                        <form style="display: inline-block; max-width: 100px;">
+                            <select class="form-control">
+                            <?php
+                                for ($i=1; $i <= 10; $i++) { 
+                                    if ($i==$row['quantity']) {
+                                        echo "<option value=\"".$i."\" selected>".$i."</option>";
+                                    }else{
+                                        echo "<option value=\"".$i."\">".$i."</option>";
+                                    }
+                                }
+                            ?>
                             </select>
                         </form>
                         </strong>

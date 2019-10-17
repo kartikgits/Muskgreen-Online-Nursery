@@ -32,6 +32,16 @@ $(document).ready(function() {
        flexTable();
    };
 
+   function changeContent(){
+        var opt= document.getElementById('test').options[0];
+        opt.value =  'box';
+        opt.text = 'box';
+   }
+
+   function updateQuantities() {
+      $.post("formsProcess.php", {update_quantity})
+   }
+
    function getCartVariables(){
       $.post( "formsProcess.php", { get_cart_subtotal: "true" }, function(result){
          var subTotal=+parseFloat(result).toFixed(2);
