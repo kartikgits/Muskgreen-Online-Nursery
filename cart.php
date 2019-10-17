@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Products</title>
+	<title>Cart - MuskGreen | India's Latest Digital Nursery and Organic Products store</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -38,8 +38,6 @@
 
 	<!-- Latest compiled JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
-    <title>Welcome to MuskGreen - India's Latest Digital Nursery and Organic Products store</title>
 
 </head>
 
@@ -237,7 +235,7 @@
 <!-- Main Content Starts -->
 <div class="px-4 px-lg-0">
   <div class="container text-white py-5 text-center">
-    <h4>Your Cart</h4>
+    <h4>Your MuskGreen Cart</h4>
   </div>
 
   <div class="pb-5">
@@ -286,9 +284,9 @@
                       <td class="border-0 align-middle">
                         <strong>
                         <form style="display: inline-block; max-width: 100px;">
-                            <select class="form-control">
+                            <select class="form-control" onchange="triggerQuantityChange('<?=$row['proid']?>', this)">
                             <?php
-                                for ($i=1; $i <= 10; $i++) { 
+                                for ($i=1; $i <= 10; $i++) {
                                     if ($i==$row['quantity']) {
                                         echo "<option value=\"".$i."\" selected>".$i."</option>";
                                     }else{
@@ -300,7 +298,7 @@
                         </form>
                         </strong>
                         </td>
-                      <td class="border-0 align-middle"><a href="#" class="text-dark"><i class="fa fa-trash" style="color: #4d4d4d;"></i></a></td>
+                      <td class="border-0 align-middle"><a href="#" onclick="deleteProduct('<?=$row['proid']?>')" class="text-dark"><i class="fa fa-trash" style="color: #4d4d4d;"></i></a></td>
                     </tr>
                     <?php
                             }
@@ -343,7 +341,19 @@
               <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Total</strong>
                 <h5 class="font-weight-bold"><span id="totalCartCharges"></span></h5>
               </li>
-            </ul><a href="#" class="btn btn-dark rounded-pill py-2 btn-block">Proceed to Checkout</a>
+            </ul>
+            <?php
+                if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']===TRUE) {
+                    if ($_SESSION['cartCount']==0) {
+                        //nothing in cart
+                        echo "<a href=\"#\" class=\"btn btn-secondary rounded-pill py-2 btn-block\">Proceed to Checkout</a>";
+                    }else{
+                        echo "<a href=\"checkout.php\" class=\"btn btn-dark rounded-pill py-2 btn-block\">Proceed to Checkout</a>";
+                    }
+                }else {
+                    echo "<a href=\"#\" class=\"btn btn-secondary rounded-pill py-2 btn-block\" onclick=\"signupLogin()\">Proceed to Checkout</a>";
+                }
+            ?>
           </div>
         </div>
       </div>

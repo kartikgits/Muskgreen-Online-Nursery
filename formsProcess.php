@@ -99,13 +99,34 @@
 
 		//Cart page
 		else if (isset($_POST['get_cart_subtotal']) && $_POST['get_cart_subtotal']=="true") {
-			$getCartSubtotalQuery ="select distinct(proid),(sp-((discount/100)*cp)) as unitprice, (sp-((discount/100)*cp))*quantity as subprice from productseller natural join usercart where proid in  (select proid from usercart where uid='".$_SESSION['userId']."')";
+			$getCartSubtotalQuery ="select distinct(proid),(sp-((discount/100)*cp)) as unitprice, (sp-((discount/100)*cp))*quantity as subprice from productseller natural join usercart where proid in  (select proid from usercart where uid='".$_SESSION['userId']."') group by proid";
 			$result=$conn->query($getCartSubtotalQuery);
 			$subTotal=0;
 			while ($row=$result->fetch_assoc()) {
 				$subTotal = $subTotal + $row['subprice'];
 			}
 			echo $subTotal;
+		}
+
+		else if (isset($_POST['quantity_change']) && $_POST['quantity_change']=="true") {
+			$safeProductId = preg_replace('/[^\w]/','',$_POST['product_id']);
+			$safeQuantity = intval($_POST['selected_quantity']);
+			$changeQuantityQuery="update usercart set quantity=".$safeQuantity." where uid = '".$_SESSION['userId']."' and proid = '".$safeProductId."'";
+			if ($conn->query($changeQuantityQuery) === TRUE) {
+			} else {
+			}
+		}
+
+		else if (isset($_POST['delete_cart_product']) && $_POST['delete_cart_product']=="true") {
+			$safeProductId = preg_replace('/[^\w]/','',$_POST['product_id']);
+			$changeQuantityQuery="delete from usercart where uid = '".$_SESSION['userId']."' and proid = '".$safeProductId."'";
+			if ($conn->query($changeQuantityQuery) === TRUE) {
+			} else {
+			}
+			$updateFromCartQuery = "select count(proid) from usercart where uid = '".$_SESSION['userId']."'";
+			$result=$conn->query($updateFromCartQuery);
+			$row=$result->fetch_assoc();
+			$_SESSION['cartCount']=$row['count(proid)'];
 		}
 	}
 	$conn->close();
