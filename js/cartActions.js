@@ -34,14 +34,18 @@ $(document).ready(function() {
 
    function getCartVariables(){
       $.post( "formsProcess.php", { get_cart_subtotal: "true" }, function(result){
-         var subTotal=parseInt(result, 10);
+         var subTotal=+parseFloat(result).toFixed(2);
+         var total=0;
          if (subTotal<=599) {
             $("#cartSubtotal").html("&#8377;"+result);
-            $("#cartDeliveryCharges").html("&#8377;"+40);
+            $("#cartDeliveryCharges").html("&#8377;"+40.00);
+            total=subTotal+40.0;
          }else{
             $("#cartSubtotal").html("&#8377;"+result);
-            $("#cartDeliveryCharges").html("&#8377;"+0);
+            $("#cartDeliveryCharges").html("<span style=\"color: #509534;\">FREE</span>");
+            total=subTotal;
          }
+         $('#totalCartCharges').html("&#8377;"+total);
       });
    }
    getCartVariables();
