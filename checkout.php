@@ -64,6 +64,10 @@
 		  background-color: #ffdddd;
 		}
 
+		form.muskForm input { background-color: #fff; }
+
+		.inputRequired:after { content:' *'; color: #e32;}
+
 		/* Hide all steps by default: */
 		.tab {
 		  display: none;
@@ -119,7 +123,7 @@
 
 </head>
 <body>
-	<form id="regForm" action="">
+	<div id="regForm">
 	  <h1>MuskGreen Checkout</h1>
 	  <!-- Circles which indicates the steps of the form: -->
 	  <div style="text-align:center;margin-top:40px;">
@@ -171,7 +175,7 @@
 		  		<br/>
 		  		<div class="text-center"><h4>OR</h4></div>
 		  		<h5>Add An Address:
-		  			<button type="button" class="btn btn-sm" title="Click To Add New Address" id="newAddressFormButton" data-toggle="modal" data-target="#addAddressModal" onclick="addAddress()"><i class="fa fa-map-marker"></i> Add Address</button>
+		  			<button type="button" class="btn btn-sm" title="Click To Add New Address" id="newAddressFormButton" data-toggle="modal" data-target="#addAddressModal" onclick="addUserAddress()"><i class="fa fa-map-marker"></i> Add Address</button>
 		  		</h5>
 		  <?php
 		    }
@@ -198,7 +202,7 @@
 	      <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
 	    </div>
 	  </div>
-	</form>
+	</div>
 
 	<!-- The AddAddress Modal -->
       <div class="modal fade" id="addAddressModal">
