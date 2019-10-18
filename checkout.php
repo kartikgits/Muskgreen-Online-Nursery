@@ -145,7 +145,7 @@
 		  ?>
                   <div class="card" style="min-width: 10rem;">
                     <div class="card-body">
-                      <h5 class="card-title"><?=$row['addressName']?> <small class="text-center"><a href="profile.php">Edit</a></small><input type="radio" value="value1" name="addressSelect" style="width: 10%;"></h5>
+                      <h5 class="card-title"><?=$row['addressName']?> <small class="text-center"><a href="#" onclick="editUserAddress('<?=$row['addressName']?>', '<?=$row['locality']?>', '<?php if(is_null($row['landmark'])){echo "";}else {echo $row['landmark'];}?>','<?=$row['area']?>', '<?=$row['city']?>', '<?=$row['state']?>', '<?=$row['pincode']?>', '<?=$row['phone']?>')" data-toggle="modal" data-target="#editAddressModal">Edit</a></small><input type="radio" value="value1" name="addressSelect" style="width: 10%;"></h5>
                       <p class="card-text"><small class="text-muted">
                         <?=$row['locality']?>,
                         <?php
@@ -240,7 +240,7 @@
 	        </div>
 	        
 	        <!-- Modal body -->
-	        <div class="modal-body" id="editAddressBox">
+	        <div class="modal-body" id="editUserAddressBox">
 	        </div>
 	        
 	        <!-- Modal footer -->
