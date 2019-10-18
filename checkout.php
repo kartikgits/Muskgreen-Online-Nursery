@@ -110,6 +110,14 @@
 		.step.finish {
 		  background-color: #4CAF50;
 		}
+
+		/*Payment select styles*/
+		.paymentLabelSelected {
+			box-shadow: 0px 0px 21px 2px rgba(80,149,52,0.79);
+			-webkit-box-shadow: 0px 0px 21px 2px rgba(80,149,52,0.79);
+			-moz-box-shadow: 0px 0px 21px 2px rgba(80,149,52,0.79);
+		}
+
 	</style>
 
     <!-- jQuery library -->
@@ -129,8 +137,6 @@
 	  <div style="text-align:center;margin-top:40px;">
 	    <span class="step"></span>
 	    <span class="step"></span>
-	    <span class="step"></span>
-	    <span class="step"></span>
 	  </div>
 	  <!-- One "tab" for each step in the form: -->
 	  <div class="tab"><h5>Select An Address:</h5>
@@ -145,7 +151,7 @@
 		  ?>
                   <div class="card" style="min-width: 10rem;">
                     <div class="card-body">
-                      <h5 class="card-title"><?=$row['addressName']?> <small class="text-center"><a href="#" onclick="editUserAddress('<?=$row['addressName']?>', '<?=$row['locality']?>', '<?php if(is_null($row['landmark'])){echo "";}else {echo $row['landmark'];}?>','<?=$row['area']?>', '<?=$row['city']?>', '<?=$row['state']?>', '<?=$row['pincode']?>', '<?=$row['phone']?>')" data-toggle="modal" data-target="#editAddressModal">Edit</a></small><input type="radio" value="value1" name="addressSelect" style="width: 10%;"></h5>
+                      <h5 class="card-title"><?=$row['addressName']?> <small class="text-center"><a href="#" onclick="editUserAddress('<?=$row['addressName']?>', '<?=$row['locality']?>', '<?php if(is_null($row['landmark'])){echo "";}else {echo $row['landmark'];}?>','<?=$row['area']?>', '<?=$row['city']?>', '<?=$row['state']?>', '<?=$row['pincode']?>', '<?=$row['phone']?>')" data-toggle="modal" data-target="#editAddressModal">Edit</a></small><input type="radio" value="<?=$row['addressName']?>" name="addressSelect" id="addressSelectId" style="width: 10%;"></h5>
                       <p class="card-text"><small class="text-muted">
                         <?=$row['locality']?>,
                         <?php
@@ -183,19 +189,21 @@
 	  </div>
 	  <?php
 	  ?>
-	  <div class="tab">Contact Info:
-	    <p><input placeholder="E-mail..." oninput="this.className = ''" name="email"></p>
-	    <p><input placeholder="Phone..." oninput="this.className = ''" name="phone"></p>
+	  <div class="tab"><h5>Select Payment Method:</h5>
+	    <label class="card text-white bg-primary mb-4 paymentLabel" id="paymentMethodOnlineId" style="min-width: 10rem; max-width: 18rem;">
+		  <div class="card-body">
+		    <h5 class="card-title">Pay Online<input type="radio" name="paymentSelect" value="onlinePay" style="width: 10px; visibility:hidden;"></h5>
+		    <p class="card-text">with VISA, MasterCard, Rupay, Paytm and other methods</p>
+		  </div>
+		</label>
+		<label class="card text-white bg-primary mb-4 paymentLabel" id="paymentMethodCodId" style="min-width: 10rem; max-width: 18rem;">
+		  <div class="card-body">
+		    <h5 class="card-title">Pay at Delivery<input type="radio" name="paymentSelect" id="paymentMethodId" value="codPay" style="width: 10px; visibility:hidden;"></h5>
+		    <p class="card-text">with Paytm or Cash</p>
+		  </div>
+		</label>
 	  </div>
-	  <div class="tab">Birthday:
-	    <p><input placeholder="dd" oninput="this.className = ''" name="dd"></p>
-	    <p><input placeholder="mm" oninput="this.className = ''" name="nn"></p>
-	    <p><input placeholder="yyyy" oninput="this.className = ''" name="yyyy"></p>
-	  </div>
-	  <div class="tab">Login Info:
-	    <p><input placeholder="Username..." oninput="this.className = ''" name="uname"></p>
-	    <p><input placeholder="Password..." oninput="this.className = ''" name="pword" type="password"></p>
-	  </div>
+
 	  <div style="overflow:auto;">
 	    <div style="float:right;">
 	      <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
@@ -256,6 +264,34 @@
 		var currentTab = 0; // Current tab is set to be the first tab (0)
 		showTab(currentTab); // Display the current tab
 
+		var deliveryAddress="";
+		var paymentMethod="";
+
+		function setDeliveryAddress(addressOfDelivery) {
+			deliveryAddress=addressOfDelivery;
+		}
+
+		function setPaymentMethod(methodOfPayment) {
+			paymentMethod=methodOfPayment;
+		}
+
+		//for payment method click handle
+		$(".paymentLabel").click(function(){
+			if ($('input[name=paymentSelect]:checked').length > 0) {
+		  		setPaymentMethod($('input[name=paymentSelect]:checked').val());
+		  		if ($('input[name=paymentSelect]:checked').val()=="onlinePay") {
+		  			$("#paymentMethodOnlineId").addClass("paymentLabelSelected");
+		  			$("#paymentMethodCodId").removeClass("paymentLabelSelected");
+		  		}
+		  		else if ($('input[name=paymentSelect]:checked').val()=="codPay") {
+		  			$("#paymentMethodOnlineId").removeClass("paymentLabelSelected");
+		  			$("#paymentMethodCodId").addClass("paymentLabelSelected");
+		  		}
+		  	}else{
+		  		
+		  	}
+		});
+
 		function showTab(n) {
 		  // This function will display the specified tab of the form...
 		  var x = document.getElementsByClassName("tab");
@@ -297,19 +333,25 @@
 
 		function validateForm() {
 		  // This function deals with validation of the form fields
-		  var x, y, i, valid = true;
-		  x = document.getElementsByClassName("tab");
-		  y = x[currentTab].getElementsByTagName("input");
+		  var valid = true;
+		  // var x, y, i, valid = true;
+		  // x = document.getElementsByClassName("tab");
+		  // y = x[currentTab].getElementsByTagName("input");
 		  // A loop that checks every input field in the current tab:
-		  for (i = 0; i < y.length; i++) {
-		    // If a field is empty...
-		    if (y[i].value == "") {
-		      // add an "invalid" class to the field:
-		      y[i].className += " invalid";
-		      // and set the current valid status to false
-		      valid = false;
-		    }
+		  if ($('input[name=addressSelect]:checked').length > 0) {
+		  	setDeliveryAddress($('input[name=addressSelect]:checked').val());
+		  }else{
+		  	valid=false;
 		  }
+		  // for (i = 1; i < y.length; i++) {
+		  //   // If a field is empty...
+		  //   if (y[i].value == "") {
+		  //     // add an "invalid" class to the field:
+		  //     y[i].className += " invalid";
+		  //     // and set the current valid status to false
+		  //     valid = false;
+		  //   }
+		  // }
 		  // If the valid status is true, mark the step as finished and valid:
 		  if (valid) {
 		    document.getElementsByClassName("step")[currentTab].className += " finish";
