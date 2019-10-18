@@ -40,7 +40,7 @@
 		  background-color: #f1f1f1;
 		}
 
-		#regForm {
+		.regForm {
 		  background-color: #ffffff;
 		  margin: 100px auto;
 		  padding: 40px;
@@ -123,7 +123,7 @@
 
 </head>
 <body>
-	<div id="regForm">
+	<div class="regForm">
 	  <h1>MuskGreen Checkout</h1>
 	  <!-- Circles which indicates the steps of the form: -->
 	  <div style="text-align:center;margin-top:40px;">
@@ -287,7 +287,8 @@
 		  // if you have reached the end of the form...
 		  if (currentTab >= x.length) {
 		    // ... the form gets submitted:
-		    document.getElementById("regForm").submit();
+		    //Call Proceed for payment page here
+		    // document.getElementById("regForm").submit();
 		    return false;
 		  }
 		  // Otherwise, display the correct tab:
