@@ -60,3 +60,148 @@ function submitUserEditedAddress(){
 	    window.location.reload();
 	}
 }
+
+
+
+
+
+
+
+
+
+var currentTab = 0; // Current tab is set to be the first tab (0)
+showTab(currentTab); // Display the current tab
+
+var deliveryAddress=""; //for keeping track of delivery address selected by user
+var paymentMethod=""; //for keeping track of payment method selected by user
+
+//set up delivery address variable
+function setDeliveryAddress(addressOfDelivery) {
+	deliveryAddress = addressOfDelivery.split('_')[0];
+	for (var i = 1; i <= 5; i++) {
+		if (i==addressOfDelivery.split('_')[1]) {
+			$("#addressSelectId"+i).addClass("addressLabelSelected");
+		}else{
+			$("#addressSelectId"+i).removeClass("addressLabelSelected");
+		}
+	}
+}
+
+
+//for delivery address click handle
+$(".addressLabel").click(function(){
+	if ($('input[name=addressSelect]:checked').length > 0) {
+  		setDeliveryAddress($('input[name=addressSelect]:checked').val());
+  	}else{
+  	}
+});
+
+function setPaymentMethod(methodOfPayment) {
+	paymentMethod=methodOfPayment;
+}
+
+//for payment method click handle
+$(".paymentLabel").click(function(){
+	if ($('input[name=paymentSelect]:checked').length > 0) {
+  		document.getElementById("nextBtn").disabled = false;
+  		setPaymentMethod($('input[name=paymentSelect]:checked').val());
+  		if ($('input[name=paymentSelect]:checked').val()=="onlinePay") {
+  			$("#paymentMethodOnlineId").addClass("paymentLabelSelected");
+  			$("#paymentMethodCodId").removeClass("paymentLabelSelected");
+  		}
+  		else if ($('input[name=paymentSelect]:checked').val()=="codPay") {
+  			$("#paymentMethodOnlineId").removeClass("paymentLabelSelected");
+  			$("#paymentMethodCodId").addClass("paymentLabelSelected");
+  		}
+  		document.getElementById("nextBtn").innerHTML = "Review Order";
+  	}else{
+  	}
+});
+
+//Proceed for order/payment
+// if (deliveryAddress!="") {
+// 	if (paymentMethod=="onlinePay") {
+		
+// 	}else if (paymentMethod=="codPay") {
+		
+// 	}
+// }
+
+function showTab(n) {
+  // This function will display the specified tab of the form...
+  var x = document.getElementsByClassName("tab");
+  x[n].style.display = "block";
+  //... and fix the Previous/Next buttons:
+  if (n == 0) {
+    document.getElementById("prevBtn").style.display = "none";
+  } else {
+    document.getElementById("prevBtn").style.display = "inline";
+  }
+  document.getElementById("nextBtn").disabled = false;
+  if (n == (x.length - 1)) {
+    document.getElementById("nextBtn").innerHTML = "Select Payment Method";
+    document.getElementById("nextBtn").disabled = true;
+  } else {
+    document.getElementById("nextBtn").innerHTML = "Next";
+  }
+  //... and run a function that will display the correct step indicator:
+  fixStepIndicator(n)
+}
+
+function nextPrev(n) {
+  // This function will figure out which tab to display
+  var x = document.getElementsByClassName("tab");
+  // Exit the function if any field in the current tab is invalid:
+  if (n == 1 && !validateForm()) return false;
+  // Hide the current tab:
+  x[currentTab].style.display = "none";
+  // Increase or decrease the current tab by 1:
+  currentTab = currentTab + n;
+  // if you have reached the end of the form...
+  if (currentTab >= x.length) {
+    // ... the form gets submitted:
+    //Call Proceed for payment page here
+    // document.getElementById("regForm").submit();
+    return false;
+  }
+  // Otherwise, display the correct tab:
+  showTab(currentTab);
+}
+
+function validateForm() {
+  // This function deals with validation of the form fields
+  var valid = true;
+  // var x, y, i, valid = true;
+  // x = document.getElementsByClassName("tab");
+  // y = x[currentTab].getElementsByTagName("input");
+  // A loop that checks every input field in the current tab:
+  if ($('input[name=addressSelect]:checked').length > 0) {
+  	setDeliveryAddress($('input[name=addressSelect]:checked').val());
+  }else{
+  	valid=false;
+  }
+  // for (i = 1; i < y.length; i++) {
+  //   // If a field is empty...
+  //   if (y[i].value == "") {
+  //     // add an "invalid" class to the field:
+  //     y[i].className += " invalid";
+  //     // and set the current valid status to false
+  //     valid = false;
+  //   }
+  // }
+  // If the valid status is true, mark the step as finished and valid:
+  if (valid) {
+    document.getElementsByClassName("step")[currentTab].className += " finish";
+  }
+  return valid; // return the valid status
+}
+
+function fixStepIndicator(n) {
+  // This function removes the "active" class of all steps...
+  var i, x = document.getElementsByClassName("step");
+  for (i = 0; i < x.length; i++) {
+    x[i].className = x[i].className.replace(" active", "");
+  }
+  //... and adds the "active" class on the current step:
+  x[n].className += " active";
+}

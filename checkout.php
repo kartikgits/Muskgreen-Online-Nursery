@@ -118,6 +118,12 @@
 			-moz-box-shadow: 0px 0px 21px 2px rgba(80,149,52,0.79);
 		}
 
+		.addressLabelSelected {
+			box-shadow: 0px 0px 21px 2px rgba(80,149,52,0.79);
+			-webkit-box-shadow: 0px 0px 21px 2px rgba(80,149,52,0.79);
+			-moz-box-shadow: 0px 0px 21px 2px rgba(80,149,52,0.79);
+		}
+
 	</style>
 
     <!-- jQuery library -->
@@ -149,10 +155,10 @@
 	        	$addressCount=$addressCount+1;
 		        	//show select address and add address
 		  ?>
-                  <div class="card" style="min-width: 10rem;">
+                  <label class="card text-white bg-primary addressLabel" id="addressSelectId<?=$addressCount?>" style="min-width: 16rem; max-width: 16rem; margin-top: 1.7rem;">
                     <div class="card-body">
-                      <h5 class="card-title"><?=$row['addressName']?> <small class="text-center"><a href="#" onclick="editUserAddress('<?=$row['addressName']?>', '<?=$row['locality']?>', '<?php if(is_null($row['landmark'])){echo "";}else {echo $row['landmark'];}?>','<?=$row['area']?>', '<?=$row['city']?>', '<?=$row['state']?>', '<?=$row['pincode']?>', '<?=$row['phone']?>')" data-toggle="modal" data-target="#editAddressModal">Edit</a></small><input type="radio" value="<?=$row['addressName']?>" name="addressSelect" id="addressSelectId" style="width: 10%;"></h5>
-                      <p class="card-text"><small class="text-muted">
+                      <h5 class="card-title"><?=$row['addressName']?> <small class="text-center"><a href="#" onclick="editUserAddress('<?=$row['addressName']?>', '<?=$row['locality']?>', '<?php if(is_null($row['landmark'])){echo "";}else {echo $row['landmark'];}?>','<?=$row['area']?>', '<?=$row['city']?>', '<?=$row['state']?>', '<?=$row['pincode']?>', '<?=$row['phone']?>')" data-toggle="modal" data-target="#editAddressModal" style="color: #fff;">Edit</a></small><input type="radio" value="<?=$row['addressName']?>_<?=$addressCount?>" name="addressSelect" style="width: 10px; visibility: hidden;"></h5>
+                      <p class="card-text"><small class="text-white">
                         <?=$row['locality']?>,
                         <?php
                             if(is_null($row['landmark'])){
@@ -165,9 +171,9 @@
                         <?=$row['city']?>, 
                         <?=$row['state']?> - <?=$row['pincode']?>
                         </small></p>
-                      <p class="card-text"><small class="text-muted"><?=$row['phone']?></small></p>
+                      <p class="card-text"><small class="text-white"><?=$row['phone']?></small></p>
                     </div>
-                  </div>
+                  </label>
 		  <?php
 		        }
 		  ?>
@@ -185,6 +191,7 @@
 		  		</h5>
 		  <?php
 		    }
+		    echo "<div id=\"addressCountDiv\" style=\"display:none;\">".$addressCount."</div>";
 		  ?>
 	  </div>
 	  <?php
@@ -259,116 +266,6 @@
 	      </div>
 	    </div>
 	  </div>
-
-	<script>
-		var currentTab = 0; // Current tab is set to be the first tab (0)
-		showTab(currentTab); // Display the current tab
-
-		var deliveryAddress="";
-		var paymentMethod="";
-
-		function setDeliveryAddress(addressOfDelivery) {
-			deliveryAddress=addressOfDelivery;
-		}
-
-		function setPaymentMethod(methodOfPayment) {
-			paymentMethod=methodOfPayment;
-		}
-
-		//for payment method click handle
-		$(".paymentLabel").click(function(){
-			if ($('input[name=paymentSelect]:checked').length > 0) {
-		  		setPaymentMethod($('input[name=paymentSelect]:checked').val());
-		  		if ($('input[name=paymentSelect]:checked').val()=="onlinePay") {
-		  			$("#paymentMethodOnlineId").addClass("paymentLabelSelected");
-		  			$("#paymentMethodCodId").removeClass("paymentLabelSelected");
-		  		}
-		  		else if ($('input[name=paymentSelect]:checked').val()=="codPay") {
-		  			$("#paymentMethodOnlineId").removeClass("paymentLabelSelected");
-		  			$("#paymentMethodCodId").addClass("paymentLabelSelected");
-		  		}
-		  	}else{
-		  		
-		  	}
-		});
-
-		function showTab(n) {
-		  // This function will display the specified tab of the form...
-		  var x = document.getElementsByClassName("tab");
-		  x[n].style.display = "block";
-		  //... and fix the Previous/Next buttons:
-		  if (n == 0) {
-		    document.getElementById("prevBtn").style.display = "none";
-		  } else {
-		    document.getElementById("prevBtn").style.display = "inline";
-		  }
-		  if (n == (x.length - 1)) {
-		    document.getElementById("nextBtn").innerHTML = "Submit";
-		  } else {
-		    document.getElementById("nextBtn").innerHTML = "Next";
-		  }
-		  //... and run a function that will display the correct step indicator:
-		  fixStepIndicator(n)
-		}
-
-		function nextPrev(n) {
-		  // This function will figure out which tab to display
-		  var x = document.getElementsByClassName("tab");
-		  // Exit the function if any field in the current tab is invalid:
-		  if (n == 1 && !validateForm()) return false;
-		  // Hide the current tab:
-		  x[currentTab].style.display = "none";
-		  // Increase or decrease the current tab by 1:
-		  currentTab = currentTab + n;
-		  // if you have reached the end of the form...
-		  if (currentTab >= x.length) {
-		    // ... the form gets submitted:
-		    //Call Proceed for payment page here
-		    // document.getElementById("regForm").submit();
-		    return false;
-		  }
-		  // Otherwise, display the correct tab:
-		  showTab(currentTab);
-		}
-
-		function validateForm() {
-		  // This function deals with validation of the form fields
-		  var valid = true;
-		  // var x, y, i, valid = true;
-		  // x = document.getElementsByClassName("tab");
-		  // y = x[currentTab].getElementsByTagName("input");
-		  // A loop that checks every input field in the current tab:
-		  if ($('input[name=addressSelect]:checked').length > 0) {
-		  	setDeliveryAddress($('input[name=addressSelect]:checked').val());
-		  }else{
-		  	valid=false;
-		  }
-		  // for (i = 1; i < y.length; i++) {
-		  //   // If a field is empty...
-		  //   if (y[i].value == "") {
-		  //     // add an "invalid" class to the field:
-		  //     y[i].className += " invalid";
-		  //     // and set the current valid status to false
-		  //     valid = false;
-		  //   }
-		  // }
-		  // If the valid status is true, mark the step as finished and valid:
-		  if (valid) {
-		    document.getElementsByClassName("step")[currentTab].className += " finish";
-		  }
-		  return valid; // return the valid status
-		}
-
-		function fixStepIndicator(n) {
-		  // This function removes the "active" class of all steps...
-		  var i, x = document.getElementsByClassName("step");
-		  for (i = 0; i < x.length; i++) {
-		    x[i].className = x[i].className.replace(" active", "");
-		  }
-		  //... and adds the "active" class on the current step:
-		  x[n].className += " active";
-		}
-	</script>
 
 	<script type="text/javascript" src="js/checkOut.js"></script>
 </body>
