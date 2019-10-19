@@ -99,7 +99,7 @@
 
 		//Cart page
 		else if (isset($_POST['get_cart_subtotal']) && $_POST['get_cart_subtotal']=="true") {
-			$getCartSubtotalQuery ="select distinct(proid),(sp-((discount/100)*cp)) as unitprice, (sp-((discount/100)*cp))*quantity as subprice from productseller natural join usercart where proid in  (select proid from usercart where uid='".$_SESSION['userId']."') group by proid";
+			$getCartSubtotalQuery ="select usercart.proid, (sp-((discount/100)*cp))*quantity as subprice from usercart natural join product natural join productseller where usercart.uid='".$_SESSION['userId']."' group by proid";
 			$result=$conn->query($getCartSubtotalQuery);
 			$subTotal=0;
 			while ($row=$result->fetch_assoc()) {

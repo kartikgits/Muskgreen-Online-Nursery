@@ -18,9 +18,9 @@ function validateUserAddressForm(){
 
 function submitUserAddedAddress() {
 	if (validateUserAddressForm()==true) {
-		$.post("formsProcess.php", $("#addAddressForm").serialize(), function(data) {
+		$.post("formsProcess.php", $("#addAddressForm").serialize()).done(function () {
+	    	window.location.reload();
 	    });
-	    window.location.reload();
 	}
 }
 
@@ -138,11 +138,33 @@ function showTab(n) {
     document.getElementById("prevBtn").style.display = "inline";
   }
   document.getElementById("nextBtn").disabled = false;
-  if (n == (x.length - 1)) {
+  if (n == (x.length - 2)) {
     document.getElementById("nextBtn").innerHTML = "Select Payment Method";
     document.getElementById("nextBtn").disabled = true;
+  } else if (n == (x.length - 1)) {
+	  	if (paymentMethod=="onlinePay") {
+	  		document.getElementById("nextBtn").innerHTML = "Proceed for Payment";
+	  		document.getElementById("nextBtn").onclick = function () { //make payment
+	  			//send payment variables to db
+	  			$.post( "orderProcess.php", { order_confirmation: "true" }, function(result){
+
+
+
+	  			});
+	  			//goto paytm payment page
+	  		}
+	  	}else if (paymentMethod=="codPay") {
+	  		document.getElementById("nextBtn").innerHTML = "Place Order";
+	  		document.getElementById("nextBtn").onclick = function () { //place order
+	  			//goto confirm and place order page
+	  			$.post( "orderProcess.php", { order_confirmation: "true", payment_method: "codPay", delivery_address:deliveryAddress}).done(function(){
+	  				//redirect user to order confirmed page
+	  			});
+
+	  		}
+	  	}
   } else {
-    document.getElementById("nextBtn").innerHTML = "Next";
+  		document.getElementById("nextBtn").innerHTML = "Next";
   }
   //... and run a function that will display the correct step indicator:
   fixStepIndicator(n)
@@ -205,3 +227,31 @@ function fixStepIndicator(n) {
   //... and adds the "active" class on the current step:
   x[n].className += " active";
 }
+
+
+//For order review
+function getCartVariables(){
+   $.post( "formsProcess.php", { get_cart_subtotal: "true" }, function(result){
+      var subTotal=+parseFloat(result).toFixed(2);
+      var total=0;
+      if (subTotal < 1) {
+         $("#orderSubtotal").html("Subtotal: &#8377;"+subTotal);
+         $("#orderDeliveryCharges").html("Delivery Charges: &#8377;"+0.00);
+         total=subTotal+0.0;
+      }
+      else if (subTotal<=599) {
+         $("#orderSubtotal").html("Subtotal: &#8377;"+subTotal);
+         $("#orderDeliveryCharges").html("Delivery Charges: &#8377;"+40.00);
+         total=subTotal+40.0;
+      }else{
+         $("#orderSubtotal").html("Subtotal: &#8377;"+subTotal);
+         $("#orderDeliveryCharges").html("Delivery Charges: <span>FREE</span>");
+         total=subTotal;
+      }
+      $('#totalOrderCharges').html("Total Amount : &#8377;"+total);
+   });
+}
+
+$(document).ready(function(){
+  getCartVariables();
+});

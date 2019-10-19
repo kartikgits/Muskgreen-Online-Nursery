@@ -6,6 +6,10 @@
         header("Cache-Control: no-cache");
         header("Pragma: no-cache");
         header('Location: index.php');
+    } else{
+    	if ($_SESSION['cartCount']<1) {
+    		header('Location: index.php');
+    	}
     }
 ?>
 
@@ -24,14 +28,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <style type="text/css">
-        body {
-          background: -webkit-linear-gradient(90deg, #0700b8 0%, #00ff88 100%);
-          background: linear-gradient(90deg, #0700b8 0%, #00ff88 100%);
-          min-height: 100vh;
-        }
-    </style>
-
-    <style type="text/css">
 		* {
 		  box-sizing: border-box;
 		}
@@ -46,6 +42,9 @@
 		  padding: 40px;
 		  width: 70%;
 		  min-width: 300px;
+		  -webkit-box-shadow: 1px 1px 7px 0px rgba(40,99,79,1);
+		  -moz-box-shadow: 1px 1px 7px 0px rgba(40,99,79,1);
+		  box-shadow: 1px 1px 7px 0px rgba(40,99,79,1);
 		}
 
 		h1 {
@@ -111,17 +110,53 @@
 		  background-color: #4CAF50;
 		}
 
-		/*Payment select styles*/
-		.paymentLabelSelected {
-			box-shadow: 0px 0px 21px 2px rgba(80,149,52,0.79);
-			-webkit-box-shadow: 0px 0px 21px 2px rgba(80,149,52,0.79);
-			-moz-box-shadow: 0px 0px 21px 2px rgba(80,149,52,0.79);
+		/*Address & Payment select styles*/
+		.addressLabel {
+			cursor: pointer;
+			border: 0px;
+			background: -webkit-linear-gradient(90deg, #0700b8 0%, #00ff88 100%);
+          	background: linear-gradient(90deg, #0700b8 0%, #00ff88 100%);
+			border-radius: 16px !important;
+		}
+
+		.addressLabel:hover {
+			-webkit-box-shadow: 0px 0px 18px -9px rgba(40,99,79,1);
+			-moz-box-shadow: 0px 0px 18px -9px rgba(40,99,79,1);
+			box-shadow: 0px 0px 18px -9px rgba(40,99,79,1);
 		}
 
 		.addressLabelSelected {
-			box-shadow: 0px 0px 21px 2px rgba(80,149,52,0.79);
-			-webkit-box-shadow: 0px 0px 21px 2px rgba(80,149,52,0.79);
-			-moz-box-shadow: 0px 0px 21px 2px rgba(80,149,52,0.79);
+			-webkit-box-shadow: 0px 0px 10px 2px rgba(40,99,79,1) !important;
+			-moz-box-shadow: 0px 0px 10px 2px rgba(40,99,79,1) !important;
+			box-shadow: 0px 0px 10px 2px rgba(40,99,79,1) !important;
+		}
+
+		.paymentLabel {
+			cursor: pointer;
+			background: -webkit-linear-gradient(90deg, #0700b8 0%, #00ff88 100%);
+          	background: linear-gradient(90deg, #0700b8 0%, #00ff88 100%);
+			border-radius: 16px !important;
+		}
+
+		.paymentLabel:hover {
+			-webkit-box-shadow: 0px 0px 18px -9px rgba(40,99,79,1);
+			-moz-box-shadow: 0px 0px 18px -9px rgba(40,99,79,1);
+			box-shadow: 0px 0px 18px -9px rgba(40,99,79,1);
+		}
+
+		.paymentLabelSelected {
+			-webkit-box-shadow: 0px 0px 10px 2px rgba(40,99,79,1) !important;
+			-moz-box-shadow: 0px 0px 10px 2px rgba(40,99,79,1) !important;
+			box-shadow: 0px 0px 10px 2px rgba(40,99,79,1) !important;
+		}
+
+		.reviewOrder {
+			background: -webkit-linear-gradient(90deg, #0700b8 0%, #00ff88 100%);
+          	background: linear-gradient(90deg, #0700b8 0%, #00ff88 100%);
+          	-webkit-box-shadow: 0px 0px 18px -9px rgba(40,99,79,1);
+			-moz-box-shadow: 0px 0px 18px -9px rgba(40,99,79,1);
+			box-shadow: 0px 0px 18px -9px rgba(40,99,79,1);
+			color: #fff !important;
 		}
 
 	</style>
@@ -140,7 +175,8 @@
 	<div class="regForm">
 	  <h1>MuskGreen Checkout</h1>
 	  <!-- Circles which indicates the steps of the form: -->
-	  <div style="text-align:center;margin-top:40px;">
+	  <div style="text-align:center; margin-top:25px;">
+	    <span class="step"></span>
 	    <span class="step"></span>
 	    <span class="step"></span>
 	  </div>
@@ -209,6 +245,26 @@
 		    <p class="card-text">with Paytm or Cash</p>
 		  </div>
 		</label>
+	  </div>
+
+	  <div class="tab"><h5>Review Order:</h5>
+	  	<div class="card mb-3 reviewOrder" style="max-width: 540px;">
+		  <div class="row no-gutters">
+		    <div class="col-md-4">
+		      <img src="https://via.placeholder.com/150x240" class="card-img" alt="" style="max-width: 180px; max-height: 287px;">
+		    </div>
+		    <div class="col-md-8">
+		      <div class="card-body">
+		        <h5 class="card-title" id="totalOrderCharges"></h5>
+		        <p class="card-text">
+		        	<div id="orderSubtotal"></div>
+		        	<div id="orderDeliveryCharges"></div>
+		        </p>
+		        <p class="card-text"><small class="text-muted" style="color: #fff !important">Your payments are completely secured with MuskGreen. In case of an order failure, we'll fully refund your amount.</small></p>
+		      </div>
+		    </div>
+		  </div>
+		</div>
 	  </div>
 
 	  <div style="overflow:auto;">
