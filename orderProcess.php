@@ -42,8 +42,9 @@
 					        }
 
 					        if ($conn->query($sqlInsertDeliveryAddress) === TRUE) {
+					        	$_SESSION['orderConfirmed']=TRUE;
 			        		}else{
-			        			//error deleting products from cart
+			        			//error fetching delivery address
 			        		}
 
 			        		$deleteProductsFromCart="delete from usercart where uid='".$_SESSION['userId']."'";

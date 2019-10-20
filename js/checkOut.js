@@ -159,6 +159,7 @@ function showTab(n) {
 	  			//goto confirm and place order page
 	  			$.post( "orderProcess.php", { order_confirmation: "true", payment_method: "codPay", delivery_address:deliveryAddress}).done(function(){
 	  				//redirect user to order confirmed page
+            window.location.replace("orderConfirmed.php");
 	  			});
 
 	  		}
