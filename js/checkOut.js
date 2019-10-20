@@ -157,9 +157,12 @@ function showTab(n) {
 	  		document.getElementById("nextBtn").innerHTML = "Place Order";
 	  		document.getElementById("nextBtn").onclick = function () { //place order
 	  			//goto confirm and place order page
-	  			$.post( "orderProcess.php", { order_confirmation: "true", payment_method: "codPay", delivery_address:deliveryAddress}).done(function(){
-	  				//redirect user to order confirmed page
-            window.location.replace("orderConfirmed.php");
+          var userOrderId="";
+	  			$.post( "orderProcess.php", { order_confirmation: "true", payment_method: "codPay", delivery_address:deliveryAddress}, function(result){
+            userOrderId=result;
+          }).done(function(){
+	  				//redirect user to order confirmed page with id orderid as get
+            window.location.replace("orderConfirmed.php?oid="+userOrderId);
 	  			});
 
 	  		}

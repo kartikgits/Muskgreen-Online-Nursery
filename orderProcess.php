@@ -43,6 +43,7 @@
 
 					        if ($conn->query($sqlInsertDeliveryAddress) === TRUE) {
 					        	$_SESSION['orderConfirmed']=TRUE;
+					        	echo $oid;
 			        		}else{
 			        			//error fetching delivery address
 			        		}

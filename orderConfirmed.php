@@ -1,18 +1,21 @@
 <?php
     require 'config.php';
     session_start();
-    if (!isset($_SESSION['isLoggedIn']) && !$_SESSION['isLoggedIn']===TRUE) {
+    if (!isset($_SESSION['isLoggedIn']) && !$_SESSION['isLoggedIn']===TRUE && !isset($_GET['oid'])) {
         header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
         header("Cache-Control: no-cache");
         header("Pragma: no-cache");
         header('Location: index.php');
     } else{
-      // if ($_SESSION['orderConfirmed']===FALSE) {
-      //   //SEND ERROR
-      //   header('Location: index.php');
-      // }else{
-      //   $_SESSION['orderConfirmed']=FALSE;
-      // }
+      if ($_SESSION['orderConfirmed']===FALSE) {
+        //SEND ERROR
+        header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
+        header("Cache-Control: no-cache");
+        header("Pragma: no-cache");
+        header('Location: index.php');
+      }else{
+        $_SESSION['orderConfirmed']=FALSE;
+      }
     }
 ?>
 
@@ -27,134 +30,9 @@
   <link rel="stylesheet" href="bootstrap4/css/bootstrap-grid.min.css" >
   <link rel="stylesheet" href="bootstrap4/css/bootstrap.min.css" >
 
+  <link rel="stylesheet" type="text/css" href="css/orderConfirmationStyle.css">
   <link rel="stylesheet" type="text/css" href="css/footer.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-  <style type="text/css">
-    div.bodyJumbotron {
-      background: -webkit-linear-gradient(90deg, #0700b8 0%, #00ff88 100%);
-      background: linear-gradient(90deg, #0700b8 0%, #00ff88 100%);
-      -webkit-box-shadow: 0px 0px 18px -9px rgba(40,99,79,1);
-      -moz-box-shadow: 0px 0px 18px -9px rgba(40,99,79,1);
-      box-shadow: 0px 0px 18px -9px rgba(40,99,79,1);
-      color: #fff !important;
-    }
-  </style>
-
-
-  <style type="text/css">
-
-    .confirmContainer {
-      display: flex;
-    }
-
-    .checkmark_ok {
-      position: absolute;
-      animation: grow 1.3s cubic-bezier(0.42, 0, 0.275, 1.155) both;
-    }
-    .checkmark_ok:nth-child(1) {
-      width: 12px;
-      height: 12px;
-      left: 12px;
-      top: 16px;
-    }
-    .checkmark_ok:nth-child(2) {
-      width: 18px;
-      height: 18px;
-      left: 168px;
-      top: 84px;
-    }
-    .checkmark_ok:nth-child(3) {
-      width: 10px;
-      height: 10px;
-      left: 32px;
-      top: 162px;
-    }
-    .checkmark_ok:nth-child(4) {
-      width: 20px;
-      height: 20px;
-      left: 82px;
-      top: -12px;
-    }
-    .checkmark_ok:nth-child(5) {
-      width: 14px;
-      height: 14px;
-      left: 125px;
-      top: 162px;
-    }
-    .checkmark_ok:nth-child(6) {
-      width: 10px;
-      height: 10px;
-      left: 16px;
-      top: 16px;
-    }
-    .checkmark_ok:nth-child(1) {
-      animation-delay: 1.7s;
-    }
-    .checkmark_ok:nth-child(2) {
-      animation-delay: 2.1s;
-    }
-    .checkmark_ok:nth-child(3) {
-      animation-delay: 2.4s;
-    }
-    .checkmark_ok:nth-child(4) {
-      animation-delay: 3.1s;
-    }
-    .checkmark_ok:nth-child(5) {
-      animation-delay: 3.7s;
-    }
-    .checkmark_ok:nth-child(6) {
-      animation-delay: 4.5s;
-    }
-
-    .checkmark {
-      position: relative;
-      padding: 8px;
-      animation: checkmark 50.6s cubic-bezier(0.42, 0, 0.275, 1.155) both;
-    }
-
-    .checkmark__check {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      z-index: 10;
-      transform: translate3d(-50%, -50%, 0);
-      fill: #fff;
-    }
-
-    .checkmark__back {
-      animation: rotate 15s linear both infinite;
-    }
-
-    @keyframes rotate {
-      0% {
-        transform: rotate(0deg);
-      }
-      100% {
-        transform: rotate(360deg);
-      }
-    }
-    @keyframes grow {
-      0%, 100% {
-        transform: scale(0);
-      }
-      50% {
-        transform: scale(1);
-      }
-    }
-
-    @keyframes checkmark {
-      0%, 100% {
-        opacity: 0;
-        transform: scale(0);
-      }
-      10%, 50%, 90% {
-        opacity: 1;
-        transform: scale(1);
-      }
-    }
-
-  </style>
 
   <!-- jQuery library -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -215,10 +93,60 @@
   <p class="lead">Your green order will be shipped soon.</p>
   <hr>
   <h5>Products in Order</h5>
+  <div class="row">
+    <div class="col-lg-12 p-5 bg-white rounded shadow-sm mb-5">
+
+      <!-- Ordered products table -->
+        <table class="table table-bordered table-striped table-responsive-stack"  id="tableOne">
+            <thead class="productTableHeader d-none d-md-block">
+                <tr>
+                  <th scope="col" class="border-0 productTableHeader">
+                    <div class="p-2 px-3 text-uppercase">Product</div>
+                  </th>
+                  <th scope="col" class="border-0 productTableHeader">
+                    <div class="py-2 text-uppercase">Quantity</div>
+                  </th>
+                  <th scope="col" class="border-0 productTableHeader">
+                    <div class="py-2 text-uppercase">Price</div>
+                  </th>
+                  <th scope="col" class="border-0 productTableHeader">
+                    <div class="py-2 text-uppercase">Status</div>
+                  </th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                    $safeOrderId = preg_replace('/[^\w]/','',$_GET['oid']);
+                    $sql="SELECT proid, quantity, totalPrice, orderstatus, proname, proimgurl FROM productsinorder NATURAL JOIN product WHERE oid = '".$safeOrderId."' ORDER BY proname";
+                    $result=$conn->query($sql);
+                    while ($row=$result->fetch_assoc()) {
+                ?>
+                <tr>
+                  <th scope="row" class="border-0">
+                    <div class="p-2">
+                      <img src="<?=$row['proimgurl']?>" alt="" width="70" class="img-fluid rounded shadow-sm"><br/>
+                      <div class="d-inline-block align-middle">
+                        <h6 class="mb-0"> <a href="#" class="text-dark d-inline-block align-middle"><?=$row['proname']?></a></h6><!-- <span class="text-muted font-weight-normal font-italic d-block">category</span> -->
+                      </div>
+                    </div>
+                  </th>
+                  <td class="border-0 align-middle"><strong><?=$row['quantity']?></strong></td>
+                  <td class="border-0 align-middle"><strong>&#8377;<?=$row['totalPrice']?></strong></td>
+                  <td class="border-0 align-middle"><strong><?=$row['orderstatus']?></strong></td>
+                </tr>
+                <?php
+                        }
+                ?> 
+            </tbody>
+       </table>
+      <!-- End -->
+    </div>
+      </div>
+
 
   <hr>
   <p>
-    Having trouble? <a href="">Contact us</a>
+    Having trouble? <a href="" style="text-decoration: underline; color: #fff;">Contact us</a>
   </p>
   <p class="lead">
     <a class="btn btn-primary btn-sm" href="index.php" role="button">Continue to homepage</a>
@@ -297,6 +225,7 @@
 
 </footer>
 
+<script type="text/javascript" src="js/orderConfirmation.js"></script>
 
 </body>
 </html>
