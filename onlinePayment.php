@@ -1,10 +1,29 @@
 <?php
 	session_start();
+	header("Pragma: no-cache");
+	header("Cache-Control: no-cache");
+	header("Expires: 0");
+
+	// following files need to be included
+	require_once("PaytmKit/lib/config_paytm.php");
+	require_once("PaytmKit/lib/encdec_paytm.php");
 	require 'config.php';
 
+	$checkSum = "";
+	$paramList = array();
+
+	$ORDER_ID = "";
+	$CUST_ID = "";
+	$INDUSTRY_TYPE_ID = "Retail"; //For testing
+	$CHANNEL_ID = "WEB"; //WEB for website
+	$TXN_AMOUNT = 0.0;
+
+	$chargeableAmount = 0.0;
+
 	if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']===TRUE) {
+
 		if (isset($_POST['order_confirmation']) && $_POST['order_confirmation']=="true" && $_SESSION['cartCount']!=0) {
-			if ($_POST['payment_method']=="codPay") {
+			if ($_POST['payment_method']=="onlinePay") {
 				$sqlIdGen = "insert into orderIdGenerator values()";
 				if ($conn->query($sqlIdGen) === TRUE) {
 					$sqlLastId = ("select last_insert_id() as lid");
@@ -17,7 +36,7 @@
 		        	$oid = "MGO".(string)$uniqueId;
 
 		        	$safeDeliveryAddress = preg_replace('/[^\w,. ]/','',$_POST['delivery_address']);
-		        	$sqlOrder = "insert into productOrder (uid, oid, paymentMethod, addressName) values ('".$_SESSION['userId']."', '".$oid."', 'Cash On Delivery', '".$safeDeliveryAddress."')";
+		        	$sqlOrder = "insert into productOrder (uid, oid, paymentMethod, addressName) values ('".$_SESSION['userId']."', '".$oid."', 'Prepaid', '".$safeDeliveryAddress."')";
 		        	if ($conn->query($sqlOrder)===TRUE) {
 		        		$sqlOrderedProducts = "select usercart.proid, quantity, (sp-((discount/100)*cp))*quantity as subprice from usercart natural join product natural join productseller where usercart.uid='".$_SESSION['userId']."' group by proid";
 		        		$resultOrderedProducts=$conn->query($sqlOrderedProducts);
@@ -30,6 +49,7 @@
 		        				$sqlProductInsert.=", ('".$rowOrderedProducts['proid']."', '".$oid."', ".$rowOrderedProducts['quantity']. ", ".$rowOrderedProducts['subprice'].")";
 		        			}
 		        			$i=$i+1;
+		        			$chargeableAmount = $chargeableAmount + floatval($rowOrderedProducts['subprice']);
 			        	}
 			        	if ($conn->query($sqlProductInsert) === TRUE) {
 			        		//insertion successful
@@ -43,6 +63,13 @@
 
 					        if ($conn->query($sqlInsertDeliveryAddress) === TRUE) {
 					        	$_SESSION['orderConfirmed']=TRUE;
+					        	$ORDER_ID = $oid;
+					        	$CUST_ID = $_SESSION['userId'];
+					        	if ($chargeableAmount <= 599) {
+					        		$chargeableAmount =$chargeableAmount + 40.0;
+					        	}
+					        	$TXN_AMOUNT = number_format((float)$chargeableAmount, 2, '.', '');
+					        	$_SESSION['transactionFlag']=TRUE;
 					        	echo $oid;
 			        		}else{
 			        			//error fetching delivery address
@@ -66,9 +93,52 @@
 					//error generating orderid
 					echo "err";
 				}
+
+				//Proceed for payment
+				if ($ORDER_ID!="" && $CUST_ID===$_SESSION['userId'] && $_SESSION['transactionFlag']===TRUE) {
+					$paramList["MID"] = PAYTM_MERCHANT_MID;
+					$paramList["ORDER_ID"] = $ORDER_ID;
+					$paramList["CUST_ID"] = $CUST_ID;
+					$paramList["INDUSTRY_TYPE_ID"] = $INDUSTRY_TYPE_ID;
+					$paramList["CHANNEL_ID"] = $CHANNEL_ID;
+					$paramList["TXN_AMOUNT"] = $TXN_AMOUNT;
+					$paramList["WEBSITE"] = PAYTM_MERCHANT_WEBSITE;
+					$paramList["CALLBACK_URL"] = "http://localhost:8080/muskgreen/onlinePaymentCheck.php";
+					$paramList["MSISDN"] = $_SESSION['userPrimeNumber']; //Mobile number of customer
+					$paramList["EMAIL"] = $_SESSION['userEmail']; //Email ID of customer
+					// $paramList["VERIFIED_BY"] = "EMAIL"; //
+					// $paramList["IS_USER_VERIFIED"] = "YES"; //
+
+					$checkSum = getChecksumFromArray($paramList,PAYTM_MERCHANT_KEY);
+				}
+
 			}
 		} else{
 			//Error in page calling or cart items
 		}
 	}
 ?>
+
+
+<html>
+<head>
+	<title>MuskGreen | Payment Gateway Redirect</title>
+	<meta name="robots" content="noindex">
+</head>
+<body onload="document.ptform.submit()">
+	<center><h5>Redirecting you to secured payment gateway...</h5></center>
+	<center><h6>Please do not refresh this page!</h6></center>
+		<form method="post" action="<?php echo PAYTM_TXN_URL; ?>" name="ptform">
+		<table border="1">
+			<tbody>
+			<?php
+			foreach($paramList as $name => $value) {
+				echo '<input type="hidden" name="' . $name .'" value="' . $value . '">';
+			}
+			?>
+			<input type="hidden" name="CHECKSUMHASH" value="<?php echo $checkSum ?>">
+			</tbody>
+		</table>
+	</form>
+</body>
+</html>

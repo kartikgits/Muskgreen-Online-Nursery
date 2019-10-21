@@ -101,10 +101,11 @@
 		else if (isset($_POST['get_cart_subtotal']) && $_POST['get_cart_subtotal']=="true") {
 			$getCartSubtotalQuery ="select usercart.proid, (sp-((discount/100)*cp))*quantity as subprice from usercart natural join product natural join productseller where usercart.uid='".$_SESSION['userId']."' group by proid";
 			$result=$conn->query($getCartSubtotalQuery);
-			$subTotal=0;
+			$subTotal=0.0;
 			while ($row=$result->fetch_assoc()) {
-				$subTotal = $subTotal + $row['subprice'];
+				$subTotal = $subTotal + floatval($row['subprice']);
 			}
+			$subTotal = number_format((float)$subTotal, 2, '.', '');
 			echo $subTotal;
 		}
 

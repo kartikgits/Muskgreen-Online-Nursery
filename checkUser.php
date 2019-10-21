@@ -29,6 +29,7 @@
 		$result=$conn->query($getUserCart);
 		$row=$result->fetch_assoc();
 		$_SESSION['cartCount']=$row['count(proid)'];
+		$_SESSION['transactionFlag']=FALSE;
 	}
 	$conn->close();
 ?>

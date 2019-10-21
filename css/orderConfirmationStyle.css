@@ -1,3 +1,7 @@
+hr {
+  background-color: #C8E6C9;
+}
+
 /*For jumbotron*/
 div.bodyJumbotron {
   background: -webkit-linear-gradient(90deg, #0700b8 0%, #00ff88 100%);

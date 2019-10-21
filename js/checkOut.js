@@ -145,13 +145,9 @@ function showTab(n) {
 	  	if (paymentMethod=="onlinePay") {
 	  		document.getElementById("nextBtn").innerHTML = "Proceed for Payment";
 	  		document.getElementById("nextBtn").onclick = function () { //make payment
-	  			//send payment variables to db
-	  			$.post( "orderProcess.php", { order_confirmation: "true" }, function(result){
-
-
-
-	  			});
-	  			//goto paytm payment page
+	  			//set address and goto payment page
+          document.getElementById("user_delivery_address").value = deliveryAddress;
+          document.payOnlineForm.submit();
 	  		}
 	  	}else if (paymentMethod=="codPay") {
 	  		document.getElementById("nextBtn").innerHTML = "Place Order";
@@ -237,7 +233,7 @@ function fixStepIndicator(n) {
 function getCartVariables(){
    $.post( "formsProcess.php", { get_cart_subtotal: "true" }, function(result){
       var subTotal=+parseFloat(result).toFixed(2);
-      var total=0;
+      var total=0.0;
       if (subTotal < 1) {
          $("#orderSubtotal").html("Subtotal: &#8377;"+subTotal);
          $("#orderDeliveryCharges").html("Delivery Charges: &#8377;"+0.00);

@@ -6,7 +6,8 @@
         header("Cache-Control: no-cache");
         header("Pragma: no-cache");
         header('Location: index.php');
-    } else{
+    } 
+    else{
       if ($_SESSION['orderConfirmed']===FALSE) {
         //SEND ERROR
         header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
@@ -23,6 +24,7 @@
 <html>
 <head>
   <title>Order Confirmed | MuskGreen</title>
+  <meta name="robots" content="noindex">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -91,6 +93,28 @@
 
   <p class="lead"><strong>Please check your email for confirmation.</strong></p>
   <p class="lead">Your green order will be shipped soon.</p>
+  
+  <hr>
+
+  <h5>Order Details</h5>
+  <div class="card">
+  <div class="card-body">
+      <p class="text-left font-weight-light" style="color: #4d4d4d;">Order Id: <?=$_GET['oid']?></p>
+  <?php
+    if (isset($_GET['txnid'])) {
+  ?>
+      <p class="text-left font-weight-light text-truncate" style="color: #4d4d4d;">Txn ID: <?=$_GET['txnid']?></p>
+      <p class="text-left font-weight-light" style="color: #4d4d4d;">Payment: Prepaid</p>
+  <?php
+    }else {
+  ?>
+      <p class="text-left font-weight-light" style="color: #4d4d4d;">Payment: Cash on Delivery</p>
+  <?php 
+    }
+  ?>
+  </div>
+  </div>
+
   <hr>
   <h5>Products in Order</h5>
   <div class="row">
@@ -132,7 +156,7 @@
                   </th>
                   <td class="border-0 align-middle"><strong><?=$row['quantity']?></strong></td>
                   <td class="border-0 align-middle"><strong>&#8377;<?=$row['totalPrice']?></strong></td>
-                  <td class="border-0 align-middle"><strong><?=$row['orderstatus']?></strong></td>
+                  <td class="border-0 align-middle"><strong><?=$row['orderstatus']?><i class="fa fa-spinner fa-spin fa-fw"></i></strong></td>
                 </tr>
                 <?php
                         }

@@ -1,6 +1,11 @@
 <?php
+	session_start();
+
+    header("Pragma: no-cache");
+	header("Cache-Control: no-cache");
+	header("Expires: 0");
     require 'config.php';
-    session_start();
+
     if (!isset($_SESSION['isLoggedIn']) && !$_SESSION['isLoggedIn']===TRUE) {
         header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
         header("Cache-Control: no-cache");
@@ -322,6 +327,13 @@
 	      </div>
 	    </div>
 	  </div>
+
+	  <!-- Redirection Form - op -->
+	  <form method="post" name="payOnlineForm" action="onlinePayment.php">
+	  	<input type="hidden" name="order_confirmation" value="true">
+	  	<input type="hidden" name="payment_method" value="onlinePay">
+	  	<input type="hidden" name="delivery_address" value="" id="user_delivery_address">
+	  </form>
 
 	<script type="text/javascript" src="js/checkOut.js"></script>
 </body>
