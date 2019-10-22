@@ -50,16 +50,45 @@ function updateUserCart() {
 	});
 }
 
-function addToCart(productId){
+function updateCart(cartCount) {
+	$("#cartCountDesktop").html(""+cartCount);
+	$("#cartCountMobile").html(" "+cartCount);
+}
+
+function addToCart(productId, logInStatus){
 	var cartButton = document.getElementById("addToCartButton");
-	if (cartButton.innerHTML=="<i class=\"fa fa-cart-plus\" aria-hidden=\"true\"></i> Add To Cart"){
-		$.post( "formsProcess.php", { add_to_cart: "true", product_id: productId } );
-		cartButton.innerHTML="<i class=\"fa fa-cart-plus\" aria-hidden=\"true\"></i> Added to Cart";
-	} else {
-		$.post( "formsProcess.php", { delete_from_cart: "true", product_id: productId } );
-		cartButton.innerHTML="<i class=\"fa fa-cart-plus\" aria-hidden=\"true\"></i> Add To Cart";
+	if (logInStatus=="true") {
+		if (cartButton.innerHTML=="<i class=\"fa fa-cart-plus\" aria-hidden=\"true\"></i> Add To Cart"){
+			$.post( "formsProcess.php", { add_to_cart: "true", product_id: productId } );
+			cartButton.innerHTML="<i class=\"fa fa-cart-plus\" aria-hidden=\"true\"></i> Added to Cart";
+		} else {
+			$.post( "formsProcess.php", { delete_from_cart: "true", product_id: productId } );
+			cartButton.innerHTML="<i class=\"fa fa-cart-plus\" aria-hidden=\"true\"></i> Add To Cart";
+		}
+		updateUserCart();
+	} else{ //set cookie
+		var productsInCart=[];
+		if (typeof $.cookie('cartProductsCookie') === 'undefined'){
+		 //no cookie
+		} else {
+		 //have cookie
+		 productsInCart = JSON.parse($.cookie('cartProductsCookie'));
+		}
+		if (cartButton.innerHTML=="<i class=\"fa fa-cart-plus\" aria-hidden=\"true\"></i> Add To Cart"){
+			productsInCart.push(productId);
+			cartButton.innerHTML="<i class=\"fa fa-cart-plus\" aria-hidden=\"true\"></i> Added to Cart";
+		} else {
+			if (productsInCart.length>0) {
+				var rpIndex = productsInCart.indexOf(productId);
+				if (rpIndex>-1) {
+					productsInCart.splice(rpIndex, 1);
+				}
+			}
+			cartButton.innerHTML="<i class=\"fa fa-cart-plus\" aria-hidden=\"true\"></i> Add To Cart";
+		}
+		$.cookie('cartProductsCookie', JSON.stringify(productsInCart));
+		updateCart(productsInCart.length);
 	}
-	updateUserCart();
 }
 
 

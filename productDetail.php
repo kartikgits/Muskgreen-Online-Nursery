@@ -3,7 +3,15 @@
     session_start();
 
     if (!isset($_GET['proid'])) {
-        header("Location: https://muskgreen.live");
+        header("Location: index.php");
+    }
+
+    $logInStatus="";
+
+    if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']===TRUE) {
+        $logInStatus="true";
+    }else{
+        $logInStatus="false";
     }
 ?>
 
@@ -28,6 +36,9 @@
 
     <!-- jQuery library -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- jQuery Cookie -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 
 	<!-- Popper JS -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
@@ -239,7 +250,6 @@
 
         $result = $conn->query($sql);
         $catresult = $conn->query($catsql);
-
         if($result->num_rows > 0){
             while ($row=$result->fetch_assoc()) {
                 ?>
@@ -278,13 +288,16 @@
                                     $muskPrice = floatval($row['sp']) - ((floatval($row['discount'])/100) * floatval($row['cp']));
                                 ?>
                               <span class="originalPrice" label="Original Price">&#8377;<?=$row['sp']?></span><span class="discountPrice" label="MuskGreen Price">&#8377;<?=$muskPrice?></span>
-                              <button type="button" class="btn btn-warning cart-btn" onclick="addToCart('<?=$row['proid']?>')" id="addToCartButton"><i class="fa fa-cart-plus" aria-hidden="true"></i> Add To Cart</button>
+                              <button type="button" class="btn btn-warning cart-btn" onclick="addToCart('<?=$row['proid']?>', '<?=$logInStatus?>')" id="addToCartButton"><i class="fa fa-cart-plus" aria-hidden="true"></i> Add To Cart</button>
                             </div>
                           </div>
                         </div>
                 </main>
                 <?php
             }
+        } else{
+            $error='That product either does not exist or has been removed.';
+            echo " <script> location.replace(\"error.php?errorMessage=".$error."\");</script>";
         }
     }
 ?>
