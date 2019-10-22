@@ -129,6 +129,30 @@
 			$row=$result->fetch_assoc();
 			$_SESSION['cartCount']=$row['count(proid)'];
 		}
+
+		else if (isset($_POST['cookie_to_cart']) && $_POST['cookie_to_cart']=="true") {
+			$productArray = json_decode($_POST['productsInCart']);
+
+			$sqlInsertProducts = "insert into usercart (proid, uid) values ";
+			$i=0;
+			foreach ($productArray as $productId) {
+				$productId = $conn->real_escape_string($productId);
+				if ($i==0) {
+					$sqlInsertProducts=$sqlInsertProducts."('".$productId."','".$_SESSION['userId']."')";
+				}else{
+					$sqlInsertProducts=$sqlInsertProducts.",('".$productId."','".$_SESSION['userId']."')";
+				}
+				$i=$i+1;
+			}
+			if ($conn->query($sqlInsertProducts) === TRUE) {
+			} else {
+			}
+
+			$updateFromCartQuery = "select count(proid) from usercart where uid = '".$_SESSION['userId']."'";
+			$result=$conn->query($updateFromCartQuery);
+			$row=$result->fetch_assoc();
+			$_SESSION['cartCount']=$row['count(proid)'];
+		}
 	}
 	$conn->close();
 ?>

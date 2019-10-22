@@ -11,4 +11,5 @@
 			echo $_SESSION['cartCount'];
 		}
 	}
+	$conn->close();
 ?>

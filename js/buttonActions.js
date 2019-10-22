@@ -75,7 +75,10 @@ function addToCart(productId, logInStatus){
 		 productsInCart = JSON.parse($.cookie('cartProductsCookie'));
 		}
 		if (cartButton.innerHTML=="<i class=\"fa fa-cart-plus\" aria-hidden=\"true\"></i> Add To Cart"){
-			productsInCart.push(productId);
+			var rpIndex = productsInCart.indexOf(productId);
+			if (rpIndex<0) {
+				productsInCart.push(productId);
+			}
 			cartButton.innerHTML="<i class=\"fa fa-cart-plus\" aria-hidden=\"true\"></i> Added to Cart";
 		} else {
 			if (productsInCart.length>0) {

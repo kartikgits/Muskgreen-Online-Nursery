@@ -3,6 +3,7 @@
   <head>  
     <!-- Below is the initialization snippet for my Firebase project. It will vary for each project -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.2.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.2.0/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.2.0/firebase-firestore.js"></script>
@@ -39,7 +40,27 @@
               success: function(msg){
                 //Redirect user to where he started the login process
                 var urlQuery = getQueryStringValue("userTo");
-                window.location.href = urlQuery;
+
+                //Submit cart's cookie data to database
+                var productsInCart=[];
+                if (typeof $.cookie('cartProductsCookie') === 'undefined'){
+                 //no cookie
+                } else {
+                 //have cookie
+                 productsInCart = JSON.parse($.cookie('cartProductsCookie'));
+                }
+
+                if (productsInCart.length>0) {
+                  $.post("formsProcess.php", {cookie_to_cart: "true", 'productsInCart': JSON.stringify(productsInCart)}, function(result) {
+                      alert(result);
+                  })
+                  .always(function(){
+                    // Redirect user once finished
+                    window.location.href = urlQuery;
+                  });
+                }else{
+                    window.location.href = urlQuery;
+                }
               }
             });
           } else {
