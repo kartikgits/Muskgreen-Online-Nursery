@@ -29,7 +29,6 @@ $isValidChecksum = verifychecksum_e($paramList, PAYTM_MERCHANT_KEY, $paytmChecks
 
 
 if($isValidChecksum == "TRUE") {
-	echo "<b>Checksum matched and following are the transaction details:</b>" . "<br/>";
 	if ($_POST["STATUS"] == "TXN_SUCCESS") {
 		//Process your transaction here as success transaction.
 		//Verify amount & order id received from Payment gateway with your application's order id and amount.
@@ -40,18 +39,22 @@ if($isValidChecksum == "TRUE") {
 			$locationHeader = 'Location: orderConfirmed.php?oid='.$paramList["ORDERID"].'&txnid='.$paramList["TXNID"];
 			header($locationHeader);
 		} else {
+			$error="Location: error.php?errorMessage="."Your transaction was successful but it was a technical error. We will send you a confirmation mail in a while.";
+			header($error);
 		}
 	}
 	else {
 		// echo "<b>Transaction status is failure</b>" . "<br/>";
 		//Payment failed... Move to error page
+		$error="Location: error.php?errorMessage="."Your payment was not successful. Please try again.";
+		header($error);
 	}
-	
 
 }
 else {
-	echo "<center><b>Hmm... Something went wrong. That's all we know. <br/>We'll be checking your transaction.</b></center>";
 	//Process transaction as suspicious.
+	$error="Location: error.php?errorMessage="."Something went wrong. That's all we know.";
+	header($error);
 }
 
 ?>

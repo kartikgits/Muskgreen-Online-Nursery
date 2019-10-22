@@ -1,7 +1,3 @@
-<?php
-
-?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,20 +22,20 @@
                 <div class="card text-center" style="">
                   <img src="extras/errorDesert.jpg" class="card-img-top" alt="...">
                   <div class="card-body">
-                    <p class="card-text lead">Something went wrong or you landed at wrong page.</p>
-                  </div>
-                </div>
-
-                <div class="error-details">
-                    <small>
+                    <p class="card-text lead">
                         <?php
                             if (isset($_GET['errorMessage'])) {
                                 echo $_GET['errorMessage'];
                             } else{
-                                echo "MuskGreen | Buy Plants, Vegetables, Fruits online";
+                                echo "Something went wrong or you landed up at wrong page.";
                             }
                         ?>
-                    </small>
+                    </p>
+                  </div>
+                </div>
+
+                <div class="error-details">
+                    <small>MuskGreen | Buy Plants, Vegetables, Fruits online</small>
                 </div>
                 <div class="error-actions">
                     <a href="index.php" class="btn btn-success btn-lg"><span class="fa fa-home"></span>

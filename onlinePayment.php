@@ -84,14 +84,18 @@
 			        		}
 			        	}else{
 			        		//error inserting products
+			        		$error="Location: error.php?errorMessage="."There was an error processing your order. Please try again.";
+							header($error);
 			        	}
 
 		        	}else{
 		        		//error inserting order
+		        		$error="Location: error.php?errorMessage="."There was an error processing your order. Please try again.";
+		        		header($error);
 		        	}
 				} else {
-					//error generating orderid
-					echo "err";
+					$error="Location: error.php?errorMessage="."There was an error processing your order. Please try again.";
+					header($error);
 				}
 
 				//Proceed for payment
@@ -115,7 +119,11 @@
 			}
 		} else{
 			//Error in page calling or cart items
+			$error="Location: error.php?errorMessage="."Something is wrong! Please try again.";
+			header($error);
 		}
+	} else{
+		header('Location: index.php');
 	}
 ?>
 

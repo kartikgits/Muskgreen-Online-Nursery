@@ -1,6 +1,6 @@
 <?php
 require("assets/sendgridMail/sendgrid-php.php");
-//It will work only on php version 5.6 (works on epizy server)
+//(works on epizy server)
 $email = new \SendGrid\Mail\Mail(); 
 $email->setFrom("test@example.com", "Example User");
 $email->setSubject("Sending with SendGrid is Fun");
