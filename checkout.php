@@ -181,11 +181,44 @@
 	  <h1>MuskGreen Checkout</h1>
 	  <!-- Circles which indicates the steps of the form: -->
 	  <div style="text-align:center; margin-top:25px;">
+	  	<span class="step"></span>
 	    <span class="step"></span>
 	    <span class="step"></span>
 	    <span class="step"></span>
 	  </div>
 	  <!-- One "tab" for each step in the form: -->
+	  <div class="tab"><h5>Profile Information:</h5>
+	  	<button class="btn btn-sm" onclick="editPersonal()" title="Enable/Disable Personal Information Form"><i class="fa fa-pencil"></i> Edit</button>
+	      <form class="form muskForm" action="" method="post" id="personalForm">
+	          <input type="hidden" name="personalForm" value="true"/>
+	          <div class="form-group">
+	              <div class="col-xs-6">
+	                  <label for="first_name"><h4>First Name</h4></label><span class="inputRequired"></span>
+	                  <input type="text" class="form-control" name="first_name" id="first_name" placeholder="first name" value="<?=$_SESSION['userFName']?>" title="Please Enter Your First Name" required>
+	              </div>
+	          </div>
+	          <div class="form-group">
+	              <div class="col-xs-6">
+	                <label for="last_name"><h4>Last Lame</h4></label>
+	                  <input type="text" class="form-control" name="last_name" id="last_name" placeholder="last name" value="<?=$_SESSION['userLName']?>" title="Enter Your Last Name (If Any)">
+	              </div>
+	          </div>
+	          <div class="form-group">
+	              <div class="col-xs-6">
+	                  <label for="email"><h4>Email</h4></label><span class="inputRequired"></span>
+	                  <input type="email" class="form-control" name="email" id="email" placeholder="you@email.com" value="<?=$_SESSION['userEmail']?>" title="Please Enter Your Email" required>
+	              </div>
+	          </div>
+	          <div class="form-group">
+	               <div class="col-xs-12">
+	                    <br>
+	                    <button class="btn btn-lg btn-success" type="button" id="submitPersonal"><i class="fa fa-check-circle-o"></i> Save</button>
+	                    <button class="btn btn-lg btn-secondary" type="reset" id="resetPersonal"><i class="fa fa-repeat"></i> Reset</button>
+	                </div>
+	          </div>
+	    	</form>
+	  </div>
+
 	  <div class="tab"><h5>Select An Address:</h5>
 		  <div class="card-deck" id="toEditAddress">
 		  <?php

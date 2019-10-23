@@ -67,4 +67,32 @@ $(document).ready(function() {
    };
 
    getCartVariables();
+
+   function getNonLoggedCart() {
+      var rslt="";
+      var productsInCart=[];
+      if (typeof $.cookie('cartProductsCookie') === 'undefined'){
+       //no cookie
+       // set empty cart
+       rslt="";
+       document.getElementById("nonLoggedUserCart").innerHTML = rslt;
+      } else {
+       //have cookie
+       productsInCart = JSON.parse($.cookie('cartProductsCookie'));
+       if (productsInCart.length>0) {
+         $.post("formsProcess.php", {cookie_get_cart: "true", 'productsGetCart': JSON.stringify(productsInCart)}, function(result){
+            rslt=result;
+         })
+         .done(function(){
+           // update div box
+           document.getElementById("nonLoggedUserCart").innerHTML = rslt;
+         });
+       } else{
+         rslt="";
+         document.getElementById("nonLoggedUserCart").innerHTML = rslt;
+       }
+      }
+   }
+
+   getNonLoggedCart();
 });

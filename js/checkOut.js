@@ -66,7 +66,53 @@ function submitUserEditedAddress(){
 
 
 
+//function for email validation
+function isEmail(email) {
+  var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+  return regex.test(email);
+}
 
+function disablePersonal(){
+  document.getElementById("first_name").disabled = true;
+  document.getElementById("last_name").disabled = true;
+  document.getElementById("email").disabled = true;
+  document.getElementById("submitPersonal").disabled = true;
+  document.getElementById("resetPersonal").disabled = true;
+}
+
+function editPersonal() {
+  if (document.getElementById("first_name").disabled === true) {
+    document.getElementById("first_name").disabled = false;
+    document.getElementById("last_name").disabled = false;
+    document.getElementById("email").disabled = false;
+    document.getElementById("submitPersonal").disabled = false;
+    document.getElementById("resetPersonal").disabled = false;
+  } else {
+    document.getElementById("first_name").disabled = true;
+    document.getElementById("last_name").disabled = true;
+    document.getElementById("email").disabled = true;
+    document.getElementById("submitPersonal").disabled = true;
+    document.getElementById("resetPersonal").disabled = true;
+  }
+}
+
+function validatePersonalForm(){
+    var pfn = $('#first_name').val();
+    var pe = $('#email').val();
+    if (!$.trim(pfn) && !$.trim(pe) && !validateEmail(pe)) {
+        return false;
+    } else {
+      return true; 
+    }
+}
+
+$("#submitPersonal").click(function(){
+  if (validatePersonalForm()) {
+    $.post("formsProcess.php", $("#personalForm").serialize()).done(function(){
+      disablePersonal();
+    });
+  }
+});
 
 
 var currentTab = 0; // Current tab is set to be the first tab (0)
@@ -197,10 +243,21 @@ function validateForm() {
   // x = document.getElementsByClassName("tab");
   // y = x[currentTab].getElementsByTagName("input");
   // A loop that checks every input field in the current tab:
-  if ($('input[name=addressSelect]:checked').length > 0) {
-  	setDeliveryAddress($('input[name=addressSelect]:checked').val());
-  }else{
-  	valid=false;
+
+  if (currentTab === 0) {
+    if (document.getElementById("first_name").value=="User" || document.getElementById("first_name").value=="user" || document.getElementById("first_name").value=="") {
+      valid=false;
+    }
+
+    if (document.getElementById("email").value=="" || !isEmail(document.getElementById("email").value)) {
+      valid=false;
+    }
+  } else{
+    if ($('input[name=addressSelect]:checked').length > 0) {
+      setDeliveryAddress($('input[name=addressSelect]:checked').val());
+    }else{
+      valid=false;
+    }
   }
   // for (i = 1; i < y.length; i++) {
   //   // If a field is empty...
@@ -254,4 +311,5 @@ function getCartVariables(){
 
 $(document).ready(function(){
   getCartVariables();
+  disablePersonal();
 });

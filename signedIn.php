@@ -51,9 +51,7 @@
                 }
 
                 if (productsInCart.length>0) {
-                  $.post("formsProcess.php", {cookie_to_cart: "true", 'productsInCart': JSON.stringify(productsInCart)}, function(result) {
-                      alert(result);
-                  })
+                  $.post("formsProcess.php", {cookie_to_cart: "true", 'productsInCart': JSON.stringify(productsInCart)})
                   .always(function(){
                     // Redirect user once finished
                     window.location.href = urlQuery;
