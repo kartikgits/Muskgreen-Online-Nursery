@@ -50,7 +50,7 @@
 
 </head>
 
-<body>
+<body onload="setCartCount('<?=$logInStatus?>')">
 
 <!--      Top Brand Bar with Search, Login & Signup and Cart (Includes NavBar button in mobile view)-->
         <nav class="navbar navbar-expand-md sticky-top navbar-light topBar d-none d-md-flex">

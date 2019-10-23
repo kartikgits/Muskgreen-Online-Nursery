@@ -13,6 +13,20 @@ function popitup(url,windowName) {
 	return false;
 }
 
+function setCartCount(logInStatus) {
+	var productsInCart=[];
+	var cartCount=0;
+	if (typeof $.cookie('cartProductsCookie') === 'undefined'){
+	 //no cookie
+	 cartCount = 0;
+	} else {
+	 //have cookie
+	 productsInCart = JSON.parse($.cookie('cartProductsCookie'));
+	 cartCount = productsInCart.length;
+	}
+	updateCart(cartCount);
+}
+
 
 //For ProductDetail page
 $(document).ready(function(){
