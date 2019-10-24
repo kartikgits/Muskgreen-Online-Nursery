@@ -22,67 +22,6 @@
     <link rel="stylesheet" type="text/css" href="css/cartStyle.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <style type="text/css">
-        body {
-          background-color: #ECEFF1;
-          min-height: 100vh;
-        }
-
-        div.cartBox {
-          -webkit-box-shadow: 0px 1px 7px 0px rgba(96,116,71,1);
-          -moz-box-shadow: 0px 1px 7px 0px rgba(96,116,71,1);
-          box-shadow: 0px 1px 7px 0px rgba(96,116,71,1);
-        }
-
-        div.cartProductsBox {
-          padding-top: 1.1rem !important;
-          margin-top: 2.8rem;
-        }
-
-        div.buyBox {
-          -webkit-box-shadow: 0px -1px 12px -4px rgba(96,116,71,1);
-          -moz-box-shadow: 0px -1px 12px -4px rgba(96,116,71,1);
-          box-shadow: 0px -1px 12px -4px rgba(96,116,71,1);
-        }
-
-        div.buyBox > div > a {
-          margin-left: 0.45rem !important;
-        }
-
-        a.checkoutButton {
-          background-color: #F4511E;
-          border: 1px solid #F4511E;
-          transition: 0.3s ease;
-        }
-
-        a.checkoutButton:hover {
-          background-color: #D84315;
-          border: 1px solid #D84315;
-        }
-
-        @media screen and (max-width: 768px) {
-          div.cartProductsBox {
-            padding-top: 1.1rem !important;
-            margin-top: 8rem;
-          }
-
-          div.buyBox {
-            display: none;
-          }
-        }
-
-
-        @media screen and (max-width: 370px) {
-          div.productContainer {
-            width: 120% !important;
-          }
-
-          footer {
-            width: 120% !important;
-          }
-      }
-    </style>
-
     <!-- jQuery library -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
@@ -356,8 +295,8 @@
                           if ($itemsCount === 0) {
                               echo "
                               <div class=\"d-flex justify-content-center\">
-                                  <i class=\"fa fa-leaf fa-2x\" aria-hidden=\"true\" style=\"color: #4d4d4d;\"></i><br/>
-                                  <h5>Oops.. Nothing Green Here</h5>
+                                  <i class=\"fa fa-leaf fa-3x\" aria-hidden=\"true\" style=\"color: #509534;\"></i><br/>
+                                  <h3 style=\"color: #509534;\">Oops.. Nothing Green Here</h3>
                               </div>";
                           }
                     ?> 
@@ -405,7 +344,7 @@
             <div class="input-group mb-4 border rounded-pill p-2">
               <input type="text" placeholder="Apply coupon" aria-describedby="button-addon3" class="form-control border-0 applyCouponText">
               <div class="input-group-append border-0">
-                <button id="button-addon3" type="button" class="btn btn-dark px-4 rounded-pill"><i class="fa fa-gift mr-2"></i>Apply coupon</button>
+                <button id="button-addon3" type="button" class="btn btn-success px-4 rounded-pill"><i class="fa fa-gift mr-2"></i>Apply coupon</button>
               </div>
             </div>
           </div>

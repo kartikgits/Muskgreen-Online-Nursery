@@ -44,7 +44,7 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 
 	<!-- Latest compiled JavaScript -->
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="bootstrap4/js/bootstrap.min.js"></script>
 
     <title>Welcome to MuskGreen - India's Latest Digital Nursery and Organic Products store</title>
 
@@ -378,11 +378,7 @@
     </footer>
 
 <!--  Main Body Ends  -->
-      
-    <!-- JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    
-    <script type="text/javascript" src="bootstrap4/js/bootstrap.min.js"></script>
+
     <script type="text/javascript" src="js/styler.js"></script>
     <script type="text/javascript" src="js/buttonActions.js"></script>
     <script type="text/javascript" src="js/productDetails.js" charset="utf-8"></script>
