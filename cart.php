@@ -24,10 +24,63 @@
 
     <style type="text/css">
         body {
-          background: -webkit-linear-gradient(90deg, #0700b8 0%, #00ff88 100%);
-          background: linear-gradient(90deg, #0700b8 0%, #00ff88 100%);
+          background-color: #ECEFF1;
           min-height: 100vh;
         }
+
+        div.cartBox {
+          -webkit-box-shadow: 0px 1px 7px 0px rgba(96,116,71,1);
+          -moz-box-shadow: 0px 1px 7px 0px rgba(96,116,71,1);
+          box-shadow: 0px 1px 7px 0px rgba(96,116,71,1);
+        }
+
+        div.cartProductsBox {
+          padding-top: 1.1rem !important;
+          margin-top: 2.8rem;
+        }
+
+        div.buyBox {
+          -webkit-box-shadow: 0px -1px 12px -4px rgba(96,116,71,1);
+          -moz-box-shadow: 0px -1px 12px -4px rgba(96,116,71,1);
+          box-shadow: 0px -1px 12px -4px rgba(96,116,71,1);
+        }
+
+        div.buyBox > div > a {
+          margin-left: 0.45rem !important;
+        }
+
+        a.checkoutButton {
+          background-color: #F4511E;
+          border: 1px solid #F4511E;
+          transition: 0.3s ease;
+        }
+
+        a.checkoutButton:hover {
+          background-color: #D84315;
+          border: 1px solid #D84315;
+        }
+
+        @media screen and (max-width: 768px) {
+          div.cartProductsBox {
+            padding-top: 1.1rem !important;
+            margin-top: 8rem;
+          }
+
+          div.buyBox {
+            display: none;
+          }
+        }
+
+
+        @media screen and (max-width: 370px) {
+          div.productContainer {
+            width: 120% !important;
+          }
+
+          footer {
+            width: 120% !important;
+          }
+      }
     </style>
 
     <!-- jQuery library -->
@@ -235,15 +288,10 @@
 
 <!-- Main Content Starts -->
 <div class="px-4 px-lg-0">
-  <div class="container text-white py-5 text-center">
-    <h4>Your MuskGreen Cart</h4>
-  </div>
-
-  <div class="pb-5">
-    <div class="container">
+    <div class="container productContainer">
       <div class="row">
-        <div class="col-lg-12 p-5 bg-white rounded shadow-sm mb-5">
-
+        <div class="col-lg-12 bg-white rounded mb-5 cartBox cartProductsBox" style="">
+          <h4 style="display: inline-block;">Your MuskGreen Cart</h4><h4 style="display: inline-block; float: right;"><button type="button" class="btn btn-success" id="orderSummaryButton">Cart Summary <i class="fa fa-caret-down" aria-hidden="true"></i></button></h4>
           <!-- Shopping cart table -->
             <table class="table table-bordered table-striped table-responsive-stack"  id="tableOne">
                 <thead class="thead-dark">
@@ -258,7 +306,7 @@
                         <div class="py-2 text-uppercase">Quantity</div>
                       </th>
                       <th scope="col" class="border-0 bg-light">
-                        <div class="py-2 text-uppercase">Remove</div>
+                        <div class="py-2 text-uppercase">Action</div>
                       </th>
                     </tr>
                 </thead>
@@ -301,7 +349,7 @@
                         </form>
                         </strong>
                         </td>
-                      <td class="border-0 align-middle"><a href="#" onclick="deleteProduct('<?=$row['proid']?>')" class="text-dark"><i class="fa fa-trash" style="color: #4d4d4d;"></i></a></td>
+                      <td class="border-0 align-middle"><a href="#" onclick="deleteProduct('<?=$row['proid']?>')" class="text-dark" title="Remove Product"><i class="fa fa-trash fa-lg" style="color: #D32F2F;"></i></a></td>
                     </tr>
                     <?php
                           }
@@ -328,10 +376,28 @@
                 ?>
            </table>
           <!-- End -->
+          <div class="col-lg py-1 text-center buyBox" role="group">
+            <div class="btn-group btn-group-lg">
+              <a href="products.php" class="btn btn-secondary">< Continue Shopping</a>
+              <?php 
+                if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']===TRUE) {
+                    if (intval($_SESSION['cartCount'])>0) {
+              ?>
+              <a href="checkout.php" class="btn btn-danger checkoutButton">Proceed to Checkout ></a>
+              <?php 
+                }
+              } else {
+              ?>
+              <button type="button" class="btn btn-danger checkoutButton">Login to Checkout ></button>
+              <?php 
+              }
+              ?>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div class="row py-5 p-4 bg-white rounded shadow-sm">
+      <div class="row py-5 p-4 bg-white rounded cartBox">
         <div class="col-lg-6">
           <div class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold">Coupon code</div>
           <div class="p-4">
@@ -344,7 +410,7 @@
             </div>
           </div>
         </div>
-        <div class="col-lg-6">
+        <div class="col-lg-6" id="orderSummary">
           <div class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold">Order summary </div>
           <div class="p-4">
             <p class="font-italic mb-4">Shipping and additional costs are calculated based on values you have entered.</p>
@@ -362,7 +428,7 @@
                         //nothing in cart
                         echo "<a href=\"#\" class=\"btn btn-secondary rounded-pill py-2 btn-block\">Proceed to Checkout</a>";
                     }else{
-                        echo "<a href=\"checkout.php\" class=\"btn btn-dark rounded-pill py-2 btn-block\">Proceed to Checkout</a>";
+                        echo "<a href=\"checkout.php\" class=\"btn btn-dark rounded-pill py-2 btn-block checkoutButton\">Proceed to Checkout</a>";
                     }
                 }else {
                     echo "<a href=\"#\" class=\"btn btn-secondary rounded-pill py-2 btn-block\" onclick=\"signupLogin()\">Proceed to Checkout</a>";
@@ -373,7 +439,6 @@
       </div>
 
     </div>
-  </div>
 </div>
 
 
