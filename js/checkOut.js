@@ -219,26 +219,38 @@ function showTab(n) {
   } else {
   		document.getElementById("nextBtn").innerHTML = "Next";
   }
+
   //... and run a function that will display the correct step indicator:
   fixStepIndicator(n)
 }
+
+var lastTab=0;
 
 function nextPrev(n) {
   // This function will figure out which tab to display
   var x = document.getElementsByClassName("tab");
   // Exit the function if any field in the current tab is invalid:
   if (n == 1 && !validateForm()) return false;
+
   // Hide the current tab:
   x[currentTab].style.display = "none";
   // Increase or decrease the current tab by 1:
   currentTab = currentTab + n;
   // if you have reached the end of the form...
-  if (currentTab >= x.length) {
-    // ... the form gets submitted:
-    //Call Proceed for payment page here
-    // document.getElementById("regForm").submit();
-    return false;
+  // if (currentTab >= x.length) {
+  //   // ... the form gets submitted:
+  //   //Call Proceed for payment page here
+  //   // document.getElementById("regForm").submit();
+  //   return false;
+  // }
+
+  if (lastTab>=currentTab) {
+    document.getElementById("nextBtn").onclick= function(){
+      nextPrev(1);
+    }
   }
+
+  lastTab=currentTab;
   // Otherwise, display the correct tab:
   showTab(currentTab);
 }
