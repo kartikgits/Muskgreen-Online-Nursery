@@ -228,27 +228,24 @@
             </div>
             <div class="row">
                 <div class="col-sm-3"><!--left col-->
-                  <div class="text-center">
-                    <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar">
-                  </div></hr><br>
+                    <div class="text-center">
+                      <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar">
+                    </div><hr><br>
 
-                       
-                  <div class="panel panel-default">
-                    <div class="panel-heading"><?=$_SESSION['userFName']?> <?=$_SESSION['userLName']?></div>
-                    <div class="panel-body"><?=$_SESSION['userPrimeNumber']?></div>
-                  </div>
-                  
-                <div class="card text-center leftCard">
-                    <div class="card-header">
-                      <ul class="nav nav-tabs card-header-tabs" role="tablist">
-                        <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#account"><i class="fa fa-user fa-1x"></i>Account</a></li>
-                        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#orders"><i class="fa fa-shopping-bag fa-1x"></i>Orders</a></li>
-                        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#wishlist"><i class="fa fa-heartbeat fa-1x"></i>Wishlist</a></li>
-                        <li class="nav-item"><a class="nav-link" href="signOut.php"><i class="fa fa-sign-out fa-1x"></i>Logout</a></li>
-                      </ul>
+                    <div class="panel panel-default">
+                      <div class="panel-heading"><?=$_SESSION['userFName']?> <?=$_SESSION['userLName']?></div>
+                      <div class="panel-body"><?=$_SESSION['userPrimeNumber']?></div>
                     </div>
-                </div>
-                  
+                    
+                  <div class="card text-center leftCard">
+                      <div class="card-header">
+                        <ul class="nav nav-tabs card-header-tabs" role="tablist">
+                          <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#account"><i class="fa fa-user fa-1x"></i>Account</a></li>
+                          <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#orders"><i class="fa fa-shopping-bag fa-1x"></i>Orders</a></li>
+                          <li class="nav-item"><a class="nav-link" href="signOut.php"><i class="fa fa-sign-out fa-1x"></i>Logout</a></li>
+                        </ul>
+                      </div>
+                  </div>
                 </div><!--/col-3-->
 
                 <div class="col-sm-9 tab-content">
@@ -267,19 +264,19 @@
                               <input type="hidden" name="personalForm" value="true"/>
                               <div class="form-group">
                                   <div class="col-xs-6">
-                                      <label for="first_name"><h4>First Name</h4></label><span class="inputRequired"></span>
+                                      <label for="first_name"><h6>First Name</h6></label><span class="inputRequired"></span>
                                       <input type="text" class="form-control" name="first_name" id="first_name" placeholder="first name" value="<?=$_SESSION['userFName']?>" title="Please Enter Your First Name" required>
                                   </div>
                               </div>
                               <div class="form-group">
                                   <div class="col-xs-6">
-                                    <label for="last_name"><h4>Last Lame</h4></label>
+                                    <label for="last_name"><h6>Last Lame</h6></label>
                                       <input type="text" class="form-control" name="last_name" id="last_name" placeholder="last name" value="<?=$_SESSION['userLName']?>" title="Enter Your Last Name (If Any)">
                                   </div>
                               </div>
                               <div class="form-group">
                                   <div class="col-xs-6">
-                                      <label for="email"><h4>Email</h4></label><span class="inputRequired"></span>
+                                      <label for="email"><h6>Email</h6></label><span class="inputRequired"></span>
                                       <input type="email" class="form-control" name="email" id="email" placeholder="you@email.com" value="<?=$_SESSION['userEmail']?>" title="Please Enter Your Email" required>
                                   </div>
                               </div>
@@ -340,49 +337,49 @@
                             <input type="hidden" name="newAddressForm" value="true"/>
                               <div class="form-group">
                                   <div class="col-xs-6">
-                                      <label for="address_name"><h4>Address Name</h4></label><span class="inputRequired"></span>
+                                      <label for="address_name"><h6>Address Name</h6></label><span class="inputRequired"></span>
                                       <input type="text" class="form-control" name="address_name" id="address_name" placeholder="Eg. Home, Office etc." title="Please Enter A Unique Address Name" required>
                                   </div>
                               </div>
                               <div class="form-group">
                                   <div class="col-xs-6">
-                                      <label for="address_contact"><h4>Contact Number</h4></label>
+                                      <label for="address_contact"><h6>Contact Number</h6></label>
                                       <input type="text" class="form-control" name="address_contact" id="address_contact" placeholder="Enter Address Phone/Mobile Number" title="Enter Contact (Leave Blank To Use Your Number)">
                                   </div>
                               </div>
                               <div class="form-group">
                                   <div class="col-xs-6">
-                                      <label for="address_locality"><h4>Locality</h4></label><span class="inputRequired"></span>
+                                      <label for="address_locality"><h6>Locality</h6></label><span class="inputRequired"></span>
                                       <input type="text" class="form-control" name="address_locality" id="address_locality" placeholder="Eg. Colony/Village name" title="Please Enter Your Locality" required>
                                   </div>
                               </div>
                               <div class="form-group">
                                   <div class="col-xs-6">
-                                      <label for="address_area"><h4>Area</h4></label><span class="inputRequired"></span>
+                                      <label for="address_area"><h6>Area</h6></label><span class="inputRequired"></span>
                                       <input type="text" class="form-control" name="address_area" id="address_area" placeholder="Eg. Street name" title="Please Enter Your Area" required>
                                   </div>
                               </div>
                               <div class="form-group">
                                   <div class="col-xs-6">
-                                      <label for="address_landmark"><h4>Landmark</h4></label>
+                                      <label for="address_landmark"><h6>Landmark</h6></label>
                                       <input type="text" class="form-control" name="address_landmark" id="address_landmark" placeholder="Eg. Famous Monument/School/Park name etc." title="Please Enter Any Nearby Landmark">
                                   </div>
                               </div>
                               <div class="form-group">
                                   <div class="col-xs-6">
-                                      <label for="address_city"><h4>City</h4></label><span class="inputRequired"></span>
+                                      <label for="address_city"><h6>City</h6></label><span class="inputRequired"></span>
                                       <input type="text" class="form-control" name="address_city" id="address_city" placeholder="Dehradun" title="Please Enter Your City Name" disabled>
                                   </div>
                               </div>
                               <div class="form-group">
                                   <div class="col-xs-6">
-                                      <label for="address_pincode"><h4>PinCode</h4></label><span class="inputRequired"></span>
+                                      <label for="address_pincode"><h6>PinCode</h6></label><span class="inputRequired"></span>
                                       <input type="text" class="form-control" name="address_pincode" id="address_pincode" placeholder="PinCode/ZipCode Number" title="Please Enter Your PinCode Number" required>
                                   </div>
                               </div>
                               <div class="form-group">
                                   <div class="col-xs-6">
-                                      <label for="address_state"><h4>State</h4></label><span class="inputRequired"></span>
+                                      <label for="address_state"><h6>State</h6></label><span class="inputRequired"></span>
                                       <input type="text" class="form-control" name="address_state" id="address_state" placeholder="Uttarakhand" title="Please Enter Your State Name" disabled>
                                   </div>
                               </div>
@@ -407,22 +404,46 @@
                           <strong>My Orders</strong>
                       </div>
                       <?php
-                            $sql="SELECT * FROM user NATURAL JOIN useraddress where user.uid = '".$_SESSION['userId']."'";
+                            $sql="SELECT proimgurl, orderstatus, proname, oid, concat(oid, '', proid) as refid, quantity, totalPrice, DATE(orderdate) as odate from productorder natural join productsinorder natural join product where oid in (select oid from productorder where uid = '".$_SESSION['userId']."')";
+                            $orderCount = 0;
                             $result=$conn->query($sql);
                             while ($row=$result->fetch_assoc()) {
+                              $orderCount = $orderCount + 1;
+                              $orderStatus = "";
+                              if ($row['orderstatus']=="Processing") {
+                                  $orderStatus=$orderStatus."<span class=\"p-1 mb-1 bg-warning text-dark\">Processing</span>";
+                              } else if ($row['orderstatus']=="Shipped"){
+                                $orderStatus=$orderStatus."<span class=\"bg-info text-white\">Shipped</span>";
+                              } else if ($row['orderstatus']=="Delivered"){
+                                $orderStatus=$orderStatus."<span class=\"bg-success text-white\">Delivered</span>";
+                              } else if ($row['orderstatus']=="Cancelled") {
+                                $orderStatus=$orderStatus."<span class=\"bg-light text-dark\">Cancelled</span>";
+                              } else if ($row['orderstatus']=="Rejected") {
+                                $orderStatus=$orderStatus."<span class=\"bg-danger text-white\">Rejected</span>";
+                              }
                         ?>
                         <div class="panel-body">
                             <div class="row">
-                              <div class="col-md-2"><img src="https://bootdey.com/img/Content/user_3.jpg" class="media-object img-thumbnail"></div>
+                              <div class="col-md-2"><img src="<?=$row['proimgurl']?>" class="media-object img-thumbnail"></div>
                               <div class="col-md-10">
                                 <div class="row">
                                   <div class="col-md-12">
-                                    <div class="pull-right"><label class="label label-danger">rejected</label> </div>
-                                    <span><strong>Order name</strong></span> <span class="label label-info">group name</span><br>
-                                    Quantity : 2, cost: $323.13 <br>
+                                    <div class="pull-right"><?php echo $orderStatus; ?></div>
+                                    <span><strong><?=$row['proname']?></strong></span><br>
+                                    Quantity : <?=$row['quantity']?> at <i class="fa fa-inr" aria-hidden="true"></i><?=$row['totalPrice']?> <br>
                                   </div>
                                   <div class="col-md-12">
-                                    order made on: 05/31/2014
+                                    <div class="row">
+                                      <div class="col-md-4">
+                                        Date: <?=$row['odate']?>
+                                      </div>
+                                      <div class="col-md-4">
+                                        OrderID: <?=$row['oid']?>
+                                      </div>
+                                      <div class="col-md-4">
+                                        Ref.ID: <?=$row['refid']?>
+                                      </div>
+                                    </div> 
                                   </div>
                                 </div>
                               </div>
@@ -430,20 +451,19 @@
 
                         <?php
                             }
+                            if ($orderCount < 1) {
+                        ?>
+                              <div class="panel-footer">Nothing here... Order something <span style="color: #607447;">Green</span></div>
+                        <?php
+                            }
                         ?>
                         </div>
-                    <div class="panel-footer">Put here some note for example: bootdey si a gallery of free bootstrap snippets</div>
                     </div>
                   </div><!--/tab-content-->
-
-                  <div role="tabpanel" class="tab-pane fade" id="wishlist">
-                    Wishlist
-                  </div><!--/tab-content-->
-                </div>
-
                 </div><!--/col-9-->
-            </div><!--/row-->
-
+            </div>
+        </div><!--/row-->
+      </div>
 
             <!-- The EditAddress Modal -->
               <div class="modal fade" id="editAddressModal">
