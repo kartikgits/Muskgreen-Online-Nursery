@@ -9,6 +9,12 @@
 	margin-bottom: 2rem;
 }
 
+@media screen and (max-width: 786px) {
+	.productsContainer {
+		margin-top: 13rem;
+	}
+}
+
 /* Columns */
 
 
@@ -192,7 +198,7 @@ span.muskPrice {
 .cart-btn {
   font-size: 16px;
   color: #FFFFFF;
-  padding: 12px 30px;
+  padding: 12px 24px;
   transition: all .5s;
 }
 .cart-btn:hover {

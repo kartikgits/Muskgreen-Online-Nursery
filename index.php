@@ -20,14 +20,16 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="css/footer.css">
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+
 
     <title>Welcome to MuskGreen - India's Latest Digital Nursery and Organic Products store</title>
   </head>
 
-  <body>
-      
-      
-<!--      Top Brand Bar with Search, Login & Signup and Cart (Includes NavBar button in mobile view)-->
+  <body onload="setCartCount('<?=$logInStatus?>')">
+
+  <!--      Top Brand Bar with Search, Login & Signup and Cart (Includes NavBar button in mobile view)-->
         <nav class="navbar navbar-expand-md sticky-top navbar-light topBar d-none d-md-flex">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -50,18 +52,20 @@
             
             <!--Login/Signup or Account-->
             <?php
-            	if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']===TRUE) {
+                if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']===TRUE) {
             ?>
-            <a class="topNavItem nav-item py-0" href="#"><span class="fa fa-user topNavItem" title="User Account" aria-hidden="true"> <span><br/>Account</span></span></a>
-            <?php
-            	} else {
-            ?>
-            	<a class="topNavItem nav-item py-0" href="#" onclick="signupLogin()"><span class="fa fa-user topNavItem" title="Login Or Signup" aria-hidden="true"> <span><br/>Login/Signup</span></span></a>
-            <?php
-            	}
-            ?>
+            <a class="topNavItem nav-item py-0" href="profile.php"><span class="fa fa-user topNavItem" title="User Account" aria-hidden="true"> <span><br/>Account</span></span></a>
             <!-- Cart -->
-            <a class="topNavItem nav-item py-0" href="#"><span class="fa fa-shopping-cart topNavItem" title="Cart" aria-hidden="true"> <span><br/>Cart[0]</span></span></a>
+            <a class="topNavItem nav-item py-0" href="cart.php"><span class="fa fa-shopping-cart topNavItem" title="Cart" aria-hidden="true"> <span><br/>Cart[<span id="cartCountUserDesktop"><?=$_SESSION['cartCount']?></span>]</span></span></a>
+            <?php
+                } else {
+            ?>
+            <a class="topNavItem nav-item py-0" href="#" onclick="signupLogin()"><span class="fa fa-user topNavItem" title="Login Or Signup" aria-hidden="true"> <span><br/>Login/Signup</span></span></a>
+            <!-- Cart -->
+            <a class="topNavItem nav-item py-0" href="cart.php"><span class="fa fa-shopping-cart topNavItem" title="Cart" aria-hidden="true"> <span><br/>Cart[<span id="cartCountDesktop">0</span>]</span></span></a>
+            <?php
+                }
+            ?>
 
         </nav>
       
@@ -112,12 +116,12 @@
               </li>
                 
               <li class="nav-item dropdown">
-              	<a class="nav-link" href="#" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">Fertilizers
-              	</a>
+                <a class="nav-link" href="#" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">Fertilizers
+                </a>
               </li>
                 
               <li class="nav-item dropdown">
-				<a class="nav-link" href="#" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">Soils
+                <a class="nav-link" href="#" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">Soils
                 </a>
               </li>
             </ul>
@@ -136,19 +140,20 @@
                             
                             <!-- account -->
                             <?php
-            					if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']===TRUE) {
-            				?>
-                            <a class="mobileNavItem py-0" href="#"><span class="fa fa-user mobileNavItem" type="" title="User Account" aria-hidden="true"></span></a>
+                                if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']===TRUE) {
+                            ?>
+                            <a class="mobileNavItem py-0" href="profile.php"><span class="fa fa-user mobileNavItem" type="" title="User Account" aria-hidden="true"></span></a>
+                            <!-- cart -->
+                            <a class="mobileNavItem py-0"><span class="fa fa-shopping-cart mobileNavItem" title="Cart" aria-hidden="true"><span> [<span id="cartCountUserMobile">0</span>]</span></span></a>
                             <?php
-                        		}else{
+                                }else{
                             ?>
                             <a class="mobileNavItem py-0" href="#" onclick="signupLogin()"><span class="fa fa-user mobileNavItem" type="" title="Login or SignUp" aria-hidden="true"></span></a>
-                            <?php
-                        		}
-                            ?>
-            
                             <!-- cart -->
-                            <span class="fa fa-shopping-cart py-0 mobileNavItem" title="Cart" aria-hidden="true"><span> [0]</span></span>
+                            <a class="py-0 mobileNavItem" href="cart.php"><span class="fa fa-shopping-cart mobileNavItem" title="Cart" aria-hidden="true"><span> [0]</span></span></a>
+                            <?php
+                                }
+                            ?>
 
 
                             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -196,16 +201,16 @@
                             </div>
                             
                             <!--Search Box (Mobile)-->
-				            <form autocomplete="off" class="input-group md-form form-sm form-2 pl-0 d-md-none" action="products.php?">
-				              <input class="autocomplete form-control my-0 py-1 amber-border" id="myInput2" type="text" name="product" placeholder="Search" aria-label="Search">
-				              <div class="input-group-append" type="submit">
-				                <div class="input-group-append">
-				                  <button class="btn btn-secondary" type="submit">
-				                    <i class="fa fa-search" aria-hidden="true"></i>
-				                  </button>
-				                </div>
-				              </div>
-				            </form>
+                            <form autocomplete="off" class="input-group md-form form-sm form-2 pl-0 d-md-none" action="products.php?">
+                              <input class="autocomplete form-control my-0 py-1 amber-border" id="myInput2" type="text" name="product" placeholder="Search" aria-label="Search">
+                              <div class="input-group-append" type="submit">
+                                <div class="input-group-append">
+                                  <button class="btn btn-secondary" type="submit">
+                                    <i class="fa fa-search" aria-hidden="true"></i>
+                                  </button>
+                                </div>
+                              </div>
+                            </form>
 
                         </nav>
                     </div>
@@ -592,7 +597,6 @@
       
     <!-- JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     
     <script type="text/javascript" src="bootstrap4/js/bootstrap.min.js"></script>
