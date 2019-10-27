@@ -245,15 +245,16 @@
 
 <?php
     if (isset($_GET['proid'])) {
-        $sql = "select * from product p natural join productseller where p.proid='".$_GET['proid']."'";
-        $catsql = "select category from proundercat where proid='".$_GET['proid']."'";
+        $productId = $conn->real_escape_string($_GET['proid']);
+        $sql = "select * from product p natural join productseller where p.proid='".$productId."'";
+        $catsql = "select category from proundercat where proid='".$productId."'";
 
         $result = $conn->query($sql);
         $catresult = $conn->query($catsql);
         if($result->num_rows > 0){
             while ($row=$result->fetch_assoc()) {
                 ?>
-                <main class="container">
+                <main class="container productsContainer">
                       <!-- Left Column / Product Image -->
                       <div class="row">
                           <div class="left-column col-md-6">
@@ -287,7 +288,7 @@
                                 <?php 
                                     $muskPrice = floatval($row['sp']) - ((floatval($row['discount'])/100) * floatval($row['cp']));
                                 ?>
-                              <span class="originalPrice" label="Original Price">&#8377;<?=$row['sp']?></span><span class="discountPrice" label="MuskGreen Price">&#8377;<?=$muskPrice?></span>
+                              <span class="originalPrice" label="Original Price">&#8377;<?=$row['sp']?></span><span class="muskPrice" label="MuskGreen Price">&#8377;<?=$muskPrice?></span>
                               <button type="button" class="btn btn-warning cart-btn" onclick="addToCart('<?=$row['proid']?>', '<?=$logInStatus?>')" id="addToCartButton"><i class="fa fa-cart-plus" aria-hidden="true"></i> Add To Cart</button>
                             </div>
                           </div>
@@ -299,6 +300,9 @@
             $error='That product either does not exist or has been removed.';
             echo " <script> location.replace(\"error.php?errorMessage=".$error."\");</script>";
         }
+    } else {
+        $error='Did you alter URL?';
+        echo " <script> location.replace(\"error.php?errorMessage=".$error."\");</script>";
     }
 ?>
 

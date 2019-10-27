@@ -322,7 +322,12 @@
 						</label>
 					</div>
 				</li>
-				<?php }} ?>
+				<?php }
+                    } else {
+                        $error='Did you alter URL?';
+                        echo " <script> location.replace(\"error.php?errorMessage=".$error."\");</script>";
+                    }
+                ?>
 			</ul>
 		</div>
 
@@ -348,7 +353,7 @@
 				<?php
 					$safeProduct = preg_replace('/[^\w ]/','',$_GET['product']); 
 					if(strlen($safeProduct)){
-						$sql="SELECT * FROM product NATURAL JOIN productseller where proname like '%".$safeProduct."%'";
+						$sql="SELECT DISTINCT(product.proid), proname, proimgurl, sp, cp, discount, isAvailable FROM productseller NATURAL JOIN product NATURAL JOIN proundercat WHERE proname LIKE '%".$safeProduct."%' OR category LIKE '%".$safeProduct."%' ORDER BY proname";
 						$result=$conn->query($sql);
 						while ($row=$result->fetch_assoc()) {
 				?>

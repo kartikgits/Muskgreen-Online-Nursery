@@ -221,16 +221,15 @@
         </div>
 
         <!-- User Profile content -->
-        <div class="container">
+        <div class="container userProfileContainer">
             <div class="row">
-                <div class="col-sm-10"><h2>Profile</h2></div>
-                <div class="col-sm-2"><a href="#" class="pull-right"><img title="MuskGreen" class="img-circle img-responsive" src="http://www.gravatar.com/avatar/28fd20ccec6865e2d5f0e1f4446eb7bf?s=100"></a></div>
+                <div class="col-sm-12 py-4"><h3>Profile</h3></div>
             </div>
             <div class="row">
                 <div class="col-sm-3"><!--left col-->
                     <div class="text-center">
-                      <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar">
-                    </div><hr><br>
+                      <div class="avatar"><i class="fa fa-user-circle-o fa-5x" aria-hidden="true" style="color: #607447 !important;"></i></div>
+                    </div><hr>
 
                     <div class="panel panel-default">
                       <div class="panel-heading"><?=$_SESSION['userFName']?> <?=$_SESSION['userLName']?></div>
@@ -411,15 +410,15 @@
                               $orderCount = $orderCount + 1;
                               $orderStatus = "";
                               if ($row['orderstatus']=="Processing") {
-                                  $orderStatus=$orderStatus."<span class=\"p-1 mb-1 bg-warning text-dark\">Processing</span>";
+                                $orderStatus=$orderStatus."<span class=\"p-1 mb-1 bg-warning text-dark\">Processing</span>";
                               } else if ($row['orderstatus']=="Shipped"){
-                                $orderStatus=$orderStatus."<span class=\"bg-info text-white\">Shipped</span>";
+                                $orderStatus=$orderStatus."<span class=\"p-1 mb-1 bg-info text-white\">Shipped</span>";
                               } else if ($row['orderstatus']=="Delivered"){
-                                $orderStatus=$orderStatus."<span class=\"bg-success text-white\">Delivered</span>";
+                                $orderStatus=$orderStatus."<span class=\"p-1 mb-1 bg-success text-white\">Delivered</span>";
                               } else if ($row['orderstatus']=="Cancelled") {
-                                $orderStatus=$orderStatus."<span class=\"bg-light text-dark\">Cancelled</span>";
+                                $orderStatus=$orderStatus."<span class=\"p-1 mb-1 bg-light text-dark\">Cancelled</span>";
                               } else if ($row['orderstatus']=="Rejected") {
-                                $orderStatus=$orderStatus."<span class=\"bg-danger text-white\">Rejected</span>";
+                                $orderStatus=$orderStatus."<span class=\"p-1 mb-1 bg-danger text-white\">Rejected</span>";
                               }
                         ?>
                         <div class="panel-body">

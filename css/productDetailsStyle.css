@@ -1,8 +1,12 @@
 /* Basic Styling */
 
-
 .container {
   display: flex;
+}
+
+.productsContainer {
+	margin-top: 2rem;
+	margin-bottom: 2rem;
 }
 
 /* Columns */
@@ -179,6 +183,10 @@
 .product-price span.originalPrice {
 	text-decoration: line-through;
 	font-size: 18px;
+}
+
+span.muskPrice {
+	color: #509534;
 }
 
 .cart-btn {

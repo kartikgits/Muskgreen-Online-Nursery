@@ -1,9 +1,19 @@
+div.userProfileContainer {
+	min-height: 86vh;
+}
+
+@media screen and (max-width: 768px) {
+	div.userProfileContainer {
+		margin-top: 6rem;
+		min-height: 100vh;
+	}
+}
+
 div.leftCard .fa { color: #4d4d4d; }
 
 form.muskForm input { background-color: #fff; }
 
 .inputRequired:after { content:' *'; color: #e32;}
-
 
 /*For Orders*/
 .panel-order .row {
