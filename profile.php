@@ -63,8 +63,8 @@
             <a class="topNavItem nav-item py-0" href="profile.php"><span class="fa fa-user topNavItem" title="User Account" aria-hidden="true"> <span><br/>Account</span></span></a>
             <!-- Cart -->
             <a class="topNavItem nav-item py-0" href="cart.php"><span class="fa fa-shopping-cart topNavItem" title="Cart" aria-hidden="true"> <span><br/>Cart[<span id="cartCountUserDesktop"><?=$_SESSION['cartCount']?></span>]</span></span></a>
-              
-                }
+            <?php
+              }
             ?>
 
         </nav>
@@ -505,6 +505,10 @@
                     </div>
                   </div>
                 </div>
+
+        <?php
+          $conn->close();
+        ?>
 
         <!--Footer-->
     <footer class="footer">
