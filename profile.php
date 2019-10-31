@@ -20,8 +20,8 @@
     <link rel="stylesheet" href="bootstrap4/css/bootstrap.min.css" >
     
     <!-- Our CSS -->
-    <link rel="stylesheet" type="text/css" href="css/style.css" media="(min-width: 767.99px)">
-    <link rel="stylesheet" type="text/css" href="css/mobileNav.css" media="(max-width: 767.99px)">
+    <link rel="stylesheet" type="text/css" href="css/style.css" media="(min-width: 768px)">
+    <link rel="stylesheet" type="text/css" href="css/mobileNav.css" media="(max-width: 768px)">
     <link rel="stylesheet" type="text/css" href="css/profileStyle.css">
     <link rel="stylesheet" type="text/css" href="css/liveSearchStyle.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -60,11 +60,11 @@
             <?php
                 if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']===TRUE) {
             ?>
-            <a class="topNavItem nav-item py-0" href="profile.php"><span class="fa fa-user topNavItem" title="User Account" aria-hidden="true"> <span><br/>Account</span></span></a>
+            <a class="topNavItem nav-item py-0" href="profile.php"><span class="fa fa-user topNavItem" title="User Account" aria-hidden="true"> <span><br>Account</span></span></a>
             <!-- Cart -->
-            <a class="topNavItem nav-item py-0" href="cart.php"><span class="fa fa-shopping-cart topNavItem" title="Cart" aria-hidden="true"> <span><br/>Cart[<span id="cartCountUserDesktop"><?=$_SESSION['cartCount']?></span>]</span></span></a>
+            <a class="topNavItem nav-item py-0" href="cart.php"><span class="fa fa-shopping-cart topNavItem" title="Cart" aria-hidden="true"> <span><br>Cart[<span id="cartCountUserDesktop"><?=$_SESSION['cartCount']?></span>]</span></span></a>
             <?php
-              }
+                }
             ?>
 
         </nav>
@@ -136,7 +136,7 @@
                     <div class="col-12">
                         <nav class="navbar navbar-expand-md navbar-light">
 
-                            <a class="navbar-brand" href="https://themeforest.net/user/ig_design/portfolio" target="_blank"><img src="extras/musklogo112.png" alt=""></a>
+                            <a class="navbar-brand" href="index.php" target="_blank"><img src="extras/musklogo112.png" alt=""></a>
                             
                             <!-- account -->
                             <?php
@@ -176,10 +176,10 @@
                                         <div class="dropdown-menu">
                                             <a class="dropdown-item" href="#">All Flowers</a>
                                             <a class="dropdown-item" href="#">Rose Plants</a>
-                                            <a class="dropdown-item" href="#">Hibiscus PLants</a>
+                                            <a class="dropdown-item" href="#">Hibiscus Plants</a>
                                             <a class="dropdown-item" href="#">Jasmine Plants</a>
                                             <a class="dropdown-item" href="#">Flowering Creepers</a>
-                                            <a class="dropdown-item" href="#">PLants for Flower bed</a>
+                                            <a class="dropdown-item" href="#">Plants for Flower bed</a>
                                         </div>
                                     </li>
                                     <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
@@ -328,7 +328,7 @@
                                 echo "<button class=\"btn btn-sm\" title=\"Click To Add New Address\" id=\"newAddressFormButton\"><i class=\"fa fa-map-marker\"></i> Add Address</button>";
                             }
                        ?>
-                          <br/>
+                          <br>
                           <form class="form muskForm" action="" method="post" id="newAddressForm" >
                             <input type="hidden" name="newAddressForm" value="true"/>
                               <div class="form-group">
@@ -459,7 +459,11 @@
                 </div><!--/col-9-->
             </div>
         </div><!--/row-->
-      </div>
+      </div></div></div></div>
+
+      <?php
+        $conn->close();
+      ?>
 
             <!-- The EditAddress Modal -->
               <div class="modal fade" id="editAddressModal">
@@ -505,10 +509,6 @@
                     </div>
                   </div>
                 </div>
-
-        <?php
-          $conn->close();
-        ?>
 
         <!--Footer-->
     <footer class="footer">
