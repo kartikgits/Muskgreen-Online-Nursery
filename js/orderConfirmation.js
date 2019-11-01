@@ -31,4 +31,11 @@ $(document).ready(function() {
    window.onresize = function(event) {
        flexTable();
    };
+
+   function notifyUserMail() {
+        $.post("sendMail.php", {order_confirmation_mail: "true"});
+    }
+
+    notifyUserMail();
+
 });

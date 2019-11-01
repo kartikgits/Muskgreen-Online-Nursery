@@ -327,7 +327,7 @@
                 }
               } else {
               ?>
-              <button type="button" class="btn btn-danger checkoutButton">Login to Checkout ></button>
+              <a href="#" onclick="signupLogin()" class="btn btn-danger checkoutButton">Login to Checkout ></a>
               <?php 
               }
               ?>

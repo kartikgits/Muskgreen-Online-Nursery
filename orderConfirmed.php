@@ -15,8 +15,6 @@
         header("Pragma: no-cache");
         $error="Location: error.php";
         header($error);
-      }else{
-        $_SESSION['orderConfirmed']=FALSE;
       }
     }
 ?>

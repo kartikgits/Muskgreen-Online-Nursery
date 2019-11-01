@@ -24,7 +24,7 @@
 
 		if (isset($_POST['order_confirmation']) && $_POST['order_confirmation']=="true" && $_SESSION['cartCount']!=0) {
 			if ($_POST['payment_method']=="onlinePay") {
-				$sqlIdGen = "insert into orderIdGenerator values()";
+				$sqlIdGen = "insert into orderidgenerator values()";
 				if ($conn->query($sqlIdGen) === TRUE) {
 					$sqlLastId = ("select last_insert_id() as lid");
 					$resultLastId=$conn->query($sqlLastId);
@@ -36,7 +36,7 @@
 		        	$oid = "MGO".(string)$uniqueId;
 
 		        	$safeDeliveryAddress = preg_replace('/[^\w,. ]/','',$_POST['delivery_address']);
-		        	$sqlOrder = "insert into productOrder (uid, oid, paymentMethod, addressName) values ('".$_SESSION['userId']."', '".$oid."', 'Prepaid', '".$safeDeliveryAddress."')";
+		        	$sqlOrder = "insert into productorder (uid, oid, paymentMethod, addressName) values ('".$_SESSION['userId']."', '".$oid."', 'Prepaid', '".$safeDeliveryAddress."')";
 		        	if ($conn->query($sqlOrder)===TRUE) {
 		        		$sqlOrderedProducts = "select usercart.proid, quantity, (sp-((discount/100)*cp))*quantity as subprice from usercart natural join product natural join productseller where usercart.uid='".$_SESSION['userId']."' group by proid";
 		        		$resultOrderedProducts=$conn->query($sqlOrderedProducts);
@@ -125,6 +125,7 @@
 	} else{
 		header('Location: index.php');
 	}
+	$conn->close();
 ?>
 
 
