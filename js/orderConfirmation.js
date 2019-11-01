@@ -24,8 +24,7 @@ $(document).ready(function() {
          $(this).find('thead').show();
       });
       }
-   // flextable   
-   }  
+   }
     
    flexTable(); 
    window.onresize = function(event) {
