@@ -1,12 +1,19 @@
 <?php
 	require 'config.php';
 	session_start();
+
+    $logInStatus="";
+
+    if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']===TRUE) {
+        $logInStatus="true";
+    }else{
+        $logInStatus="false";
+    }
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Products</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -15,8 +22,8 @@
     <link rel="stylesheet" href="bootstrap4/css/bootstrap.min.css" >
 
     <!-- Our CSS -->
-    <link rel="stylesheet" type="text/css" href="css/style.css" media="(min-width: 767.99px)">
-    <link rel="stylesheet" type="text/css" href="css/mobileNav.css" media="(max-width: 767.99px)">
+    <link rel="stylesheet" type="text/css" href="css/style.css" media="(min-width: 768px)">
+    <link rel="stylesheet" type="text/css" href="css/mobileNav.css" media="(max-width: 768px)">
     <link rel="stylesheet" type="text/css" href="css/liveSearchStyle.css">
     <link rel="stylesheet" type="text/css" href="css/products.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -227,6 +234,7 @@
             </div>
         </div>
 
+
 <!-- Main Content starts -->
 <?php 
 	if(!isset($_GET['product'])){
@@ -288,7 +296,7 @@
                               <span class="originalPrice" title="Original Price"><strike>&#8377;<?= floatval($row['sp']); ?></strike></span>
                               <span class="discountPrice" title="Discounted Price">&#8377;<?= floatval($row['sp']) - ((floatval($row['discount'])/100) * floatval($row['cp'])); ?></span>
                           </p>
-                            <p><button><a href="#"><i class="fa fa-cart-plus" aria-hidden="true"></i></a> Add to Cart</button></p>
+                            <p><button onclick="addToCartProducts('<?=$row['proid']?>', '<?=$logInStatus?>')" id="addToCartButton<?=$row['proid']?>"><i class="fa fa-cart-plus" aria-hidden="true"></i> Add To Cart</button></p>
                         </div>
                     </div>
                 </div>
@@ -370,7 +378,7 @@
                               <span class="originalPrice" title="Original Price"><strike>&#8377;<?= floatval($row['sp']); ?></strike></span>
                               <span class="discountPrice" title="Discounted Price">&#8377;<?= floatval($row['sp']) - ((floatval($row['discount'])/100) * floatval($row['cp'])); ?></span>
                           </p>
-                            <p><button><a href="#"><i class="fa fa-cart-plus" aria-hidden="true"></i></a> Add to Cart</button></p>
+                            <p><button onclick="addToCartProducts('<?=$row['proid']?>', '<?=$logInStatus?>')" id="addToCartButton<?=$row['proid']?>"><i class="fa fa-cart-plus" aria-hidden="true"></i> Add To Cart</button></p>
                         </div>
                     </div>
                 </div>

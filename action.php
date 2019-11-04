@@ -1,12 +1,11 @@
 <?php 
 	require 'config.php';
+	session_start();
 
 	if(isset($_POST['action'])){
 		$sql="SELECT * FROM productseller natural join product natural join proundercat WHERE isAvailable != 'N'";
 
 		if(isset($_POST['category'])){
-			// $category = implode(",",  $_POST['category']);
-			// $sql .=" AND category IN ('".$category."')";
 			$sql .=" AND category IN ('".$_POST['category'][0]."')";
 
 			$i=1;
@@ -27,7 +26,12 @@
 
 		$result = $conn->query($sql);
 		$output = '';
-
+		
+		$logInStatus='false';
+		if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']===TRUE) {
+			$logInStatus='true';
+		}
+		
 		if($result->num_rows > 0){
 			while ($row=$result->fetch_assoc()) {
 				$finalprice = floatval($row['sp']) - (floatval($row['discount'])/100 * floatval($row['cp']));
@@ -40,7 +44,8 @@
                               <span class="originalPrice" title="Original Price"><strike>&#8377;'. floatval($row['sp']) .'</strike></span>
                               <span class="discountPrice" title="Discounted Price">&#8377;' . $finalprice .'</span>
                           </p>
-                            <p><button><a href="#"><i class="fa fa-cart-plus" aria-hidden="true"></i></a> Add to Cart</button></p>
+                            <p><button onclick="addToCartProducts(\''.$row['proid'].'\', \''.$logInStatus.'\')" id="addToCartButton'.$row['proid'].'"><i class="fa fa-cart-plus" aria-hidden="true"></i> Add To Cart</button></p>
+							
                         </div>
                     </div>
                 </div>';

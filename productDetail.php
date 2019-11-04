@@ -27,8 +27,8 @@
     <link rel="stylesheet" href="bootstrap4/css/bootstrap.min.css" >
 
     <!-- Our CSS -->
-    <link rel="stylesheet" type="text/css" href="css/style.css" media="(min-width: 767.99px)">
-    <link rel="stylesheet" type="text/css" href="css/mobileNav.css" media="(max-width: 767.99px)">
+    <link rel="stylesheet" type="text/css" href="css/style.css" media="(min-width: 768px)">
+    <link rel="stylesheet" type="text/css" href="css/mobileNav.css" media="(max-width: 768px)">
     <link rel="stylesheet" type="text/css" href="css/liveSearchStyle.css">
     <link rel="stylesheet" type="text/css" href="css/footer.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
