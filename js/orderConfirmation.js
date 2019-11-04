@@ -31,10 +31,9 @@ $(document).ready(function() {
        flexTable();
    };
 
-   function notifyUserMail() {
-        $.post("sendMail.php", {order_confirmation_mail: "true"});
-    }
-
-    notifyUserMail();
-
 });
+
+
+function notifyUserMail(oid) {
+    $.post("sendMail.php", {order_confirmation_mail: "true", order_id: oid});
+}

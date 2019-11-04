@@ -402,21 +402,21 @@
                       <?php
                             $sql="SELECT proimgurl, orderstatus, proname, oid, concat(oid, '', proid) as refid, quantity, totalPrice, DATE(orderdate) as odate from productorder natural join productsinorder natural join product where oid in (select oid from productorder where uid = '".$_SESSION['userId']."')";
                             $orderCount = 0;
-                            $result=$conn->query($sql);
-                            while ($row=$result->fetch_assoc()) {
-                              $orderCount = $orderCount + 1;
-                              $orderStatus = "";
-                              if ($row['orderstatus']=="Processing") {
-                                $orderStatus=$orderStatus."<span class=\"p-1 mb-1 bg-warning text-dark\">Processing</span>";
-                              } else if ($row['orderstatus']=="Shipped"){
-                                $orderStatus=$orderStatus."<span class=\"p-1 mb-1 bg-info text-white\">Shipped</span>";
-                              } else if ($row['orderstatus']=="Delivered"){
-                                $orderStatus=$orderStatus."<span class=\"p-1 mb-1 bg-success text-white\">Delivered</span>";
-                              } else if ($row['orderstatus']=="Cancelled") {
-                                $orderStatus=$orderStatus."<span class=\"p-1 mb-1 bg-light text-dark\">Cancelled</span>";
-                              } else if ($row['orderstatus']=="Rejected") {
-                                $orderStatus=$orderStatus."<span class=\"p-1 mb-1 bg-danger text-white\">Rejected</span>";
-                              }
+                            if ($result=$conn->query($sql)===TRUE){
+                              while ($row=$result->fetch_assoc()) {
+                                $orderCount = $orderCount + 1;
+                                $orderStatus = "";
+                                if ($row['orderstatus']=="Processing") {
+                                  $orderStatus=$orderStatus."<span class=\"p-1 mb-1 bg-warning text-dark\">Processing</span>";
+                                } else if ($row['orderstatus']=="Shipped"){
+                                  $orderStatus=$orderStatus."<span class=\"p-1 mb-1 bg-info text-white\">Shipped</span>";
+                                } else if ($row['orderstatus']=="Delivered"){
+                                  $orderStatus=$orderStatus."<span class=\"p-1 mb-1 bg-success text-white\">Delivered</span>";
+                                } else if ($row['orderstatus']=="Cancelled") {
+                                  $orderStatus=$orderStatus."<span class=\"p-1 mb-1 bg-light text-dark\">Cancelled</span>";
+                                } else if ($row['orderstatus']=="Rejected") {
+                                  $orderStatus=$orderStatus."<span class=\"p-1 mb-1 bg-danger text-white\">Rejected</span>";
+                                }
                         ?>
                         <div class="panel-body">
                             <div class="row">
@@ -447,6 +447,7 @@
 
                         <?php
                             }
+                          }
                             if ($orderCount < 1) {
                         ?>
                               <div class="panel-footer">Nothing here... Order something <span style="color: #607447;">Green</span></div>
@@ -459,7 +460,6 @@
                 </div><!--/col-9-->
             </div>
         </div><!--/row-->
-      </div></div></div></div>
 
       <?php
         $conn->close();

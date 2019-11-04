@@ -1,6 +1,7 @@
 <?php
     require 'config.php';
     session_start();
+    ob_start();  //to set cookies after sending output
     if (!isset($_SESSION['isLoggedIn']) && !$_SESSION['isLoggedIn']===TRUE && !isset($_GET['oid'])) {
         header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
         header("Cache-Control: no-cache");
@@ -48,7 +49,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
 </head>
-<body>
+<body onload="notifyUserMail('<?=$_GET['oid']?>')">
 
 <!--      Top Brand Bar with Search, Login & Signup and Cart (Includes NavBar button in mobile view)-->
         <nav class="navbar navbar-expand-md sticky-top navbar-light topBar d-none d-md-flex">
@@ -337,7 +338,13 @@
                     $safeOrderId = preg_replace('/[^\w]/','',$_GET['oid']);
                     $sql="SELECT proid, quantity, totalPrice, orderstatus, proname, proimgurl FROM productsinorder NATURAL JOIN product WHERE oid = '".$safeOrderId."' ORDER BY proname";
                     $result=$conn->query($sql);
+                    
+                    $prdArray=array();
+                    $sno=0;
                     while ($row=$result->fetch_assoc()) {
+                      $sno+=1;
+                      $prd = array($sno, $row['proname'], $row['quantity'], $row['totalPrice']);
+                      array_push($prdArray, $prd);
                 ?>
                 <tr>
                   <th scope="row" class="border-0">
@@ -354,6 +361,7 @@
                 </tr>
                 <?php
                         }
+                    setcookie('productsBuyList', json_encode($prdArray), time()+120);
                 ?> 
             </tbody>
        </table>
@@ -451,6 +459,10 @@
 <script type="text/javascript" src="js/orderConfirmation.js"></script>
 <script type="text/javascript" src="js/buttonActions.js"></script>
 <script type="text/javascript" src="js/liveSearch.js"></script>
+
+<?php
+  ob_end_flush();
+?>
 
 </body>
 </html>
