@@ -60,9 +60,14 @@ $(document).ready(function(){
 });
 
 function updateUserCart() {
+	var rslt;
 	$.post( "updateSession.php", { update_cart: "true" }, function(result){
-		$("#cartCountUserDesktop").html(result);
-		$("#cartCountUserMobile").html(" "+result);
+		rslt=result;
+	}).done(function(){
+		$("#cartCountUserDesktop").html(rslt);
+		$("#cartCountUserMobile").html(" "+rslt);
+	}).fail(function(){
+		alert("Unknown error. Please Try Again.");
 	});
 }
 
@@ -75,13 +80,18 @@ function addToCart(productId, logInStatus){
 	var cartButton = document.getElementById("addToCartButton");
 	if (logInStatus=="true") {
 		if (cartButton.innerHTML=="<i class=\"fa fa-cart-plus\" aria-hidden=\"true\"></i> Add To Cart"){
-			$.post( "formsProcess.php", { add_to_cart: "true", product_id: productId } );
+			$.post( "formsProcess.php", { add_to_cart: "true", product_id: productId })
+			.done(function(){
+				updateUserCart();
+			});
 			cartButton.innerHTML="<i class=\"fa fa-cart-plus\" aria-hidden=\"true\"></i> Added to Cart";
 		} else {
-			$.post( "formsProcess.php", { delete_from_cart: "true", product_id: productId } );
+			$.post( "formsProcess.php", { delete_from_cart: "true", product_id: productId })
+			.done(function(){
+				updateUserCart();
+			});
 			cartButton.innerHTML="<i class=\"fa fa-cart-plus\" aria-hidden=\"true\"></i> Add To Cart";
 		}
-		updateUserCart();
 	} else{ //set cookie
 		var productsInCart=[];
 		if (typeof $.cookie('cartProductsCookie') === 'undefined'){

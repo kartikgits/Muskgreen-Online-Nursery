@@ -1,6 +1,6 @@
 <?php
-	session_start();
 	require 'config.php';
+	session_start();
 
 	if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']===TRUE) {
 		if (isset($_POST['update_cart']) && $_POST['update_cart']=="true"){
