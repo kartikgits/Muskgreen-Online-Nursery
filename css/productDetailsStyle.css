@@ -205,6 +205,15 @@ span.muskPrice {
   color: #FFFFFF;
 }
 
+.cartButtonGroup {
+	text-align: center;
+}
+
+.cartButtonGroup >button,
+.cartButtonGroup >a {
+  width: 48%;
+}
+
 /* Responsive */
 @media (max-width: 940px) {
   .container {
