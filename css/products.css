@@ -110,8 +110,16 @@ div.featuredProductsBody {
   }
 }
 
-@media only screen and (max-width: 300px) {
+@media only screen and (max-width: 280px) {
   .responsive2 {
     width: 100%;
   }
+}
+
+.filterProductGroup {
+	text-align: center;
+}
+
+.filterProductGroup > button{
+	width: 100%;
 }

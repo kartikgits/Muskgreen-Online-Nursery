@@ -241,7 +241,7 @@
 ?>
 <div class="container-fluid">
 	<div class="row">
-		<div class="col-md-3">
+		<div class="col-md-3 d-none d-md-block">
 			<!-- Filter -->
 			<h5>Filter Product</h5>
 			<hr>
@@ -305,6 +305,37 @@
     	</div>
 	</div>
 </div>
+
+<div class="modal fade" id="filterProductsModal" tabindex="-1" role="dialog" aria-labelledby="filterProducts" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <!-- Filter -->
+                <h5>Filter Products</h5>
+                <hr>
+                <h6 class="text-info">Select Category</h6>
+                <ul class="list-group">
+                    <?php
+                        $sql="SELECT category FROM categorydesc ORDER BY category";
+                        $result=$conn->query($sql);
+                        while ($row=$result->fetch_assoc()) {
+                    ?>
+                    <li class="list-group-item">
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input type="checkbox" class="form-check-input product_check" value="<?= $row['category']; ?>" id="category"><?= $row['category']; ?>
+                            </label>
+                        </div>
+                    </li>
+                    <?php } ?>
+                </ul>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <?php 
 	}
 ?>
@@ -314,7 +345,7 @@
 ?>
 <div class="container-fluid">
 	<div class="row">
-		<div class="col-md-3">
+		<div class="col-md-3 d-none d-md-block">
 			<!-- Filter -->
 			<h5>Filter Product</h5>
 			<hr>
@@ -387,6 +418,37 @@
     	</div>
 	</div>
 </div>
+
+<div class="modal fade" id="filterProductsModal" tabindex="-1" role="dialog" aria-labelledby="filterProducts" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <!-- Filter -->
+                <h5>Filter Products</h5>
+                <hr>
+                <h6 class="text-info">Select Category</h6>
+                <ul class="list-group">
+                    <?php
+                        $sql="SELECT category FROM categorydesc ORDER BY category";
+                        $result=$conn->query($sql);
+                        while ($row=$result->fetch_assoc()) {
+                    ?>
+                    <li class="list-group-item">
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input type="checkbox" class="form-check-input product_check" value="<?= $row['category']; ?>" id="category"><?= $row['category']; ?>
+                            </label>
+                        </div>
+                    </li>
+                    <?php } ?>
+                </ul>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <?php
 	}
 ?>
@@ -394,6 +456,13 @@
 <?php 
     $conn->close();
 ?>
+
+<!-- Button trigger modal -->
+<div class="d-md-none fixed-bottom filterProductGroup">
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#filterProductsModal">
+      Filter Products
+    </button>
+</div>
 
 <!--Footer-->
     <footer class="footer">
@@ -461,6 +530,9 @@
         <li><a href="#"><i class="fa fa-instagram"></i></a></li>
         </ul>
         <!--social_footer_ul ends here-->
+        <div class="d-md-none">
+            <br>
+        </div>
         </div>
 
     </footer>
