@@ -6,7 +6,7 @@ session_start();
 
 if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']===TRUE) {
 	if ($_SESSION['orderConfirmed']===TRUE && isset($_POST['order_confirmation_mail']) && $_POST['order_confirmation_mail']=="true") {
-		//$_SESSION['orderConfirmed']=FALSE;
+		$_SESSION['orderConfirmed']=FALSE;
         $_POST['order_confirmation_mail']="false";
 
         $safeOid = preg_replace('/[^\w]/','',$_POST['order_id']);
@@ -65,7 +65,7 @@ if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']===TRUE) {
 
 						  <div style="padding-left: 1rem; padding-right: 1rem;">
 						    <p style="color: #66BB6A !important;">
-						      Thank you for your Green order. <small>We are processing your order and shall arrive soon.<br><br>
+						      Hi '.$_SESSION['userFName'].', thank you for your Green order. <small>We are processing your order and shall arrive soon.<br><br>
 						      Here are the details:</small>
 						    </p>
 						    
