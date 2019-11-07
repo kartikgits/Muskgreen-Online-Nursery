@@ -28,6 +28,63 @@
     <link rel="stylesheet" type="text/css" href="css/footer.css">
 
 
+    <style type="text/css">
+      .typeahead, .tt-query, .tt-hint {
+        border: 2px solid #CCCCCC;
+        border-radius: 8px;
+        font-size: 18px; /* Set input font size */
+        line-height: 30px;
+        outline: medium none;
+        padding: 8px 12px;
+        width: 100%;
+      }
+      .twitter-typeahead {
+        margin-left: auto !important;
+        margin-right: auto !important;
+        width: 100% !important;
+      }
+      .typeahead {
+        background-color: #FFFFFF;
+      }
+      .typeahead:focus {
+        border: 2px solid #0097CF;
+      }
+      .tt-query {
+        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+      }
+
+      .tt-menu {
+        background-color: #FFFFFF;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        border-radius: 8px;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        padding: 8px 0;
+        width: inherit;
+        max-height: 90vh;
+        overflow: scroll;
+      }
+      .tt-suggestion {
+        font-size: 16px;  /* Set suggestion dropdown font size */
+        padding: 3px 20px;
+        transition: 0.2s ease-in-out;
+      }
+      .tt-suggestion:hover {
+        cursor: pointer;
+        background-color: #66BB6A;
+        color: #FFFFFF;
+      }
+      .tt-suggestion p {
+        margin: 0;
+      }
+    </style>
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="bootstrap4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/typeahead.bundle.js"></script>
+    <script type="text/javascript" src="js/liveSearch.js"></script>
+
+
     <title>Welcome to MuskGreen - India's Latest Digital Nursery and Organic Products store</title>
   </head>
 
@@ -44,15 +101,8 @@
             </a>
             
             <!--Search Box-->
-            <form autocomplete="off" class="input-group md-form form-sm form-2 pl-0 topNavItem" action="products.php?">
-              <input class="autocomplete form-control my-0 py-1 amber-border" id="myInput" type="text" name="product" placeholder="Search" aria-label="Search">
-              <div class="input-group-append" type="submit">
-                <div class="input-group-append">
-                  <button class="btn btn-secondary" type="submit">
-                    <i class="fa fa-search" aria-hidden="true"></i>
-                  </button>
-                </div>
-              </div>
+            <form autocomplete="off" class="input-group md-form form-sm form-2" action="products.php?" style="">
+              <input class="autocomplete form-control my-0 py-1 amber-border typeahead tt-query" id="myInput" type="text" name="product" placeholder="Search" aria-label="Search" autocomplete="off" spellcheck="false">
             </form>
             
             <!--Login/Signup or Account-->
@@ -584,12 +634,7 @@
       
     <!-- JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    
-    <script type="text/javascript" src="bootstrap4/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/styler.js"></script>
-    <script type="text/javascript" src="js/liveSearch.js"></script>
     <script type="text/javascript" src="js/buttonActions.js"></script>
 
   </body>

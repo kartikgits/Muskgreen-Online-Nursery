@@ -36,9 +36,9 @@ input[type=submit] {
   top: 100%;
   left: 0;
   right: 0;
-  
   max-height: 90vh;
   overflow: scroll;
+  margin-bottom: 10px;
 }
 
 .autocomplete-items div {

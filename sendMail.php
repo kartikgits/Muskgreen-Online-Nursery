@@ -115,7 +115,7 @@ if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']===TRUE) {
 							    </center>
 							</div>
 							<br><br>
-							<center>MuskGreen<br>34, Kunj Vihar, Dehradun, Uttarakhand</center>
+							<center>MuskGreen<br>34, Kunj Vihar, Dehradun, Uttarakhand<br>Contact: info@muskgreen.live</center>
 						  </div>
 						</div>';
 
