@@ -38,8 +38,6 @@ nav.topBar .topNavItem {
 
 /*Search Bar*/
 .input-group.md-form.form-sm.form-2 {
-    margin-left: 10%;
-    margin-right: 10%;
 }
 
 .input-group.md-form.form-sm.form-2 input {
@@ -96,5 +94,65 @@ nav div.navigationBar ul li .dropdownMenu > a:hover{
     color: #FFF;
 }
 
+/*Search Bar*/
+.typeahead, .tt-query, .tt-hint {
+	border: 2px solid #CCCCCC;
+	border-radius: 4px 0px 0px 4px;
+	font-size: 18px; /* Set input font size */
+	line-height: 30px;
+	outline: medium none;
+	padding: 8px 12px;
+	width: 100%;
+  }
+
+form.input-group>button{
+	border-radius: 0px 4px 4px 0px !important;
+}
+
+  .twitter-typeahead {
+	margin-left: auto !important;
+	margin-right: 0 !important;
+	width: 90% !important;
+  }
+  .typeahead {
+	background-color: #FFFFFF;
+  }
+  .typeahead:focus {
+	border: 2px solid #0097CF;
+  }
+  .tt-query {
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+  }
+
+  .tt-menu {
+	background-color: #FFFFFF;
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	border-radius: 8px;
+	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+	padding: 8px 0;
+	width: 100%;
+	max-height: 90vh;
+	overflow: scroll;
+  }
+  .tt-suggestion {
+	font-size: 16px;  /* Set suggestion dropdown font size */
+	padding: 3px 20px;
+	transition: 0.2s ease-in-out;
+  }
+  .tt-suggestion:hover {
+	cursor: pointer;
+	background-color: #66BB6A;
+	color: #FFFFFF;
+  }
+  .tt-suggestion p {
+	margin: 0;
+  }
+  
+  @media only screen and (max-width: 820px) {
+    .input-group.md-form.form-sm.form-2 > button {
+		padding-left: 2.2% !important;
+		padding-right: 2.2% !important;
+	}
+  }
 
 /*Mobile Styling*/

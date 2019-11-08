@@ -16,7 +16,7 @@
 
     <!-- Our CSS -->
     <link rel="stylesheet" type="text/css" href="css/style.css" media="(min-width: 768px)">
-    <link rel="stylesheet" type="text/css" href="css/mobileNav.css" media="(max-width: 768px)">
+    <link rel="stylesheet" type="text/css" href="css/mobileNav.css" media="(max-width: 767px)">
     <link rel="stylesheet" type="text/css" href="css/liveSearchStyle.css">
     <link rel="stylesheet" type="text/css" href="css/footer.css">
     <link rel="stylesheet" type="text/css" href="css/cartStyle.css">
@@ -42,19 +42,15 @@
             <span class="navbar-toggler-icon"></span>
             </button>
             <a class="navbar-brand py-0 topNavItem" href="#">
-                <img src="extras/musklogo224.png" width="100%" class="d-inline-block align-top" alt="MuskGreen">
+                <img src="extras/musklogo224.png" width="72%" class="d-inline-block align-top" alt="MuskGreen">
             </a>
             
             <!--Search Box-->
-            <form autocomplete="off" class="input-group md-form form-sm form-2 pl-0 topNavItem" action="products.php?">
-              <input class="autocomplete form-control my-0 py-1 amber-border" id="myInput" type="text" name="product" placeholder="Search" aria-label="Search">
-              <div class="input-group-append" type="submit">
-                <div class="input-group-append">
-                  <button class="btn btn-secondary" type="submit">
-                    <i class="fa fa-search" aria-hidden="true"></i>
-                  </button>
-                </div>
-              </div>
+            <form autocomplete="off" class="input-group md-form form-sm form-2" action="products.php?">
+              <input class="autocomplete form-control my-0 py-1 amber-border typeahead tt-query" id="myInput" type="text" name="product" placeholder="Search" aria-label="Search" autocomplete="off" spellcheck="false" style="display: inline; text-align: left;">
+              <button class="btn btn-secondary" type="submit" style="display: inline;">
+                <i class="fa fa-search" aria-hidden="true"></i>
+              </button>
             </form>
             
             <!--Login/Signup or Account-->
@@ -209,14 +205,7 @@
                             
                             <!--Search Box (Mobile)-->
                             <form autocomplete="off" class="input-group md-form form-sm form-2 pl-0 d-md-none" action="products.php?">
-                              <input class="autocomplete form-control my-0 py-1 amber-border" id="myInput2" type="text" name="product" placeholder="Search" aria-label="Search">
-                              <div class="input-group-append" type="submit">
-                                <div class="input-group-append">
-                                  <button class="btn btn-secondary" type="submit">
-                                    <i class="fa fa-search" aria-hidden="true"></i>
-                                  </button>
-                                </div>
-                              </div>
+                              <input class="autocomplete form-control py-0 amber-border typeahead tt-query" id="myInput2" type="text" name="product" placeholder="Search Plants, Pots and More..." aria-label="Search" autocomplete="off" spellcheck="false">
                             </form>
 
                         </nav>

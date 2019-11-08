@@ -30,8 +30,8 @@
     <link rel="stylesheet" href="bootstrap4/css/bootstrap.min.css" >
 
     <!-- MuskGreen CSS -->
-    <link rel="stylesheet" type="text/css" href="css/style.css" media="(min-width: 767.99px)">
-    <link rel="stylesheet" type="text/css" href="css/mobileNav.css" media="(max-width: 767.99px)">
+    <link rel="stylesheet" type="text/css" href="css/style.css" media="(min-width: 768px)">
+    <link rel="stylesheet" type="text/css" href="css/mobileNav.css" media="(max-width: 767px)">
     <link rel="stylesheet" type="text/css" href="css/liveSearchStyle.css">
     <link rel="stylesheet" type="text/css" href="css/footer.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -221,195 +221,185 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
 </head>
-<body>
-	<!--Top Brand Bar with Search, Login & Signup and Cart-->
-    <nav class="navbar navbar-expand-md sticky-top navbar-light topBar d-none d-md-flex">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-        </button>
-        <a class="navbar-brand py-0 topNavItem" href="#">
-            <img src="extras/musklogo224.png" width="100%" class="d-inline-block align-top" alt="MuskGreen">
-        </a>
-        
-        <!--Search Box-->
-        <form autocomplete="off" class="input-group md-form form-sm form-2 pl-0 topNavItem" action="products.php?">
-          <input class="autocomplete form-control my-0 py-1 amber-border" id="myInput" type="text" name="product" placeholder="Search" aria-label="Search">
-          <div class="input-group-append" type="submit">
-            <div class="input-group-append">
-              <button class="btn btn-secondary" type="submit">
+<body onload="setCartCount('<?=$logInStatus?>')">
+
+<!--      Top Brand Bar with Search, Login & Signup and Cart (Includes NavBar button in mobile view)-->
+        <nav class="navbar navbar-expand-md sticky-top navbar-light topBar d-none d-md-flex">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <a class="navbar-brand py-0 topNavItem" href="#">
+                <img src="extras/musklogo224.png" width="72%" class="d-inline-block align-top" alt="MuskGreen">
+            </a>
+            
+            <!--Search Box-->
+            <form autocomplete="off" class="input-group md-form form-sm form-2" action="products.php?">
+              <input class="autocomplete form-control my-0 py-1 amber-border typeahead tt-query" id="myInput" type="text" name="product" placeholder="Search" aria-label="Search" autocomplete="off" spellcheck="false" style="display: inline; text-align: left;">
+              <button class="btn btn-secondary" type="submit" style="display: inline;">
                 <i class="fa fa-search" aria-hidden="true"></i>
               </button>
-            </div>
+            </form>
+            
+            <!--Login/Signup or Account-->
+            <?php
+                if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']===TRUE) {
+            ?>
+            <a class="topNavItem nav-item py-0" href="profile.php"><span class="fa fa-user topNavItem" title="User Account" aria-hidden="true"> <span><br/>Account</span></span></a>
+            <!-- Cart -->
+            <a class="topNavItem nav-item py-0" href="cart.php"><span class="fa fa-shopping-cart topNavItem" title="Cart" aria-hidden="true"> <span><br/>Cart[<span id="cartCountUserDesktop"><?=$_SESSION['cartCount']?></span>]</span></span></a>
+            <?php
+                } else {
+            ?>
+            <a class="topNavItem nav-item py-0" href="#" onclick="signupLogin()"><span class="fa fa-user topNavItem" title="Login Or Signup" aria-hidden="true"> <span><br/>Login/Signup</span></span></a>
+            <!-- Cart -->
+            <a class="topNavItem nav-item py-0" href="cart.php"><span class="fa fa-shopping-cart topNavItem" title="Cart" aria-hidden="true"> <span><br/>Cart[<span id="cartCountDesktop">0</span>]</span></span></a>
+            <?php
+                }
+            ?>
+
+        </nav>
+      
+      
+<!--   Navigation Bar   -->
+      <nav class="navbar navbar-expand-md lowerNavBar d-none d-md-flex">
+<!--          <a class="navbar-brand" href="#">Navbar</a>-->
+          
+          <div class="collapse navbar-collapse navigationBar" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto">
+                
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Plants
+                </a>
+                <div class="dropdown-menu dropdownMenu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#">All Plants</a>
+                    <a class="dropdown-item" href="#">Plant Packs</a>
+                    <a class="dropdown-item" href="#">Gift Plants</a>
+                    <a class="dropdown-item" href="#">Flowering Plants</a>
+                    <a class="dropdown-item" href="#">Indoor Plants</a>
+                </div>
+              </li>
+                
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Flowers
+                </a>
+                <div class="dropdown-menu dropdownMenu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#">All Flowers</a>
+                    <a class="dropdown-item" href="#">Rose Plants</a>
+                    <a class="dropdown-item" href="#">Hibiscus PLants</a>
+                    <a class="dropdown-item" href="#">Jasmine Plants</a>
+                    <a class="dropdown-item" href="#">Flowering Creepers</a>
+                    <a class="dropdown-item" href="#">PLants for Flower bed</a>
+                </div>
+              </li>
+              
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Pots
+                    </a>
+                    <div class="dropdown-menu dropdownMenu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Plastic Planters</a>
+                        <a class="dropdown-item" href="#">Earthen Planters</a>
+                        <a class="dropdown-item" href="#">Concrete Planters</a>
+                    </div>
+              </li>
+                
+              <li class="nav-item dropdown">
+                <a class="nav-link" href="#" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">Fertilizers
+                </a>
+              </li>
+                
+              <li class="nav-item dropdown">
+                <a class="nav-link" href="#" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">Soils
+                </a>
+              </li>
+            </ul>
           </div>
-        </form>
-        
-        <!--Login/Signup or Account-->
-        <?php
-            if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']===TRUE) {
-        ?>
-        <a class="topNavItem nav-item py-0" href="#"><span class="fa fa-user topNavItem" title="User Account" aria-hidden="true"> <span><br/>Account</span></span></a>
-        <!-- Cart -->
-        <a class="topNavItem nav-item py-0" href="cart.php"><span class="fa fa-shopping-cart topNavItem" title="Cart" aria-hidden="true"> <span><br/>Cart[<span id="cartCountUserDesktop"><?=$_SESSION['cartCount']?></span>]</span></span></a>
-        <?php
-            } else {
-        ?>
-        <a class="topNavItem nav-item py-0" href="#" onclick="signupLogin()"><span class="fa fa-user topNavItem" title="Login Or Signup" aria-hidden="true"> <span><br/>Login/Signup</span></span></a>
-        <!-- Cart -->
-        <a class="topNavItem nav-item py-0" href="cart.php"><span class="fa fa-shopping-cart topNavItem" title="Cart" aria-hidden="true"> <span><br/>Cart[<span id="cartCountDesktop">0</span>]</span></span></a>
-        <?php
-            }
-        ?>
-
-    </nav>
+      </nav>
       
       
-	<!--Navigation Bar-->
-	<nav class="navbar navbar-expand-md lowerNavBar d-none d-md-flex">
-	<!--          <a class="navbar-brand" href="#">Navbar</a>-->
-	  
-	  <div class="collapse navbar-collapse navigationBar" id="navbarCollapse">
-	    <ul class="navbar-nav mr-auto">
-	        
-	      <li class="nav-item dropdown">
-	        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-	          Plants
-	        </a>
-	        <div class="dropdown-menu dropdownMenu" aria-labelledby="navbarDropdown">
-	            <a class="dropdown-item" href="#">All Plants</a>
-	            <a class="dropdown-item" href="#">Plant Packs</a>
-	            <a class="dropdown-item" href="#">Gift Plants</a>
-	            <a class="dropdown-item" href="#">Flowering Plants</a>
-	            <a class="dropdown-item" href="#">Indoor Plants</a>
-	        </div>
-	      </li>
-	        
-	      <li class="nav-item dropdown">
-	        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-	          Flowers
-	        </a>
-	        <div class="dropdown-menu dropdownMenu" aria-labelledby="navbarDropdown">
-	            <a class="dropdown-item" href="#">All Flowers</a>
-	            <a class="dropdown-item" href="#">Rose Plants</a>
-	            <a class="dropdown-item" href="#">Hibiscus PLants</a>
-	            <a class="dropdown-item" href="#">Jasmine Plants</a>
-	            <a class="dropdown-item" href="#">Flowering Creepers</a>
-	            <a class="dropdown-item" href="#">PLants for Flower bed</a>
-	        </div>
-	      </li>
-	      
-	        <li class="nav-item dropdown">
-	            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-	              Pots
-	            </a>
-	            <div class="dropdown-menu dropdownMenu" aria-labelledby="navbarDropdown">
-	                <a class="dropdown-item" href="#">Plastic Planters</a>
-	                <a class="dropdown-item" href="#">Earthen Planters</a>
-	                <a class="dropdown-item" href="#">Concrete Planters</a>
-	            </div>
-	      </li>
-	        
-	      <li class="nav-item dropdown">
-	        <a class="nav-link" href="#" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">Fertilizers
-	        </a>
-	      </li>
-	        
-	      <li class="nav-item dropdown">
-	        <a class="nav-link" href="#" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">Soils
-	        </a>
-	      </li>
-	    </ul>
-	  </div>
-	</nav>
-      
-      
-	<!--Mobile Navigation Bar-->
-	<div class="mobileBar navigation-wrap bg-light start-header start-style d-md-none">
-	    <div class="container">
-	        <div class="row">
-	            <div class="col-12">
-	                <nav class="navbar navbar-expand-md navbar-light">
+      <!--Mobile Navigation Bar-->
+      <div class="mobileBar navigation-wrap bg-light start-header start-style d-md-none">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <nav class="navbar navbar-expand-md navbar-light">
 
-	                    <a class="navbar-brand" href="https://themeforest.net/user/ig_design/portfolio" target="_blank"><img src="extras/musklogo112.png" alt=""></a>
-	                    
-	                    <!-- account -->
-	                    <?php
-	                        if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']===TRUE) {
-	                    ?>
-	                    <a class="mobileNavItem py-0" href="#"><span class="fa fa-user mobileNavItem" type="" title="User Account" aria-hidden="true"></span></a>
-	                    <!-- cart -->
-	                    <span class="fa fa-shopping-cart py-0 mobileNavItem" title="Cart" aria-hidden="true"><span> [<span id="cartCountUserMobile">0</span>]</span></span>
-	                    <?php
-	                        }else{
-	                    ?>
-	                    <a class="mobileNavItem py-0" href="#" onclick="signupLogin()"><span class="fa fa-user mobileNavItem" type="" title="Login or SignUp" aria-hidden="true"></span></a>
-	                    <!-- cart -->
-	                    <span class="fa fa-shopping-cart py-0 mobileNavItem" title="Cart" aria-hidden="true"><span> [0]</span></span>
-	                    <?php
-	                        }
-	                    ?>
+                            <a class="navbar-brand" href="https://themeforest.net/user/ig_design/portfolio" target="_blank"><img src="extras/musklogo112.png" alt=""></a>
+                            
+                            <!-- account -->
+                            <?php
+                                if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']===TRUE) {
+                            ?>
+                            <a class="mobileNavItem py-0" href="profile.php"><span class="fa fa-user mobileNavItem" type="" title="User Account" aria-hidden="true"></span></a>
+                            <!-- cart -->
+                            <a class="mobileNavItem py-0"><span class="fa fa-shopping-cart mobileNavItem" title="Cart" aria-hidden="true"><span> [<span id="cartCountUserMobile">0</span>]</span></span></a>
+                            <?php
+                                }else{
+                            ?>
+                            <a class="mobileNavItem py-0" href="#" onclick="signupLogin()"><span class="fa fa-user mobileNavItem" type="" title="Login or SignUp" aria-hidden="true"></span></a>
+                            <!-- cart -->
+                            <a class="py-0 mobileNavItem" href="cart.php"><span class="fa fa-shopping-cart mobileNavItem" title="Cart" aria-hidden="true"><span> [0]</span></span></a>
+                            <?php
+                                }
+                            ?>
 
 
-	                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-	                        <span class="navbar-toggler-icon"></span>
-	                    </button>
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
 
-	                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-	                        <ul class="navbar-nav ml-auto py-4 py-md-0">
-	                            <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-	                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Plants</a>
-	                                <div class="dropdown-menu">
-	                                    <a class="dropdown-item" href="#">All Plants</a>
-	                                    <a class="dropdown-item" href="#">Plant Packs</a>
-	                                    <a class="dropdown-item" href="#">Gift Plants</a>
-	                                    <a class="dropdown-item" href="#">Flowering Plants</a>
-	                                    <a class="dropdown-item" href="#">Indoor Plants</a>
-	                                </div>
-	                            </li>
-	                            <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-	                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Flowers</a>
-	                                <div class="dropdown-menu">
-	                                    <a class="dropdown-item" href="#">All Flowers</a>
-	                                    <a class="dropdown-item" href="#">Rose Plants</a>
-	                                    <a class="dropdown-item" href="#">Hibiscus PLants</a>
-	                                    <a class="dropdown-item" href="#">Jasmine Plants</a>
-	                                    <a class="dropdown-item" href="#">Flowering Creepers</a>
-	                                    <a class="dropdown-item" href="#">PLants for Flower bed</a>
-	                                </div>
-	                            </li>
-	                            <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-	                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Pots</a>
-	                                <div class="dropdown-menu">
-	                                    <a class="dropdown-item" href="#">Plastic Planters</a>
-	                                    <a class="dropdown-item" href="#">Earthen Planters</a>
-	                                    <a class="dropdown-item" href="#">Concrete Planters</a>
-	                                </div>
-	                            </li>
-	                            <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-	                                <a class="nav-link" href="#">Fertilizers</a>
-	                            </li>
-	                            <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-	                                <a class="nav-link" href="#">Soils</a>
-	                            </li>
-	                        </ul>
-	                    </div>
-	                    
-	                    <!--Search Box (Mobile)-->
-	                    <form autocomplete="off" class="input-group md-form form-sm form-2 pl-0 d-md-none" action="products.php?">
-	                      <input class="autocomplete form-control my-0 py-1 amber-border" id="myInput2" type="text" name="product" placeholder="Search" aria-label="Search">
-	                      <div class="input-group-append" type="submit">
-	                        <div class="input-group-append">
-	                          <button class="btn btn-secondary" type="submit">
-	                            <i class="fa fa-search" aria-hidden="true"></i>
-	                          </button>
-	                        </div>
-	                      </div>
-	                    </form>
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                <ul class="navbar-nav ml-auto py-4 py-md-0">
+                                    <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Plants</a>
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item" href="#">All Plants</a>
+                                            <a class="dropdown-item" href="#">Plant Packs</a>
+                                            <a class="dropdown-item" href="#">Gift Plants</a>
+                                            <a class="dropdown-item" href="#">Flowering Plants</a>
+                                            <a class="dropdown-item" href="#">Indoor Plants</a>
+                                        </div>
+                                    </li>
+                                    <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Flowers</a>
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item" href="#">All Flowers</a>
+                                            <a class="dropdown-item" href="#">Rose Plants</a>
+                                            <a class="dropdown-item" href="#">Hibiscus PLants</a>
+                                            <a class="dropdown-item" href="#">Jasmine Plants</a>
+                                            <a class="dropdown-item" href="#">Flowering Creepers</a>
+                                            <a class="dropdown-item" href="#">PLants for Flower bed</a>
+                                        </div>
+                                    </li>
+                                    <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Pots</a>
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item" href="#">Plastic Planters</a>
+                                            <a class="dropdown-item" href="#">Earthen Planters</a>
+                                            <a class="dropdown-item" href="#">Concrete Planters</a>
+                                        </div>
+                                    </li>
+                                    <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                                        <a class="nav-link" href="#">Fertilizers</a>
+                                    </li>
+                                    <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                                        <a class="nav-link" href="#">Soils</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            <!--Search Box (Mobile)-->
+                            <form autocomplete="off" class="input-group md-form form-sm form-2 pl-0 d-md-none" action="products.php?">
+                              <input class="autocomplete form-control py-0 amber-border typeahead tt-query" id="myInput2" type="text" name="product" placeholder="Search Plants, Pots and More..." aria-label="Search" autocomplete="off" spellcheck="false">
+                            </form>
 
-	                </nav>
-	            </div>
-	        </div>
-	    </div>
-	</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 	<!-- Main body -->
 	<div class="container regForm">

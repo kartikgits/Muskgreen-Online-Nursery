@@ -21,62 +21,11 @@
     
     <!-- Our CSS -->
     <link rel="stylesheet" type="text/css" href="css/style.css" media="(min-width: 768px)">
-    <link rel="stylesheet" type="text/css" href="css/mobileNav.css" media="(max-width: 768px)">
+    <link rel="stylesheet" type="text/css" href="css/mobileNav.css" media="(max-width: 767px)">
     <link rel="stylesheet" type="text/css" href="css/profileStyle.css">
     <link rel="stylesheet" type="text/css" href="css/liveSearchStyle.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="css/footer.css">
-
-
-    <style type="text/css">
-      .typeahead, .tt-query, .tt-hint {
-        border: 2px solid #CCCCCC;
-        border-radius: 8px;
-        font-size: 18px; /* Set input font size */
-        line-height: 30px;
-        outline: medium none;
-        padding: 8px 12px;
-        width: 100%;
-      }
-      .twitter-typeahead {
-        margin-left: auto !important;
-        margin-right: auto !important;
-        width: 100% !important;
-      }
-      .typeahead {
-        background-color: #FFFFFF;
-      }
-      .typeahead:focus {
-        border: 2px solid #0097CF;
-      }
-      .tt-query {
-        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
-      }
-
-      .tt-menu {
-        background-color: #FFFFFF;
-        border: 1px solid rgba(0, 0, 0, 0.2);
-        border-radius: 8px;
-        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-        padding: 8px 0;
-        width: inherit;
-        max-height: 90vh;
-        overflow: scroll;
-      }
-      .tt-suggestion {
-        font-size: 16px;  /* Set suggestion dropdown font size */
-        padding: 3px 20px;
-        transition: 0.2s ease-in-out;
-      }
-      .tt-suggestion:hover {
-        cursor: pointer;
-        background-color: #66BB6A;
-        color: #FFFFFF;
-      }
-      .tt-suggestion p {
-        margin: 0;
-      }
-    </style>
 
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -88,31 +37,38 @@
     <title>Welcome to MuskGreen - India's Latest Digital Nursery and Organic Products store</title>
   </head>
 
-  <body>
-      
-      
-<!--      Top Brand Bar with Search, Login & Signup and Cart (Includes NavBar button in mobile view)-->
+  <body onload="setCartCount('<?=$logInStatus?>')">
+
+  <!--      Top Brand Bar with Search, Login & Signup and Cart (Includes NavBar button in mobile view)-->
         <nav class="navbar navbar-expand-md sticky-top navbar-light topBar d-none d-md-flex">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
             <a class="navbar-brand py-0 topNavItem" href="#">
-                <img src="extras/musklogo224.png" width="100%" class="d-inline-block align-top" alt="MuskGreen">
+                <img src="extras/musklogo224.png" width="72%" class="d-inline-block align-top" alt="MuskGreen">
             </a>
             
             <!--Search Box-->
-            <form autocomplete="off" class="input-group md-form form-sm form-2" action="products.php?" style="">
-              <input class="autocomplete form-control my-0 py-1 amber-border typeahead tt-query" id="myInput" type="text" name="product" placeholder="Search" aria-label="Search" autocomplete="off" spellcheck="false">
+            <form autocomplete="off" class="input-group md-form form-sm form-2" action="products.php?">
+              <input class="autocomplete form-control my-0 py-1 amber-border typeahead tt-query" id="myInput" type="text" name="product" placeholder="Search" aria-label="Search" autocomplete="off" spellcheck="false" style="display: inline; text-align: left;">
+              <button class="btn btn-secondary" type="submit" style="display: inline;">
+                <i class="fa fa-search" aria-hidden="true"></i>
+              </button>
             </form>
             
-            <!--Login/Signup or Account-->
             <!--Login/Signup or Account-->
             <?php
                 if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']===TRUE) {
             ?>
-            <a class="topNavItem nav-item py-0" href="profile.php"><span class="fa fa-user topNavItem" title="User Account" aria-hidden="true"> <span><br>Account</span></span></a>
+            <a class="topNavItem nav-item py-0" href="profile.php"><span class="fa fa-user topNavItem" title="User Account" aria-hidden="true"> <span><br/>Account</span></span></a>
             <!-- Cart -->
-            <a class="topNavItem nav-item py-0" href="cart.php"><span class="fa fa-shopping-cart topNavItem" title="Cart" aria-hidden="true"> <span><br>Cart[<span id="cartCountUserDesktop"><?=$_SESSION['cartCount']?></span>]</span></span></a>
+            <a class="topNavItem nav-item py-0" href="cart.php"><span class="fa fa-shopping-cart topNavItem" title="Cart" aria-hidden="true"> <span><br/>Cart[<span id="cartCountUserDesktop"><?=$_SESSION['cartCount']?></span>]</span></span></a>
+            <?php
+                } else {
+            ?>
+            <a class="topNavItem nav-item py-0" href="#" onclick="signupLogin()"><span class="fa fa-user topNavItem" title="Login Or Signup" aria-hidden="true"> <span><br/>Login/Signup</span></span></a>
+            <!-- Cart -->
+            <a class="topNavItem nav-item py-0" href="cart.php"><span class="fa fa-shopping-cart topNavItem" title="Cart" aria-hidden="true"> <span><br/>Cart[<span id="cartCountDesktop">0</span>]</span></span></a>
             <?php
                 }
             ?>
@@ -186,23 +142,24 @@
                     <div class="col-12">
                         <nav class="navbar navbar-expand-md navbar-light">
 
-                            <a class="navbar-brand" href="index.php" target="_blank"><img src="extras/musklogo112.png" alt=""></a>
+                            <a class="navbar-brand" href="https://themeforest.net/user/ig_design/portfolio" target="_blank"><img src="extras/musklogo112.png" alt=""></a>
                             
                             <!-- account -->
                             <?php
                                 if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']===TRUE) {
                             ?>
-                            <a class="mobileNavItem py-0" href="#"><span class="fa fa-user mobileNavItem" type="" title="User Account" aria-hidden="true"></span></a>
+                            <a class="mobileNavItem py-0" href="profile.php"><span class="fa fa-user mobileNavItem" type="" title="User Account" aria-hidden="true"></span></a>
+                            <!-- cart -->
+                            <a class="mobileNavItem py-0"><span class="fa fa-shopping-cart mobileNavItem" title="Cart" aria-hidden="true"><span> [<span id="cartCountUserMobile">0</span>]</span></span></a>
                             <?php
                                 }else{
                             ?>
                             <a class="mobileNavItem py-0" href="#" onclick="signupLogin()"><span class="fa fa-user mobileNavItem" type="" title="Login or SignUp" aria-hidden="true"></span></a>
+                            <!-- cart -->
+                            <a class="py-0 mobileNavItem" href="cart.php"><span class="fa fa-shopping-cart mobileNavItem" title="Cart" aria-hidden="true"><span> [0]</span></span></a>
                             <?php
                                 }
                             ?>
-            
-                            <!-- cart -->
-                            <span class="fa fa-shopping-cart py-0 mobileNavItem" title="Cart" aria-hidden="true"><span> [0]</span></span>
 
 
                             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -226,10 +183,10 @@
                                         <div class="dropdown-menu">
                                             <a class="dropdown-item" href="#">All Flowers</a>
                                             <a class="dropdown-item" href="#">Rose Plants</a>
-                                            <a class="dropdown-item" href="#">Hibiscus Plants</a>
+                                            <a class="dropdown-item" href="#">Hibiscus PLants</a>
                                             <a class="dropdown-item" href="#">Jasmine Plants</a>
                                             <a class="dropdown-item" href="#">Flowering Creepers</a>
-                                            <a class="dropdown-item" href="#">Plants for Flower bed</a>
+                                            <a class="dropdown-item" href="#">PLants for Flower bed</a>
                                         </div>
                                     </li>
                                     <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
@@ -251,14 +208,7 @@
                             
                             <!--Search Box (Mobile)-->
                             <form autocomplete="off" class="input-group md-form form-sm form-2 pl-0 d-md-none" action="products.php?">
-                              <input class="autocomplete form-control my-0 py-1 amber-border" id="myInput2" type="text" name="product" placeholder="Search" aria-label="Search">
-                              <div class="input-group-append" type="submit">
-                                <div class="input-group-append">
-                                  <button class="btn btn-secondary" type="submit">
-                                    <i class="fa fa-search" aria-hidden="true"></i>
-                                  </button>
-                                </div>
-                              </div>
+                              <input class="autocomplete form-control py-0 amber-border typeahead tt-query" id="myInput2" type="text" name="product" placeholder="Search Plants, Pots and More..." aria-label="Search" autocomplete="off" spellcheck="false">
                             </form>
 
                         </nav>

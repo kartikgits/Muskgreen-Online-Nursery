@@ -2,7 +2,7 @@ div.userProfileContainer {
 	min-height: 86vh;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
 	div.userProfileContainer {
 		margin-top: 6rem;
 		min-height: 100vh;
