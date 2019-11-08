@@ -42,6 +42,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script type="text/javascript" src="bootstrap4/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="js/typeahead.bundle.js"></script>
   <script type="text/javascript" src="js/liveSearch.js"></script>
 
 </head>
