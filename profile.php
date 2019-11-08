@@ -28,13 +28,14 @@
     <link rel="stylesheet" type="text/css" href="css/footer.css">
 
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script type="text/javascript" src="bootstrap4/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/typeahead.bundle.js"></script>
     <script type="text/javascript" src="js/liveSearch.js"></script>
 
 
-    <title>Welcome to MuskGreen - India's Latest Digital Nursery and Organic Products store</title>
+    <title>MuskGreen | Buy Plants, Vegetables and Fruits Online in Dehradun</title>
   </head>
 
   <body onload="setCartCount('<?=$logInStatus?>')">

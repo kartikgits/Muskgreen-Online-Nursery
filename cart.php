@@ -1,6 +1,14 @@
 <?php
     require 'config.php';
     session_start();
+
+    $logInStatus="";
+
+    if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']===TRUE) {
+        $logInStatus="true";
+    }else{
+        $logInStatus="false";
+    }
 ?>
 
 <!DOCTYPE html>
@@ -22,15 +30,11 @@
     <link rel="stylesheet" type="text/css" href="css/cartStyle.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <!-- jQuery library -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
-
-	<!-- Popper JS -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-
-	<!-- Latest compiled JavaScript -->
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script type="text/javascript" src="bootstrap4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/liveSearch.js"></script>
 
 </head>
 
@@ -379,7 +383,6 @@
         <!--headin5_amrc-->
         <p class="mb10"> MuskGreen  is a startup nestled in the Himalayan foothill city - Dehradun. We provide a platform to deliver our customers the large variety of plants and the best of organic products.</p>
         <p><i class="fa fa-location-arrow"></i> 34, Kunj Vihar, Dehradun, Uttarakhand - 248001 </p>
-<!--        <p><i class="fa fa-phone"></i>  +91-9999878398  </p>-->
         <p><i class="fa fa fa-envelope"></i> info@muskgreen.live  </p>
 
 
@@ -396,13 +399,11 @@
         <li><a href="#">Gifts</a></li>
         <li><a href="#">Offer Zone</a></li>
         </ul>
-        <!--footer_ul_amrc ends here-->
         </div>
 
 
         <div class=" col-sm-4 col-md  col-6 col">
         <h5 class="headin5_amrc col_white_amrc pt2">Resources</h5>
-        <!--headin5_amrc-->
         <ul class="footer_ul_amrc">
         <li><a href="#">About us</a></li>
         <li><a href="#">Contact us</a></li>
@@ -412,7 +413,6 @@
         <li><a href="#">Privacy Policy</a></li>
         <li><a href="#">Terms & Conditions</a></li>
         </ul>
-        <!--footer_ul_amrc ends here-->
         </div>
         </div>
         </div>
@@ -426,7 +426,6 @@
         <li><a href="#">Sellers</a></li>
         <li><a href="#">Contact</a></li>
         </ul>
-        <!--foote_bottom_ul_amrc ends here-->
         <p class="text-center">Copyright @2019 | Made with love and care by <a href="#">MuskGreen</a></p>
 
         <ul class="social_footer_ul">
@@ -435,21 +434,15 @@
         <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
         <li><a href="#"><i class="fa fa-instagram"></i></a></li>
         </ul>
-        <!--social_footer_ul ends here-->
         </div>
 
     </footer>
 
 <!--  Main Body Ends  -->
-      
-    <!-- JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    
-    <script type="text/javascript" src="bootstrap4/js/bootstrap.min.js"></script>
+
     <script type="text/javascript" src="js/styler.js"></script>
     <script type="text/javascript" src="js/buttonActions.js"></script>
     <script type="text/javascript" src="js/cartActions.js"></script>
-    <script type="text/javascript" src="js/liveSearch.js"></script>
 
 </body>
 </html>

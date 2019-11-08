@@ -21,15 +21,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Checkout - MuskGreen | India's Latest Digital Nursery and Organic Products store</title>
+	<title>Checkout - MuskGreen | Buy Plants, Vegetables and Fruits Online in Dehradun</title>
 	<meta charset="utf-8">
+	<meta name="robots" content="noindex">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-	<!-- Bootstrap CSS -->
     <link rel="stylesheet" href="bootstrap4/css/bootstrap-grid.min.css" >
     <link rel="stylesheet" href="bootstrap4/css/bootstrap.min.css" >
 
-    <!-- MuskGreen CSS -->
     <link rel="stylesheet" type="text/css" href="css/style.css" media="(min-width: 768px)">
     <link rel="stylesheet" type="text/css" href="css/mobileNav.css" media="(max-width: 767px)">
     <link rel="stylesheet" type="text/css" href="css/liveSearchStyle.css">
@@ -211,14 +210,11 @@
 
 	</style>
 
-    <!-- jQuery library -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
-	<!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-
-	<!-- Latest compiled JavaScript -->
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="bootstrap4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/liveSearch.js"></script>
 
 </head>
 <body onload="setCartCount('<?=$logInStatus?>')">
@@ -674,7 +670,6 @@
 	  </form>
 
 	<script type="text/javascript" src="js/styler.js"></script>
-	<script type="text/javascript" src="js/liveSearch.js"></script>
 	<script type="text/javascript" src="js/checkOut.js"></script>
 	<script type="text/javascript" src="js/buttonActions.js"></script>
 
