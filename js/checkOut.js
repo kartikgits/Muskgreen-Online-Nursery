@@ -11,16 +11,19 @@ function addUserAddress(){
 }
 
 function validateUserAddressForm(){
-	var pattern = /^[A-Za-z0-9 ,.]+$/;
-    var anv = $('#address_name').val();
-    var alv = $('#address_locality').val();
-    var aav = $('#address_area').val();
-    var apv = $('#address_pincode').val();
-    if (pattern.test(anv) && pattern.test(alv) && pattern.test(aav) && pattern.test(apv)) {
-        return true;
-    } else {
-    	return false; 
-    }
+	var pattern = /^[a-zA-Z0-9\s,.'-]*$/;
+  var anv = $('#address_name').val();
+  var alv = $('#address_locality').val();
+  var aav = $('#address_area').val();
+  var apv = $('#address_pincode').val();
+  if (!(anv && alv && aav && apv)) {
+    return false;
+  }
+  if (pattern.test(anv) && pattern.test(alv) && pattern.test(aav) && pattern.test(apv)) {
+      return true;
+  } else {
+  	return false; 
+  }
 }
 
 function submitUserAddedAddress() {
@@ -34,15 +37,19 @@ function submitUserAddedAddress() {
 
 
 function validateUserEditAddressForm(){
-    var env = $('#edit_address_name').val();
-    var elv = $('#edit_address_locality').val();
-    var eav = $('#edit_address_area').val();
-    var epv = $('#edit_address_pincode').val();
-    if (!$.trim(env) && !$.trim(elv) && !$.trim(eav) && !$.trim(epv)) {
-        return false;
-    } else {
-    	return true; 
-    }
+  var pattern = /^[a-zA-Z0-9\s,.'-]*$/;
+  var anv = $('#edit_address_name').val();
+  var alv = $('#edit_address_locality').val();
+  var aav = $('#edit_address_area').val();
+  var apv = $('#edit_address_pincode').val();
+  if (!(anv && alv && aav && apv)) {
+    return false;
+  }
+  if (pattern.test(anv) && pattern.test(alv) && pattern.test(aav) && pattern.test(apv)) {
+      return true;
+  } else {
+    return false; 
+  }
 }
 
 function editUserAddress(addressName, locality, landmark, area, city, state, pincode, phone){

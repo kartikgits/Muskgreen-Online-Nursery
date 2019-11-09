@@ -6,6 +6,8 @@
 	header("Expires: 0");
     require 'config.php';
 
+    $logInStatus="";
+
     if (!isset($_SESSION['isLoggedIn']) && !$_SESSION['isLoggedIn']===TRUE) {
         header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
         header("Cache-Control: no-cache");
@@ -15,6 +17,7 @@
     	if ($_SESSION['cartCount']<1) {
     		header('Location: index.php');
     	}
+    	$logInStatus="true";
     }
 ?>
 

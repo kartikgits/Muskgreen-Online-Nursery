@@ -9,7 +9,7 @@
         header('Location: index.php');
     } 
     else{
-      if ($_SESSION['orderConfirmed']===FALSE) {
+      if (!isset($_SESSION['orderConfirmed']) || $_SESSION['orderConfirmed']===FALSE) {
         //SEND ERROR
         header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
         header("Cache-Control: no-cache");
@@ -17,7 +17,16 @@
         $error="Location: error.php";
         header($error);
       }
+	  
     }
+	if(isset($_SESSION['onlinePay']) && $_SESSION['onlinePay']===TRUE){
+		if(!isset($_SESSION['onlinePayStatus']) || $_SESSION['onlinePayStatus']!=TRUE){
+			$error="Location: error.php?errorMessage="."There was an error processing transaction. If the transaction was successful, we will process your order soon.";
+			header($error);
+		}
+		$_SESSION['onlinePay']=FALSE;
+		$_SESSION['onlinePayStatus']=FALSE;
+	}
 ?>
 
 <!DOCTYPE html>

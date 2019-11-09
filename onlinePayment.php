@@ -38,9 +38,9 @@
 		        	$safeDeliveryAddress = preg_replace('/[^\w,. ]/','',$_POST['delivery_address']);
 		        	$sqlOrder = "insert into productorder (uid, oid, paymentMethod, addressName) values ('".$_SESSION['userId']."', '".$oid."', 'Prepaid', '".$safeDeliveryAddress."')";
 		        	if ($conn->query($sqlOrder)===TRUE) {
-		        		$sqlOrderedProducts = "select usercart.proid, quantity, (sp-((discount/100)*cp))*quantity as subprice from usercart natural join product natural join productseller where usercart.uid='".$_SESSION['userId']."' group by proid";
+		        		$sqlOrderedProducts = "select usercart.proid, quantity, (sp-((discount/100)*cp))*quantity as subprice from usercart natural join productseller where uid='".$_SESSION['userId']."'";
 		        		$resultOrderedProducts=$conn->query($sqlOrderedProducts);
-		        		$sqlProductInsert="insert into productsInOrder (proid, oid, quantity, totalPrice) values ";
+		        		$sqlProductInsert="insert into productsinorder (proid, oid, quantity, totalPrice) values ";
 		        		$i=0;
 		        		while($rowOrderedProducts=$resultOrderedProducts->fetch_assoc()){
 		        			if ($i==0) {
@@ -63,6 +63,7 @@
 
 					        if ($conn->query($sqlInsertDeliveryAddress) === TRUE) {
 					        	$_SESSION['orderConfirmed']=TRUE;
+								$_SESSION['onlinePay']=TRUE;
 					        	$ORDER_ID = $oid;
 					        	$CUST_ID = $_SESSION['userId'];
 					        	if ($chargeableAmount <= 599) {
@@ -107,7 +108,7 @@
 					$paramList["CHANNEL_ID"] = $CHANNEL_ID;
 					$paramList["TXN_AMOUNT"] = $TXN_AMOUNT;
 					$paramList["WEBSITE"] = PAYTM_MERCHANT_WEBSITE;
-					$paramList["CALLBACK_URL"] = "http://localhost:8080/muskgreen/onlinePaymentCheck.php";
+					$paramList["CALLBACK_URL"] = "https://muskgreen.live/onlinePaymentCheck.php";
 					$paramList["MSISDN"] = $_SESSION['userPrimeNumber']; //Mobile number of customer
 					$paramList["EMAIL"] = $_SESSION['userEmail']; //Email ID of customer
 					// $paramList["VERIFIED_BY"] = "EMAIL"; //
