@@ -208,8 +208,11 @@
                             </div>
                             
                             <!--Search Box (Mobile)-->
-                            <form autocomplete="off" class="input-group md-form form-sm form-2 pl-0 d-md-none" action="products.php?">
+                            <form autocomplete="off" class="mobileSearchBar input-group md-form form-sm form-2 pl-0 d-md-none" action="products.php?">
                               <input class="autocomplete form-control py-0 amber-border typeahead tt-query" id="myInput2" type="text" name="product" placeholder="Search Plants, Pots and More..." aria-label="Search" autocomplete="off" spellcheck="false">
+                              <button class="btn btn-secondary" type="submit" style="display: inline;">
+                                <i class="fa fa-search" aria-hidden="true"></i>
+                              </button>
                             </form>
 
                         </nav>

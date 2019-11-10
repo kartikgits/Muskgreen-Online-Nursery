@@ -148,7 +148,7 @@ form.input-group>button{
 	margin: 0;
   }
   
-  @media only screen and (max-width: 820px) {
+  @media only screen and (max-width: 850px) {
     .input-group.md-form.form-sm.form-2 > button {
 		padding-left: 2.2% !important;
 		padding-right: 2.2% !important;
