@@ -1,3 +1,9 @@
+var loggedInStatus="false";
+
+function setLogInStatus(logInStatus){
+  loggedInStatus=logInStatus;
+}
+
 function getNonLoggedCart() {
   var rslt='<div class="d-flex justify-content-center"><i class="fa fa-leaf fa-2x" aria-hidden="true" style="color: #4d4d4d;"></i><br/><h5>Oops.. Nothing Green Here</h5></div>';
   var productsInCart=[];
@@ -19,6 +25,42 @@ function getNonLoggedCart() {
    } else{
      document.getElementById("nonLoggedUserCart").innerHTML = rslt;
    }
+  }
+  getNonLoggedCartVariables();
+}
+
+function getNonLoggedCartVariables(){
+  if (typeof $.cookie('cartProductsCookie') === 'undefined'){
+    $("#cartSubtotal").html("&#8377;"+0.00);
+    $("#cartDeliveryCharges").html("&#8377;"+0.00);
+    $('#totalCartCharges').html("&#8377;"+0.00);
+  }else{
+    var productsInCart = JSON.parse($.cookie('cartProductsCookie'));
+    if (productsInCart.length>0) {
+      $.post("formsProcess.php", {get_nonlogged_cartprice: "true", 'productsGetCart': JSON.stringify(productsInCart)}, function(result){
+        var subTotal=+parseFloat(result).toFixed(2);
+        var total=0;
+        if (subTotal < 1) {
+           $("#cartSubtotal").html("&#8377;"+subTotal);
+           $("#cartDeliveryCharges").html("&#8377;"+0.00);
+           total=subTotal+0.0;
+        }
+        else if (subTotal<=599) {
+           $("#cartSubtotal").html("&#8377;"+subTotal);
+           $("#cartDeliveryCharges").html("&#8377;"+40.00);
+           total=subTotal+40.0;
+        }else{
+           $("#cartSubtotal").html("&#8377;"+subTotal);
+           $("#cartDeliveryCharges").html("<span style=\"color: #509534;\">FREE</span>");
+           total=subTotal;
+        }
+        $('#totalCartCharges').html("&#8377;"+total);
+      });
+    } else{
+      $("#cartSubtotal").html("&#8377;"+0.00);
+      $("#cartDeliveryCharges").html("&#8377;"+0.00);
+      $('#totalCartCharges').html("&#8377;"+0.00);
+    }
   }
 }
 
@@ -112,16 +154,17 @@ $(document).ready(function() {
          $(this).find(".table-responsive-stack-thead").hide();
          $(this).find('thead').show();
       });
-      }
-   // flextable   
-   }      
+      }  
+   }
     
    flexTable(); 
    window.onresize = function(event) {
        flexTable();
    };
 
-   getCartVariables();
-
-   getNonLoggedCart();
+   if (loggedInStatus=="true") {
+      getCartVariables();
+   }else if (loggedInStatus=="false") {
+      getNonLoggedCart();
+   }
 });

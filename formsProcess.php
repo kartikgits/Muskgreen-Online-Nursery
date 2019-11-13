@@ -175,7 +175,9 @@
 
 		$result=$conn->query($sqlGetProducts);
         $output='';
+        $price=0;
         while ($row=$result->fetch_assoc()) {
+        	$price+=floatval($row['sp']);
             $output = $output.'<tr>
                       <th scope="row" class="border-0">
                         <div class="p-2">
@@ -197,6 +199,30 @@
                     </tr>';
         }
 		echo $output;
+	}
+
+	//Read NonLoggedCartPrice cookie and retrun value
+	if (isset($_POST['get_nonlogged_cartprice']) && $_POST['get_nonlogged_cartprice']=="true") {
+		$productArray = json_decode($_POST['productsGetCart']);
+		$productIds="";
+		$i=0;
+		foreach ($productArray as $productId) {
+			$productId = $conn->real_escape_string($productId);
+			if ($i==0) {
+				$productIds=$productIds."'".$productId."'";
+			}else{
+				$productIds=$productIds.",'".$productId."'";
+			}
+			$i=$i+1;
+		}
+		$sqlGetProducts = "SELECT sp FROM product NATURAL JOIN productseller WHERE product.proid in (".$productIds.") ORDER BY proname";
+
+		$result=$conn->query($sqlGetProducts);
+        $price=0;
+        while ($row=$result->fetch_assoc()) {
+        	$price+=floatval($row['sp']);
+        }
+		echo $price;
 	}
 
 	$conn->close();
