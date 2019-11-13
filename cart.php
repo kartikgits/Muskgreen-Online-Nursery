@@ -260,9 +260,9 @@
                     <tr>
                       <th scope="row" class="border-0">
                         <div class="p-2">
-                          <img src="<?=$row['proimgurl']?>" alt="" width="70" class="img-fluid rounded shadow-sm"><br/>
+                          <img src="<?=$row['proimgurl']?>" alt="" width="60" class="img-fluid rounded shadow-sm"><br/>
                           <div class="d-inline-block">
-                            <h5 class="mb-0"> <a href="#" class="text-dark d-inline-block"><?=$row['proname']?></a></h5><!-- <span class="text-muted font-weight-normal font-italic d-block">category</span> -->
+                            <h5 class="mb-0"> <a href="#" class="text-dark d-inline-block"><?=$row['proname']?></a></h5>
                           </div>
                         </div>
                       </th>
@@ -284,7 +284,7 @@
                         </form>
                         </strong>
                         </td>
-                      <td class="border-0 align-middle"><a href="#" onclick="deleteProduct('<?=$row['proid']?>')" class="text-dark" title="Remove Product"><i class="fa fa-trash fa-lg" style="color: #D32F2F !important;"></i></a></td>
+                      <td class="border-0 align-middle"><a href="#" onclick="deleteProduct('<?=$row['proid']?>')" class="text-dark" title="Remove Product"><i class="fa fa-trash fa-lg" style="color: #D32F2F !important;" title="Remove Product"></i></a></td>
                     </tr>
                     <?php
                           }

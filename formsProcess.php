@@ -174,15 +174,12 @@
 		$sqlGetProducts = "SELECT * FROM product NATURAL JOIN productseller WHERE product.proid in (".$productIds.") ORDER BY proname";
 
 		$result=$conn->query($sqlGetProducts);
-        $itemsCount=0;
         $output='';
         while ($row=$result->fetch_assoc()) {
-            $itemsCount=$itemsCount+1;
-
             $output = $output.'<tr>
                       <th scope="row" class="border-0">
                         <div class="p-2">
-                          <img src="'.$row['proimgurl'].'" alt="" width="70" class="img-fluid rounded shadow-sm"><br/>
+                          <img src="'.$row['proimgurl'].'" alt="" width="60" class="img-fluid rounded shadow-sm"><br/>
                           <div class="ml-3 d-inline-block align-middle">
                             <h5 class="mb-0"> <a href="#" class="text-dark d-inline-block align-middle">'.$row['proname'].'</a></h5>
                           </div>
@@ -196,16 +193,9 @@
                         </form>
                         </strong>
                         </td>
-                      <td class="border-0 align-middle"><a href="#" onclick="deleteNotUserProduct(\''.$row['proid'].'\')" class="text-dark"><i class="fa fa-trash" style="color: #4d4d4d;"></i></a></td>
+                      <td class="border-0 align-middle"><a href="#" onclick="deleteNotUserProduct(\''.$row['proid'].'\')" class="text-dark"><i class="fa fa-trash fa-lg" style="color: #D32F2F !important;" title="Remove Product"></i></a></td>
                     </tr>';
         }
-        if ($itemsCount === 0) {
-			$output="
-				<div class=\"d-flex justify-content-center\">
-				<i class=\"fa fa-leaf fa-2x\" aria-hidden=\"true\" style=\"color: #4d4d4d;\"></i><br/>
-				<h5>Oops.. Nothing Green Here</h5>
-				</div>";
-		}
 		echo $output;
 	}
 
