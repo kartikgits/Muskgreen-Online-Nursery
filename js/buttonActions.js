@@ -120,7 +120,7 @@ function updateUserCart() {
 
 function updateCart(cartCount) {
 	$("#cartCountDesktop").html(""+cartCount);
-	$("#cartCountMobile").html(" "+cartCount);
+	$("#cartCountMobile").html(""+cartCount);
 }
 
 function addToCart(productId, logInStatus){
