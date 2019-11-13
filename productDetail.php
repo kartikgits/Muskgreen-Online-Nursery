@@ -47,7 +47,7 @@
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
-            <a class="navbar-brand py-0 topNavItem" href="#">
+            <a class="navbar-brand py-0 topNavItem" href="index.php">
                 <img src="extras/musklogo224.png" width="72%" class="d-inline-block align-top" alt="MuskGreen">
             </a>
             
@@ -251,7 +251,7 @@
 
                             <!-- Product Description -->
                             <div class="product-description">
-                              <span>
+                              <span>In 
                                   <?php 
                                     if($catresult->num_rows > 0){
                                         while($catrow=$catresult->fetch_assoc()){
@@ -268,9 +268,9 @@
                             <!-- Product Pricing -->
                             <div class="product-price">
                                 <?php 
-                                    $muskPrice = floatval($row['sp']) - ((floatval($row['discount'])/100) * floatval($row['cp']));
+                                    $mrp=floatval($row['sp']) + (floatval($row['discount'])/100)*floatval($row['sp']);
                                 ?>
-                              <span class="originalPrice" label="Original Price">&#8377;<?=$row['sp']?></span><span class="muskPrice" label="MuskGreen Price">&#8377;<?=$muskPrice?></span>
+                              <span class="originalPrice" label="Original Price">&#8377;<?=$mrp?></span><span class="muskPrice" label="MuskGreen Price">&#8377;<?=$row['sp']?></span>
                             </div>
                             <span class="btn-group d-none d-sm-block" role="group">
                                 <button type="button" class="btn btn-warning cart-btn" onclick="addToCart('<?=$row['proid']?>', '<?=$logInStatus?>')" id="addToCartButton"><i class="fa fa-cart-plus" aria-hidden="true"></i> Add To Cart</button>

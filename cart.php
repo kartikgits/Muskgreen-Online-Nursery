@@ -46,7 +46,7 @@
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
-            <a class="navbar-brand py-0 topNavItem" href="#">
+            <a class="navbar-brand py-0 topNavItem" href="index.php">
                 <img src="extras/musklogo224.png" width="72%" class="d-inline-block align-top" alt="MuskGreen">
             </a>
             
@@ -256,7 +256,6 @@
                         $itemsCount=0;
                         while ($row=$result->fetch_assoc()) {
                             $itemsCount=$itemsCount+1;
-                            $muskPrice = floatval($row['sp']) - ((floatval($row['discount'])/100) * floatval($row['cp']));
                     ?>
                     <tr>
                       <th scope="row" class="border-0">
@@ -267,7 +266,7 @@
                           </div>
                         </div>
                       </th>
-                      <td class="border-0 align-middle"><strong>&#8377;<?=$muskPrice?></strong></td>
+                      <td class="border-0 align-middle"><strong>&#8377;<?=$row['sp']?></strong></td>
                       <td class="border-0 align-middle">
                         <strong>
                         <form style="display: inline-block; max-width: 100px;">
@@ -285,7 +284,7 @@
                         </form>
                         </strong>
                         </td>
-                      <td class="border-0 align-middle"><a href="#" onclick="deleteProduct('<?=$row['proid']?>')" class="text-dark" title="Remove Product"><i class="fa fa-trash fa-lg" style="color: #D32F2F;"></i></a></td>
+                      <td class="border-0 align-middle"><a href="#" onclick="deleteProduct('<?=$row['proid']?>')" class="text-dark" title="Remove Product"><i class="fa fa-trash fa-lg" style="color: #D32F2F !important;"></i></a></td>
                     </tr>
                     <?php
                           }

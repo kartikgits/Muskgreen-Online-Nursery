@@ -143,7 +143,7 @@
                     <div class="col-12">
                         <nav class="navbar navbar-expand-md navbar-light">
 
-                            <a class="navbar-brand" href="https://themeforest.net/user/ig_design/portfolio" target="_blank"><img src="extras/musklogo112.png" alt=""></a>
+                            <a class="navbar-brand" href="index.php" target="_blank"><img src="extras/musklogo112.png" alt=""></a>
                             
                             <!-- account -->
                             <?php
@@ -273,6 +273,7 @@
 					$sql="SELECT * FROM product NATURAL JOIN productseller";
 					$result=$conn->query($sql);
 					while ($row=$result->fetch_assoc()) {
+                        $mrp=floatval($row['sp']) + (floatval($row['discount'])/100)*floatval($row['sp']);
 				?>
 				<div class="responsive2">
                     <div class="productContainer">
@@ -280,8 +281,8 @@
                       <div class="productPriceDisc">
                           <?= $row['proname']; ?>
                           <p>
-                              <span class="originalPrice" title="Original Price"><strike>&#8377;<?= floatval($row['sp']); ?></strike></span>
-                              <span class="discountPrice" title="Discounted Price">&#8377;<?= floatval($row['sp']) - ((floatval($row['discount'])/100) * floatval($row['cp'])); ?></span>
+                              <span class="originalPrice" title="Original Price"><strike>&#8377;<?=$mrp?></strike></span>
+                              <span class="discountPrice" title="Discounted Price">&#8377;<?=$row['sp']?></span>
                           </p>
                             <p><button onclick="addToCartProducts('<?=$row['proid']?>', '<?=$logInStatus?>')" id="addToCartButton<?=$row['proid']?>"><i class="fa fa-cart-plus" aria-hidden="true"></i> Add To Cart</button></p>
                         </div>
@@ -386,6 +387,7 @@
 						$sql="SELECT DISTINCT(product.proid), proname, proimgurl, sp, cp, discount, isAvailable FROM productseller NATURAL JOIN product NATURAL JOIN proundercat WHERE proname LIKE '%".$safeProduct."%' OR category LIKE '%".$safeProduct."%' ORDER BY proname";
 						$result=$conn->query($sql);
 						while ($row=$result->fetch_assoc()) {
+                            $mrp=floatval($row['sp']) + (floatval($row['discount'])/100)*floatval($row['sp']);
 				?>
 				<div class="responsive2">
                     <div class="productContainer">
@@ -393,8 +395,8 @@
                       <div class="productPriceDisc">
                           <?= $row['proname']; ?>
                           <p>
-                              <span class="originalPrice" title="Original Price"><strike>&#8377;<?= floatval($row['sp']); ?></strike></span>
-                              <span class="discountPrice" title="Discounted Price">&#8377;<?= floatval($row['sp']) - ((floatval($row['discount'])/100) * floatval($row['cp'])); ?></span>
+                              <span class="originalPrice" title="Original Price"><strike>&#8377;<?=$mrp?></strike></span>
+                              <span class="discountPrice" title="Discounted Price">&#8377;<?=$row['sp']?></span>
                           </p>
                             <p><button onclick="addToCartProducts('<?=$row['proid']?>', '<?=$logInStatus?>')" id="addToCartButton<?=$row['proid']?>"><i class="fa fa-cart-plus" aria-hidden="true"></i> Add To Cart</button></p>
                         </div>
@@ -525,11 +527,7 @@
     </footer>
 
 <!--  Main Body Ends  -->
-      
-    <!-- JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    
-    <script type="text/javascript" src="bootstrap4/js/bootstrap.min.js"></script>
+
     <script type="text/javascript" src="js/styler.js"></script>
     <script type="text/javascript" src="js/buttonActions.js"></script>
 

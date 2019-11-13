@@ -99,7 +99,7 @@
 
 		//Cart page
 		else if (isset($_POST['get_cart_subtotal']) && $_POST['get_cart_subtotal']=="true") {
-			$getCartSubtotalQuery ="select usercart.proid, (sp-((discount/100)*cp))*quantity as subprice from usercart natural join productseller where uid='".$_SESSION['userId']."'";
+			$getCartSubtotalQuery ="select usercart.proid, sp*quantity as subprice from usercart natural join productseller where uid='".$_SESSION['userId']."'";
 			$result=$conn->query($getCartSubtotalQuery);
 			$subTotal=0.0;
 			while ($row=$result->fetch_assoc()) {
@@ -178,7 +178,6 @@
         $output='';
         while ($row=$result->fetch_assoc()) {
             $itemsCount=$itemsCount+1;
-            $muskPrice = floatval($row['sp']) - ((floatval($row['discount'])/100) * floatval($row['cp']));
 
             $output = $output.'<tr>
                       <th scope="row" class="border-0">
@@ -189,7 +188,7 @@
                           </div>
                         </div>
                       </th>
-                      <td class="border-0 align-middle"><strong>&#8377;'.$muskPrice.'</strong></td>
+                      <td class="border-0 align-middle"><strong>&#8377;'.$row['sp'].'</strong></td>
                       <td class="border-0 align-middle">
                         <strong>
                         <form style="display: inline-block; max-width: 100px;">

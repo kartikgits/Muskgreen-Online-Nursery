@@ -38,7 +38,7 @@
 		        	$safeDeliveryAddress = preg_replace('/[^\w,. ]/','',$_POST['delivery_address']);
 		        	$sqlOrder = "insert into productorder (uid, oid, paymentMethod, addressName) values ('".$_SESSION['userId']."', '".$oid."', 'Prepaid', '".$safeDeliveryAddress."')";
 		        	if ($conn->query($sqlOrder)===TRUE) {
-		        		$sqlOrderedProducts = "select usercart.proid, quantity, (sp-((discount/100)*cp))*quantity as subprice from usercart natural join productseller where uid='".$_SESSION['userId']."'";
+		        		$sqlOrderedProducts = "select usercart.proid, quantity, (sp)*quantity as subprice from usercart natural join productseller where uid='".$_SESSION['userId']."'";
 		        		$resultOrderedProducts=$conn->query($sqlOrderedProducts);
 		        		$sqlProductInsert="insert into productsinorder (proid, oid, quantity, totalPrice) values ";
 		        		$i=0;
