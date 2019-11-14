@@ -228,7 +228,7 @@
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
-            <a class="navbar-brand py-0 topNavItem" href="#">
+            <a class="navbar-brand py-0 topNavItem" href="index.php">
                 <img src="extras/musklogo224.png" width="72%" class="d-inline-block align-top" alt="MuskGreen">
             </a>
             
@@ -326,7 +326,7 @@
                     <div class="col-12">
                         <nav class="navbar navbar-expand-md navbar-light">
 
-                            <a class="navbar-brand" href="https://themeforest.net/user/ig_design/portfolio" target="_blank"><img src="extras/musklogo112.png" alt=""></a>
+                            <a class="navbar-brand" href="index.php" target="_blank"><img src="extras/musklogo112.png" alt=""></a>
                             
                             <!-- account -->
                             <?php

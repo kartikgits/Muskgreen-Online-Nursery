@@ -142,7 +142,7 @@
                     <div class="col-12">
                         <nav class="navbar navbar-expand-md navbar-light">
 
-                            <a class="navbar-brand" href="https://themeforest.net/user/ig_design/portfolio" target="_blank"><img src="extras/musklogo112.png" alt=""></a>
+                            <a class="navbar-brand" href="#" target="_blank"><img src="extras/musklogo112.png" alt=""></a>
                             
                             <!-- account -->
                             <?php
