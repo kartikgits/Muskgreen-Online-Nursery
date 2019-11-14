@@ -276,7 +276,7 @@
                                 <button type="button" class="btn btn-warning cart-btn" onclick="addToCart('<?=$row['proid']?>', '<?=$logInStatus?>')" id="addToCartButton"><i class="fa fa-cart-plus" aria-hidden="true"></i> Add To Cart</button>
                                 <a class="btn btn-danger cart-btn" href="cart.php"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Go To Cart</a>
                             </span>
-                            <div class="cartButtonGroup d-sm-none fixed-bottom" role="group">
+                            <div class="cartButtonGroup d-sm-none" role="group">
                                 <button type="button" class="btn btn-warning" onclick="addToCart('<?=$row['proid']?>', '<?=$logInStatus?>')" id="addToCartButtonMobile" style="color: #fff;"><i class="fa fa-cart-plus" aria-hidden="true"></i> Add To Cart</button>
                                 <a class="btn btn-danger" href="cart.php"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Go To Cart</a>
                             </div>

@@ -207,6 +207,9 @@ span.muskPrice {
 
 .cartButtonGroup {
 	text-align: center;
+	position: -webkit-sticky;
+	position: sticky;
+	bottom: 0;
 }
 
 .cartButtonGroup >button,
