@@ -27,6 +27,21 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="css/footer.css">
 
+    <style type="text/css">
+        @-webkit-keyframes pop-in {
+            0% { opacity: 0; -webkit-transform: scale(0.5); }
+            100% { opacity: 1; -webkit-transform: scale(1); }
+        }
+        @-moz-keyframes pop-in {
+            0% { opacity: 0; -moz-transform: scale(0.5); }
+            100% { opacity: 1; -moz-transform: scale(1); }
+        }
+        @keyframes pop-in {
+            0% { opacity: 0; transform: scale(0.5); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+    </style>
+
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
@@ -277,7 +292,9 @@
 				?>
 				<div class="responsive2">
                     <div class="productContainer">
-                      <a href="productDetail.php?proid=<?=$row['proid']?>" target="_blank"><img src="<?= $row['proimgurl']; ?>" class="image"></a>
+                      <a href="productDetail.php?proid=<?=$row['proid']?>" target="_blank">
+                        <img src="data/images/placeholder.png" alt="Product" data-echo="<?=$row['proimgurl']?>" class="image pop-in">
+                      </a>
                       <div class="productPriceDisc">
                           <?= $row['proname']; ?>
                           <p>
@@ -391,7 +408,9 @@
 				?>
 				<div class="responsive2">
                     <div class="productContainer">
-                      <a href="productDetail.php?proid=<?=$row['proid']?>" target="_blank"><img src="<?= $row['proimgurl']; ?>" class="image"></a>
+                      <a href="productDetail.php?proid=<?=$row['proid']?>" target="_blank">
+                          <img src="data/images/placeholder.png" alt="Product" data-echo="<?=$row['proimgurl']?>" class="image pop-in">
+                      </a>
                       <div class="productPriceDisc">
                           <?= $row['proname']; ?>
                           <p>
@@ -567,6 +586,18 @@
 
 		});
 	</script>
+
+    <script src="js/echo.min.js"></script>
+    <script>
+      echo.init({
+        offset: 100,
+        throttle: 250,
+        unload: false,
+        callback: function (element, op) {
+          console.log(element, 'has been', op + 'ed')
+        }
+      });
+    </script>
 
 </body>
 </html>
