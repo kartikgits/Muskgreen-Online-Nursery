@@ -382,9 +382,9 @@
 
 	        <div class="row featuredProductsBody" id="result">
 				<?php
-					$safeProduct = preg_replace('/[^\w ]/','',$_GET['product']); 
-					if(strlen($safeProduct)){
-						$sql="SELECT DISTINCT(product.proid), proname, proimgurl, sp, cp, discount, isAvailable FROM productseller NATURAL JOIN product NATURAL JOIN proundercat WHERE proname LIKE '%".$safeProduct."%' OR category LIKE '%".$safeProduct."%' ORDER BY proname";
+                    $safeProduct = mysqli_real_escape_string($conn, $_GET['product']);
+					if(strlen($safeProduct)>2){
+						$sql="SELECT DISTINCT(product.proid), proname, proimgurl, sp, cp, discount, isAvailable FROM productseller NATURAL JOIN product use index(siteSearchIndex) WHERE match(proname, prodescription, searchTags) AGAINST ('".$safeProduct."' in NATURAL LANGUAGE MODE)";
 						$result=$conn->query($sql);
 						while ($row=$result->fetch_assoc()) {
                             $mrp=floatval($row['sp']) + (floatval($row['discount'])/100)*floatval($row['sp']);
