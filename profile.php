@@ -1,6 +1,9 @@
 <?php
     require 'config.php';
     session_start();
+    if (!(isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']===TRUE)) {
+        include 'serverPhp/remember.php';
+    }
     if (!isset($_SESSION['isLoggedIn']) && !$_SESSION['isLoggedIn']===TRUE) {
         header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
         header("Cache-Control: no-cache");

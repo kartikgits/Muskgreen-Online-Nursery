@@ -1,11 +1,12 @@
 <?php
-    require 'config.php';
     session_start();
-
     if (!isset($_GET['proid'])) {
-        header("Location: index.php");
+        header("Location: products.php");
     }
-
+    if (!(isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']===TRUE)) {
+        include 'serverPhp/remember.php';
+    }
+    require 'config.php';
     $logInStatus="";
 
     if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']===TRUE) {
