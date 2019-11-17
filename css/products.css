@@ -7,8 +7,8 @@ div.mainBodyContainer {
 }
 
 @media only screen and (max-width: 767.99px) {
-    div.topContainer {
-        margin-top: 6.85rem;
+    div.mainBodyContainer {
+        margin-top: 3.55rem;
     }
 }
 
@@ -96,9 +96,9 @@ div.featuredProductsBody {
 }
 
 
-@media only screen and (max-width: 768.9px) {
+@media only screen and (max-width: 790px) {
   .responsive2 {
-    width: 49.99999%;
+    width: 33.33333%;
     margin: 6px 0;
   }
 }

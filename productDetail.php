@@ -263,7 +263,7 @@
                                   ?>
                               </span>
                               <h1><?=$row['proname']?></h1>
-                              <p>The preferred choice of a vast range of acclaimed DJs. Punchy, bass-focused sound and high isolation. Sturdy headband and on-ear cushions suitable for live performance</p>
+                              <p><?=$row['prodescription']?></p>
                             </div>
 
                             <!-- Product Pricing -->
