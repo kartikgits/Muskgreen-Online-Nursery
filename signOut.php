@@ -6,10 +6,8 @@
     session_unset();
     session_destroy();
     ob_start();
-    if (isset($_COOKIE['muskRemAuth'])) {
-	    unset($_COOKIE['muskRemAuth']);
-	    setcookie('muskRemAuth', '', time()-3600*24*366);
-	}
+    unset($_COOKIE['muskRemAuth']);
+    setcookie('muskRemAuth', '', time()-3600*24*366, '/', 'muskgreen.live', TRUE, TRUE);
     ob_end_flush();
-    header("Location: index.php");
+    header("Location: signingOut.php");
 ?>
