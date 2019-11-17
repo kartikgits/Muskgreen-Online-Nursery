@@ -1,4 +1,3 @@
-//Called, whenever user presses singuplogin
 function signupLogin() {
 	var currentUrl = window.location.href;
 	popUrl = "signupLogin.php?userTo="+currentUrl;
@@ -30,7 +29,6 @@ function setCartCount(logInStatus) {
 }
 
 
-// For Products Page
 function addToCartProducts(productId, logInStatus){
 	var elementId = "addToCartButton"+productId;
 	var cartButton = document.getElementById(elementId);
@@ -105,7 +103,6 @@ $(document).ready(function(){
 	}
 });
 
-//For ProductDetail page
 function updateUserCart() {
 	var rslt;
 	$.post( "updateSession.php", { update_cart: "true" }, function(result){
@@ -143,12 +140,10 @@ function addToCart(productId, logInStatus){
 			cartButton.innerHTML="<i class=\"fa fa-cart-plus\" aria-hidden=\"true\"></i> Add To Cart";
 			cartButtonMobile.innerHTML="<i class=\"fa fa-cart-plus\" aria-hidden=\"true\"></i> Add To Cart";
 		}
-	} else{ //set cookie
+	} else{
 		var productsInCart=[];
 		if (typeof $.cookie('cartProductsCookie') === 'undefined'){
-		 //no cookie
 		} else {
-		 //have cookie
 		 productsInCart = JSON.parse($.cookie('cartProductsCookie'));
 		}
 		if (cartButton.innerHTML=="<i class=\"fa fa-cart-plus\" aria-hidden=\"true\"></i> Add To Cart"
@@ -174,9 +169,6 @@ function addToCart(productId, logInStatus){
 	}
 }
 
-
-
-//For profile page
 function disablePersonal(){
 	document.getElementById("first_name").disabled = true;
 	document.getElementById("last_name").disabled = true;
@@ -221,11 +213,23 @@ function validateAddressForm(){
     var alv = $('#address_locality').val();
     var aav = $('#address_area').val();
     var apv = $('#address_pincode').val();
-    if (!$.trim(anv) && !$.trim(alv) && !$.trim(aav) && !$.trim(apv)) {
-        return false;
-    } else {
-    	return true; 
-    }
+    if (anv.length==0) {
+		alert("Enter Address Name!");
+		return false;
+	}
+	if (alv.length==0) {
+		alert("Enter Locality!");
+		return false;
+	}
+	if (aav.length==0) {
+		alert("Enter Area!");
+		return false;
+	}
+	if (apv.length==0) {
+		alert("Enter valid Pincode!");
+		return false;
+	}
+	return true;
 }
 
 function validateEditAddressForm(){
@@ -233,11 +237,23 @@ function validateEditAddressForm(){
     var elv = $('#edit_address_locality').val();
     var eav = $('#edit_address_area').val();
     var epv = $('#edit_address_pincode').val();
-    if (!$.trim(env) && !$.trim(elv) && !$.trim(eav) && !$.trim(epv)) {
-        return false;
-    } else {
-    	return true; 
-    }
+    if (env.length==0) {
+		alert("Enter Address Name!");
+		return false;
+	}
+	if (elv.length==0) {
+		alert("Enter Locality!");
+		return false;
+	}
+	if (eav.length==0) {
+		alert("Enter Area!");
+		return false;
+	}
+	if (epv.length==0) {
+		alert("Enter valid Pincode!");
+		return false;
+	}
+	return true;
 }
 
 function editAddress(addressName, locality, landmark, area, city, state, pincode, phone){
@@ -257,7 +273,12 @@ function editAddress(addressName, locality, landmark, area, city, state, pincode
 function submitEditedAddress(){
 	document.getElementById("edit_address_name").disabled = false;
 	if (validateEditAddressForm()) {
-		$.post("formsProcess.php", $("#editAddressForm").serialize(), function(data) {
+		$.post("formsProcess.php", $("#editAddressForm").serialize(), function(result) {
+	        if (result=="true") {
+	          window.location.reload();
+	        }else{
+	          alert("Error Updating Address. Please Retry!");
+	        }
 	    });
 	}
 }
@@ -290,6 +311,11 @@ $(document).ready(function(){
 	$("#newAddressForm").submit(function(){
 		if (validateAddressForm()) {
 			$.post("formsProcess.php", $("#newAddressForm").serialize(), function(data) {
+		        if (result=="true") {
+		          //window.location.reload();
+		        }else{
+		          alert("Address Name Already Exists!");
+		        }
 		    });
 		}
 	});

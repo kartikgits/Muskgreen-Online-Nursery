@@ -24,7 +24,9 @@
 			}
 
 			if ($conn->query($insertAddressQuery) === TRUE) {
+				echo "true"; //dont remove
 			} else {
+				echo "false"; //dont remove
 			}
 		}
 		else if (isset($_POST['editAddressForm']) && $_POST['editAddressForm']=="true") {
@@ -48,7 +50,9 @@
 			}
 
 			if ($conn->query($updateAddressQuery) === TRUE) {
+				echo "true";
 			} else {
+				echo "false";
 			}
 		}
 		else if (isset($_POST['delete_address']) && $_POST['delete_address']=="true") {
