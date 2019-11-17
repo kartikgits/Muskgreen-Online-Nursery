@@ -122,13 +122,80 @@ if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']===TRUE) {
 		$email->addContent("text/html", $MAIL_CONTENT);
 		$sendgrid = new \SendGrid("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");
 		try {
-			echo "sent";
 		    $response = $sendgrid->send($email);
 		    // print $response->statusCode() . "\n";
 		    // print_r($response->headers());
 		    // print $response->body() . "\n";
 		} catch (Exception $e) {
 		}
+
+		$email = new \SendGrid\Mail\Mail();
+
+		$SENDERN = "MuskGreen Order";
+		$SENDERM = "new.order@muskgreen.live";
+
+		$email->setFrom($SENDERM, $SENDERN);
+		$email->setSubject("New Order - MG Internals");
+		$email->addTo('kartikbitcoins@gmail.com', 'Kartikeya Kapparwan');
+
+		$MAIL_CONTENT = '<div style="padding: 0rem;">
+						<div style="background-color: #509534; padding: 0.5rem; color: #fff; border-radius: 5px;"><center><h2>New Order</h2></center></div>
+
+						  <div style="padding-left: 1rem; padding-right: 1rem;">
+						    <p style="color: #66BB6A !important;">
+						      Hey Orders Department, Details of new order.
+						    </p>
+						    
+						    <div style="max-width: 18rem; border: 1px solid #66BB6A; border-radius: 4px; padding: 1rem;">
+						      <div>
+						          <span style="max-width: 12rem;">
+						            <b>Order ID:</b> '.$safeOid.'
+						          </span><br>
+						          <span style="max-width: 12rem;">
+						            <b>Payment Method:</b> '.$paymentMethod.'
+						          </span><br>
+						        <small>'.$address.'</small>
+						      </div>
+						    </div>
+						    <br>
+						    <table>
+						      <thead style="color:#fff; background-color: #66BB6A;">
+						        <tr>
+						          <th>#</th>
+						          <th>Product</th>
+						          <th>Quant</th>
+						          <th>Cost</th>
+						        </tr>
+						      </thead>
+						      <tbody>
+						      	'.$productsRows.'
+						      </tbody>
+						    </table>
+						    <br>
+						    <div style="max-width: 18rem; border: 1px solid #66BB6A; border-radius: 4px; padding: 1rem;">
+						      <div>
+						          <span style="max-width: 12rem;">
+						            <b>Order Total:</b> Rs. '.$allProductsPrice.'*
+						          </span><br>
+						          <span style="max-width: 12rem;">
+						            <b>Delivery Time:</b> 2-4 days
+						          </span><br>
+						        <small>* Price inclusive of GST</small>
+						      </div>
+						    </div>
+							<br><br>
+							<center>Verify the order first.</center>
+						  </div>
+						</div>';
+
+		$email->addContent("text/html", $MAIL_CONTENT);
+		$sendgrid = new \SendGrid("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");
+		try {
+		    $response = $sendgrid->send($email);
+		} catch (Exception $e) {
+		}
+
+
 		$conn->close();
 	}
 }
