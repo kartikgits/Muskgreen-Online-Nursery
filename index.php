@@ -304,8 +304,8 @@
             <div class="col">
                 <div class="responsive">
                   <div class="gallery">
-                    <a target="_blank" href="#">
-                      <img src="extras/siteData/catagoryIcons/icon1.png" alt="Cinque Terre" width="600" height="400">
+                    <a target="_blank" href="products.php?product=Rose">
+                      <img src="extras/siteData/catagoryIcons/icon1.png" alt="Roses" width="600" height="400">
                     </a>
                     <div class="desc">Roses</div>
                   </div>
@@ -313,8 +313,8 @@
 
                 <div class="responsive">
                   <div class="gallery">
-                    <a target="_blank" href="#">
-                      <img src="extras/siteData/catagoryIcons/icon2.png" alt="Forest" width="600" height="400">
+                    <a target="_blank" href="products.php?product=All Time Oxygen">
+                      <img src="extras/siteData/catagoryIcons/icon2.png" alt="All Time Oxygen Plants" width="600" height="400">
                     </a>
                     <div class="desc">All time Oxygen</div>
                   </div>
@@ -322,8 +322,8 @@
 
                 <div class="responsive">
                   <div class="gallery">
-                    <a target="_blank" href="img_lights.jpg">
-                      <img src="extras/siteData/catagoryIcons/icon3.png" alt="Northern Lights" width="600" height="400">
+                    <a target="_blank" href="products.php?product=Indoor">
+                      <img src="extras/siteData/catagoryIcons/icon3.png" alt="Indoor Plants" width="600" height="400">
                     </a>
                     <div class="desc">Indoor Plants</div>
                   </div>
@@ -331,8 +331,8 @@
 
                 <div class="responsive">
                   <div class="gallery">
-                    <a target="_blank" href="img_mountains.jpg">
-                      <img src="extras/siteData/catagoryIcons/icon4.png" alt="Mountains" width="600" height="400">
+                    <a target="_blank" href="products.php?product=Air Purifiers">
+                      <img src="extras/siteData/catagoryIcons/icon4.png" alt="Air Purifier Plants" width="600" height="400">
                     </a>
                     <div class="desc">Air Purifiers</div>
                   </div>
@@ -340,8 +340,8 @@
 
                 <div class="responsive">
                   <div class="gallery">
-                    <a target="_blank" href="img_5terre.jpg">
-                      <img src="extras/siteData/catagoryIcons/icon5.png" alt="Cinque Terre" width="600" height="400">
+                    <a target="_blank" href="products.php?product=Vines">
+                      <img src="extras/siteData/catagoryIcons/icon5.png" alt="Vines" width="600" height="400">
                     </a>
                     <div class="desc">Vines</div>
                   </div>
@@ -349,8 +349,8 @@
 
                 <div class="responsive">
                   <div class="gallery">
-                    <a target="_blank" href="img_forest.jpg">
-                      <img src="extras/siteData/catagoryIcons/icon6.png" alt="Forest" width="600" height="400">
+                    <a target="_blank" href="products.php?product=Fruit">
+                      <img src="extras/siteData/catagoryIcons/icon6.png" alt="Fruit Plants" width="600" height="400">
                     </a>
                     <div class="desc">Fruit Plants</div>
                   </div>
@@ -358,17 +358,17 @@
 
                 <div class="responsive">
                   <div class="gallery">
-                    <a target="_blank" href="img_lights.jpg">
-                      <img src="extras/siteData/catagoryIcons/icon7.png" alt="Northern Lights" width="600" height="400">
+                    <a target="_blank" href="products.php?product=Succulents">
+                      <img src="extras/siteData/catagoryIcons/icon7.png" alt="Succulents" width="600" height="400">
                     </a>
-                    <div class="desc">Succelents</div>
+                    <div class="desc">Succulents</div>
                   </div>
                 </div>
 
                 <div class="responsive">
                   <div class="gallery">
-                    <a target="_blank" href="img_mountains.jpg">
-                      <img src="extras/siteData/catagoryIcons/icon8.png" alt="Mountains" width="600" height="400">
+                    <a target="_blank" href="products.php?product=Goodluck">
+                      <img src="extras/siteData/catagoryIcons/icon8.png" alt="GoodLuck Plants" width="600" height="400">
                     </a>
                     <div class="desc">GoodLuck Plants</div>
                   </div>
@@ -413,59 +413,55 @@
     <div class="container-fluid mainBodyContainer">
         <div class="row featuredProductsTitle">
             <div class="col text-center">
-            <div class="mTitle">Featured Products</div>
+            <div class="mTitle">Exclusive Discounts</div>
             </div>
         </div>
         <div class="row featuredProductsBody">
                 <div class="responsive2">
                     <div class="productContainer">
-                      <img src="extras/siteData/productImages/image1full.png" alt="Avatar" class="image">
+                      <img src="data/indexPage/cactus.jpg" alt="Cactus" class="image">
                       <div class="productPriceDisc">
-                          Product Name
+                          Cactus
                           <p>
-                              <span class="originalPrice" title="Original Price"><strike>&#8377;120</strike></span>
-                              <span class="discountPrice" title="Discounted Price">&#8377;99</span>
+                              <span class="discountPrice" title="MuskGreen Exclusive Discounts">Upto 80% Off</span>
                           </p>
-                            <p><button><a href="#"><i class="fa fa-cart-plus" aria-hidden="true"></i></a> Add to Cart</button></p>
+                            <p><button onclick="goto('Cactus')">View All</button></p>
                         </div>
                     </div>
                 </div>
                 <div class="responsive2">
                     <div class="productContainer">
-                      <img src="extras/siteData/productImages/image2full.png" alt="Avatar" class="image">
+                      <img src="data/indexPage/crassula.jpg" alt="Crassulas" class="image">
                       <div class="productPriceDisc">
-                          Product Name
+                          Crassulas
                           <p>
-                              <span class="originalPrice" title="Original Price"><strike>&#8377;120</strike></span>
-                              <span class="discountPrice" title="Discounted Price">&#8377;99</span>
+                              <span class="discountPrice" title="MuskGreen Exclusive Discounts">Upto 75% Off</span>
                           </p>
-                            <p><button><a href="#"><i class="fa fa-cart-plus" aria-hidden="true"></i></a> Add to Cart</button></p>
+                            <p><button onclick="goto('Crassula')">View All</button></p>
                         </div>
                     </div>
                 </div>
                 <div class="responsive2">
                     <div class="productContainer">
-                      <img src="extras/siteData/productImages/image3full.png" alt="Avatar" class="image">
+                      <img src="data/indexPage/desktopPlants.jpg" alt="Desktop Plants" class="image">
                       <div class="productPriceDisc">
-                          Product Name
+                          Desktop Plants
                           <p>
-                              <span class="originalPrice" title="Original Price"><strike>&#8377;120</strike></span>
-                              <span class="discountPrice" title="Discounted Price">&#8377;99</span>
+                              <span class="discountPrice" title="MuskGreen Discounts">Upto 70% Off</span>
                           </p>
-                            <p><button><a href="#"><i class="fa fa-cart-plus" aria-hidden="true"></i></a> Add to Cart</button></p>
+                            <p><button onclick="goto('Table')">View All</button></p>
                         </div>
                     </div>
                 </div>
                 <div class="responsive2">
                     <div class="productContainer">
-                      <img src="extras/siteData/productImages/image4full.png" alt="Avatar" class="image">
+                      <img src="data/indexPage/dogFlower.jpg" alt="Dog Flowers" class="image">
                       <div class="productPriceDisc">
-                          Product Name
+                          Dog Flowers
                           <p>
-                              <span class="originalPrice" title="Original Price"><strike>&#8377;120</strike></span>
-                              <span class="discountPrice" title="Discounted Price">&#8377;99</span>
+                              <span class="discountPrice" title="MuskGreen Discounts">Starting &#8377;99 Only</span>
                           </p>
-                            <p><button><a href="#"><i class="fa fa-cart-plus" aria-hidden="true"></i></a> Add to Cart</button></p>
+                            <p><button onclick="goto('Dog Flower')">View All</button></p>
                         </div>
                     </div>
                 </div>
@@ -474,53 +470,49 @@
         <div class="row featuredProductsBody">
                 <div class="responsive2">
                     <div class="productContainer">
-                      <img src="extras/siteData/productImages/image5full.png" alt="Avatar" class="image">
+                      <img src="data/indexPage/echeveria.jpg" alt="Echeverias" class="image">
                       <div class="productPriceDisc">
-                          Product Name
+                          Echeverias
                           <p>
-                              <span class="originalPrice" title="Original Price"><strike>&#8377;120</strike></span>
-                              <span class="discountPrice" title="Discounted Price">&#8377;99</span>
+                              <span class="discountPrice" title="MuskGreen Discounts">Upto 80% Off</span>
                           </p>
-                            <p><button><a href="#"><i class="fa fa-cart-plus" aria-hidden="true"></i></a> Add to Cart</button></p>
+                            <p><button onclick="goto('Echeveria')">View All</button></p>
                         </div>
                     </div>
                 </div>
                 <div class="responsive2">
                     <div class="productContainer">
-                      <img src="extras/siteData/productImages/image6full.png" alt="Avatar" class="image">
+                      <img src="data/indexPage/pine.jpg" alt="Pines" class="image">
                       <div class="productPriceDisc">
-                          Product Name
+                          Pines
                           <p>
-                              <span class="originalPrice" title="Original Price"><strike>&#8377;120</strike></span>
-                              <span class="discountPrice" title="Discounted Price">&#8377;99</span>
+                              <span class="discountPrice" title="MuskGreen Discounts">Upto 50% Off</span>
                           </p>
-                            <p><button><a href="#"><i class="fa fa-cart-plus" aria-hidden="true"></i></a> Add to Cart</button></p>
+                            <p><button onclick="goto('Pine')">View All</button></p>
                         </div>
                     </div>
                 </div>
                 <div class="responsive2">
                     <div class="productContainer">
-                      <img src="extras/siteData/productImages/image7full.png" alt="Avatar" class="image">
+                      <img src="data/indexPage/rose.jpg" alt="Roses" class="image">
                       <div class="productPriceDisc">
-                          Product Name
+                          Roses
                           <p>
-                              <span class="originalPrice" title="Original Price"><strike>&#8377;120</strike></span>
-                              <span class="discountPrice" title="Discounted Price">&#8377;99</span>
+                              <span class="discountPrice" title="MuskGreen Discounts">Upto 69% Off</span>
                           </p>
-                            <p><button><a href="#"><i class="fa fa-cart-plus" aria-hidden="true"></i></a> Add to Cart</button></p>
+                            <p><button onclick="goto('Rose')">View All</button></p>
                         </div>
                     </div>
                 </div>
                 <div class="responsive2">
                     <div class="productContainer">
-                      <img src="extras/siteData/productImages/image8full.png" alt="Avatar" class="image">
+                      <img src="data/indexPage/salvia.jpg" alt="Salvias" class="image">
                       <div class="productPriceDisc">
-                          Product Name
+                          Salvias
                           <p>
-                              <span class="originalPrice" title="Original Price"><strike>&#8377;120</strike></span>
-                              <span class="discountPrice" title="Discounted Price">&#8377;99</span>
+                              <span class="discountPrice" title="Discounted Price">Upto 50% Off</span>
                           </p>
-                            <p><button><a href="#"><i class="fa fa-cart-plus" aria-hidden="true"></i></a> Add to Cart</button></p>
+                            <p><button onclick="goto('Salvia')">View All</button></p>
                         </div>
                     </div>
                 </div>
@@ -609,6 +601,12 @@
     <script type="text/javascript" src="bootstrap4/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/styler.js"></script>
     <script type="text/javascript" src="js/buttonActions.js"></script>
+
+    <script type="text/javascript">
+      function goto(view) {
+        window.location.href = "products.php?product="+view;
+      }
+    </script>
 
   </body>
 </html>
