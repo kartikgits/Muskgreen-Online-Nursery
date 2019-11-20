@@ -442,7 +442,7 @@
 
         <div class="container">
         <ul class="foote_bottom_ul_amrc">
-        <li><a href="#">Home</a></li>
+        <li><a href="index.php">Home</a></li>
         <li><a href="#">About</a></li>
         <li><a href="products.php">Products</a></li>
         <li><a href="#">Sellers</a></li>

@@ -525,7 +525,7 @@
 					<div class="card mb-3 reviewOrder" style="max-width: 540px;">
 				  <div class="row no-gutters">
 				    <div class="col-md-4 text-center">
-				      <img src="https://via.placeholder.com/150x240" class="card-img" alt="" style="max-width: 300px; max-height: 300px;">
+				      <img src="data/images/checkoutPalm.jpg" class="card-img" alt="" style="max-width: 300px; height: auto;">
 				    </div>
 				    <div class="col-md-8">
 				      <div class="card-body">
@@ -604,11 +604,11 @@
 
         <div class="container">
         <ul class="foote_bottom_ul_amrc">
-        <li><a href="http://webenlance.com">Home</a></li>
-        <li><a href="http://webenlance.com">About</a></li>
-        <li><a href="http://webenlance.com">Products</a></li>
-        <li><a href="http://webenlance.com">Musk Sellers</a></li>
-        <li><a href="http://webenlance.com">Contact</a></li>
+        <li><a href="index.php">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="products.php">Products</a></li>
+        <li><a href="#">Sellers</a></li>
+        <li><a href="#">Contact</a></li>
         </ul>
         <!--foote_bottom_ul_amrc ends here-->
         <p class="text-center">Copyright @2019 | Made with love and care by <a href="#">MuskGreen</a></p>
