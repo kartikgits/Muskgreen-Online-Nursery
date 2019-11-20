@@ -62,7 +62,7 @@
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
-            <a class="navbar-brand py-0 topNavItem" href="index.php">
+            <a class="navbar-brand py-0 topNavItem" href="#">
                 <img src="extras/musklogo224.png" width="72%" class="d-inline-block align-top" alt="MuskGreen">
             </a>
             
@@ -106,11 +106,14 @@
                   Plants
                 </a>
                 <div class="dropdown-menu dropdownMenu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">All Plants</a>
-                    <a class="dropdown-item" href="#">Plant Packs</a>
-                    <a class="dropdown-item" href="#">Gift Plants</a>
-                    <a class="dropdown-item" href="#">Flowering Plants</a>
-                    <a class="dropdown-item" href="#">Indoor Plants</a>
+                    <a class="dropdown-item" href="products.php?product=Succulents">Succulents</a>
+                    <a class="dropdown-item" href="products.php?product=Ornamental">Ornamental Plants</a>
+                    <a class="dropdown-item" href="products.php?product=Gift">Gift Plants</a>
+                    <a class="dropdown-item" href="products.php?product=Shade">Shade Plants</a>
+                    <a class="dropdown-item" href="products.php?product=Indoor">Indoor Plants</a>
+                    <a class="dropdown-item" href="products.php?product=Aromatic">Aromatic Plants</a>
+                    <a class="dropdown-item" href="products.php?product=Fruit">Fruit Plants</a>
+                    <a class="dropdown-item" href="products.php?product=Medicinal">Medicinal Plants</a>
                 </div>
               </li>
                 
@@ -119,12 +122,11 @@
                   Flowers
                 </a>
                 <div class="dropdown-menu dropdownMenu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">All Flowers</a>
-                    <a class="dropdown-item" href="#">Rose Plants</a>
-                    <a class="dropdown-item" href="#">Hibiscus PLants</a>
-                    <a class="dropdown-item" href="#">Jasmine Plants</a>
-                    <a class="dropdown-item" href="#">Flowering Creepers</a>
-                    <a class="dropdown-item" href="#">PLants for Flower bed</a>
+                    <a class="dropdown-item" href="products.php?product=Flowering">All Flowers</a>
+                    <a class="dropdown-item" href="products.php?product=Rose">Rose Plants</a>
+                    <a class="dropdown-item" href="products.php?product=Hibiscus">Hibiscus PLants</a>
+                    <a class="dropdown-item" href="products.php?product=Jasmine">Jasmine Plants</a>
+                    <a class="dropdown-item" href="products.php?product=Gazania">Gazania Plants</a>
                 </div>
               </li>
               
@@ -133,9 +135,9 @@
                       Pots
                     </a>
                     <div class="dropdown-menu dropdownMenu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Plastic Planters</a>
+                        <a class="dropdown-item" href="products.php?product=Plastic Pots">Plastic Planters</a>
+                        <a class="dropdown-item" href="products.php?product=Ceramic Pots">Ceramic Planters</a>
                         <a class="dropdown-item" href="#">Earthen Planters</a>
-                        <a class="dropdown-item" href="#">Concrete Planters</a>
                     </div>
               </li>
                 
@@ -160,7 +162,7 @@
                     <div class="col-12">
                         <nav class="navbar navbar-expand-md navbar-light">
 
-                            <a class="navbar-brand" href="index.php" target="_blank"><img src="extras/musklogo112.png" alt=""></a>
+                            <a class="navbar-brand" href="#" target="_blank"><img src="extras/musklogo112.png" alt=""></a>
                             
                             <!-- account -->
                             <?php
@@ -174,7 +176,7 @@
                             ?>
                             <a class="mobileNavItem py-0" href="#" onclick="signupLogin()"><span class="fa fa-user mobileNavItem" type="" title="Login or SignUp" aria-hidden="true"></span></a>
                             <!-- cart -->
-                            <a class="py-0 mobileNavItem" href="cart.php"><span class="fa fa-shopping-cart mobileNavItem" title="Cart" aria-hidden="true"><span> [0]</span></span></a>
+                            <a class="py-0 mobileNavItem" href="cart.php"><span class="fa fa-shopping-cart mobileNavItem" title="Cart" aria-hidden="true"><span> [<span id="cartCountMobile">0</span>]</span></span></a>
                             <?php
                                 }
                             ?>
@@ -189,30 +191,33 @@
                                     <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
                                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Plants</a>
                                         <div class="dropdown-menu">
-                                            <a class="dropdown-item" href="#">All Plants</a>
-                                            <a class="dropdown-item" href="#">Plant Packs</a>
-                                            <a class="dropdown-item" href="#">Gift Plants</a>
-                                            <a class="dropdown-item" href="#">Flowering Plants</a>
-                                            <a class="dropdown-item" href="#">Indoor Plants</a>
+                                            <a class="dropdown-item" href="products.php?product=Succulents">Succulents</a>
+                                            <a class="dropdown-item" href="products.php?product=Ornamental">Ornamental Plants</a>
+                                            <a class="dropdown-item" href="products.php?product=Shade">Shade Plants</a>
+                                            <a class="dropdown-item" href="products.php?product=Indoor">Indoor Plants</a>
+                                            <a class="dropdown-item" href="products.php?product=Aromatic">Aromatic Plants</a>
+                                            <a class="dropdown-item" href="products.php?product=Fruit">Fruit Plants</a>
+                                            <a class="dropdown-item" href="products.php?product=Medicinal">Medicinal Plants</a>
+                                            <a class="dropdown-item" href="products.php?product=Gift">Gift Plants</a>
+                                            <a class="dropdown-item" href="products.php?product=Plants">All Plants</a>
                                         </div>
                                     </li>
                                     <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
                                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Flowers</a>
                                         <div class="dropdown-menu">
-                                            <a class="dropdown-item" href="#">All Flowers</a>
-                                            <a class="dropdown-item" href="#">Rose Plants</a>
-                                            <a class="dropdown-item" href="#">Hibiscus PLants</a>
-                                            <a class="dropdown-item" href="#">Jasmine Plants</a>
-                                            <a class="dropdown-item" href="#">Flowering Creepers</a>
-                                            <a class="dropdown-item" href="#">PLants for Flower bed</a>
+                                            <a class="dropdown-item" href="products.php?product=Flowering">All Flowers</a>
+                                            <a class="dropdown-item" href="products.php?product=Rose">Rose Plants</a>
+                                            <a class="dropdown-item" href="products.php?product=Hibiscus">Hibiscus PLants</a>
+                                            <a class="dropdown-item" href="products.php?product=Jasmine">Jasmine Plants</a>
+                                            <a class="dropdown-item" href="products.php?product=Gazania">Gazania Plants</a>
                                         </div>
                                     </li>
                                     <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
                                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Pots</a>
                                         <div class="dropdown-menu">
-                                            <a class="dropdown-item" href="#">Plastic Planters</a>
+                                            <a class="dropdown-item" href="products.php?product=Plastic Pots">Plastic Planters</a>
+                                            <a class="dropdown-item" href="products.php?product=Ceramic Pots">Ceramic Planters</a>
                                             <a class="dropdown-item" href="#">Earthen Planters</a>
-                                            <a class="dropdown-item" href="#">Concrete Planters</a>
                                         </div>
                                     </li>
                                     <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">

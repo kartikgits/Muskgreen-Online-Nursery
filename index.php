@@ -1,9 +1,9 @@
 <?php
 	session_start();
 
-  if (!(isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']===TRUE)) {
-      include 'serverPhp/remember.php';
-  }
+  // if (!(isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']===TRUE)) {
+  //     include 'serverPhp/remember.php';
+  // }
 
   $logInStatus="";
 
@@ -93,11 +93,14 @@
                   Plants
                 </a>
                 <div class="dropdown-menu dropdownMenu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">All Plants</a>
-                    <a class="dropdown-item" href="#">Plant Packs</a>
-                    <a class="dropdown-item" href="#">Gift Plants</a>
-                    <a class="dropdown-item" href="#">Flowering Plants</a>
-                    <a class="dropdown-item" href="#">Indoor Plants</a>
+                    <a class="dropdown-item" href="products.php?product=Succulents">Succulents</a>
+                    <a class="dropdown-item" href="products.php?product=Ornamental">Ornamental Plants</a>
+                    <a class="dropdown-item" href="products.php?product=Gift">Gift Plants</a>
+                    <a class="dropdown-item" href="products.php?product=Shade">Shade Plants</a>
+                    <a class="dropdown-item" href="products.php?product=Indoor">Indoor Plants</a>
+                    <a class="dropdown-item" href="products.php?product=Aromatic">Aromatic Plants</a>
+                    <a class="dropdown-item" href="products.php?product=Fruit">Fruit Plants</a>
+                    <a class="dropdown-item" href="products.php?product=Medicinal">Medicinal Plants</a>
                 </div>
               </li>
                 
@@ -106,12 +109,11 @@
                   Flowers
                 </a>
                 <div class="dropdown-menu dropdownMenu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">All Flowers</a>
-                    <a class="dropdown-item" href="#">Rose Plants</a>
-                    <a class="dropdown-item" href="#">Hibiscus PLants</a>
-                    <a class="dropdown-item" href="#">Jasmine Plants</a>
-                    <a class="dropdown-item" href="#">Flowering Creepers</a>
-                    <a class="dropdown-item" href="#">PLants for Flower bed</a>
+                    <a class="dropdown-item" href="products.php?product=Flowering">All Flowers</a>
+                    <a class="dropdown-item" href="products.php?product=Rose">Rose Plants</a>
+                    <a class="dropdown-item" href="products.php?product=Hibiscus">Hibiscus PLants</a>
+                    <a class="dropdown-item" href="products.php?product=Jasmine">Jasmine Plants</a>
+                    <a class="dropdown-item" href="products.php?product=Gazania">Gazania Plants</a>
                 </div>
               </li>
               
@@ -120,9 +122,9 @@
                       Pots
                     </a>
                     <div class="dropdown-menu dropdownMenu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Plastic Planters</a>
+                        <a class="dropdown-item" href="products.php?product=Plastic Pots">Plastic Planters</a>
+                        <a class="dropdown-item" href="products.php?product=Ceramic Pots">Ceramic Planters</a>
                         <a class="dropdown-item" href="#">Earthen Planters</a>
-                        <a class="dropdown-item" href="#">Concrete Planters</a>
                     </div>
               </li>
                 
@@ -176,30 +178,33 @@
                                     <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
                                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Plants</a>
                                         <div class="dropdown-menu">
-                                            <a class="dropdown-item" href="#">All Plants</a>
-                                            <a class="dropdown-item" href="#">Plant Packs</a>
-                                            <a class="dropdown-item" href="#">Gift Plants</a>
-                                            <a class="dropdown-item" href="#">Flowering Plants</a>
-                                            <a class="dropdown-item" href="#">Indoor Plants</a>
+                                            <a class="dropdown-item" href="products.php?product=Succulents">Succulents</a>
+                                            <a class="dropdown-item" href="products.php?product=Ornamental">Ornamental Plants</a>
+                                            <a class="dropdown-item" href="products.php?product=Shade">Shade Plants</a>
+                                            <a class="dropdown-item" href="products.php?product=Indoor">Indoor Plants</a>
+                                            <a class="dropdown-item" href="products.php?product=Aromatic">Aromatic Plants</a>
+                                            <a class="dropdown-item" href="products.php?product=Fruit">Fruit Plants</a>
+                                            <a class="dropdown-item" href="products.php?product=Medicinal">Medicinal Plants</a>
+                                            <a class="dropdown-item" href="products.php?product=Gift">Gift Plants</a>
+                                            <a class="dropdown-item" href="products.php?product=Plants">All Plants</a>
                                         </div>
                                     </li>
                                     <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
                                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Flowers</a>
                                         <div class="dropdown-menu">
-                                            <a class="dropdown-item" href="#">All Flowers</a>
-                                            <a class="dropdown-item" href="#">Rose Plants</a>
-                                            <a class="dropdown-item" href="#">Hibiscus PLants</a>
-                                            <a class="dropdown-item" href="#">Jasmine Plants</a>
-                                            <a class="dropdown-item" href="#">Flowering Creepers</a>
-                                            <a class="dropdown-item" href="#">PLants for Flower bed</a>
+                                            <a class="dropdown-item" href="products.php?product=Flowering">All Flowers</a>
+                                            <a class="dropdown-item" href="products.php?product=Rose">Rose Plants</a>
+                                            <a class="dropdown-item" href="products.php?product=Hibiscus">Hibiscus PLants</a>
+                                            <a class="dropdown-item" href="products.php?product=Jasmine">Jasmine Plants</a>
+                                            <a class="dropdown-item" href="products.php?product=Gazania">Gazania Plants</a>
                                         </div>
                                     </li>
                                     <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
                                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Pots</a>
                                         <div class="dropdown-menu">
-                                            <a class="dropdown-item" href="#">Plastic Planters</a>
+                                            <a class="dropdown-item" href="products.php?product=Plastic Pots">Plastic Planters</a>
+                                            <a class="dropdown-item" href="products.php?product=Ceramic Pots">Ceramic Planters</a>
                                             <a class="dropdown-item" href="#">Earthen Planters</a>
-                                            <a class="dropdown-item" href="#">Concrete Planters</a>
                                         </div>
                                     </li>
                                     <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
@@ -234,17 +239,13 @@
               <ol class="carousel-indicators">
                 <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
                 <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
               </ol>
               <div class="carousel-inner">
                 <div class="carousel-item active">
-                  <img class="d-block w-100" src="extras/carousel1.png" alt="First slide">
+                  <img class="d-block w-100" src="extras/carousel1.png?v=1.1" alt="First slide">
                 </div>
                 <div class="carousel-item">
-                  <img class="d-block w-100" src="extras/carousel2.png" alt="Second slide">
-                </div>
-                <div class="carousel-item">
-                  <img class="d-block w-100" src="extras/carousel3.png" alt="Third slide">
+                  <img class="d-block w-100" src="extras/carousel2.png?v=1.1" alt="Second slide">
                 </div>
               </div>
               <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -268,17 +269,13 @@
               <ol class="carousel-indicators">
                 <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
                 <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
               </ol>
               <div class="carousel-inner">
                 <div class="carousel-item active">
-                  <img class="d-block w-100" src="extras/carouselmini1.png" alt="First slide">
+                  <img class="d-block w-100" src="extras/carouselmini1.png?v=1.1" alt="First slide">
                 </div>
                 <div class="carousel-item">
-                  <img class="d-block w-100" src="extras/carouselmini2.png" alt="Second slide">
-                </div>
-                <div class="carousel-item">
-                  <img class="d-block w-100" src="extras/carouselmini3.png" alt="Third slide">
+                  <img class="d-block w-100" src="extras/carouselmini2.png?v=1.2" alt="Second slide">
                 </div>
               </div>
               <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -304,7 +301,7 @@
             <div class="col">
                 <div class="responsive">
                   <div class="gallery">
-                    <a target="_blank" href="products.php?product=Rose">
+                    <a href="products.php?product=Rose">
                       <img src="extras/siteData/catagoryIcons/icon1.png" alt="Roses" width="600" height="400">
                     </a>
                     <div class="desc">Roses</div>
@@ -313,7 +310,7 @@
 
                 <div class="responsive">
                   <div class="gallery">
-                    <a target="_blank" href="products.php?product=All Time Oxygen">
+                    <a href="products.php?product=All Time Oxygen">
                       <img src="extras/siteData/catagoryIcons/icon2.png" alt="All Time Oxygen Plants" width="600" height="400">
                     </a>
                     <div class="desc">All time Oxygen</div>
@@ -322,7 +319,7 @@
 
                 <div class="responsive">
                   <div class="gallery">
-                    <a target="_blank" href="products.php?product=Indoor">
+                    <a href="products.php?product=Indoor">
                       <img src="extras/siteData/catagoryIcons/icon3.png" alt="Indoor Plants" width="600" height="400">
                     </a>
                     <div class="desc">Indoor Plants</div>
@@ -331,7 +328,7 @@
 
                 <div class="responsive">
                   <div class="gallery">
-                    <a target="_blank" href="products.php?product=Air Purifiers">
+                    <a href="products.php?product=Air Purifiers">
                       <img src="extras/siteData/catagoryIcons/icon4.png" alt="Air Purifier Plants" width="600" height="400">
                     </a>
                     <div class="desc">Air Purifiers</div>
@@ -340,7 +337,7 @@
 
                 <div class="responsive">
                   <div class="gallery">
-                    <a target="_blank" href="products.php?product=Vines">
+                    <a href="products.php?product=Vines">
                       <img src="extras/siteData/catagoryIcons/icon5.png" alt="Vines" width="600" height="400">
                     </a>
                     <div class="desc">Vines</div>
@@ -349,7 +346,7 @@
 
                 <div class="responsive">
                   <div class="gallery">
-                    <a target="_blank" href="products.php?product=Fruit">
+                    <a href="products.php?product=Fruit">
                       <img src="extras/siteData/catagoryIcons/icon6.png" alt="Fruit Plants" width="600" height="400">
                     </a>
                     <div class="desc">Fruit Plants</div>
@@ -358,7 +355,7 @@
 
                 <div class="responsive">
                   <div class="gallery">
-                    <a target="_blank" href="products.php?product=Succulents">
+                    <a href="products.php?product=Succulents">
                       <img src="extras/siteData/catagoryIcons/icon7.png" alt="Succulents" width="600" height="400">
                     </a>
                     <div class="desc">Succulents</div>
@@ -367,7 +364,7 @@
 
                 <div class="responsive">
                   <div class="gallery">
-                    <a target="_blank" href="products.php?product=Goodluck">
+                    <a href="products.php?product=Goodluck">
                       <img src="extras/siteData/catagoryIcons/icon8.png" alt="GoodLuck Plants" width="600" height="400">
                     </a>
                     <div class="desc">GoodLuck Plants</div>
