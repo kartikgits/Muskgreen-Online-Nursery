@@ -62,7 +62,7 @@
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
-            <a class="navbar-brand py-0 topNavItem" href="#">
+            <a class="navbar-brand py-0 topNavItem" href="index.php">
                 <img src="extras/musklogo224.png" width="72%" class="d-inline-block align-top" alt="MuskGreen">
             </a>
             
@@ -96,11 +96,8 @@
       
 <!--   Navigation Bar   -->
       <nav class="navbar navbar-expand-md lowerNavBar d-none d-md-flex">
-<!--          <a class="navbar-brand" href="#">Navbar</a>-->
-          
           <div class="collapse navbar-collapse navigationBar" id="navbarCollapse">
             <ul class="navbar-nav mr-auto">
-                
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   Plants
@@ -162,7 +159,7 @@
                     <div class="col-12">
                         <nav class="navbar navbar-expand-md navbar-light">
 
-                            <a class="navbar-brand" href="#" target="_blank"><img src="extras/musklogo112.png" alt=""></a>
+                            <a class="navbar-brand" href="index.php"><img src="extras/musklogo112.png" alt=""></a>
                             
                             <!-- account -->
                             <?php
