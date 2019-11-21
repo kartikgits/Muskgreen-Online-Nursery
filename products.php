@@ -21,6 +21,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Buy Plants, Flowers and Pots online in Dehradun at Best Prices. Huge offers on Ornamental, Air Purifiers, Succulents and variety of plants. Find out more!"/>
 
     <link rel="stylesheet" href="bootstrap4/css/bootstrap-grid.min.css" >
     <link rel="stylesheet" href="bootstrap4/css/bootstrap.min.css" >

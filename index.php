@@ -19,6 +19,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Buy Plants, Flowers and Pots online in Dehradun at Best Rates. We will soon offer Pan India Delivery. Find out more! For bulk order of plants or flowers, mail us at info@muskgreen.live"/>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="bootstrap4/css/bootstrap-grid.min.css" >
