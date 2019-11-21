@@ -56,7 +56,7 @@ if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']===TRUE) {
         }
 
         if ($allProductsPrice<=599) {
-        	$allProductsPrice=$allProductsPrice+40;
+        	$allProductsPrice=$allProductsPrice+30;
         }
 
 

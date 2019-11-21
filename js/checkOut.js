@@ -292,8 +292,8 @@ function getCartVariables(){
       }
       else if (subTotal<=599) {
          $("#orderSubtotal").html("Subtotal: &#8377;"+subTotal);
-         $("#orderDeliveryCharges").html("Delivery Charges: &#8377;"+40.00);
-         total=subTotal+40.0;
+         $("#orderDeliveryCharges").html("Delivery Charges: &#8377;"+30.00);
+         total=subTotal+30.0;
       }else{
          $("#orderSubtotal").html("Subtotal: &#8377;"+subTotal);
          $("#orderDeliveryCharges").html("Delivery Charges: <span>FREE</span>");

@@ -47,8 +47,8 @@ function getNonLoggedCartVariables(){
         }
         else if (subTotal<=599) {
            $("#cartSubtotal").html("&#8377;"+subTotal);
-           $("#cartDeliveryCharges").html("&#8377;"+40.00);
-           total=subTotal+40.0;
+           $("#cartDeliveryCharges").html("&#8377;"+30.00);
+           total=subTotal+30.0;
         }else{
            $("#cartSubtotal").html("&#8377;"+subTotal);
            $("#cartDeliveryCharges").html("<span style=\"color: #509534;\">FREE</span>");
@@ -75,8 +75,8 @@ function getCartVariables(){
       }
       else if (subTotal<=599) {
          $("#cartSubtotal").html("&#8377;"+subTotal);
-         $("#cartDeliveryCharges").html("&#8377;"+40.00);
-         total=subTotal+40.0;
+         $("#cartDeliveryCharges").html("&#8377;"+30.00);
+         total=subTotal+30.0;
       }else{
          $("#cartSubtotal").html("&#8377;"+subTotal);
          $("#cartDeliveryCharges").html("<span style=\"color: #509534;\">FREE</span>");

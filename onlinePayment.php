@@ -67,7 +67,7 @@
 					        	$ORDER_ID = $oid;
 					        	$CUST_ID = $_SESSION['userId'];
 					        	if ($chargeableAmount <= 599) {
-					        		$chargeableAmount =$chargeableAmount + 40.0;
+					        		$chargeableAmount =$chargeableAmount + 30.0;
 					        	}
 					        	$TXN_AMOUNT = number_format((float)$chargeableAmount, 2, '.', '');
 					        	$_SESSION['transactionFlag']=TRUE;

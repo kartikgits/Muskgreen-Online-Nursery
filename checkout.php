@@ -681,7 +681,7 @@
 	  </form>
 
 	<script type="text/javascript" src="js/styler.js"></script>
-	<script type="text/javascript" src="js/checkOut.js"></script>
+	<script type="text/javascript" src="js/checkOut.js?v=1.1"></script>
 	<script type="text/javascript" src="js/buttonActions.js"></script>
 
 </body>

@@ -43,7 +43,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script type="text/javascript" src="bootstrap4/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/buttonActions.js"></script>
-    <script type="text/javascript" src="js/cartActions.js"></script>
+    <script type="text/javascript" src="js/cartActions.js?v=1.1"></script>
     <script type="text/javascript">
       setLogInStatus('<?=$logInStatus?>');
       function startCart(){
