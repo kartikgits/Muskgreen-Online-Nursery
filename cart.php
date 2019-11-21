@@ -446,7 +446,6 @@
         <li><a href="#">About</a></li>
         <li><a href="products.php">Products</a></li>
         <li><a href="#">Sellers</a></li>
-        <li><a href="#">Contact</a></li>
         </ul>
         <p class="text-center">Copyright @2019 | Made with love and care by <a href="#">MuskGreen</a></p>
 

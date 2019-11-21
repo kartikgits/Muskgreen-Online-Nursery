@@ -272,10 +272,10 @@
               </ol>
               <div class="carousel-inner">
                 <div class="carousel-item active">
-                  <img class="d-block w-100" src="extras/carouselmini1.png?v=1.1" alt="First slide">
+                  <img class="d-block w-100" src="extras/carouselmini1.png?v=1.1" alt="First slide" onclick="goto('Indoor Air Purifier')">
                 </div>
                 <div class="carousel-item">
-                  <img class="d-block w-100" src="extras/carouselmini2.png?v=1.2" alt="Second slide">
+                  <img class="d-block w-100" src="extras/carouselmini2.png?v=1.2" alt="Second slide" onclick="goto('Succulents')">
                 </div>
               </div>
               <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -573,7 +573,6 @@
         <li><a href="#">About</a></li>
         <li><a href="products.php">Products</a></li>
         <li><a href="#">Sellers</a></li>
-        <li><a href="#">Contact</a></li>
         </ul>
         <!--foote_bottom_ul_amrc ends here-->
         <p class="text-center">Copyright @2019 | Made with love and care by <a href="#">MuskGreen</a></p>

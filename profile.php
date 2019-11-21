@@ -571,7 +571,6 @@
         <li><a href="#">About</a></li>
         <li><a href="products.php">Products</a></li>
         <li><a href="#">Sellers</a></li>
-        <li><a href="#">Contact</a></li>
         </ul>
         <!--foote_bottom_ul_amrc ends here-->
         <p class="text-center">Copyright @2019 | Made with love and care by <a href="#">MuskGreen</a></p>
