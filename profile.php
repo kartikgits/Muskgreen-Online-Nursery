@@ -407,9 +407,9 @@
                           <strong>My Orders</strong>
                       </div>
                       <?php
-                            $sql="SELECT proimgurl, orderstatus, proname, oid, concat(oid, '', proid) as refid, quantity, totalPrice, DATE(orderdate) as odate from productorder natural join productsinorder natural join product where oid in (select oid from productorder where uid = '".$_SESSION['userId']."')";
+                            $sql="SELECT proimgurl, orderstatus, proname, oid, concat(oid, '', proid) as refid, quantity, totalPrice, DATE(orderdate) as odate from productorder natural join productsinorder natural join product  where BINARY uid = '".$_SESSION['userId']."'";
                             $orderCount = 0;
-                            if ($result=$conn->query($sql)===TRUE){
+                            $result=$conn->query($sql);
                               while ($row=$result->fetch_assoc()) {
                                 $orderCount = $orderCount + 1;
                                 $orderStatus = "";
@@ -454,7 +454,6 @@
 
                         <?php
                             }
-                          }
                             if ($orderCount < 1) {
                         ?>
                               <div class="panel-footer">Nothing here... Order something <span style="color: #607447;">Green</span></div>
