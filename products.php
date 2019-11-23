@@ -21,7 +21,6 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Buy Plants, Flowers and Pots online in Dehradun at Best Prices. Huge offers on Ornamental, Air Purifiers, Succulents and variety of plants. Find out more!"/>
 
     <link rel="stylesheet" href="bootstrap4/css/bootstrap-grid.min.css" >
     <link rel="stylesheet" href="bootstrap4/css/bootstrap.min.css" >
@@ -54,12 +53,23 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/typeahead.bundle.js"></script>
     <script type="text/javascript" src="js/liveSearch.js"></script>
-    <title>MuskGreen - Buy Plants, Pots Online in Dehradun | Fast Delivery</title>
+
+    <?php
+        if(isset($_GET['product'])){
+    ?>
+    <title>MuskGreen - Buy <?=$_GET['product']?> Online in Dehradun | Fast Delivery | Best Plant Nursery in Dehradun</title>
+    <meta name="description" content="Buy <?=$_GET['product']?> Plants in Dehradun at Best Prices. Huge offers on Ornamental, Air Purifiers, Succulents and variety of plants. Find out more!"/>
+    <?php
+        }else{
+    ?>
+    <title>MuskGreen - Buy Plants, Flowers Pots Online in Dehradun | Fast Delivery | Best Plant Nursery in Dehradun</title>
+    <meta name="description" content="Buy Plants, Flowers and Pots online in Dehradun at Best Prices. Great offers on Ornamental, Air Purifiers, Succulents and variety of plants. Find out more!"/>
+    <?php
+        }
+    ?>
 
 </head>
-
 <body onload="setCartCount('<?=$logInStatus?>')">
-
 <!--      Top Brand Bar with Search, Login & Signup and Cart (Includes NavBar button in mobile view)-->
         <nav class="navbar navbar-expand-md sticky-top navbar-light topBar d-none d-md-flex">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">

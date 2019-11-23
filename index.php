@@ -40,7 +40,7 @@
     <script type="text/javascript" src="js/liveSearch.js"></script>
 
 
-    <title>MuskGreen - Buy Plants, Pots Online in Dehradun | Fast Delivery</title>
+    <title>MuskGreen - Buy Plants, Flowers & Pots Online in Dehradun | Fast and Free Delivery | Best Plant Nursery in Dehradun</title>
   </head>
 
   <body onload="setCartCount('<?=$logInStatus?>')">

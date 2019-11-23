@@ -14,12 +14,20 @@
     }else{
         $logInStatus="false";
     }
+
+    $productId = $conn->real_escape_string($_GET['proid']);
+    $sql = "select proname from product where proid='".$productId."'";
+    $result = $conn->query($sql);
+    $prodName="";
+    while ($row=$result->fetch_assoc()) {
+        $prodName.=$row['proname'];
+    }
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>MuskGreen - Buy Plants, Pots Online in Dehradun</title>
+	<title>Buy <?=$prodName?> in Dehradun | MuskGreen | Fast and Free Delivery | Best Plant Nursery in Dehradun</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -39,6 +47,8 @@
     <script type="text/javascript" src="bootstrap4/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/typeahead.bundle.js"></script>
     <script type="text/javascript" src="js/liveSearch.js"></script>
+
+    <meta name="description" content="Buy <?=$prodName?> at Lowest Prices in Dehradun. Great Offers on Ornamental, Air Purifiers, Succulents and variety of plants. Find out more!"/>
 </head>
 
 <body onload="setCartCount('<?=$logInStatus?>')">
@@ -233,7 +243,6 @@
 
 <?php
     if (isset($_GET['proid'])) {
-        $productId = $conn->real_escape_string($_GET['proid']);
         $sql = "select * from product p natural join productseller where p.proid='".$productId."'";
         $catsql = "select category from proundercat where proid='".$productId."'";
 
@@ -313,7 +322,7 @@
         <div class=" col-sm-4 col-md col-sm-4  col-12 col">
         <h5 class="headin5_amrc col_white_amrc pt2">Find us</h5>
         <!--headin5_amrc-->
-        <p class="mb10"> MuskGreen  is a startup nestled in the Himalayan foothill city - Dehradun. We provide a platform to deliver our customers the large variety of plants and the best of organic products.</p>
+        <p class="mb10"> MuskGreen  is a startup nestled in the Himalayan foothill city - Dehradun. We provide a platform to deliver our customers the large variety of plants, flowers and the best of organic products.</p>
         <p><i class="fa fa-location-arrow"></i> 34, Kunj Vihar, Dehradun, Uttarakhand - 248001 </p>
         <p><i class="fa fa fa-envelope"></i> info@muskgreen.live  </p>
 
