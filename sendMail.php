@@ -148,6 +148,7 @@ if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']===TRUE) {
 						    
 						    <div style="max-width: 18rem; border: 1px solid #66BB6A; border-radius: 4px; padding: 1rem;">
 						      <div>
+						      	  <span><b>'.$_SESSION['userFName'].' '.$_SESSION['userLName'].'</b></span><br>
 						          <span style="max-width: 12rem;">
 						            <b>Order ID:</b> '.$safeOid.'
 						          </span><br>
