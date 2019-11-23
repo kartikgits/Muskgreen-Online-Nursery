@@ -303,7 +303,7 @@
 				<div class="responsive2">
                     <div class="productContainer">
                       <a href="productDetail.php?proid=<?=$row['proid']?>" target="_blank">
-                        <img src="data/images/placeholder.png" alt="Product" data-echo="<?=$row['proimgurl']?>" class="image pop-in">
+                        <img src="data/images/placeholder.png" alt="Buy <?=$row['proname']?> Online" data-echo="<?=$row['proimgurl']?>" class="image pop-in">
                       </a>
                       <div class="productPriceDisc">
                           <?= $row['proname']; ?>
@@ -419,7 +419,7 @@
 				<div class="responsive2">
                     <div class="productContainer">
                       <a href="productDetail.php?proid=<?=$row['proid']?>" target="_blank">
-                          <img src="data/images/placeholder.png" alt="Product" data-echo="<?=$row['proimgurl']?>" class="image pop-in">
+                          <img src="data/images/placeholder.png" alt="Buy <?=$row['proname']?> Online" data-echo="<?=$row['proimgurl']?>" class="image pop-in">
                       </a>
                       <div class="productPriceDisc">
                           <?= $row['proname']; ?>
