@@ -248,7 +248,7 @@
                           <div class="left-column col-md-6">
                             <img data-image="black" src="" alt="">
                             <img data-image="blue" src="" alt="">
-                            <img data-image="red" class="active" src="<?=$row['proimgurl']?>" alt="">
+                            <img data-image="red" class="active" src="<?=$row['proimgurl']?>" alt="Buy <?=$row['proname']?> Online">
                           </div>
 
 
