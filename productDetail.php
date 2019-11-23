@@ -19,7 +19,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Products - MuskGreen | Buy Plants, Vegetables and Fruits Online in Dehradun</title>
+	<title>MuskGreen - Buy Plants, Pots Online in Dehradun</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 

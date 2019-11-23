@@ -54,8 +54,7 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/typeahead.bundle.js"></script>
     <script type="text/javascript" src="js/liveSearch.js"></script>
-
-    <title>Welcome to MuskGreen - India's Latest Digital Nursery and Organic Products store</title>
+    <title>MuskGreen - Buy Plants, Pots Online in Dehradun | Fast Delivery</title>
 
 </head>
 
