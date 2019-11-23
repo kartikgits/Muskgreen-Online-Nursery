@@ -1,3 +1,6 @@
+var currentTab = 0;
+showTab(currentTab);
+
 $("#buttonShow").click(function() {
     $('html,body').animate({
         scrollTop: $("#nextBtn").offset().top - 140},
@@ -136,17 +139,14 @@ function validatePersonalForm(){
     }
 }
 
-$("#submitPersonal").click(function(){
+$("#nextBtn").click(function(){
   if (validatePersonalForm()) {
-    $.post("formsProcess.php", $("#personalForm").serialize()).done(function(){
+    $.post("formsProcess.php", $("#personalForm").serialize())
+    .done(function(){
       disablePersonal();
     });
   }
 });
-
-
-var currentTab = 0;
-showTab(currentTab);
 
 var deliveryAddress="";
 var paymentMethod="";
@@ -252,7 +252,7 @@ function validateForm() {
   var valid = true;
 
   if (currentTab === 0) {
-    if (document.getElementById("first_name").value=="User" || document.getElementById("first_name").value=="user" || document.getElementById("first_name").value=="") {
+    if (document.getElementById("first_name").value=="" || document.getElementById("first_name").value==" ") {
       valid=false;
     }
 

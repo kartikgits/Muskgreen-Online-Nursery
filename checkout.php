@@ -430,7 +430,17 @@
 				      <div class="form-group">
 				          <div class="col-xs-6">
 				              <label for="first_name"><h6>First Name</h6></label><span class="inputRequired"></span>
-				              <input type="text" class="form-control" name="first_name" id="first_name" placeholder="first name" value="<?=$_SESSION['userFName']?>" title="Please Enter Your First Name" required>
+				              <?php
+				              	if ($_SESSION['userFName']=="User" || $_SESSION['userFName']=="user") {
+				              ?>
+				              	<input type="text" class="form-control" name="first_name" id="first_name" placeholder="first name" title="Please Enter Your First Name" required>
+				              <?php
+				              	}else{
+				              ?>
+				              	<input type="text" class="form-control" name="first_name" id="first_name" placeholder="first name" value="<?=$_SESSION['userFName']?>" title="Please Enter Your First Name" required>
+				              <?php
+				          		}
+				              ?>
 				          </div>
 				      </div>
 				      <div class="form-group">
@@ -448,7 +458,7 @@
 				      <div class="form-group">
 				           <div class="col-xs-12">
 				                <br>
-				                <button class="btn btn-lg btn-success" type="button" id="submitPersonal"><i class="fa fa-check-circle-o"></i> Save</button>
+				                <!-- <button class="btn btn-lg btn-success" type="button" id="submitPersonal"><i class="fa fa-check-circle-o"></i> Save</button> -->
 				                <button class="btn btn-lg btn-secondary" type="reset" id="resetPersonal"><i class="fa fa-repeat"></i> Reset</button>
 				            </div>
 				      </div>
@@ -681,7 +691,7 @@
 	  </form>
 
 	<script type="text/javascript" src="js/styler.js"></script>
-	<script type="text/javascript" src="js/checkOut.js?v=1.1"></script>
+	<script type="text/javascript" src="js/checkOut.js?v=1.3"></script>
 	<script type="text/javascript" src="js/buttonActions.js"></script>
 
 </body>
