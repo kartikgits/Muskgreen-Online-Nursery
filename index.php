@@ -31,7 +31,7 @@
     <link rel="stylesheet" type="text/css" href="css/liveSearchStyle.css">
     <link rel="stylesheet" type="text/css" href="css/home.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="css/footer.css">
+    <link rel="stylesheet" type="text/css" href="css/footer.css?v=1.1">
 
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
@@ -264,7 +264,6 @@
       
     <!--Mobile Carousel-->
     <div class="container-fluid mainBodyContainer topContainer d-md-none">
-      
           <!--   Carousel   -->
           <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
               <ol class="carousel-indicators">
@@ -288,8 +287,31 @@
                 <span class="sr-only">Next</span>
               </a>
         </div>
-          
     </div>
+
+
+    <?php
+      if (isset($_GET['delivery-location'])) {
+    ?>
+    <div class="container-fluid mainBodyContainer">
+      <div class="row multiItemBarTitle">
+        <div class="col">
+          <h3 class="mTitle">Buy Plants Online in <?=$_GET['delivery-location']?></h3>
+        </div>
+      </div>
+      <div class="row multiItemBarBody p-3">
+        MuskGreen provides wide range of plants and garden accessories in <?=$_GET['delivery-location']?>. Buy wide range of Succulents, Ornamental Plants, Flowers, Aromatic Plants, Medicinal Plants, Cactus, Pots and much more in <?=$_GET['delivery-location']?>.<br>
+        <strong>
+          *Plant Delivery available to all areas.<br>
+          *Buy Plants in <?=$_GET['delivery-location']?> at Best Prices.<br>
+          *Guaranteed Fast Delivery.<br>
+          *Best Nursery in <?=$_GET['delivery-location']?>.
+        </strong>
+      </div>
+    </div>
+    <?php
+      }
+    ?>
     
     <!--  Multi Item Bar  -->
     <div class="container-fluid mainBodyContainer">
@@ -569,6 +591,14 @@
     <!--Footer-->
     <footer class="footer">
         <div class="container bottom_border">
+        <div class="row">
+          <div class="col-12">
+            <h5 class="headin5_amrc col_white_amrc pt2">Buy Plants Online</h5>
+            <p class="mb2 footerLinks">
+              <span class="col_white_amrc pt2">Plants by Location: </span> <a href="index.php?delivery-location=Dehradun">Dehradun</a>
+            </p>
+          </div>
+        </div>
         <div class="row">
         <div class=" col-sm-4 col-md col-sm-4  col-12 col">
         <h5 class="headin5_amrc col_white_amrc pt2">Find us</h5>

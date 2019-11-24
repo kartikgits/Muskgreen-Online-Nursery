@@ -33,3 +33,6 @@ footer p { font-size:13px; color:#CCC; padding-bottom:0px; margin-bottom:8px;}
 .social_footer_ul li { padding-left:20px; padding-top:10px; float:left; }
 .social_footer_ul li a { color:#CCC; border:1px solid #CCC; padding:8px;border-radius:50%;}
 .social_footer_ul li i {  width:20px; height:20px; text-align:center;}
+
+.footerLinks > a { color: #c8e6c9; text-decoration: none;}
+.footerLinks > a:hover { color: #66bb6a; text-decoration: none; }
