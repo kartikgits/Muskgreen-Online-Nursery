@@ -305,7 +305,11 @@
 
 	        <div class="row featuredProductsBody" id="result">
 				<?php
-					$sql="SELECT * FROM product NATURAL JOIN productseller";
+                    $sql="SELECT * FROM product NATURAL JOIN productseller";
+                    if (isset($_GET['productUnder'])) {
+                        $productUnder=intval($_GET['productUnder']) + 40;
+                        $sql.=" where sp<".$productUnder." order by sp desc";
+                    }
 					$result=$conn->query($sql);
 					while ($row=$result->fetch_assoc()) {
                         $mrp=floatval($row['sp']) + (floatval($row['discount'])/100)*floatval($row['sp']);

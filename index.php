@@ -1,9 +1,9 @@
 <?php
 	session_start();
 
-  // if (!(isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']===TRUE)) {
-  //     include 'serverPhp/remember.php';
-  // }
+  if (!(isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']===TRUE)) {
+      include 'serverPhp/remember.php';
+  }
 
   $logInStatus="";
 
@@ -515,8 +515,54 @@
                     </div>
                 </div>
         </div>
-        
-        
+    </div>
+
+
+    <!-- Order By Price -->
+    <div class="container-fluid mainBodyContainer">
+        <div class="row featuredProductsTitle">
+            <div class="col text-center">
+            <div class="mTitle">Plants/Pots by Price</div>
+            </div>
+        </div>
+        <div class="row featuredProductsBody">
+                <div class="responsive2">
+                    <div class="productContainer">
+                      <img src="data/indexPage/UNDER99.png" alt="Buy Plants/Pots Under Rs. 99" class="image">
+                      <div class="productPriceDisc">
+                          Plants/Pots Under 99
+                          <p><button onclick="gotoPrice('99')">View All</button></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="responsive2">
+                    <div class="productContainer">
+                      <img src="data/indexPage/UNDER199.png" alt="Buy Plants/Pots Under Rs. 199" class="image">
+                      <div class="productPriceDisc">
+                          Plants/Pots Under 199
+                          <p><button onclick="gotoPrice('199')">View All</button></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="responsive2">
+                    <div class="productContainer">
+                      <img src="data/indexPage/UNDER299.png" alt="Buy Plants/Pots Under Rs. 299" class="image">
+                      <div class="productPriceDisc">
+                          Plants/Pots Under 299
+                          <p><button onclick="gotoPrice('299')">View All</button></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="responsive2">
+                    <div class="productContainer">
+                      <img src="data/indexPage/UNDER399.png" alt="Buy Plants/Pots Under Rs. 399" class="image">
+                      <div class="productPriceDisc">
+                          Plants/Pots Under 399
+                          <p><button onclick="gotoPrice('399')">View All</button></p>
+                        </div>
+                    </div>
+                </div>
+        </div>
     </div>
       
     
@@ -602,6 +648,10 @@
     <script type="text/javascript">
       function goto(view) {
         window.location.href = "products.php?product="+view;
+      }
+
+      function gotoPrice(price){
+        window.location.href = "products.php?productUnder="+price;
       }
     </script>
 
