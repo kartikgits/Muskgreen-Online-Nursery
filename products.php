@@ -57,13 +57,15 @@
     <?php
         if(isset($_GET['product'])){
     ?>
-    <title>MuskGreen - Buy <?=$_GET['product']?> Online in Dehradun | Fast Delivery | Best Plant Nursery in Dehradun</title>
+    <title>MuskGreen - Buy <?=$_GET['product']?> Plants Online in Dehradun | Fast Delivery | Best Plant Nursery in Dehradun</title>
     <meta name="description" content="Buy <?=$_GET['product']?> Plants in Dehradun at Best Prices. Huge offers on Ornamental, Air Purifiers, Succulents and variety of plants. Find out more!"/>
+    <meta name="keywords" content="buy <?=$_GET['product']?> plants online, buy <?=$_GET['product']?> online, <?=$_GET['product']?>, buy <?=$_GET['product']?>">
     <?php
         }else{
     ?>
-    <title>MuskGreen - Buy Plants, Flowers Pots Online in Dehradun | Fast Delivery | Best Plant Nursery in Dehradun</title>
+    <title>MuskGreen - Buy Plants, Flowers, Pots Online in Dehradun | Fast Delivery | Best Plant Nursery in Dehradun</title>
     <meta name="description" content="Buy Plants, Flowers and Pots online in Dehradun at Best Prices. Great offers on Ornamental, Air Purifiers, Succulents and variety of plants. Find out more!"/>
+    <meta name="keywords" content="buy plants online, buy flowers online, buy pots online, buy plants, buy flowers, buy pots">
     <?php
         }
     ?>

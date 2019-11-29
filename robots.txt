@@ -6,6 +6,7 @@ Disallow:
 
 User-Agent: *
 Allow: /$
+Disallow: /
 Allow: /index.php
 Allow: /cart.php
 Allow: /checkout.php
@@ -15,6 +16,5 @@ Allow: /products.php
 Allow: /profile.php
 Allow: /termsAndConditions.html
 Allow: /sitemap.html
-Disallow: /
 
 Sitemap: http://muskgreen.live/sitemap.xml

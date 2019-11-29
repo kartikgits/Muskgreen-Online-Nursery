@@ -20,6 +20,17 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Buy Plants, Flowers and Pots online in Dehradun at Best Rates. We will soon offer Pan India Delivery. Find out more! For bulk order of plants or flowers, mail us at info@muskgreen.live"/>
+    <?php
+      if (isset($_GET['delivery-location'])) {
+    ?>
+        <meta name="keywords" content="online nursery, plantation nursery near me, nursery $_GET['delivery-location'], plant nursery in $_GET['delivery-location'], best nursery in $_GET['delivery-location'], buy indoor plants in $_GET['delivery-location'], buying plants in $_GET['delivery-location'], buy plants online $_GET['delivery-location'], buy succulents online, buy flowering plants online, buy aromatic plants online, buy cactus online, buy landscape plants online, buy ornamental plants online, aromatic plants, cactus, ferns, indoor plants, landscape plants, bamboo, medicated plants, money plants, lucky plants, nursery near me, nursery plants near me, buy pots online, raat ki rani, nursery garden, ornamental plants, gifts plants">
+    <?php
+      }else{
+    ?>
+        <meta name="keywords" content="online nursery, plantation nursery near me, nursery india, plant nursery in india, best nursery in india, buy indoor plants in india, buying plants in india, buy plants online india, buy succulents online, buy flowering plants online, buy aromatic plants online, buy cactus online, buy landscape plants online, buy ornamental plants online, aromatic plants, cactus, ferns, indoor plants, landscape plants, bamboo, medicated plants, money plants, lucky plants, nursery near me, nursery plants near me, buy pots online, raat ki rani, nursery garden, ornamental plants, gifts plants">
+    <?php
+      }
+    ?>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="bootstrap4/css/bootstrap-grid.min.css" >
@@ -605,7 +616,6 @@
         <!--headin5_amrc-->
         <p class="mb10"> MuskGreen  is a startup nestled in the Himalayan foothill city - Dehradun. We provide a platform to deliver our customers the large variety of plants and the best of organic products.</p>
         <p><i class="fa fa-location-arrow"></i> 34, Kunj Vihar, Dehradun, Uttarakhand - 248001 </p>
-<!--        <p><i class="fa fa-phone"></i>  +91-9999878398  </p>-->
         <p><i class="fa fa fa-envelope"></i> info@muskgreen.live  </p>
 
 

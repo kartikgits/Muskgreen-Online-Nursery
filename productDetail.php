@@ -49,6 +49,7 @@
     <script type="text/javascript" src="js/liveSearch.js"></script>
 
     <meta name="description" content="Buy <?=$prodName?> at Lowest Prices in Dehradun. Great Offers on Ornamental, Air Purifiers, Succulents and variety of plants. Find out more!"/>
+    <meta name="keywords" content="buy <?=$prodName?> online india, buy <?=$prodName?> online, buy <?=$prodName?> near me, <?=$prodName?> online india, <?=$prodName?> online, <?=$prodName?> nursery">
 </head>
 
 <body onload="setCartCount('<?=$logInStatus?>')">
