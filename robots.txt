@@ -1,0 +1,20 @@
+User-agent: Mediapartners-Google
+Disallow:
+
+User-agent: Adsbot-Google
+Disallow:
+
+User-Agent: *
+Allow: /$
+Allow: /index.php
+Allow: /cart.php
+Allow: /checkout.php
+Allow: /privacyPolicy.html
+Allow: /productDetail.php
+Allow: /products.php
+Allow: /profile.php
+Allow: /termsAndConditions.html
+Allow: /sitemap.html
+Disallow: /
+
+Sitemap: http://muskgreen.live/sitemap.xml

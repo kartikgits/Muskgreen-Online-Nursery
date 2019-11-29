@@ -589,6 +589,7 @@
         <li><a href="#">Buy Pots</a></li>
         <li><a href="#">Gifts</a></li>
         <li><a href="#">Offer Zone</a></li>
+        <li><a href="sitemap.html">Site Map</a></li>
         </ul>
         <!--footer_ul_amrc ends here-->
         </div>
@@ -603,8 +604,8 @@
         <li><a href="#">Wholesale</a></li>
         <li><a href="#">Product Guarantee</a></li>
         <li><a href="#">Customer Reviews</a></li>
-        <li><a href="#">Privacy Policy</a></li>
-        <li><a href="#">Terms & Conditions</a></li>
+        <li><a href="privacyPolicy.html">Privacy Policy</a></li>
+        <li><a href="termsAndConditions.html">Terms & Conditions</a></li>
         </ul>
         <!--footer_ul_amrc ends here-->
         </div>
